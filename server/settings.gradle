@@ -1,1 +1,3 @@
 rootProject.name = 'server'
+include ":protofiles"
+project(":protofiles").projectDir = new File(settingsDir, '../proto')

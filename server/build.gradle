@@ -2,7 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.5.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "com.google.protobuf" version "0.8.17"
 }
+
+apply from: 'grpc.gradle'
 
 group = 'com.block'
 version = '0.0.1-SNAPSHOT'

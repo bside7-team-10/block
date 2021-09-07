@@ -1,0 +1,41 @@
+sourceSets {
+    main {
+        proto {
+            srcDir project(":protofiles").projectDir.path + "/src"
+            include "**/*.proto"
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.17.3"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.39.0"
+        }
+    }
+    generateProtoTasks {
+        ofSourceSet('main').each { task ->
+            task.builtins {
+                java {
+                    outputSubDir = 'java'
+                }
+            }
+            task.plugins {
+                grpc {
+                    outputSubDir = 'java'
+                }
+            }
+        }
+    }
+    generatedFilesBaseDir = "$projectDir/src/"
+}
+task cleanProtoGen {
+    doFirst {
+        delete("$projectDir/src/main/java/com/block/server/_generated")
+    }
+}
+
+clean.dependsOn cleanProtoGen
