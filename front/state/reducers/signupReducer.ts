@@ -14,14 +14,23 @@ const initalState: CommonState = {
 const reducer = (state: CommonState = initalState, action: Action) => {
   switch (action.type) {
     case ActionType.USER_SIGNUP_REQUEST:
-      state.loading = true;
-      return state;
+      return {
+        ...state,
+        loading: true,
+      };
 
     case ActionType.USER_SIGNUP_SUCCESS:
-      return state;
+      return {
+        ...state,
+        loading: false,
+      };
 
     case ActionType.USER_SIGNUP_ERROR:
-      state.error = action.payload;
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     default:
       return state;

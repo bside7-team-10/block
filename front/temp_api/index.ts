@@ -7,13 +7,13 @@ interface MockApiObject {
 const NewMockApi = () => {
   const self = {} as MockApiObject;
 
-  self.signup = ({ email, password, confirmPassword, nickName, birthday, gender }: User) => {
+  self.signup = ({ email, password, confirmPassword, nickName }: User) => {
     return new Promise((resolve, reject) => {
-      if (email && password && confirmPassword && nickName && birthday && gender) {
+      if (email && password && confirmPassword && nickName) {
         resolve(1);
         return;
       }
-      reject();
+      reject("signup failed");
     });
   };
 
