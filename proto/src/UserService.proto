@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.block.server._generated.proto.userservice";
+
+// The greeting service definition.
+service UserService {
+
+    rpc SignIn (SignInRequest) returns (SignInResponse) {}
+
+    rpc SignUp (SignUpRequest) returns (SignUpResponse) {}
+}
+
+message SignInRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message SignInResponse {
+    enum SignInStatus {
+        SUCCESS = 0;
+        NO_ACCOUNT = 1;
+        WRONG_PASSWORD = 2;
+        INTERNAL_ERROR = 3;
+    }
+    SignInStatus status = 1;
+    string nickname = 2;
+    string profileUrl = 3;
+}
+
+message SignUpRequest {
+    string email = 1;
+    string password = 2;
+    string nickname = 3;
+    enum Gender {
+        MALE = 0;
+        FEMALE = 1;
+    }
+    Gender gender = 4;
+    string avatar = 5;
+    string birthday = 6;
+}
+
+message SignUpResponse {
+    enum SignUpStatus {
+        SUCCESS = 0;
+        ACCOUNT_EXISTS = 1;
+        INVALID_INPUT = 2;
+        INTERNAL_ERROR = 3;
+    }
+    SignUpStatus status = 1;
+    string nickname = 2;
+    string profileUrl = 3;
+}
