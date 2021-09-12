@@ -9,9 +9,13 @@ const Home = () => {
     router.push("/signup");
   };
 
+  const onLoginClicked = () => {
+    router.push('/login')
+  };
+
   return (
     <Wrapper>
-      <Button variant="contained" color="primary">
+      <Button variant="contained" color="primary" onClick={onLoginClicked}>
         로그인
       </Button>
       <Button variant="contained" color="secondary" onClick={onSignupClicked}>
