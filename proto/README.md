@@ -1,7 +1,9 @@
 # Prerequesites
 
-1. Install protobuf compiler `brew install protobuf`
-2. Install npm packages `npm ci`
+1. Install protobuf compiler 
+  - Mac : `brew install protobuf`
+  - Windows : 다음 글 따라서 진행해보기 [Link](https://cjwoov.tistory.com/17)
+3. Install npm packages `npm ci`
 
 # How To Build
 
