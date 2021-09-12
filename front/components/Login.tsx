@@ -2,8 +2,11 @@ import Link from 'next/link'
 import { useForm } from "react-hook-form";
 import InputField from "./common/fields/InputField"
 import styled from 'styled-components'
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Button, Grid } from '@material-ui/core';
+import { useActions } from '../hooks/use-actions';
+import { User } from '../state';
+import router from 'next/router';
 
 const defaultValues = {
   email: '',
@@ -12,31 +15,44 @@ const defaultValues = {
 
 const Login = () => {
   const { control, handleSubmit, setError, getValues, setFocus, clearErrors } = useForm({ defaultValues });
-
+  const { userLogin } = useActions();
+  
   // useEffect(() => {
   //   setFocus("email")
-  // }, [setFocus])
+  // }, [setFocus]);
+
+  const onLoginSubmit = (data: User) => {
+    userLogin(data, onLoginSuccessCallback);
+  }
+
+  const onLoginSuccessCallback = () => {
+    router.push('/');
+  }
 
   return (
     <Wrapper>
       <MainImage src="https://blog.kakaocdn.net/dn/eGYXO4/btqwmu4l3p3/ucIxOVwvUIq8KKrMMstmIK/img.png" />
+
       <LoginForm>
         <LoginLabel htmlFor="email">Enter Email</LoginLabel>
-        <InputField name="email" label="" control={control} required={true} variant="outlined"/>
+        <InputField name="email" label="" control={control} required={true} variant="outlined" />
         <LoginLabel htmlFor="password">Enter Password</LoginLabel>
         <InputField name="password" label="" control={control} required={true} variant="outlined"/>
       </LoginForm>
+
       <Link href="#">
         <ForgotPasswordLink>forgot Password?</ForgotPasswordLink>
       </Link>
+
       <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1}>
         <Grid item xs={6}>
-          <GridButton size="small" variant="contained" color="primary">LOGIN</GridButton>
+          <GridButton size="small" variant="contained" color="primary" onClick={handleSubmit(onLoginSubmit)}>LOGIN</GridButton>
         </Grid>
         <Grid item xs={6}>
           <GridButton size="small" variant="contained" color="primary">Create Account</GridButton>
         </Grid>
       </Grid>
+
       <Footer>
         2021 Block. All Rights Reserved.
       </Footer>
@@ -89,5 +105,6 @@ const GridButton = styled(Button)`
 const Footer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
+  font-size: 15px;
   text-align: center;
 `;
