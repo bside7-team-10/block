@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "protoc-gen-grpc-web": "^1.2.1",
     "protoc-gen-ts": "^0.4.0"
   }
 }
