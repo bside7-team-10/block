@@ -18,3 +18,17 @@ export const userSignup = (user: User, callback: () => void) => {
     }
   };
 };
+
+export const userLogin = (user: User, callBack: () => void) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.USER_LOGIN_REQUEST });
+    try {
+      const mockApi = NewMockApi();
+      const userData = await mockApi.login(user);
+      dispatch({ type: ActionType.USER_LOGIN_SUCCESS });
+      callBack();
+    } catch (error) {
+      dispatch({ type: ActionType.USER_LOGIN_FAILURE, payload: error });
+    }
+  }
+}

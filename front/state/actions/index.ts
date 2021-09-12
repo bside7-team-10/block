@@ -14,4 +14,19 @@ export interface UserSignupErrorAction {
   payload: string;
 }
 
-export type Action = UserSignupRequestAction | UserSignupSuccessAction | UserSignupErrorAction;
+export interface UserLoginRequestAction {
+  type: ActionType.USER_LOGIN_REQUEST;
+}
+
+export interface UserLoginSuccessAction {
+  type: ActionType.USER_LOGIN_SUCCESS;
+}
+
+export interface UserLoginFailureAction {
+  type: ActionType.USER_LOGIN_FAILURE;
+  payload: string;
+}
+
+export type Action = 
+  UserSignupRequestAction | UserSignupSuccessAction | UserSignupErrorAction
+  | UserLoginRequestAction | UserLoginSuccessAction | UserLoginFailureAction;
