@@ -15,4 +15,4 @@ protoc \
     --ts_out="service=grpc-web:$OUT_DIR_FRONT" \
     --grpc-web_out=import_style=commonjs,mode=grpcwebtext:$OUT_DIR_FRONT \
     -I $SRC_DIR_ABS_PATH \
-    "$SRC_DIR_ABS_PATH/*.proto"
+    "$SRC_DIR_ABS_PATH/UserProtocol.proto"

@@ -15,7 +15,7 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
-const proto = require('./UserService_pb.js');
+const proto = require('./UserProtocol_pb.js');
 
 /**
  * @param {string} hostname
@@ -25,7 +25,7 @@ const proto = require('./UserService_pb.js');
  * @struct
  * @final
  */
-proto.UserServiceClient =
+proto.UserProtocolClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -51,7 +51,7 @@ proto.UserServiceClient =
  * @struct
  * @final
  */
-proto.UserServicePromiseClient =
+proto.UserProtocolPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -75,8 +75,8 @@ proto.UserServicePromiseClient =
  *   !proto.SignInRequest,
  *   !proto.SignInResponse>}
  */
-const methodDescriptor_UserService_SignIn = new grpc.web.MethodDescriptor(
-  '/UserService/SignIn',
+const methodDescriptor_UserProtocol_SignIn = new grpc.web.MethodDescriptor(
+  '/UserProtocol/SignIn',
   grpc.web.MethodType.UNARY,
   proto.SignInRequest,
   proto.SignInResponse,
@@ -97,7 +97,7 @@ const methodDescriptor_UserService_SignIn = new grpc.web.MethodDescriptor(
  *   !proto.SignInRequest,
  *   !proto.SignInResponse>}
  */
-const methodInfo_UserService_SignIn = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_UserProtocol_SignIn = new grpc.web.AbstractClientBase.MethodInfo(
   proto.SignInResponse,
   /**
    * @param {!proto.SignInRequest} request
@@ -120,13 +120,13 @@ const methodInfo_UserService_SignIn = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.SignInResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.UserServiceClient.prototype.signIn =
+proto.UserProtocolClient.prototype.signIn =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/UserService/SignIn',
+      '/UserProtocol/SignIn',
       request,
       metadata || {},
-      methodDescriptor_UserService_SignIn,
+      methodDescriptor_UserProtocol_SignIn,
       callback);
 };
 
@@ -139,13 +139,13 @@ proto.UserServiceClient.prototype.signIn =
  * @return {!Promise<!proto.SignInResponse>}
  *     Promise that resolves to the response
  */
-proto.UserServicePromiseClient.prototype.signIn =
+proto.UserProtocolPromiseClient.prototype.signIn =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/UserService/SignIn',
+      '/UserProtocol/SignIn',
       request,
       metadata || {},
-      methodDescriptor_UserService_SignIn);
+      methodDescriptor_UserProtocol_SignIn);
 };
 
 
@@ -155,8 +155,8 @@ proto.UserServicePromiseClient.prototype.signIn =
  *   !proto.SignUpRequest,
  *   !proto.SignUpResponse>}
  */
-const methodDescriptor_UserService_SignUp = new grpc.web.MethodDescriptor(
-  '/UserService/SignUp',
+const methodDescriptor_UserProtocol_SignUp = new grpc.web.MethodDescriptor(
+  '/UserProtocol/SignUp',
   grpc.web.MethodType.UNARY,
   proto.SignUpRequest,
   proto.SignUpResponse,
@@ -177,7 +177,7 @@ const methodDescriptor_UserService_SignUp = new grpc.web.MethodDescriptor(
  *   !proto.SignUpRequest,
  *   !proto.SignUpResponse>}
  */
-const methodInfo_UserService_SignUp = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_UserProtocol_SignUp = new grpc.web.AbstractClientBase.MethodInfo(
   proto.SignUpResponse,
   /**
    * @param {!proto.SignUpRequest} request
@@ -200,13 +200,13 @@ const methodInfo_UserService_SignUp = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.SignUpResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.UserServiceClient.prototype.signUp =
+proto.UserProtocolClient.prototype.signUp =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/UserService/SignUp',
+      '/UserProtocol/SignUp',
       request,
       metadata || {},
-      methodDescriptor_UserService_SignUp,
+      methodDescriptor_UserProtocol_SignUp,
       callback);
 };
 
@@ -219,13 +219,13 @@ proto.UserServiceClient.prototype.signUp =
  * @return {!Promise<!proto.SignUpResponse>}
  *     Promise that resolves to the response
  */
-proto.UserServicePromiseClient.prototype.signUp =
+proto.UserProtocolPromiseClient.prototype.signUp =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/UserService/SignUp',
+      '/UserProtocol/SignUp',
       request,
       metadata || {},
-      methodDescriptor_UserService_SignUp);
+      methodDescriptor_UserProtocol_SignUp);
 };
 
 
