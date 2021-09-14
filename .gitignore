@@ -85,6 +85,8 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 
+
+
 # Sonarlint plugin
 # https://plugins.jetbrains.com/plugin/7973-sonarlint
 .idea/**/sonarlint/
@@ -124,3 +126,8 @@ fabric.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,visualstudiocode
+
+### IntelliJ IDEA ###
+.idea
+*.iml
+*.ipr
