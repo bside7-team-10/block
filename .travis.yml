@@ -1,0 +1,12 @@
+notifications:
+  slack: b-side7:ptNI2JvkjXHWp5wEQfEse9pe
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage : build
+      script : docker build -t block.bside7/block-app:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./front/Dockerfile .
+    - script : docker build -t block.bside7/block-server:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./server/Dockerfile .
+    - stage : deploy
