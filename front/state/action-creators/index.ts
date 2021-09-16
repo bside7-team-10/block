@@ -28,7 +28,7 @@ export const userLogin = (user: User, callBack: () => void) => {
       dispatch({ type: ActionType.USER_LOGIN_SUCCESS });
       callBack();
     } catch (error) {
-      dispatch({ type: ActionType.USER_LOGIN_FAILURE, payload: error });
+      dispatch({ type: ActionType.USER_LOGIN_ERROR, payload: error });
     }
   }
 }
