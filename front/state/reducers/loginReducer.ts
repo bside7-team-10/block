@@ -1,18 +1,16 @@
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
-// interface InitialState {
-//   isLoggedIn: boolean;
-//   loading: boolean;
-//   userData: object;
-//   error: string;
-// }
+interface InitialState {
+  isLoggedIn: boolean;
+  loading: boolean;
+  error: string | null;
+}
 
-const initialState = {
+const initialState: InitialState = {
   isLoggedIn: false,
   loading: false,
-  userData: {},
-  error: '',
+  error: null,
 }
 
 const loginReducer = (state = initialState, action: Action) => {
