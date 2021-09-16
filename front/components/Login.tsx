@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { useForm } from "react-hook-form";
-import InputField from "./common/fields/InputField"
 import styled from 'styled-components'
-import { useEffect, useRef } from "react";
 import { Button, Grid } from '@material-ui/core';
-import { useActions } from '../hooks/use-actions';
-import { User } from '../state';
 import router from 'next/router';
+
+import { useActions } from '../hooks/use-actions';
+import InputField from "./common/fields/InputField"
+import { User } from '../state';
 
 const defaultValues = {
   email: '',
@@ -16,10 +16,6 @@ const defaultValues = {
 const Login = () => {
   const { control, handleSubmit, setError, getValues, setFocus, clearErrors } = useForm({ defaultValues });
   const { userLogin } = useActions();
-  
-  // useEffect(() => {
-  //   setFocus("email")
-  // }, [setFocus]);
 
   const onLoginSubmit = (data: User) => {
     userLogin(data, onLoginSuccessCallback);
