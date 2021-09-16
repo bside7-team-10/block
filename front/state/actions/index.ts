@@ -22,11 +22,11 @@ export interface UserLoginSuccessAction {
   type: ActionType.USER_LOGIN_SUCCESS;
 }
 
-export interface UserLoginFailureAction {
-  type: ActionType.USER_LOGIN_FAILURE;
+export interface UserLoginErrorAction {
+  type: ActionType.USER_LOGIN_ERROR;
   payload: string;
 }
 
 export type Action = 
   UserSignupRequestAction | UserSignupSuccessAction | UserSignupErrorAction
-  | UserLoginRequestAction | UserLoginSuccessAction | UserLoginFailureAction;
+  | UserLoginRequestAction | UserLoginSuccessAction | UserLoginErrorAction;

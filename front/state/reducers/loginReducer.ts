@@ -26,7 +26,7 @@ const loginReducer = (state = initialState, action: Action) => {
         loading: false,
         isLoggedIn: true,
       };
-    case ActionType.USER_LOGIN_FAILURE:
+    case ActionType.USER_LOGIN_ERROR:
       return {
         ...state,
         loading: false,
