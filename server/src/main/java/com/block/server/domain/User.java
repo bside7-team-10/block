@@ -2,13 +2,14 @@ package com.block.server.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+
+@Getter
 @NoArgsConstructor
 @Entity
 public class User {
@@ -29,7 +30,8 @@ public class User {
     private LocalDateTime modified_at;
 
     @Builder
-    public User(String email, String password, String nickname, String profile, LocalDateTime birthday, String gender, LocalDateTime created_at, LocalDateTime modified_at){
+    public User(Long id,String email, String password, String nickname, String profile, LocalDateTime birthday, String gender, LocalDateTime created_at, LocalDateTime modified_at){
+        this.id=id;
         this.email=email;
         this.password=password;
         this.nickname=nickname;

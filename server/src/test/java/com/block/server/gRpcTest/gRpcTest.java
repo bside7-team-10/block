@@ -10,22 +10,25 @@ import org.junit.jupiter.api.Test;
 
 public class gRpcTest {
 
+
     @Test
-    void grpctest(){
+    void grpctest()  {
+
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8585)
                 .usePlaintext()
                 .build();
 
-        UserProtocolGrpc.UserProtocolBlockingStub stub = UserProtocolGrpc.newBlockingStub(channel);
 
-        SignInResponse SignInReponse = stub.signIn(SignInRequest.newBuilder()
-                .setEmail("test")
-                .setPassword("test")
-                .build());
+        SignInRequest signInResponse = SignInRequest.newBuilder()
+                    .setEmail("tst")
+                    .setPassword("tet")
+                    .build();
 
 
-        System.out.println(SignInReponse.getNickname());
+        System.out.println("\n-----------------------------------------");
+        System.out.print(signInResponse);
+        System.out.println("-----------------------------------------\n");
 
         channel.shutdown();
 
