@@ -1,0 +1,22 @@
+version: 0.0
+os: linux
+files:
+  - source: /scripts
+    destination: /home/ubuntu/app/scripts
+    overwrite: yes
+  - source: /server/src/main/resources
+    destination: /home/ubuntu/app/configs
+    overwrite: yes
+hooks:
+  AfterInstall:
+    - location: scripts/stop.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 300
+      runas: root

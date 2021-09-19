@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  envoy-proxy:
+    image: envoyproxy/envoy:v1.17.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./envoy.local.yaml:/etc/envoy/envoy.yaml
+    restart: always

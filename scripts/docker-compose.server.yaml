@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  envoy-proxy:
+    image: envoyproxy/envoy:v1.17.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ${ENVOY_ORIGIN_CONFIG_PATH}:/etc/envoy/envoy.yaml
+    restart: always
+    networks:
+      - backend_internal
+  server:
+    image: ${SERVER_IMAGE}:${SERVER_IMAGE_TAG}
+    ports:
+      - "9090:9090"
+    networks:
+      - backend_internal
+    volumes:
+      - "${CONFIG_ORIGIN_PATH}:${CONTAINER_INTERNAL_CONFIG_DIR}"
+
+networks:
+  backend_internal:
+    driver: bridge

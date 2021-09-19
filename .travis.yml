@@ -1,5 +1,14 @@
+sudo: required
+
+launguage: java
+
 notifications:
   slack: b-side7:ptNI2JvkjXHWp5wEQfEse9pe
+
+env:
+  - SERVER_IMAGE=public.ecr.aws/b1b4k6o9/block-server
+  - APP_IMAGE=public.ecr.aws/b1b4k6o9/block-app
+  - BUILD_TAG=$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER
 
 services:
   - docker
@@ -8,10 +17,58 @@ branches:
   only:
   - develop
   - master
+  # - production
 
 jobs:
   include:
-    - stage : build
-      script : docker build -t block.bside7/block-app:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./front/Dockerfile .
-    - script : docker build -t block.bside7/block-server:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./server/Dockerfile .
-    - stage : deploy
+    - stage: build
+      script: 
+        - pip install --user awscli
+        - export PATH=$PATH:$HOME/.local/bin
+        - docker build -t $APP_IMAGE:$BUILD_TAG -f ./front/Dockerfile .
+        - chmod +x ./scripts/push-app-image.sh
+        - ./scripts/push-app-image.sh
+    - script: 
+        - pip install --user awscli
+        - export PATH=$PATH:$HOME/.local/bin
+        - docker build -t $SERVER_IMAGE:$BUILD_TAG -f ./server/Dockerfile .
+        - chmod +x ./scripts/push-server-image.sh
+        - ./scripts/push-server-image.sh
+    - stage: deploy
+      deploy:
+        - provider: codedeploy
+          revision_type: github
+          application: block-server-dev
+          deployment_group: block-server-deploy-group-dev
+          region: ap-northeast-2
+          wait-until-deployed: true
+          on:
+            branch: 
+              develop
+        # - provider: codedeploy
+        #   revision_type: github
+        #   application: block-server-staging
+        #   deployment_group: block-server-deploy-group-staging
+        #   region: ap-northeast-2
+        #   wait-until-deployed: true
+        #   on:
+        #     branch: 
+        #       master
+        # - provider: codedeploy
+        #   revision_type: github
+        #   application: block-app-dev
+        #   deployment_group: block-app-deploy-group-dev
+        #   region: ap-northeast-2
+        #   wait-until-deployed: true
+        #   on:
+        #     branch: 
+        #       develop
+        # - provider: codedeploy
+        #   revision_type: github
+        #   application: block-app-staging
+        #   deployment_group: block-app-deploy-group-staging
+        #   region: ap-northeast-2
+        #   wait-until-deployed: true
+        #   on:
+        #     branch: 
+        #       master
