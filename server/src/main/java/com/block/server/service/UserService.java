@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface UserService {
     SignInResponse signIn(SignInRequest signInRequest);
+    SignUpResponse signUp(SignUpRequest request);
     Optional<User> findByEmail(String email);
     void checkPassword(String userPwd, String signInRequestPwd);
 }

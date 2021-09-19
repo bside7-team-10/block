@@ -1,7 +1,6 @@
 package com.block.server.domain;
 
 import com.block.server._generated.proto.userservice.SignUpRequest;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 
 @NoArgsConstructor
 @Getter
