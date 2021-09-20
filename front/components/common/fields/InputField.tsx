@@ -1,59 +1,54 @@
-import { TextField } from "@material-ui/core";
-import { Controller, FieldErrors } from "react-hook-form";
+import { Controller, FieldError } from "react-hook-form";
 import styled from "styled-components";
-
-interface InputFieldProps {
+import { Input } from "antd";
+import { THEME_COLOR1 } from "../../../utils/theme/theme";
+export interface InputFieldProps {
+  type?: string;
   name: string;
   control: any;
   required?: boolean;
-  label: string;
-  variant?: "filled" | "outlined";
-  onChange?: (value: any) => void;
+  size: "small" | "middle" | "large";
+  placeholder?: string;
+  allowClear?: boolean;
+  error?: FieldError;
+  rules?: any;
+  prefix?: string;
 }
 
 const InputField = (props: InputFieldProps) => {
-  const { name, control, required = false, label, variant, onChange: handleChange } = props;
-
-  const rules = { required: required };
-
-  const getErrorMessage = (error: FieldErrors) => {
-    if (error.message) return error.message;
-    switch (error.type) {
-      case "required":
-        return "*필수 입력";
-    }
-  };
+  const { name, control, size, placeholder, rules, allowClear = false } = props;
 
   return (
-    <>
-      <Controller
-        render={({ field: { name, value, onChange }, fieldState: { invalid, isTouched, isDirty, error }, formState }) => {
-          return (
-            <StyledTextField
-              label={label}
-              variant={variant}
-              name={name}
-              value={value}
-              onChange={(e) => {
-                onChange(e);
-                handleChange && handleChange(e);
-              }}
-              error={error ? true : false}
-              helperText={error ? getErrorMessage(error) : ""}
-            />
-          );
-        }}
-        name={name}
-        control={control}
-        rules={rules}
-      />
-    </>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({ field: { name, value, onChange } }) => {
+        return (
+          <StyledInput
+            name={name}
+            value={value}
+            size={size}
+            placeholder={placeholder}
+            allowClear={allowClear}
+            onChange={onChange}
+          />
+        );
+      }}
+    />
   );
 };
 
 export default InputField;
 
-const StyledTextField = styled(TextField)`
-  margin-bottom: 10px;
+const StyledInput = styled(Input)`
   width: 100%;
+  border: none;
+  border-radius: 0;
+
+  ::placeholder {
+    color: ${() => THEME_COLOR1};
+    font-style: normal;
+    font-weight: normal;
+  }
 `;

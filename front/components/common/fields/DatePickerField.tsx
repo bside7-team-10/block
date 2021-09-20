@@ -1,65 +1,55 @@
-import "date-fns";
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import DateFnsUtils from "@date-io/date-fns";
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
-import { TextField } from "@material-ui/core";
-import { Controller, FieldErrors } from "react-hook-form";
+import { Controller, FieldError } from "react-hook-form";
 import styled from "styled-components";
-
-interface DatePickerFieldProps {
+import { DatePicker } from "antd";
+import { THEME_COLOR1 } from "../../../utils/theme/theme";
+export interface DatePickerFieldProps {
+  type?: string;
   name: string;
   control: any;
+  placeholder?: string;
+  size: "small" | "middle" | "large";
   required?: boolean;
-  label: string;
-  variant?: "filled" | "outlined";
+  error?: FieldError;
+  allowClear?: boolean;
+  rules?: any;
+  prefix?: string;
 }
 
 const DatePickerField = (props: DatePickerFieldProps) => {
-  const { name, control, required = false, label, variant } = props;
-
-  const rules = { required: required };
-
-  const getErrorMessage = (error: FieldErrors) => {
-    switch (error.type) {
-      case "required":
-        return "*필수 입력";
-    }
-  };
+  const { name, control, placeholder, size, rules, allowClear = false } = props;
 
   return (
-    <>
-      <Controller
-        render={({ field: { name, value, onChange }, fieldState: { invalid, isTouched, isDirty, error }, formState }) => {
-          return (
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid container justifyContent="space-around">
-                <KeyboardDatePicker
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="Date picker dialog"
-                  format="MM/dd/yyyy"
-                  value={value}
-                  onChange={onChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
-                />
-              </Grid>
-            </MuiPickersUtilsProvider>
-          );
-        }}
-        name={name}
-        control={control}
-        rules={rules}
-      />
-    </>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({ field: { name, value, onChange } }) => {
+        return (
+          <StyledDatePicker
+            suffixIcon={null}
+            name={name}
+            value={value}
+            placeholder={placeholder}
+            size={size}
+            allowClear={allowClear}
+            onChange={onChange}
+          />
+        );
+      }}
+    />
   );
 };
 
 export default DatePickerField;
 
-const StyledTextField = styled(TextField)`
-  margin-bottom: 10px;
+const StyledDatePicker = styled(DatePicker)`
   width: 100%;
+  border: none;
+  border-radius: 0;
+
+  & input::placeholder {
+    color: ${() => THEME_COLOR1};
+    font-style: normal;
+    font-weight: normal;
+  }
 `;
