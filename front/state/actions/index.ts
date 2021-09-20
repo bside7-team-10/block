@@ -27,6 +27,21 @@ export interface UserLoginErrorAction {
   payload: string;
 }
 
+export interface GetUserLocationRequestAction {
+  type: ActionType.GET_USER_LOCATION_REQUEST;
+}
+
+export interface GetUserLocationSuccessAction {
+  type: ActionType.GET_USER_LOCATION_SUCCESS;
+  payload: any;
+}
+
+export interface GetUserLocationErrorAction {
+  type: ActionType.GET_USER_LOCATION_ERROR;
+  payload: string;
+}
+
 export type Action = 
   UserSignupRequestAction | UserSignupSuccessAction | UserSignupErrorAction
-  | UserLoginRequestAction | UserLoginSuccessAction | UserLoginErrorAction;
+  | UserLoginRequestAction | UserLoginSuccessAction | UserLoginErrorAction
+  | GetUserLocationRequestAction | GetUserLocationSuccessAction | GetUserLocationErrorAction;

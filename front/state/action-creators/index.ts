@@ -32,3 +32,16 @@ export const userLogin = (user: User, callBack: () => void) => {
     }
   }
 }
+
+export const getUserLocation = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.GET_USER_LOCATION_REQUEST });
+    try {
+      const mockApi = NewMockApi();
+      const position = await mockApi.getLocation();
+      dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: position });
+    } catch (error) {      
+      dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: error });
+    }
+  }
+}

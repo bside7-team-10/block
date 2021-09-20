@@ -3,6 +3,7 @@ import { User } from "../state/user";
 interface MockApiObject {
   signup: (user: User) => Promise<any>;
   login: (user: User) => Promise<any>;
+  getLocation: () => Promise<any>;
 }
 
 const NewMockApi = () => {
@@ -29,6 +30,15 @@ const NewMockApi = () => {
         return;
       }
       reject('login failed');
+    })
+  };
+
+  self.getLocation = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => resolve(position),
+        () => reject('sorry, no position available')
+      )
     })
   }
 
