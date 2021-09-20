@@ -1,15 +1,17 @@
 import Head from 'next/head';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface LayoutProps {
   children: any;
 }
 
+const kakaoMapUrl = process.env.NEXT_KAKAO_MAP_URL;
+
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+        <script type="text/javascript" src={kakaoMapUrl}></script>
       </Head>
       <Wrapper>{children}</Wrapper>
     </>
