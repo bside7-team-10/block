@@ -6,4 +6,6 @@ export interface User {
   nickName: string;
   birthday?: string;
   gender?: string;
+  latitude: number;
+  longitude: number;
 }
