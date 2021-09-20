@@ -17,6 +17,7 @@
     "@types/react": "^17.0.20",
     "@types/react-redux": "^7.1.18",
     "@types/styled-components": "^5.1.14",
+    "antd": "^4.16.13",
     "babel-plugin-styled-components": "^1.13.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "date-fns": "^2.23.0",
