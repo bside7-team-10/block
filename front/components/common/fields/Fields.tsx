@@ -1,36 +1,27 @@
-import React from "react";
-import styled from "styled-components";
-import { FieldErrors } from "react-hook-form";
+import React from 'react';
+import styled from 'styled-components';
+import { FieldErrors } from 'react-hook-form';
 
-import DatePickerField, { DatePickerFieldProps } from "./DatePickerField";
-import InputField, { InputFieldProps } from "./InputField";
-import RadioField, { RadioFieldProps } from "./RadioField";
-import { THEME_COLOR1, FORM_ERROR_COLOR } from "../../../utils/theme/theme";
+import DatePickerField, { DatePickerFieldProps } from './DatePickerField';
+import InputField, { InputFieldProps } from './InputField';
+import RadioField, { RadioFieldProps } from './RadioField';
+import { THEME_COLOR1, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
 
 type FieldsInterface = DatePickerFieldProps | InputFieldProps | RadioFieldProps;
 
 const Fields = (props: FieldsInterface) => {
   const { type, name, control, error, prefix, required = false, ...rest } = props;
 
-  let ReturnComponent = InputField;
-
-  switch (type) {
-    case "date":
-      ReturnComponent = DatePickerField;
-      break;
-    case "radio":
-      ReturnComponent = RadioField;
-      break;
-  }
+  const ReturnComponent = getReturnComponent(type);
 
   const getErrorMessage = (error: FieldErrors) => {
     switch (error.type) {
-      case "required":
-        return "*필수입력";
-      case "validate":
-        return "비밀번호가 틀립니다";
+      case 'required':
+        return '*필수입력';
+      case 'validate':
+        return '비밀번호가 틀립니다';
       default:
-        return "";
+        return '';
     }
   };
 
@@ -41,7 +32,7 @@ const Fields = (props: FieldsInterface) => {
       <Wrapper error={error}>
         {prefix && <Prefix>{prefix}</Prefix>}
         <ReturnComponentWrapper>
-          <ReturnComponent name={name} control={control} rules={rules} {...rest} />
+          <ReturnComponent name={name} control={control} type={type} rules={rules} {...rest} />
         </ReturnComponentWrapper>
       </Wrapper>
       {error && <Error>{getErrorMessage(error)}</Error>}
@@ -51,12 +42,23 @@ const Fields = (props: FieldsInterface) => {
 
 export default Fields;
 
+function getReturnComponent(type: string | undefined) {
+  switch (type) {
+    case 'date':
+      return DatePickerField;
+    case 'radio':
+      return RadioField;
+    default:
+      return InputField;
+  }
+}
+
 interface ErrorProps {
   error?: any;
 }
 
 const ReturnComponentWrapper = styled.div`
-  width: 100%;
+  width: 300px;
   position: absolute;
   left: 50px;
   overflow-x: hidden;

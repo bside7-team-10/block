@@ -1,13 +1,13 @@
-import { Controller, FieldError } from "react-hook-form";
-import styled from "styled-components";
-import { DatePicker } from "antd";
-import { THEME_COLOR1 } from "../../../utils/theme/theme";
+import { Controller, FieldError } from 'react-hook-form';
+import styled from 'styled-components';
+import { DatePicker } from 'antd';
+import { THEME_COLOR1 } from '../../../utils/theme/theme';
 export interface DatePickerFieldProps {
   type?: string;
   name: string;
   control: any;
   placeholder?: string;
-  size: "small" | "middle" | "large";
+  size: 'small' | 'middle' | 'large';
   required?: boolean;
   error?: FieldError;
   allowClear?: boolean;
