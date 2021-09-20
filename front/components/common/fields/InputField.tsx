@@ -1,13 +1,13 @@
-import { Controller, FieldError } from "react-hook-form";
-import styled from "styled-components";
-import { Input } from "antd";
-import { THEME_COLOR1 } from "../../../utils/theme/theme";
+import { Controller, FieldError } from 'react-hook-form';
+import styled from 'styled-components';
+import { Input } from 'antd';
+import { THEME_COLOR1 } from '../../../utils/theme/theme';
 export interface InputFieldProps {
   type?: string;
   name: string;
   control: any;
   required?: boolean;
-  size: "small" | "middle" | "large";
+  size: 'small' | 'middle' | 'large';
   placeholder?: string;
   allowClear?: boolean;
   error?: FieldError;
@@ -16,7 +16,7 @@ export interface InputFieldProps {
 }
 
 const InputField = (props: InputFieldProps) => {
-  const { name, control, size, placeholder, rules, allowClear = false } = props;
+  const { name, control, type, size, placeholder, rules, allowClear = false } = props;
 
   return (
     <Controller
@@ -24,6 +24,18 @@ const InputField = (props: InputFieldProps) => {
       control={control}
       rules={rules}
       render={({ field: { name, value, onChange } }) => {
+        if (type === 'password') {
+          return (
+            <StyledPasswordInput
+              name={name}
+              value={value}
+              size={size}
+              placeholder={placeholder}
+              visibilityToggle={false}
+              onChange={onChange}
+            />
+          );
+        }
         return (
           <StyledInput
             name={name}
@@ -42,6 +54,18 @@ const InputField = (props: InputFieldProps) => {
 export default InputField;
 
 const StyledInput = styled(Input)`
+  width: 100%;
+  border: none;
+  border-radius: 0;
+
+  ::placeholder {
+    color: ${() => THEME_COLOR1};
+    font-style: normal;
+    font-weight: normal;
+  }
+`;
+
+const StyledPasswordInput = styled(Input.Password)`
   width: 100%;
   border: none;
   border-radius: 0;

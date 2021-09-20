@@ -1,7 +1,7 @@
-import { Controller, FieldError } from "react-hook-form";
-import styled from "styled-components";
-import { Radio } from "antd";
-import { THEME_COLOR1 } from "../../../utils/theme/theme";
+import { Controller, FieldError } from 'react-hook-form';
+import styled from 'styled-components';
+import { Radio } from 'antd';
+import { THEME_COLOR1 } from '../../../utils/theme/theme';
 
 interface RadioOption {
   label: string;
@@ -12,7 +12,7 @@ export interface RadioFieldProps {
   type?: string;
   name: string;
   control: any;
-  size: "small" | "middle" | "large";
+  size: 'small' | 'middle' | 'large';
   required?: boolean;
   error?: FieldError;
   rules?: any;

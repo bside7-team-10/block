@@ -1,19 +1,19 @@
-import { useForm } from "react-hook-form";
-import styled from "styled-components";
-import { Button } from "@material-ui/core";
-import router from "next/router";
+import { useForm } from 'react-hook-form';
+import styled from 'styled-components';
+import { Button } from '@material-ui/core';
+import router from 'next/router';
 
-import { User } from "../state/user";
-import { useActions } from "../hooks/use-actions";
-import Fields from "../components/common/fields/Fields";
+import { User } from '../state/user';
+import { useActions } from '../hooks/use-actions';
+import Fields from '../components/common/fields/Fields';
 
 const defaultValues = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-  nickName: "",
-  birthday: "",
-  gender: "",
+  email: '',
+  password: '',
+  confirmPassword: '',
+  nickName: '',
+  birthday: '',
+  gender: '',
 };
 
 const Signup = () => {
@@ -23,7 +23,7 @@ const Signup = () => {
     getValues,
     register,
     formState: { errors },
-  } = useForm({ defaultValues });
+  } = useForm({ mode: 'onChange', defaultValues });
   const { userSignup } = useActions();
 
   const onSubmit = (data: User) => {
@@ -31,14 +31,14 @@ const Signup = () => {
   };
 
   const onSigupSuccessCallback = () => {
-    router.push("/");
+    router.push('/');
   };
 
   const checkConfirmPassword = (confirmPassword: string) => {
-    return confirmPassword === getValues("password");
+    return confirmPassword === getValues('password');
   };
 
-  register("confirmPassword", { validate: checkConfirmPassword });
+  register('confirmPassword', { validate: checkConfirmPassword });
 
   return (
     <div>
@@ -56,6 +56,7 @@ const Signup = () => {
           />
           <Fields
             name="password"
+            type="password"
             size="large"
             placeholder="비밀번호"
             prefix="PW"
@@ -65,6 +66,7 @@ const Signup = () => {
           />
           <Fields
             name="confirmPassword"
+            type="password"
             size="large"
             placeholder="비밀번호 확인"
             prefix="PW"
@@ -116,8 +118,8 @@ interface FormSelectOptions {
 }
 
 const genderOptions: FormSelectOptions = [
-  { label: "남성", value: "man" },
-  { label: "여성", value: "woman" },
+  { label: '남성', value: 'man' },
+  { label: '여성', value: 'woman' },
 ];
 
 const Wrapper = styled.div`
