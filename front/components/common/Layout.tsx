@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import styled from "styled-components";
 
 interface LayoutProps {
@@ -5,7 +6,14 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <>
+      <Head>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+      </Head>
+      <Wrapper>{children}</Wrapper>
+    </>
+  );
 };
 
 export default Layout;
