@@ -13,6 +13,10 @@ const Home = () => {
     router.push('/login')
   };
 
+  const onMapClicked = () => {
+    router.push('/map')
+  };
+
   return (
     <Wrapper>
       <Button variant="contained" color="primary" onClick={onLoginClicked}>
@@ -20,6 +24,9 @@ const Home = () => {
       </Button>
       <Button variant="contained" color="secondary" onClick={onSignupClicked}>
         회원가입
+      </Button>
+      <Button variant="contained" color="default" onClick={onMapClicked}>
+        Map
       </Button>
     </Wrapper>
   );
