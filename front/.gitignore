@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# direnv
+.envrc
+
 # production
 /build
 

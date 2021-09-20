@@ -1,4 +1,4 @@
-import { useEffect, } from 'react';
+import { useEffect } from 'react';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -8,31 +8,30 @@ declare const kakao: any;
 
 const Map = () => {
   const { latitude, longitude } = useSelector((state: RootStateOrAny) => state.location);
-  const { userLocation } = useActions();
+  const { getUserLocation } = useActions();
 
   useEffect(() => {
-    userLocation();
-    
+    getUserLocation();
+
     const container = document.getElementById('map');
     const options = {
       center: new kakao.maps.LatLng(latitude, longitude),
-      level: 3
+      level: 3,
     };
     const map = new kakao.maps.Map(container, options);
 
     const marker = new kakao.maps.Marker({ position: options.center });
     marker.setMap(map);
-    
   }, [latitude, longitude]);
 
   return (
     <>
       <Wrapper>
-        <div id="map" style={{width: '300px', height: '300px',}}></div>
+        <div id="map" style={{ width: '300px', height: '300px' }}></div>
       </Wrapper>
     </>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;
