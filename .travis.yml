@@ -5,11 +5,6 @@ launguage: java
 notifications:
   slack: b-side7:ptNI2JvkjXHWp5wEQfEse9pe
 
-env:
-  - SERVER_IMAGE=public.ecr.aws/b1b4k6o9/block-server
-  - APP_IMAGE=public.ecr.aws/b1b4k6o9/block-app
-  - BUILD_TAG=$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER
-
 services:
   - docker
   
@@ -23,15 +18,17 @@ jobs:
   include:
     - stage: build
       script: 
-        - pip install --user awscli
-        - export PATH=$PATH:$HOME/.local/bin
-        - docker build -t $APP_IMAGE:$BUILD_TAG -f ./front/Dockerfile .
+        - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        - unzip -qq awscliv2.zip
+        - sudo ./aws/install
+        - docker build -t $APP_IMAGE:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./front/Dockerfile .
         - chmod +x ./scripts/push-app-image.sh
         - ./scripts/push-app-image.sh
     - script: 
-        - pip install --user awscli
-        - export PATH=$PATH:$HOME/.local/bin
-        - docker build -t $SERVER_IMAGE:$BUILD_TAG -f ./server/Dockerfile .
+        - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        - unzip -qq awscliv2.zip
+        - sudo ./aws/install
+        - docker build -t $SERVER_IMAGE:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./server/Dockerfile .
         - chmod +x ./scripts/push-server-image.sh
         - ./scripts/push-server-image.sh
     - stage: deploy

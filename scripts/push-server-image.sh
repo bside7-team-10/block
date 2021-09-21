@@ -1,10 +1,18 @@
-#!/bin/sh
+#!/bin/bash
+
+BUILD_TAG="$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER"
 
 echo "> Login to ECR"
 
-aws ecr-public get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin public.ecr.aws/b1b4k6o9
+docker login -u AWS -p $(aws ecr-public get-login-password --region ap-northeast-2) public.ecr.aws
 
 INFRA=dev
+
+if ! [ "$TRAVIS_PULL_REQUEST" == "false" ]
+then
+    echo "Skip pushing image for pull request builds"
+    exit 0
+fi
 
 if [ "$TRAVIS_BRANCH" == "develop" ]
 then
