@@ -57,11 +57,13 @@ const StyledInput = styled(Input)`
   width: 100%;
   border: none;
   border-radius: 0;
+  background-color: transparent;
 
   ::placeholder {
     color: ${() => THEME_COLOR1};
     font-style: normal;
     font-weight: normal;
+    opacity: 0.7;
   }
 `;
 
@@ -69,10 +71,12 @@ const StyledPasswordInput = styled(Input.Password)`
   width: 100%;
   border: none;
   border-radius: 0;
+  background-color: transparent;
 
   ::placeholder {
     color: ${() => THEME_COLOR1};
     font-style: normal;
     font-weight: normal;
+    opacity: 0.7;
   }
 `;
