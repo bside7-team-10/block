@@ -6,17 +6,17 @@ INFRA="dev"
 if [ "$DEPLOYMENT_GROUP_NAME" == "block-server-deploy-group-dev"]
 then
     INFRA="dev"
-    docker-compose --env-file "scripts/.env.$INFRA" -f "scripts/docker-compose.server.yaml" up -d 
+    docker-compose --env-file "scripts/.env.$INFRA" -f "scripts/docker-compose.server.yaml" --project-directory $(pwd) up -d 
 
 elif [ "$DEPLOYMENT_GROUP_NAME" == "block-server-deploy-group-staging"]
 then
     INFRA="staging"
-    docker-compose --env-file "scripts/.env.$INFRA" -f "scripts/docker-compose.server.yaml" up -d 
+    docker-compose --env-file "scripts/.env.$INFRA" -f "scripts/docker-compose.server.yaml" --project-directory $(pwd) up -d 
 
 elif [ "$DEPLOYMENT_GROUP_NAME" == "block-server-deploy-group-prod"]
 then
     INFRA="prod"
-    docker-compose --env-file "scripts/.env.$INFRA" -f "scripts/docker-compose.server.yaml" up -d 
+    docker-compose --env-file "scripts/.env.$INFRA" -f "scripts/docker-compose.server.yaml" --project-directory $(pwd) up -d 
 
 
 # app - TODO

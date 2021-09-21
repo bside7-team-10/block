@@ -1,4 +1,8 @@
 import { User } from "../state/user";
+import { UserProtocolClient } from "../_generated/UserProtocol_pb_service";
+import { SignUpRequest } from "../_generated/UserProtocol_pb";
+import grpc from "@improbable-eng/grpc-web";
+import Signup from "../components/Signup";
 
 interface MockApiObject {
   signup: (user: User) => Promise<any>;
@@ -10,13 +14,34 @@ const NewMockApi = () => {
   const self = {} as MockApiObject;
 
   self.signup = ({ email, password, confirmPassword, nickName }: User) => {
+    // return new Promise((resolve, reject) => {
+    //   if (email && password && confirmPassword && nickName) {
+    //     resolve(1);
+    //     return;
+    //   }
+    //   reject("signup failed");
+    // });
     return new Promise((resolve, reject) => {
-      if (email && password && confirmPassword && nickName) {
-        resolve(1);
-        return;
-      }
-      reject("signup failed");
-    });
+      const req = new SignUpRequest();
+      req.setEmail(email);
+      req.setPassword(password);
+      req.setNickname(nickName);
+      req.setBirthday("2021-01-01");
+      req.setAvatar("1.png");
+      req.setGender(SignUpRequest.Gender.MALE);
+      const userClient = new UserProtocolClient("http://localhost:8081");
+      userClient.signUp(req, (err, res) => {
+        if (err !== null) {
+          console.error(err);
+          reject(err);
+          return;
+        } else {
+          console.log(res);
+          resolve(res);
+          return;
+        }
+      })
+    })
   };
 
   self.login = ({ email, password }: User) => {
