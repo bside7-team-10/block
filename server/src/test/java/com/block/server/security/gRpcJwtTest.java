@@ -59,11 +59,35 @@ public class gRpcJwtTest {
     @BeforeEach
     void setUp() {
         email = "test2@co.kr";
-        password = "1234";
+        password = "test123";
     }
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
+    @Test
+    void grpctest() {
+
+
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6565)
+                .usePlaintext()
+                .build();
+
+        UserProtocolGrpc.UserProtocolBlockingStub stub = UserProtocolGrpc.newBlockingStub(channel);
+
+
+        SignInResponse signInResponse = stub.signIn(SignInRequest
+                                                    .newBuilder()
+                                                    .setEmail(email)
+                                                    .setPassword(password)
+                                                    .build());
+
+
+        System.out.println("\n-----------------------------------------");
+        System.out.print(signInResponse);
+        System.out.println("-----------------------------------------\n");
+
+        channel.shutdown();
+    }
 //
 //    @Test
 //    public void testSuccessInternalToken() throws IOException {

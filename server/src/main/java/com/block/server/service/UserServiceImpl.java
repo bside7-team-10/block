@@ -7,7 +7,6 @@ import com.block.server.domain.repository.UserRepository;
 import com.block.server.exception.UserNotFoundException;
 import io.github.majusko.grpc.jwt.service.JwtService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +16,6 @@ import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService{
@@ -25,6 +23,7 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+
 
     @Transactional
     public SignInResponse signIn(SignInRequest signInRequest)  {
@@ -49,7 +48,7 @@ public class UserServiceImpl implements UserService{
 
     public void checkPassword(String userPwd, String signInRequestPwd){
         checkArgument(signInRequestPwd != null, "password must be provided.");
-        if (!passwordEncoder.matches(userPwd, signInRequestPwd))
+        if (!passwordEncoder.matches(signInRequestPwd, userPwd))
             throw new UserNotFoundException();
     }
 

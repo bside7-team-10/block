@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 @SpringBootTest
@@ -42,8 +42,8 @@ public class userServiceTest {
 
     @BeforeEach
     void setUp() {
-         email = "test4@co.kr";
-         password = "1234";
+         email = "test2@co.kr";
+         password = "test123";
     }
 
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -53,9 +53,19 @@ public class userServiceTest {
     @DisplayName("사용자 이메일 조회")
     void findByEmail() {
 
+//        userRepository.save(User.builder()
+//                .email(email)
+//                .password(passwordEncoder.encode(password))
+//                .nickname("Yeni")
+//                .profile("test")
+//                .birthday(LocalDate.now())
+//                .gender(SignUpRequest.Gender.FEMALE)
+//                .roles("admin")
+//                .build());
+
         SignInRequest signInRequest = SignInRequest.newBuilder()
                 .setEmail(email)
-                .setPassword(passwordEncoder.encode(password))
+                .setPassword(password)
                 .build();
 
         var userinfo= userService.findByEmail(email).orElse(null);
@@ -72,7 +82,7 @@ public class userServiceTest {
     void signInTest() {
         SignInRequest signInRequest = SignInRequest.newBuilder()
                 .setEmail(email)
-                .setPassword(passwordEncoder.encode(password))
+                .setPassword(password)
                 .build();
 
         SignInResponse signInResponse = userService.signIn(signInRequest);
@@ -89,7 +99,7 @@ public class userServiceTest {
 
         SignInRequest signInRequest = SignInRequest.newBuilder()
                 .setEmail(email)
-                .setPassword(passwordEncoder.encode("생각대로T"))
+                .setPassword("생각대로 T")
                 .build();
 
         assertThrows(UserNotFoundException.class, () -> userService.signIn(signInRequest));
