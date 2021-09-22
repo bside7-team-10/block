@@ -3,15 +3,15 @@ notifications:
 
 services:
   - docker
-  
+
 branches:
   only:
-  - develop
-  - master
+    - develop
+    - master
 
 jobs:
   include:
-    - stage : build
-      script : docker build -t block.bside7/block-app:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./front/Dockerfile .
-    - script : docker build -t block.bside7/block-server:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./server/Dockerfile .
-    - stage : deploy
+    - stage: build
+      script: docker build --build-arg NEXT_KAKAO_MAP_URL=$NEXT_KAKAO_MAP_URL -t block.bside7/block-app:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./front/Dockerfile .
+    - script: docker build -t block.bside7/block-server:$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER -f ./server/Dockerfile .
+    - stage: deploy
