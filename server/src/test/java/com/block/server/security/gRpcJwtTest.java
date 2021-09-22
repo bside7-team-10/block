@@ -27,7 +27,6 @@ import org.springframework.test.context.ActiveProfiles;
 import java.io.IOException;
 
 @SpringBootTest
-@ActiveProfiles("test")
 public class gRpcJwtTest {
 
     @Autowired
