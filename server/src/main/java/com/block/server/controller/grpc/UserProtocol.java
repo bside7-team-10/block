@@ -3,17 +3,19 @@ package com.block.server.controller.grpc;
 
 import com.block.server._generated.proto.userservice.*;
 import com.block.server.service.UserService;
+import io.github.majusko.grpc.jwt.annotation.Allow;
+import io.github.majusko.grpc.jwt.service.GrpcRole;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
-import net.devh.boot.grpc.server.service.GrpcService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.lognet.springboot.grpc.GRpcService;
 
 @RequiredArgsConstructor
-@GrpcService
+@GRpcService
 public class UserProtocol extends UserProtocolGrpc.UserProtocolImplBase {
 
     private final UserService userService;
 
+    @Allow(roles = {GrpcRole.INTERNAL})
     @Override
     public void signIn(SignInRequest request, StreamObserver<SignInResponse> responseObserver) {
 

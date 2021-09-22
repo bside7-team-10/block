@@ -1,45 +1,70 @@
 package com.block.server.domain;
 
+import com.block.server._generated.proto.userservice.SignUpRequest;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
-@Getter
 @NoArgsConstructor
+@Getter
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@Table(name="USER")
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column
     private String email;
+
+    @Column
     private String password;
+
+    @Column
     private String nickname;
+
+    @Column
     private String profile;
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime birthday;
-    private String gender;
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime created_at;
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime modified_at;
+
+    @Column
+    private LocalDate birthday;
+
+    @Column
+    private SignUpRequest.Gender gender;
+
+    @Column
+    private String social;
+
+    @Column
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    @Column
+    @LastModifiedDate
+    private LocalDateTime modifiedAt;
+
+    @Column
+    private String roles;
 
     @Builder
-    public User(Long id,String email, String password, String nickname, String profile, LocalDateTime birthday, String gender, LocalDateTime created_at, LocalDateTime modified_at){
-        this.id=id;
-        this.email=email;
-        this.password=password;
-        this.nickname=nickname;
-        this.profile=profile;
-        this.birthday=birthday;
-        this.gender=gender;
-        this.created_at=created_at;
-        this.modified_at=modified_at;
+    public User(String email, String password, String nickname, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.profile = profile;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.social = social;
+        this.roles = roles;
     }
-
 }

@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface UserService {
     SignInResponse signIn(SignInRequest signInRequest);
     Optional<User> findByEmail(String email);
-    void checkPwd(String userPwd, String signInRequestPwd);
+    void checkPassword(String userPwd, String signInRequestPwd);
 }

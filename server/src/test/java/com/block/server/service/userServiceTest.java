@@ -3,6 +3,8 @@ package com.block.server.service;
 
 import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
+import com.block.server._generated.proto.userservice.SignUpRequest;
+import com.block.server.domain.User;
 import com.block.server.domain.repository.UserRepository;
 import com.block.server.exception.UserNotFoundException;
 import org.junit.jupiter.api.*;
@@ -18,6 +20,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
 
 
 @SpringBootTest
@@ -38,7 +42,7 @@ public class userServiceTest {
 
     @BeforeEach
     void setUp() {
-         email = "test2@co.kr";
+         email = "test4@co.kr";
          password = "1234";
     }
 
@@ -47,19 +51,7 @@ public class userServiceTest {
 
     @Test
     @DisplayName("사용자 이메일 조회")
-    void findByEamil() {
-
-//        userRepository.save(User.builder()
-//                .email("test2@co.kr")
-//                .password("1234")
-//                .nickname("Yeni")
-//                .profile("test")
-//                .birthday(LocalDateTime.now())
-//                .gender("여")
-//                .created_at(LocalDateTime.now())
-//                .modified_at(LocalDateTime.now())
-//                .build());
-
+    void findByEmail() {
 
         SignInRequest signInRequest = SignInRequest.newBuilder()
                 .setEmail(email)
@@ -77,7 +69,7 @@ public class userServiceTest {
 
     @Test
     @DisplayName("사용자 로그인")
-    void sinInTest() {
+    void signInTest() {
         SignInRequest signInRequest = SignInRequest.newBuilder()
                 .setEmail(email)
                 .setPassword(passwordEncoder.encode(password))
@@ -86,13 +78,14 @@ public class userServiceTest {
         SignInResponse signInResponse = userService.signIn(signInRequest);
 
         assertThat(signInResponse, is(notNullValue()));
+        assertThat(signInResponse.getToken(),is(notNullValue()));
         log.info("signInResponse = ", signInResponse);
     }
 
 
     @Test
     @DisplayName("비밀번호 틀릴 때 예외처리")
-    void longpwdTest() {
+    void passwordTest() {
 
         SignInRequest signInRequest = SignInRequest.newBuilder()
                 .setEmail(email)

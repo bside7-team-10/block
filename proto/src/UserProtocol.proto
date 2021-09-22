@@ -26,6 +26,7 @@ message SignInResponse {
     SignInStatus status = 1;
     string nickname = 2;
     string profileUrl = 3;
+    string token=4;
 }
 
 message SignUpRequest {

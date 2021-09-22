@@ -44,25 +44,26 @@ public final class UserProtocolOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\022UserProtocol.proto\"0\n\rSignInRequest\022\r\n" +
-      "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\271\001\n\016SignI" +
+      "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\310\001\n\016SignI" +
       "nResponse\022,\n\006status\030\001 \001(\0162\034.SignInRespon" +
       "se.SignInStatus\022\020\n\010nickname\030\002 \001(\t\022\022\n\npro" +
-      "fileUrl\030\003 \001(\t\"S\n\014SignInStatus\022\013\n\007SUCCESS" +
-      "\020\000\022\016\n\nNO_ACCOUNT\020\001\022\022\n\016WRONG_PASSWORD\020\002\022\022" +
-      "\n\016INTERNAL_ERROR\020\003\"\253\001\n\rSignUpRequest\022\r\n\005" +
-      "email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\020\n\010nicknam" +
-      "e\030\003 \001(\t\022%\n\006gender\030\004 \001(\0162\025.SignUpRequest." +
-      "Gender\022\016\n\006avatar\030\005 \001(\t\022\020\n\010birthday\030\006 \001(\t" +
-      "\"\036\n\006Gender\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001\"\274\001\n\016Sig" +
-      "nUpResponse\022,\n\006status\030\001 \001(\0162\034.SignUpResp" +
-      "onse.SignUpStatus\022\020\n\010nickname\030\002 \001(\t\022\022\n\np" +
-      "rofileUrl\030\003 \001(\t\"V\n\014SignUpStatus\022\013\n\007SUCCE" +
-      "SS\020\000\022\022\n\016ACCOUNT_EXISTS\020\001\022\021\n\rINVALID_INPU" +
-      "T\020\002\022\022\n\016INTERNAL_ERROR\020\0032h\n\014UserProtocol\022" +
-      "+\n\006SignIn\022\016.SignInRequest\032\017.SignInRespon" +
-      "se\"\000\022+\n\006SignUp\022\016.SignUpRequest\032\017.SignUpR" +
-      "esponse\"\000B1\n-com.block.server._generated" +
-      ".proto.userserviceP\001b\006proto3"
+      "fileUrl\030\003 \001(\t\022\r\n\005token\030\004 \001(\t\"S\n\014SignInSt" +
+      "atus\022\013\n\007SUCCESS\020\000\022\016\n\nNO_ACCOUNT\020\001\022\022\n\016WRO" +
+      "NG_PASSWORD\020\002\022\022\n\016INTERNAL_ERROR\020\003\"\253\001\n\rSi" +
+      "gnUpRequest\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002" +
+      " \001(\t\022\020\n\010nickname\030\003 \001(\t\022%\n\006gender\030\004 \001(\0162\025" +
+      ".SignUpRequest.Gender\022\016\n\006avatar\030\005 \001(\t\022\020\n" +
+      "\010birthday\030\006 \001(\t\"\036\n\006Gender\022\010\n\004MALE\020\000\022\n\n\006F" +
+      "EMALE\020\001\"\274\001\n\016SignUpResponse\022,\n\006status\030\001 \001" +
+      "(\0162\034.SignUpResponse.SignUpStatus\022\020\n\010nick" +
+      "name\030\002 \001(\t\022\022\n\nprofileUrl\030\003 \001(\t\"V\n\014SignUp" +
+      "Status\022\013\n\007SUCCESS\020\000\022\022\n\016ACCOUNT_EXISTS\020\001\022" +
+      "\021\n\rINVALID_INPUT\020\002\022\022\n\016INTERNAL_ERROR\020\0032h" +
+      "\n\014UserProtocol\022+\n\006SignIn\022\016.SignInRequest" +
+      "\032\017.SignInResponse\"\000\022+\n\006SignUp\022\016.SignUpRe" +
+      "quest\032\017.SignUpResponse\"\000B1\n-com.block.se" +
+      "rver._generated.proto.userserviceP\001b\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -79,7 +80,7 @@ public final class UserProtocolOuterClass {
     internal_static_SignInResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SignInResponse_descriptor,
-        new java.lang.String[] { "Status", "Nickname", "ProfileUrl", });
+        new java.lang.String[] { "Status", "Nickname", "ProfileUrl", "Token", });
     internal_static_SignUpRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_SignUpRequest_fieldAccessorTable = new

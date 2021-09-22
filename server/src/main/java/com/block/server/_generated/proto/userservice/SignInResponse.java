@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     status_ = 0;
     nickname_ = "";
     profileUrl_ = "";
+    token_ = "";
   }
 
   @java.lang.Override
@@ -67,6 +68,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             profileUrl_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            token_ = s;
             break;
           }
           default: {
@@ -322,6 +329,44 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int TOKEN_FIELD_NUMBER = 4;
+  private volatile java.lang.Object token_;
+  /**
+   * <code>string token = 4;</code>
+   * @return The token.
+   */
+  @java.lang.Override
+  public java.lang.String getToken() {
+    java.lang.Object ref = token_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      token_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string token = 4;</code>
+   * @return The bytes for token.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getTokenBytes() {
+    java.lang.Object ref = token_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      token_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -345,6 +390,9 @@ private static final long serialVersionUID = 0L;
     if (!getProfileUrlBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, profileUrl_);
     }
+    if (!getTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, token_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -363,6 +411,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getProfileUrlBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, profileUrl_);
+    }
+    if (!getTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, token_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -384,6 +435,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getNickname())) return false;
     if (!getProfileUrl()
         .equals(other.getProfileUrl())) return false;
+    if (!getToken()
+        .equals(other.getToken())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -401,6 +454,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getNickname().hashCode();
     hash = (37 * hash) + PROFILEURL_FIELD_NUMBER;
     hash = (53 * hash) + getProfileUrl().hashCode();
+    hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getToken().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -540,6 +595,8 @@ private static final long serialVersionUID = 0L;
 
       profileUrl_ = "";
 
+      token_ = "";
+
       return this;
     }
 
@@ -569,6 +626,7 @@ private static final long serialVersionUID = 0L;
       result.status_ = status_;
       result.nickname_ = nickname_;
       result.profileUrl_ = profileUrl_;
+      result.token_ = token_;
       onBuilt();
       return result;
     }
@@ -626,6 +684,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getProfileUrl().isEmpty()) {
         profileUrl_ = other.profileUrl_;
+        onChanged();
+      }
+      if (!other.getToken().isEmpty()) {
+        token_ = other.token_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -859,6 +921,82 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       profileUrl_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object token_ = "";
+    /**
+     * <code>string token = 4;</code>
+     * @return The token.
+     */
+    public java.lang.String getToken() {
+      java.lang.Object ref = token_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        token_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string token = 4;</code>
+     * @return The bytes for token.
+     */
+    public com.google.protobuf.ByteString
+        getTokenBytes() {
+      java.lang.Object ref = token_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        token_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string token = 4;</code>
+     * @param value The token to set.
+     * @return This builder for chaining.
+     */
+    public Builder setToken(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      token_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string token = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearToken() {
+      
+      token_ = getDefaultInstance().getToken();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string token = 4;</code>
+     * @param value The bytes for token to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTokenBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      token_ = value;
       onChanged();
       return this;
     }
