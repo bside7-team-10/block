@@ -5,6 +5,9 @@ RUN yarn install --frozen-lockfile
 
 FROM node:alpine AS builder
 WORKDIR /app
+
+ENV NEXT_KAKAO_MAP_URL ${NEXT_KAKAO_MAP_URL}
+
 COPY ./front/ .
 COPY --from=dependencies /app/node_modules ./node_modules
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
