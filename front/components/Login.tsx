@@ -1,17 +1,17 @@
-import Link from 'next/link'
-import { useForm } from "react-hook-form";
-import styled from 'styled-components'
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import styled from 'styled-components';
 import { Button, Grid } from '@material-ui/core';
 import router from 'next/router';
 
 import { useActions } from '../hooks/use-actions';
-import InputField from "./common/fields/InputField"
+import InputField from './common/fields/InputField';
 import { User } from '../state';
 
 const defaultValues = {
   email: '',
   password: '',
-}
+};
 
 const Login = () => {
   const { control, handleSubmit, setError, getValues, setFocus, clearErrors } = useForm({ defaultValues });
@@ -19,11 +19,11 @@ const Login = () => {
 
   const onLoginSubmit = (data: User) => {
     userLogin(data, onLoginSuccessCallback);
-  }
+  };
 
   const onLoginSuccessCallback = () => {
     router.push('/');
-  }
+  };
 
   return (
     <Wrapper>
@@ -31,9 +31,9 @@ const Login = () => {
 
       <LoginForm>
         <LoginLabel htmlFor="email">Enter Email</LoginLabel>
-        <InputField name="email" label="" control={control} required={true} variant="outlined" />
+        {/* <InputField name="email" label="" control={control} required={true} variant="outlined" /> */}
         <LoginLabel htmlFor="password">Enter Password</LoginLabel>
-        <InputField name="password" label="" control={control} required={true} variant="outlined"/>
+        {/* <InputField name="password" label="" control={control} required={true} variant="outlined"/> */}
       </LoginForm>
 
       <Link href="#">
@@ -42,19 +42,21 @@ const Login = () => {
 
       <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1}>
         <Grid item xs={6}>
-          <GridButton size="small" variant="contained" color="primary" onClick={handleSubmit(onLoginSubmit)}>LOGIN</GridButton>
+          <GridButton size="small" variant="contained" color="primary" onClick={handleSubmit(onLoginSubmit)}>
+            LOGIN
+          </GridButton>
         </Grid>
         <Grid item xs={6}>
-          <GridButton size="small" variant="contained" color="primary">Create Account</GridButton>
+          <GridButton size="small" variant="contained" color="primary">
+            Create Account
+          </GridButton>
         </Grid>
       </Grid>
 
-      <Footer>
-        2021 Block. All Rights Reserved.
-      </Footer>
+      <Footer>2021 Block. All Rights Reserved.</Footer>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default Login;
 
@@ -68,7 +70,7 @@ const Wrapper = styled.div`
   margin-top: 20px;
 `;
 
-const MainImage= styled.img`
+const MainImage = styled.img`
   border-radius: 5px;
 `;
 
