@@ -5,7 +5,7 @@ import {
   BUTTON_COLOR1, 
   PRIMARY_COLOR, 
   SUB_COLOR2 
-} from '../utils/theme/theme';
+} from '../../utils/theme/theme';
 
 export const LoginGlobalStyle = createGlobalStyle`
   body {
