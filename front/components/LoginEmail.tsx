@@ -13,7 +13,7 @@ import {
   TitleImage, 
   WholeMarginWrap, 
   Wrapper 
-} from '../styles/LoginCommonStyle';
+} from './styled/LoginCommonStyle';
 import { WHITE_COLOR } from '../utils/theme/theme';
 
 const defaultValues = {
@@ -75,10 +75,6 @@ const LoginEmail = () => {
             NEXT
           </FullWidthButton>
           <Links>
-            <Link href="/login/findEmailPassword">
-              <a>이메일/비밀번호 찾기</a>          
-            </Link>
-            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             <Link href="/signup">
               <a>블럭 회원 가입하기</a>          
             </Link>

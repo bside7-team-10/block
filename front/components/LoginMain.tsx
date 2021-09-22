@@ -8,7 +8,7 @@ import {
   WholeMarginWrap, 
   TitleImage,
   FullWidthButtonWithRadius
-} from '../styles/LoginCommonStyle';
+} from './styled/LoginCommonStyle';
 import { BUTTON_COLOR1, SUB_COLOR2, WHITE_COLOR } from '../utils/theme/theme';
 
 const LoginMain = () => {

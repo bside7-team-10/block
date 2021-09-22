@@ -10,7 +10,7 @@ import {
   Title, 
   TitleImage, 
   FullWidthButton 
-} from '../styles/LoginCommonStyle';
+} from './styled/LoginCommonStyle';
 import { SUB_COLOR3, WHITE_COLOR } from '../utils/theme/theme';
 
 const { TabPane } = Tabs;
