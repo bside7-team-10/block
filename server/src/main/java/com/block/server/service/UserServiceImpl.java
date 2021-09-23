@@ -61,6 +61,6 @@ public class UserServiceImpl implements UserService{
                 .setToken(token)
                 .build();
 
-        return  response;
+        return response;
     }
 }
