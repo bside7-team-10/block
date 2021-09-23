@@ -41,4 +41,16 @@ public interface SignInResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getProfileUrlBytes();
+
+  /**
+   * <code>string token = 4;</code>
+   * @return The token.
+   */
+  java.lang.String getToken();
+  /**
+   * <code>string token = 4;</code>
+   * @return The bytes for token.
+   */
+  com.google.protobuf.ByteString
+      getTokenBytes();
 }
