@@ -52,5 +52,5 @@ static_resources:
             - endpoint:
                 address:
                   socket_address:
-                    address: 192.168.0.63 # change to local ip
-                    port_value: 9090
+                    address: 192.168.0.2 # change to local ip
+                    port_value: 6565

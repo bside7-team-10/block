@@ -3,69 +3,48 @@ package com.block.server.security;
 import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
 import com.block.server._generated.proto.userservice.UserProtocolGrpc;
-import com.block.server.controller.grpc.UserProtocol;
 import com.block.server.domain.repository.UserRepository;
-import com.block.server.service.UserService;
-import io.github.majusko.grpc.jwt.data.GrpcHeader;
-import io.github.majusko.grpc.jwt.interceptor.AllowedCollector;
-import io.github.majusko.grpc.jwt.interceptor.AuthClientInterceptor;
-import io.github.majusko.grpc.jwt.interceptor.AuthServerInterceptor;
-import io.github.majusko.grpc.jwt.service.JwtService;
+import com.block.server.helper.TestUser;
 import io.grpc.*;
-import io.grpc.stub.MetadataUtils;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.env.Environment;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.ActiveProfiles;
 
-import java.io.IOException;
+import java.util.Optional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
+
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class gRpcJwtTest {
 
     @Autowired
-    private Environment environment;
-
-    @Autowired
-    private JwtService jwtService;
-
-    @Autowired
-    private AllowedCollector allowedCollector;
-
-
-    @Autowired
-    private AuthClientInterceptor authClientInterceptor;
-
-    @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Autowired
+    @MockBean
     UserRepository userRepository;
-
-    @Autowired
-    UserService userService;
-
-    String email;
-    String password;
-
-
-    @BeforeEach
-    void setUp() {
-        email = "test2@co.kr";
-        password = "test123";
-    }
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Test
     void grpctest() {
-
+        var testUser = TestUser.U1();
+        var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
+        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
+        doReturn(Optional.ofNullable(expectedUser))
+                .when(userRepository)
+                .findByEmail(any());
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6565)
                 .usePlaintext()
@@ -76,14 +55,11 @@ public class gRpcJwtTest {
 
         SignInResponse signInResponse = stub.signIn(SignInRequest
                                                     .newBuilder()
-                                                    .setEmail(email)
-                                                    .setPassword(password)
+                                                    .setEmail(testUser.getEmail())
+                                                    .setPassword(testUser.getRawPassword())
                                                     .build());
 
-
-        System.out.println("\n-----------------------------------------");
-        System.out.print(signInResponse);
-        System.out.println("-----------------------------------------\n");
+        assertThat(signInResponse, is(notNullValue()));
 
         channel.shutdown();
     }

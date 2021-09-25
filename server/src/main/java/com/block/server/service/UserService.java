@@ -2,6 +2,8 @@ package com.block.server.service;
 
 import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
+import com.block.server._generated.proto.userservice.SignUpRequest;
+import com.block.server._generated.proto.userservice.SignUpResponse;
 import com.block.server.domain.User;
 
 import java.util.Optional;

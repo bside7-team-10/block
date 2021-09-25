@@ -19,6 +19,7 @@ public class TestUser {
     private String birthdayStr;
     private SignUpRequest.Gender gender;
     private String social;
+    private String role;
 
     public static TestUser U1() {
         return TestUser.builder()
@@ -28,11 +29,12 @@ public class TestUser {
                 .birthdayStr("2020-01-01")
                 .gender(SignUpRequest.Gender.MALE)
                 .nickname("helloworld")
+                .role("test-role")
                 .build();
     }
 
     @Builder
-    public TestUser(String email, String rawPassword, String nickname, String avatar, String birthdayStr, SignUpRequest.Gender gender, String social) {
+    public TestUser(String email, String rawPassword, String nickname, String avatar, String birthdayStr, SignUpRequest.Gender gender, String social, String role) {
         this.email = email;
         this.rawPassword = rawPassword;
         this.nickname = nickname;
@@ -40,6 +42,11 @@ public class TestUser {
         this.birthdayStr = birthdayStr;
         this.gender = gender;
         this.social = social;
+        this.role = role;
+    }
+
+    public User toUser() {
+        return toUser("any-password", "any-url");
     }
 
     public User toUser(String encryptedPassword, String profileUrl) {
@@ -50,6 +57,7 @@ public class TestUser {
                 .birthday(LocalDate.parse(birthdayStr))
                 .gender(gender)
                 .nickname(nickname)
+                .roles(role)
                 .build();
     }
 }

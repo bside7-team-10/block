@@ -15,7 +15,7 @@ services:
     image: ${SERVER_IMAGE}:${SERVER_IMAGE_TAG}
     ports:
       - "8080:8080"
-      - "9090:9090"
+      - "6565:6565"
     networks:
       - backend_internal
     volumes:
