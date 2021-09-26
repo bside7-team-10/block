@@ -4,7 +4,7 @@ BUILD_TAG="$(echo $TRAVIS_BRANCH | tr / -)-$TRAVIS_BUILD_NUMBER"
 
 echo "> Login to ECR"
 
-docker login -u AWS -p $(aws ecr-public get-login-password --region ap-northeast-2) public.ecr.aws
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 
 INFRA=dev
 
