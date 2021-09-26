@@ -14,7 +14,7 @@ export const userSignup = (user: User, callback: () => void) => {
       dispatch({ type: ActionType.USER_SIGNUP_SUCCESS });
       callback();
     } catch (error) {
-      dispatch({ type: ActionType.USER_SIGNUP_ERROR, payload: error });
+      dispatch({ type: ActionType.USER_SIGNUP_ERROR, payload: `${error}` });
     }
   };
 };
@@ -28,7 +28,7 @@ export const userLogin = (user: User, callBack: () => void) => {
       dispatch({ type: ActionType.USER_LOGIN_SUCCESS });
       callBack();
     } catch (error) {
-      dispatch({ type: ActionType.USER_LOGIN_ERROR, payload: error });
+      dispatch({ type: ActionType.USER_LOGIN_ERROR, payload: `${error}` });
     }
   };
 };
@@ -41,7 +41,7 @@ export const getUserLocation = () => {
       const position = await mockApi.getLocation();
       dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: position });
     } catch (error) {
-      dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: error });
+      dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: `${error}` });
     }
   };
 };
