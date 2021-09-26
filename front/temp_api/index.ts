@@ -29,7 +29,8 @@ const NewMockApi = () => {
       req.setBirthday("2021-01-01");
       req.setAvatar("1.png");
       req.setGender(SignUpRequest.Gender.MALE);
-      const userClient = new UserProtocolClient("http://localhost:8081");
+      const userClient = new UserProtocolClient("http://52.78.170.114:8081");
+      // const userClient = new UserProtocolClient("http://localhost:8081");
       userClient.signUp(req, (err, res) => {
         if (err !== null) {
           console.error(err);

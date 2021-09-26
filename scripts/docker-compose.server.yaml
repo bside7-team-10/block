@@ -10,17 +10,20 @@ services:
       - ${ENVOY_ORIGIN_CONFIG_PATH}:/etc/envoy/envoy.yaml
     restart: always
     networks:
-      - backend_internal
+      - backend
   server:
     image: ${SERVER_IMAGE}:${SERVER_IMAGE_TAG}
+    environment: 
+      - CONTAINER_INTERNAL_CONFIG_PATH=$CONTAINER_INTERNAL_CONFIG_PATH
+      - PROFILE=$INFRA
     ports:
       - "8080:8080"
       - "6565:6565"
     networks:
-      - backend_internal
+      - backend
     volumes:
       - "${CONFIG_ORIGIN_PATH}:${CONTAINER_INTERNAL_CONFIG_DIR}"
 
 networks:
-  backend_internal:
-    driver: bridge
+  backend:
+    name: backend_internal
