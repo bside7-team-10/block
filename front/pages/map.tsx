@@ -1,7 +1,8 @@
-import { NextPage } from "next";
+import React from 'react';
+import { NextPage } from 'next';
 
-import Layout from "../components/common/Layout";
-import Map from "../components/Map";
+import Layout from '../components/common/Layout';
+import Map from '../components/Map';
 
 const MapPage: NextPage = () => {
   return (

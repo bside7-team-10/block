@@ -1,8 +1,6 @@
-import { User } from "../state/user";
-import { UserProtocolClient } from "../_generated/UserProtocol_pb_service";
-import { SignUpRequest } from "../_generated/UserProtocol_pb";
-import grpc from "@improbable-eng/grpc-web";
-import Signup from "../components/Signup";
+import { User } from '../state/user';
+import { UserProtocolClient } from '../_generated/UserProtocol_pb_service';
+import { SignUpRequest } from '../_generated/UserProtocol_pb';
 
 interface MockApiObject {
   signup: (user: User) => Promise<any>;
@@ -13,7 +11,7 @@ interface MockApiObject {
 const NewMockApi = () => {
   const self = {} as MockApiObject;
 
-  self.signup = ({ email, password, confirmPassword, nickName }: User) => {
+  self.signup = ({ email, password, nickName }: User) => {
     // return new Promise((resolve, reject) => {
     //   if (email && password && confirmPassword && nickName) {
     //     resolve(1);
@@ -26,10 +24,11 @@ const NewMockApi = () => {
       req.setEmail(email);
       req.setPassword(password);
       req.setNickname(nickName);
-      req.setBirthday("2021-01-01");
-      req.setAvatar("1.png");
+      req.setBirthday('2021-01-01');
+      req.setAvatar('1.png');
       req.setGender(SignUpRequest.Gender.MALE);
-      const userClient = new UserProtocolClient("http://localhost:8081");
+      const userClient = new UserProtocolClient('http://52.78.170.114:8081');
+      // const userClient = new UserProtocolClient("http://localhost:8081");
       userClient.signUp(req, (err, res) => {
         if (err !== null) {
           console.error(err);
@@ -40,8 +39,8 @@ const NewMockApi = () => {
           resolve(res);
           return;
         }
-      })
-    })
+      });
+    });
   };
 
   self.login = ({ email, password }: User) => {
@@ -55,7 +54,7 @@ const NewMockApi = () => {
         return;
       }
       reject('login failed');
-    })
+    });
   };
 
   self.getLocation = () => {
@@ -63,9 +62,9 @@ const NewMockApi = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => resolve(position),
         () => reject('sorry, no position available')
-      )
-    })
-  }
+      );
+    });
+  };
 
   return self;
 };

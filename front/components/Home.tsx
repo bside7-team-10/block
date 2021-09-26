@@ -1,20 +1,21 @@
-import { Button } from "@material-ui/core";
-import styled from "styled-components";
-import { useRouter } from "next/router";
+import React from 'react';
+import { Button } from '@material-ui/core';
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 const Home = () => {
   const router = useRouter();
 
   const onSignupClicked = () => {
-    router.push("/signup");
+    router.push('/signup');
   };
 
   const onLoginClicked = () => {
-    router.push('/login')
+    router.push('/login');
   };
 
   const onMapClicked = () => {
-    router.push('/map')
+    router.push('/map');
   };
 
   return (
