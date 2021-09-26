@@ -4,6 +4,7 @@ import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
 import com.block.server._generated.proto.userservice.SignUpRequest;
 import com.block.server._generated.proto.userservice.SignUpResponse;
+import com.block.server.domain.Roles;
 import com.block.server.domain.User;
 import com.block.server.domain.repository.UserRepository;
 import com.block.server.exception.PasswordDoesNotMatchException;
@@ -86,7 +87,8 @@ public class UserServiceImpl implements UserService {
                 .birthday(LocalDate.parse(request.getBirthday()))
                 .gender(request.getGender())
                 .profile(profileUrl)
-                .social("")    // temp
+                .social("")                 // temp
+                .roles(Roles.USER)          // default role
                 .build();
 
         var savedUser = userRepository.save(user);
