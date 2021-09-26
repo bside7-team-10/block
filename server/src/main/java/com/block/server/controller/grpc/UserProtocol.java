@@ -22,6 +22,11 @@ public class UserProtocol extends UserProtocolGrpc.UserProtocolImplBase {
         responseObserver.onCompleted();
 
     }
+    
     @Override
-    public void signUp(SignUpRequest request, StreamObserver<SignUpResponse> responseObserver) {}
+    public void signUp(SignUpRequest request, StreamObserver<SignUpResponse> responseObserver) {
+        var response = userService.signUp(request);
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
 }

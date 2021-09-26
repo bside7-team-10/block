@@ -38,4 +38,4 @@ out/
 
 
 ## DB
-application-db-credential.properties
+application-*-db.properties
