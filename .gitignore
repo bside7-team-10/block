@@ -131,3 +131,6 @@ fabric.properties
 .idea
 *.iml
 *.ipr
+
+### Frontend pre commit format test module
+.husky

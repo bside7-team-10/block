@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -6,37 +7,37 @@ import router from 'next/router';
 import { useActions } from '../hooks/use-actions';
 import { User } from '../state';
 import Fields from './common/fields/Fields';
-import { 
-  FullWidthButton, 
-  LoginGlobalStyle, 
-  Title, 
-  TitleImage, 
-  WholeMarginWrap, 
-  Wrapper 
+import {
+  FullWidthButton,
+  LoginGlobalStyle,
+  Title,
+  TitleImage,
+  WholeMarginWrap,
+  Wrapper,
 } from './styled/LoginCommonStyle';
 import { WHITE_COLOR } from '../utils/theme/theme';
 
 const defaultValues = {
   email: '',
   password: '',
-}
+};
 
 const LoginEmail = () => {
-  const { 
-    control, 
-    handleSubmit, 
-    formState: { errors}
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
   } = useForm({ defaultValues });
-  
+
   const { userLogin } = useActions();
 
   const onLoginSubmit = (data: User) => {
     userLogin(data, onLoginSuccessCallback);
-  }
+  };
 
   const onLoginSuccessCallback = () => {
     router.push('/map');
-  }
+  };
 
   return (
     <>
@@ -76,14 +77,14 @@ const LoginEmail = () => {
           </FullWidthButton>
           <Links>
             <Link href="/signup">
-              <a>블럭 회원 가입하기</a>          
+              <a>블럭 회원 가입하기</a>
             </Link>
           </Links>
         </WholeMarginWrap>
       </Wrapper>
     </>
-  )
-}
+  );
+};
 
 export default LoginEmail;
 
