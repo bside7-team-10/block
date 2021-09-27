@@ -17,5 +17,5 @@ COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE 9090
 ENTRYPOINT java -jar \
 -Dspring.config.location=${CONTAINER_INTERNAL_CONFIG_PATH} \
--Dspring.profile.active=${PROFILE} \
+-Dspring.profiles.active=${PROFILE} \
 ./app.jar

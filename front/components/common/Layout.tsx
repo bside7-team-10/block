@@ -1,18 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
+import KakaoScript from './KakaoMapScript';
 
 interface LayoutProps {
   children: any;
 }
 
-const kakaoMapUrl = process.env.NEXT_KAKAO_MAP_URL;
-
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <script type="text/javascript" src={kakaoMapUrl}></script>
+        <KakaoScript />
       </Head>
       <Wrapper>{children}</Wrapper>
     </>
