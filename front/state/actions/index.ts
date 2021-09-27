@@ -1,5 +1,4 @@
-import { ActionType } from "../action-types";
-import { User } from "../user";
+import { ActionType } from '../action-types';
 
 export interface UserSignupRequestAction {
   type: ActionType.USER_SIGNUP_REQUEST;
@@ -11,7 +10,7 @@ export interface UserSignupSuccessAction {
 
 export interface UserSignupErrorAction {
   type: ActionType.USER_SIGNUP_ERROR;
-  payload: string;
+  payload: string | null;
 }
 
 export interface UserLoginRequestAction {
@@ -41,7 +40,13 @@ export interface GetUserLocationErrorAction {
   payload: string;
 }
 
-export type Action = 
-  UserSignupRequestAction | UserSignupSuccessAction | UserSignupErrorAction
-  | UserLoginRequestAction | UserLoginSuccessAction | UserLoginErrorAction
-  | GetUserLocationRequestAction | GetUserLocationSuccessAction | GetUserLocationErrorAction;
+export type Action =
+  | UserSignupRequestAction
+  | UserSignupSuccessAction
+  | UserSignupErrorAction
+  | UserLoginRequestAction
+  | UserLoginSuccessAction
+  | UserLoginErrorAction
+  | GetUserLocationRequestAction
+  | GetUserLocationSuccessAction
+  | GetUserLocationErrorAction;

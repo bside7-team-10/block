@@ -1,24 +1,23 @@
+import React from 'react';
 import styled from 'styled-components';
 import { Button, Tabs } from 'antd';
 import { useForm } from 'react-hook-form';
 
 import InputField from './common/fields/InputField';
-import { 
-  LoginGlobalStyle, 
-  WholeMarginWrap, 
-  Wrapper, 
-  Title, 
-  TitleImage, 
-  FullWidthButton 
+import {
+  LoginGlobalStyle,
+  WholeMarginWrap,
+  Wrapper,
+  Title,
+  TitleImage,
+  FullWidthButton,
 } from './styled/LoginCommonStyle';
 import { SUB_COLOR3, WHITE_COLOR } from '../utils/theme/theme';
 
 const { TabPane } = Tabs;
 
 const FindEmailPassword = () => {
-  const {
-    control,
-  } = useForm();
+  const { control } = useForm();
 
   return (
     <>
@@ -85,8 +84,8 @@ const FindEmailPassword = () => {
         </WholeMarginWrap>
       </Wrapper>
     </>
-  )
-}
+  );
+};
 
 export default FindEmailPassword;
 
@@ -108,9 +107,7 @@ const StyledTabs = styled(Tabs)`
     }
 
     & .ant-tabs-nav-wrap {
-
       & .ant-tabs-nav-list {
-
         & .ant-tabs-ink-bar {
           background-color: ${() => WHITE_COLOR};
         }
@@ -127,9 +124,8 @@ const StyledTabs = styled(Tabs)`
 
         // 이 부분은 해결하지 못하여 global.css에 임시로 하드코딩했습니다.
         // & ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-        //   color: ${() => WHITE_COLOR} !important; 
+        //   color: ${() => WHITE_COLOR} !important;
         // }
-
       }
     }
   }

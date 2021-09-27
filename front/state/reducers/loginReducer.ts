@@ -1,5 +1,5 @@
-import { ActionType } from "../action-types";
-import { Action } from "../actions";
+import { ActionType } from '../action-types';
+import { Action } from '../actions';
 
 interface InitialState {
   isLoggedIn: boolean;
@@ -11,10 +11,10 @@ const initialState: InitialState = {
   isLoggedIn: false,
   loading: false,
   error: null,
-}
+};
 
 const loginReducer = (state = initialState, action: Action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ActionType.USER_LOGIN_REQUEST:
       return {
         ...state,
@@ -35,6 +35,6 @@ const loginReducer = (state = initialState, action: Action) => {
     default:
       return state;
   }
-}
+};
 
 export default loginReducer;
