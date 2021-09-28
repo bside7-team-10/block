@@ -36,7 +36,7 @@ jobs:
       deploy:
         - provider: codedeploy
           revision_type: github
-          application: block-server-dev
+          application: block-server
           deployment_group: block-server-deploy-group-dev
           region: ap-northeast-2
           wait-until-deployed: true
