@@ -56,6 +56,7 @@ const LoginEmail = () => {
                 prefix="MAIL"
                 control={control}
                 error={errors.email}
+                opacity={0.7}
                 required
               />
             </FieldsWrap>
@@ -68,6 +69,7 @@ const LoginEmail = () => {
                 prefix="PW"
                 control={control}
                 error={errors.password}
+                opacity={0.7}
                 required
               />
             </FieldsWrap>

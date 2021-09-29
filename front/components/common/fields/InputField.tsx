@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller, FieldError } from 'react-hook-form';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Input } from 'antd';
 import { THEME_COLOR1 } from '../../../utils/theme/theme';
 export interface InputFieldProps {
@@ -14,10 +14,20 @@ export interface InputFieldProps {
   error?: FieldError;
   rules?: any;
   prefix?: string;
+  opacity?: number;
 }
 
 const InputField = (props: InputFieldProps) => {
-  const { name, control, type, size, placeholder, rules, allowClear = false } = props;
+  const {
+    name,
+    control,
+    type,
+    size,
+    placeholder,
+    rules,
+    allowClear = false,
+    opacity = 1.0,
+  } = props;
 
   return (
     <Controller
@@ -34,6 +44,7 @@ const InputField = (props: InputFieldProps) => {
               placeholder={placeholder}
               visibilityToggle={false}
               onChange={onChange}
+              opacity={opacity}
             />
           );
         }
@@ -45,6 +56,7 @@ const InputField = (props: InputFieldProps) => {
             placeholder={placeholder}
             allowClear={allowClear}
             onChange={onChange}
+            opacity={opacity}
           />
         );
       }}
@@ -54,7 +66,11 @@ const InputField = (props: InputFieldProps) => {
 
 export default InputField;
 
-const StyledInput = styled(Input)`
+interface StyleProps {
+  opacity: number;
+}
+
+const InputStyle = (opacity: number) => css`
   width: 100%;
   border: none;
   border-radius: 0;
@@ -64,20 +80,14 @@ const StyledInput = styled(Input)`
     color: ${() => THEME_COLOR1};
     font-style: normal;
     font-weight: normal;
-    opacity: 0.7;
+    opacity: ${opacity};
   }
 `;
 
-const StyledPasswordInput = styled(Input.Password)`
-  width: 100%;
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
+const StyledInput = styled(Input)`
+  ${({ opacity }: StyleProps) => InputStyle(opacity)}
+`;
 
-  ::placeholder {
-    color: ${() => THEME_COLOR1};
-    font-style: normal;
-    font-weight: normal;
-    opacity: 0.7;
-  }
+const StyledPasswordInput = styled(Input.Password)`
+  ${({ opacity }: StyleProps) => InputStyle(opacity)}
 `;
