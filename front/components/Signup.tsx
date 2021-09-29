@@ -3,10 +3,12 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import router from 'next/router';
+import dayjs from 'dayjs';
 
 import { User } from '../state/user';
 import { useActions } from '../hooks/use-actions';
 import Fields from '../components/common/fields/Fields';
+import { GENDER_OPTION_VALUES } from '../constants';
 
 const defaultValues = {
   email: '',
@@ -28,6 +30,8 @@ const Signup = () => {
   const { userSignup } = useActions();
 
   const onSubmit = (data: User) => {
+    const { birthday } = data;
+    data.birthday = dayjs(birthday).format('YYYY-MM-DD');
     userSignup(data, onSigupSuccessCallback);
   };
 
@@ -115,12 +119,12 @@ const Signup = () => {
 export default Signup;
 
 interface FormSelectOptions {
-  [index: number]: { label: string; value: string };
+  [index: number]: { label: string; value: number };
 }
 
 const genderOptions: FormSelectOptions = [
-  { label: '남성', value: 'man' },
-  { label: '여성', value: 'woman' },
+  { label: '남성', value: GENDER_OPTION_VALUES.MALE },
+  { label: '여성', value: GENDER_OPTION_VALUES.FEMALE },
 ];
 
 const Wrapper = styled.div`
