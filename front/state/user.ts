@@ -4,8 +4,8 @@ export interface User {
   password: string;
   confirmPassword: string;
   nickName: string;
-  birthday?: string;
-  gender?: string;
+  birthday: string;
+  gender: 0 | 1;
   latitude: number;
   longitude: number;
 }
