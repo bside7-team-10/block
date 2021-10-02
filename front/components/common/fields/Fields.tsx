@@ -10,7 +10,16 @@ import { THEME_COLOR1, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
 type FieldsInterface = DatePickerFieldProps | InputFieldProps | RadioFieldProps;
 
 const Fields = (props: FieldsInterface) => {
-  const { type, name, control, error, prefix, required = false, ...rest } = props;
+  const {
+    type,
+    name,
+    control,
+    error,
+    prefix,
+    color = THEME_COLOR1,
+    required = false,
+    ...rest
+  } = props;
 
   const ReturnComponent = getReturnComponent(type);
 
@@ -29,10 +38,22 @@ const Fields = (props: FieldsInterface) => {
 
   return (
     <FieldsWrapper>
-      <Wrapper error={error}>
-        {prefix && <Prefix>{prefix}</Prefix>}
+      <Wrapper error={error} color={color}>
+        {prefix && (
+          <Prefix color={color} error={error}>
+            {prefix}
+          </Prefix>
+        )}
         <ReturnComponentWrapper>
-          <ReturnComponent name={name} control={control} type={type} rules={rules} {...rest} />
+          <ReturnComponent
+            name={name}
+            control={control}
+            type={type}
+            rules={rules}
+            color={color}
+            error={error}
+            {...rest}
+          />
         </ReturnComponentWrapper>
       </Wrapper>
       {error && <Error>{getErrorMessage(error)}</Error>}
@@ -53,8 +74,9 @@ function getReturnComponent(type: string | undefined) {
   }
 }
 
-interface ErrorProps {
+interface InputColorStyleProps {
   error?: any;
+  color?: string;
 }
 
 const ReturnComponentWrapper = styled.div`
@@ -69,9 +91,9 @@ const Wrapper = styled.div`
   display: flex;
   height: 40px;
   align-items: center;
-  border-bottom: 1px solid;
+  border-bottom: 0.75px solid;
   border-radius: 0;
-  border-color: ${({ error }: ErrorProps) => (error ? FORM_ERROR_COLOR : THEME_COLOR1)};
+  border-color: ${({ error, color }: InputColorStyleProps) => (error ? FORM_ERROR_COLOR : color)};
 `;
 
 const FieldsWrapper = styled.div`
@@ -88,5 +110,5 @@ const Prefix = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  color: ${() => THEME_COLOR1};
+  color: ${({ error, color }: InputColorStyleProps) => (error ? FORM_ERROR_COLOR : color)};
 `;

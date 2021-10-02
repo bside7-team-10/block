@@ -14,6 +14,7 @@ export interface DatePickerFieldProps {
   allowClear?: boolean;
   rules?: any;
   prefix?: string;
+  color?: string;
 }
 
 const DatePickerField = (props: DatePickerFieldProps) => {
