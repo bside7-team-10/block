@@ -15,7 +15,7 @@ import {
   WholeMarginWrap,
   Wrapper,
 } from './styled/LoginCommonStyle';
-import { WHITE_COLOR } from '../utils/theme/theme';
+import { COMMON_PADDING_M, WHITE_COLOR } from '../utils/theme/theme';
 
 const defaultValues = {
   email: '',
@@ -94,11 +94,11 @@ export default LoginEmail;
 
 const FieldsWrap = styled.div`
   overflow: clip;
-  padding-bottom: 24px;
+  padding-bottom: ${COMMON_PADDING_M};
 `;
 
 const Links = styled.div`
-  padding: 24px 0px;
+  padding: ${COMMON_PADDING_M} 0px;
   text-align: center;
   a {
     color: ${() => WHITE_COLOR};
