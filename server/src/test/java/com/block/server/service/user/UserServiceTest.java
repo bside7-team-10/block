@@ -4,12 +4,14 @@ import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
 import com.block.server._generated.proto.userservice.SignUpRequest;
 import com.block.server._generated.proto.userservice.SignUpResponse;
+import com.block.server.domain.Roles;
 import com.block.server.domain.User;
 import com.block.server.domain.repository.UserRepository;
 import com.block.server.exception.PasswordDoesNotMatchException;
 import com.block.server.exception.UserNotFoundException;
 import com.block.server.helper.TestUser;
 import com.block.server.service.UserServiceImpl;
+import io.github.majusko.grpc.jwt.service.GrpcRole;
 import io.github.majusko.grpc.jwt.service.JwtService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.DisplayName;
@@ -27,6 +29,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -212,5 +215,38 @@ public class UserServiceTest {
 
         assertThat(response, is(notNullValue()));
         assertEquals(SignUpResponse.SignUpStatus.ACCOUNT_EXISTS, response.getStatus());
+    }
+
+    @Test
+    @DisplayName("signUp 시 role이 기본으로 입력되어야 함")
+    public void signUp_should_create_default_role() {
+        var testUser = TestUser.U1();
+
+        var signUpRequest = SignUpRequest.newBuilder()
+                .setEmail(testUser.getEmail())
+                .setPassword(testUser.getRawPassword())
+                .setAvatar(testUser.getAvatar())
+                .setBirthday(testUser.getBirthdayStr())
+                .setGender(testUser.getGender())
+                .setNickname(testUser.getNickname())
+                .build();
+
+        var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
+        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
+
+        doReturn(expectedUser)
+                .when(userRepository)
+                .save(any());
+        doReturn(Optional.empty())
+                .when(userRepository)
+                .findByEmail(any());
+
+        var response = userService.signUp(signUpRequest);
+
+        ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
+        verify(userRepository).save(userArgumentCaptor.capture());
+
+        assertEquals(Roles.USER, userArgumentCaptor.getValue().getRoles());
     }
 }
