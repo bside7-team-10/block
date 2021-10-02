@@ -1,7 +1,14 @@
 import { Button } from 'antd';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { BUTTON_COLOR1, PRIMARY_COLOR, SUB_COLOR2 } from '../../utils/theme/theme';
+import {
+  BUTTON_COLOR1,
+  PRIMARY_COLOR,
+  SUB_COLOR2,
+  COMMON_MARGIN_S,
+  COMMON_MARGIN_M,
+  COMMON_PADDING_XL,
+} from '../../utils/theme/theme';
 
 export const LoginGlobalStyle = createGlobalStyle`
   body {
@@ -20,7 +27,7 @@ export const Wrapper = styled.div`
 `;
 
 export const WholeMarginWrap = styled.div`
-  margin: 0px 16px;
+  margin: 0px ${COMMON_MARGIN_S};
 `;
 
 export const Title = styled.div`
@@ -28,13 +35,13 @@ export const Title = styled.div`
   text-align: center;
   font-size: 25px;
   font-weight: bolder;
-  margin-top: 24px;
+  margin-top: ${COMMON_MARGIN_M};
 `;
 
 export const TitleImage = styled.img`
   display: flex;
   margin: 0 auto;
-  padding: 72px 0px;
+  padding: ${COMMON_PADDING_XL} 0px;
 `;
 
 export const FullWidthButton = styled(Button)`

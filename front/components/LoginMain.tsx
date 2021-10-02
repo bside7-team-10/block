@@ -10,7 +10,14 @@ import {
   TitleImage,
   FullWidthButtonWithRadius,
 } from './styled/LoginCommonStyle';
-import { BUTTON_COLOR1, SUB_COLOR2, WHITE_COLOR } from '../utils/theme/theme';
+import {
+  BUTTON_COLOR1,
+  COMMON_MARGIN_L,
+  COMMON_MARGIN_M,
+  COMMON_MARGIN_S2,
+  SUB_COLOR2,
+  WHITE_COLOR,
+} from '../utils/theme/theme';
 
 const LoginMain = () => {
   return (
@@ -62,16 +69,16 @@ const IconButton = styled(Button)`
 
 const EmailLoginButton = styled(FullWidthButtonWithRadius)`
   background-color: ${() => BUTTON_COLOR1};
-  margin-top: 32px;
+  margin-top: ${COMMON_MARGIN_L};
 `;
 
 const SignupButton = styled(FullWidthButtonWithRadius)`
   background-color: ${() => SUB_COLOR2};
-  margin-top: 12px;
+  margin-top: ${COMMON_MARGIN_S2};
 `;
 
 const Footer = styled.footer`
-  margin: 32px 0px 24px 0px;
+  margin: ${COMMON_MARGIN_L} 0px ${COMMON_MARGIN_M} 0px;
   text-align: center;
   color: ${() => WHITE_COLOR};
 `;
