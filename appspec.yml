@@ -7,6 +7,7 @@ files:
   - source: /server/src/main/resources
     destination: /home/ubuntu/app/configs
     overwrite: yes
+file_exists_behavior: OVERWRITE
 hooks:
   AfterInstall:
     - location: scripts/stop.sh
