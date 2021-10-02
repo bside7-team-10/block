@@ -1,22 +1,23 @@
 #!/bin/bash
 
 INFRA="dev"
+PROJECT_DIRECTORY="/home/ubuntu/app"
 
 # server
 if [ "$DEPLOYMENT_GROUP_NAME" == "block-server-deploy-group-dev" ]
 then
     INFRA="dev"
-    docker-compose -f "scripts/docker-compose.server.yaml" --project-directory "$(pwd)" kill
+    docker-compose -f "$PROJECT_DIRECTORY/scripts/docker-compose.server.yaml" --project-directory "$PROJECT_DIRECTORY" kill
 
 elif [ "$DEPLOYMENT_GROUP_NAME" == "block-server-deploy-group-staging" ]
 then
     INFRA="staging"
-    docker-compose -f "scripts/docker-compose.server.yaml" --project-directory "$(pwd)" kill
+    docker-compose -f "$PROJECT_DIRECTORY/scripts/docker-compose.server.yaml" --project-directory "$PROJECT_DIRECTORY" kill
 
 elif [ "$DEPLOYMENT_GROUP_NAME" == "block-server-deploy-group-prod" ]
 then
     INFRA="prod"
-    docker-compose -f "scripts/docker-compose.server.yaml" --project-directory "$(pwd)" kill
+    docker-compose -f "$PROJECT_DIRECTORY/scripts/docker-compose.server.yaml" --project-directory "$PROJECT_DIRECTORY" kill
 
 
 # app - TODO
