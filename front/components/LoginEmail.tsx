@@ -57,6 +57,7 @@ const LoginEmail = () => {
                 control={control}
                 error={errors.email}
                 opacity={0.7}
+                color={WHITE_COLOR}
                 required
               />
             </FieldsWrap>
@@ -70,6 +71,7 @@ const LoginEmail = () => {
                 control={control}
                 error={errors.password}
                 opacity={0.7}
+                color={WHITE_COLOR}
                 required
               />
             </FieldsWrap>

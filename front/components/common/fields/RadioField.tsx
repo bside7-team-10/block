@@ -19,6 +19,7 @@ export interface RadioFieldProps {
   rules?: any;
   prefix?: string;
   options?: any;
+  color?: string;
 }
 
 const RadioField = (props: RadioFieldProps) => {

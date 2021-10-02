@@ -2,7 +2,7 @@ import React from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import { Input } from 'antd';
-import { THEME_COLOR1 } from '../../../utils/theme/theme';
+import { FORM_ERROR_COLOR, THEME_COLOR1 } from '../../../utils/theme/theme';
 export interface InputFieldProps {
   type?: string;
   name: string;
@@ -15,6 +15,7 @@ export interface InputFieldProps {
   rules?: any;
   prefix?: string;
   opacity?: number;
+  color?: string;
 }
 
 const InputField = (props: InputFieldProps) => {
@@ -27,6 +28,8 @@ const InputField = (props: InputFieldProps) => {
     rules,
     allowClear = false,
     opacity = 1.0,
+    color = THEME_COLOR1,
+    error,
   } = props;
 
   return (
@@ -45,6 +48,8 @@ const InputField = (props: InputFieldProps) => {
               visibilityToggle={false}
               onChange={onChange}
               opacity={opacity}
+              color={color}
+              error={error}
             />
           );
         }
@@ -57,6 +62,8 @@ const InputField = (props: InputFieldProps) => {
             allowClear={allowClear}
             onChange={onChange}
             opacity={opacity}
+            color={color}
+            error={error}
           />
         );
       }}
@@ -68,26 +75,29 @@ export default InputField;
 
 interface StyleProps {
   opacity: number;
+  color: string;
+  error?: any;
 }
 
-const InputStyle = (opacity: number) => css`
+const InputStyle = (opacity: number, color: string, error: any) => css`
   width: 100%;
   border: none;
   border-radius: 0;
   background-color: transparent;
+  color: ${() => (error ? FORM_ERROR_COLOR : color)};
 
   ::placeholder {
-    color: ${() => THEME_COLOR1};
+    color: ${() => (error ? FORM_ERROR_COLOR : color)};
     font-style: normal;
     font-weight: normal;
-    opacity: ${opacity};
+    opacity: ${() => (error ? 1 : opacity)};
   }
 `;
 
 const StyledInput = styled(Input)`
-  ${({ opacity }: StyleProps) => InputStyle(opacity)}
+  ${({ opacity, color, error }: StyleProps) => InputStyle(opacity, color, error)};
 `;
 
 const StyledPasswordInput = styled(Input.Password)`
-  ${({ opacity }: StyleProps) => InputStyle(opacity)}
+  ${({ opacity, color, error }: StyleProps) => InputStyle(opacity, color, error)};
 `;
