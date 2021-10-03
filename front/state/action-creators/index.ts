@@ -2,18 +2,17 @@ import { Dispatch } from 'redux';
 
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
-import NewMockApi from '../../temp_api';
+import Service from '../service';
 import { User } from '../user';
 
-const mockApi = NewMockApi();
+const service = Service();
 
-export const userSignup = (user: User, callback: () => void) => {
+export const userSignup = (user: User) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.USER_SIGNUP_REQUEST });
     try {
-      await mockApi.signup(user);
+      await service.signup(user);
       dispatch({ type: ActionType.USER_SIGNUP_SUCCESS });
-      callback();
     } catch (error: any) {
       dispatch({ type: ActionType.USER_SIGNUP_ERROR, payload: error });
     }
@@ -24,7 +23,7 @@ export const userLogin = (user: User, callBack: () => void) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.USER_LOGIN_REQUEST });
     try {
-      await mockApi.login(user);
+      await service.login(user);
       dispatch({ type: ActionType.USER_LOGIN_SUCCESS });
       callBack();
     } catch (error: any) {
@@ -37,7 +36,7 @@ export const getUserLocation = () => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.GET_USER_LOCATION_REQUEST });
     try {
-      const position = await mockApi.getLocation();
+      const position = await service.getLocation();
       dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: position });
     } catch (error: any) {
       dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: error });
