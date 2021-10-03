@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FieldErrors } from 'react-hook-form';
 
@@ -16,10 +16,15 @@ const Fields = (props: FieldsInterface) => {
     control,
     error,
     prefix,
+    inputcolor,
+    trigger,
     color = THEME_COLOR1,
+    marginBottom = '10px',
     required = false,
     ...rest
   } = props;
+
+  const [formColor, setFormColor] = useState(color);
 
   const ReturnComponent = getReturnComponent(type);
 
@@ -28,7 +33,13 @@ const Fields = (props: FieldsInterface) => {
       case 'required':
         return '*필수입력';
       case 'validate':
-        return '비밀번호가 틀립니다';
+        if (error?.ref?.name === 'confirmPassword') {
+          return '비밀번호가 일치하지 않습니다.';
+        }
+        if (error?.ref?.name === 'email') {
+          return '이메일 형식이 맞지 않습니다.';
+        }
+        return;
       default:
         return '';
     }
@@ -37,10 +48,10 @@ const Fields = (props: FieldsInterface) => {
   const rules = { required: required };
 
   return (
-    <FieldsWrapper>
-      <Wrapper error={error} color={color}>
+    <FieldsWrapper marginBottom={marginBottom}>
+      <Wrapper error={error} color={formColor}>
         {prefix && (
-          <Prefix color={color} error={error}>
+          <Prefix color={formColor} error={error}>
             {prefix}
           </Prefix>
         )}
@@ -50,7 +61,10 @@ const Fields = (props: FieldsInterface) => {
             control={control}
             type={type}
             rules={rules}
-            color={color}
+            color={formColor}
+            inputcolor={inputcolor}
+            trigger={trigger}
+            setFormColor={setFormColor}
             error={error}
             {...rest}
           />
@@ -74,16 +88,18 @@ function getReturnComponent(type: string | undefined) {
   }
 }
 
-interface InputColorStyleProps {
+interface inputcolorStyleProps {
   error?: any;
   color?: string;
 }
+interface MarginBottomProps {
+  marginBottom: string;
+}
 
 const ReturnComponentWrapper = styled.div`
-  width: 300px;
   position: absolute;
   left: 50px;
-  overflow-x: hidden;
+  width: 80%;
 `;
 
 const Wrapper = styled.div`
@@ -93,11 +109,11 @@ const Wrapper = styled.div`
   align-items: center;
   border-bottom: 0.75px solid;
   border-radius: 0;
-  border-color: ${({ error, color }: InputColorStyleProps) => (error ? FORM_ERROR_COLOR : color)};
+  border-color: ${({ error, color }: inputcolorStyleProps) => (error ? FORM_ERROR_COLOR : color)};
 `;
 
 const FieldsWrapper = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: ${({ marginBottom }: MarginBottomProps) => marginBottom};
 `;
 
 const Error = styled.div`
@@ -110,5 +126,5 @@ const Prefix = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  color: ${({ error, color }: InputColorStyleProps) => (error ? FORM_ERROR_COLOR : color)};
+  color: ${({ error, color }: inputcolorStyleProps) => (error ? FORM_ERROR_COLOR : color)};
 `;

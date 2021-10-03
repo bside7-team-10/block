@@ -1,15 +1,15 @@
-import { User } from '../state/user';
-import { UserProtocolClient } from '../_generated/UserProtocol_pb_service';
-import { SignUpRequest } from '../_generated/UserProtocol_pb';
+import { User } from '../user';
+import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
+import { SignUpRequest } from '../../_generated/UserProtocol_pb';
 
-interface MockApiObject {
+interface ServiceInterface {
   signup: (user: User) => Promise<any>;
   login: (user: User) => Promise<any>;
   getLocation: () => Promise<any>;
 }
 
-const NewMockApi = () => {
-  const self = {} as MockApiObject;
+const Service = () => {
+  const self = {} as ServiceInterface;
 
   self.signup = ({ email, password, nickName, birthday, gender }: User) => {
     return new Promise((resolve, reject) => {
@@ -59,4 +59,4 @@ const NewMockApi = () => {
   return self;
 };
 
-export default NewMockApi;
+export default Service;
