@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import styled from 'styled-components';
-import { Radio } from 'antd';
-import { THEME_COLOR1, WHITE_COLOR } from '../../../utils/theme/theme';
+import { Checkbox } from 'antd';
+import { BLACK_COLOR, THEME_COLOR1, WHITE_COLOR } from '../../../utils/theme/theme';
 
-interface RadioOption {
-  label: string;
-  value: string | number;
-}
-
-export interface RadioFieldProps {
+export interface CheckboxFieldProps {
   type?: string;
   name: string;
   control: any;
@@ -24,17 +19,12 @@ export interface RadioFieldProps {
   marginBottom?: string;
   trigger?: any;
   setFormColor?: any;
+  current?: any;
 }
 
-const RadioField = (props: RadioFieldProps) => {
-  const { name, control, rules, size, trigger, setFormColor, options = null } = props;
+const CheckboxField = (props: CheckboxFieldProps) => {
+  const { name, control, rules, trigger, setFormColor, current, options = null } = props;
   const [color, setColor] = useState(THEME_COLOR1);
-
-  const radioOptions = options?.map(({ label, value }: RadioOption, i: number) => (
-    <StyledRadio key={i} value={value}>
-      {label}
-    </StyledRadio>
-  ));
 
   const onBlur = async () => {
     if (trigger) {
@@ -42,7 +32,10 @@ const RadioField = (props: RadioFieldProps) => {
       if (validated) {
         setFormColor(WHITE_COLOR);
         setColor(WHITE_COLOR);
+        return;
       }
+      setFormColor(THEME_COLOR1);
+      setColor(THEME_COLOR1);
     }
   };
 
@@ -53,31 +46,38 @@ const RadioField = (props: RadioFieldProps) => {
       rules={rules}
       render={({ field: { name, value, onChange } }) => {
         return (
-          <StyledRadioGroup
+          <StyledCheckboxGroup
             name={name}
             value={value}
-            size={size}
+            options={options}
             color={color}
-            onChange={(e) => {
-              onChange(e);
+            // TODO. 현재 보기 두개의 경우만 사용가능. 필요시 추후 업데이트 요망.
+            onChange={(values) => {
+              if (values.length === 2) {
+                if (current[0] === 1) {
+                  onChange([0]);
+                  return;
+                }
+                onChange([1]);
+                return;
+              }
+              onChange(values);
               onBlur();
             }}
-          >
-            {radioOptions}
-          </StyledRadioGroup>
+          />
         );
       }}
     />
   );
 };
 
-export default RadioField;
+export default CheckboxField;
 
 interface StyleProps {
   color: string;
 }
 
-const StyledRadioGroup = styled(Radio.Group)`
+const StyledCheckboxGroup = styled(Checkbox.Group)`
   width: 100%;
 
   & span {
@@ -85,24 +85,22 @@ const StyledRadioGroup = styled(Radio.Group)`
     color: ${({ color }: StyleProps) => color};
   }
 
-  & span.ant-radio-inner {
+  & span.ant-checkbox-inner {
     background-color: transparent;
     border: 1px solid ${THEME_COLOR1};
     box-sizing: border-box;
     border-radius: 4px;
-    transform: matrix(1, 0, 0, -1, 0, 0);
   }
 
-  & span.ant-radio-inner::after {
-    background-color: ${() => THEME_COLOR1};
+  & span.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: ${WHITE_COLOR};
   }
 
-  & span.ant-radio:hover,
-  & span.ant-radio:hover .ant-radio-inner {
-    border-color: ${THEME_COLOR1};
+  & span.ant-checkbox-checked .ant-checkbox-inner::after {
+    border-color: ${BLACK_COLOR};
   }
-`;
 
-const StyledRadio = styled(Radio)`
-  font-size: 16px;
+  & span.ant-checkbox-checked .ant-checkbox-inner {
+    border-color: transparent;
+  }
 `;

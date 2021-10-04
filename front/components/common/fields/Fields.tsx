@@ -5,9 +5,14 @@ import { FieldErrors } from 'react-hook-form';
 import DatePickerField, { DatePickerFieldProps } from './DatePickerField';
 import InputField, { InputFieldProps } from './InputField';
 import RadioField, { RadioFieldProps } from './RadioField';
+import CheckboxField, { CheckboxFieldProps } from './CheckboxField';
 import { THEME_COLOR1, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
 
-type FieldsInterface = DatePickerFieldProps | InputFieldProps | RadioFieldProps;
+type FieldsInterface =
+  | DatePickerFieldProps
+  | InputFieldProps
+  | RadioFieldProps
+  | CheckboxFieldProps;
 
 const Fields = (props: FieldsInterface) => {
   const {
@@ -83,6 +88,8 @@ function getReturnComponent(type: string | undefined) {
       return DatePickerField;
     case 'radio':
       return RadioField;
+    case 'checkbox':
+      return CheckboxField;
     default:
       return InputField;
   }
