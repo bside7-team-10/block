@@ -123,6 +123,7 @@ const Signup = () => {
           }
         }
       } else if (step === SIGNUP_STEP.STEP2) {
+        setNextBtnActive(BUTTON_INACTIVE);
         if (watchNickName && watchBirthday) {
           const validated = await trigger([
             FIELDS_NAME.NICKNAME,
@@ -276,7 +277,7 @@ const Signup = () => {
               <HorizontalSpace height={COMMON_SIZE_24PX} />
               <Fields
                 name={FIELDS_NAME.GENDER}
-                type="radio"
+                type="checkbox"
                 size="large"
                 prefix="XY"
                 control={control}
@@ -285,6 +286,7 @@ const Signup = () => {
                 trigger={trigger}
                 marginBottom="0px"
                 inputcolor={WHITE_COLOR}
+                current={watchGender}
                 required
               />
             </>
@@ -434,11 +436,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 350px;
+  height: 640px;
   margin-left: auto;
   margin-right: auto;
   @media (max-width: 640px) {
     width: 85%;
-    height: 640px;
   }
 `;
 
