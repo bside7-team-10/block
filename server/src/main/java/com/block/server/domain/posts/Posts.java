@@ -1,11 +1,9 @@
 package com.block.server.domain.posts;
 
-import com.block.server._generated.proto.userservice.SignUpRequest;
 import com.block.server.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Formula;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

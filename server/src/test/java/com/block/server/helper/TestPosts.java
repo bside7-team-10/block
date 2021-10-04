@@ -2,13 +2,11 @@ package com.block.server.helper;
 
 import com.block.server.domain.posts.Posts;
 import com.block.server.domain.user.User;
-import com.block.server.domain.user.repository.UserRepository;
+import com.block.server.domain.user.UserRepository;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Properties;
 
 
 @Getter

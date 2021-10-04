@@ -6,7 +6,7 @@ import com.block.server._generated.proto.userservice.SignUpRequest;
 import com.block.server._generated.proto.userservice.SignUpResponse;
 import com.block.server.domain.user.Roles;
 import com.block.server.domain.user.User;
-import com.block.server.domain.user.repository.UserRepository;
+import com.block.server.domain.user.UserRepository;
 import com.block.server.exception.PasswordDoesNotMatchException;
 import com.block.server.exception.UserNotFoundException;
 import io.github.majusko.grpc.jwt.service.JwtService;

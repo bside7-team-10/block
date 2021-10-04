@@ -1,15 +1,10 @@
 package com.block.server.domain.posts;
 
-import com.block.server.domain.posts.repository.PostRepository;
-import com.block.server.domain.user.User;
-import com.block.server.domain.user.repository.UserRepository;
+import com.block.server.domain.user.UserRepository;
 import com.block.server.helper.TestPosts;
 import com.block.server.helper.TestUser;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 

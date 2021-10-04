@@ -3,7 +3,7 @@ package com.block.server.security;
 import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
 import com.block.server._generated.proto.userservice.UserProtocolGrpc;
-import com.block.server.domain.user.repository.UserRepository;
+import com.block.server.domain.user.UserRepository;
 import com.block.server.helper.TestUser;
 import io.grpc.*;
 import org.junit.jupiter.api.Test;
