@@ -3,6 +3,7 @@ import { Controller, FieldError } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import { Input } from 'antd';
 import { FORM_ERROR_COLOR, THEME_COLOR1, WHITE_COLOR } from '../../../utils/theme/theme';
+
 export interface InputFieldProps {
   type?: string;
   name: string;
@@ -111,6 +112,7 @@ const InputStyle = (opacity: number, color: string, inputcolor: string, error: a
   border-radius: 0;
   background-color: transparent;
   color: ${() => (error ? FORM_ERROR_COLOR : inputcolor)};
+  font-size: 14px;
 
   ::placeholder {
     color: ${() => (error ? FORM_ERROR_COLOR : color)};
