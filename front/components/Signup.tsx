@@ -22,6 +22,7 @@ import {
   COMMON_SIZE_24PX,
 } from '../utils/theme/theme';
 import { GENDER_OPTION_VALUES, BUTTON_ACTIVE, BUTTON_INACTIVE } from '../lib/constants';
+import { checkEmailFormat } from '../utils';
 
 const Signup = () => {
   const {
@@ -91,11 +92,6 @@ const Signup = () => {
 
   const checkConfirmPassword = (confirmPassword: string) => {
     return confirmPassword === getValues(FIELDS_NAME.PASSWORD);
-  };
-
-  const checkEmailFormat = (email: string) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
   };
 
   const watchEmail = watch(FIELDS_NAME.EMAIL);
