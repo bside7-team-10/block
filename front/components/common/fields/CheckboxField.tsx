@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import styled from 'styled-components';
 import { Checkbox } from 'antd';
-import { BLACK_COLOR, THEME_COLOR1, WHITE_COLOR } from '../../../utils/theme/theme';
+import {
+  BLACK_COLOR,
+  FORM_ERROR_COLOR,
+  THEME_COLOR1,
+  WHITE_COLOR,
+} from '../../../utils/theme/theme';
 
 export interface CheckboxFieldProps {
   type?: string;
@@ -23,7 +28,7 @@ export interface CheckboxFieldProps {
 }
 
 const CheckboxField = (props: CheckboxFieldProps) => {
-  const { name, control, rules, trigger, setFormColor, current, options = null } = props;
+  const { name, control, rules, trigger, setFormColor, current, error, options = null } = props;
   const [color, setColor] = useState(THEME_COLOR1);
 
   const onBlur = async () => {
@@ -51,6 +56,7 @@ const CheckboxField = (props: CheckboxFieldProps) => {
             value={value}
             options={options}
             color={color}
+            error={error}
             // TODO. 현재 보기 두개의 경우만 사용가능. 필요시 추후 업데이트 요망.
             onChange={(values) => {
               if (values.length === 2) {
@@ -75,6 +81,7 @@ export default CheckboxField;
 
 interface StyleProps {
   color: string;
+  error: any;
 }
 
 const StyledCheckboxGroup = styled(Checkbox.Group)`
@@ -82,12 +89,13 @@ const StyledCheckboxGroup = styled(Checkbox.Group)`
 
   & span {
     font-size: 14px;
-    color: ${({ color }: StyleProps) => color};
+    color: ${({ color, error }: StyleProps) => (error ? FORM_ERROR_COLOR : color)};
   }
 
   & span.ant-checkbox-inner {
     background-color: transparent;
-    border: 1px solid ${THEME_COLOR1};
+    border: ${({ error }: StyleProps) =>
+      error ? `1px solid ${FORM_ERROR_COLOR}` : `1px solid ${THEME_COLOR1}`};
     box-sizing: border-box;
     border-radius: 4px;
   }
@@ -102,5 +110,15 @@ const StyledCheckboxGroup = styled(Checkbox.Group)`
 
   & span.ant-checkbox-checked .ant-checkbox-inner {
     border-color: transparent;
+  }
+
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+  .ant-checkbox:hover .ant-checkbox-inner,
+  .ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: unset;
+  }
+
+  .ant-checkbox-checked::after {
+    border: 1px solid transparent;
   }
 `;

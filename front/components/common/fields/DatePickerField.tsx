@@ -2,7 +2,8 @@ import React from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import styled from 'styled-components';
 import { DatePicker } from 'antd';
-import { THEME_COLOR1, WHITE_COLOR } from '../../../utils/theme/theme';
+import { THEME_COLOR1, WHITE_COLOR, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
+
 export interface DatePickerFieldProps {
   type?: string;
   name: string;
@@ -31,6 +32,7 @@ const DatePickerField = (props: DatePickerFieldProps) => {
     trigger,
     setFormColor,
     allowClear = false,
+    error,
   } = props;
 
   const onBlur = async () => {
@@ -55,6 +57,7 @@ const DatePickerField = (props: DatePickerFieldProps) => {
             value={value}
             placeholder={placeholder}
             size={size}
+            error={error}
             allowClear={allowClear}
             onChange={onChange}
             bordered={false}
@@ -68,6 +71,10 @@ const DatePickerField = (props: DatePickerFieldProps) => {
 
 export default DatePickerField;
 
+interface ErrorProps {
+  error: any;
+}
+
 const StyledDatePicker = styled(DatePicker)`
   width: 100%;
   border: none;
@@ -79,9 +86,13 @@ const StyledDatePicker = styled(DatePicker)`
   }
 
   & input::placeholder {
-    color: ${() => THEME_COLOR1};
+    color: ${({ error }: ErrorProps) => (error ? FORM_ERROR_COLOR : THEME_COLOR1)};
     font-style: normal;
     font-weight: normal;
+    font-size: 14px;
+  }
+
+  &.ant-picker-large .ant-picker-input > input {
     font-size: 14px;
   }
 `;
