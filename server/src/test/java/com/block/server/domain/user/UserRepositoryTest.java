@@ -1,7 +1,6 @@
 package com.block.server.domain.user;
 
-import com.block.server.domain.User;
-import com.block.server.domain.repository.UserRepository;
+import com.block.server.domain.user.repository.UserRepository;
 import com.block.server.helper.TestUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

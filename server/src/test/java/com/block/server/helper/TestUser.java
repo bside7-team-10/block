@@ -1,7 +1,7 @@
 package com.block.server.helper;
 
 import com.block.server._generated.proto.userservice.SignUpRequest;
-import com.block.server.domain.User;
+import com.block.server.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

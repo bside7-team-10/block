@@ -1,6 +1,6 @@
-package com.block.server.domain.repository;
+package com.block.server.domain.user.repository;
 
-import com.block.server.domain.User;
+import com.block.server.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
