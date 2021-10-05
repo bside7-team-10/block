@@ -37,6 +37,9 @@ export class SignInResponse extends jspb.Message {
   getProfileurl(): string;
   setProfileurl(value: string): void;
 
+  getToken(): string;
+  setToken(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SignInResponse.AsObject;
   static toObject(includeInstance: boolean, msg: SignInResponse): SignInResponse.AsObject;
@@ -52,6 +55,7 @@ export namespace SignInResponse {
     status: SignInResponse.SignInStatusMap[keyof SignInResponse.SignInStatusMap],
     nickname: string,
     profileurl: string,
+    token: string,
   }
 
   export interface SignInStatusMap {

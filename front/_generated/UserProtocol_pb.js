@@ -300,7 +300,8 @@ proto.SignInResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     nickname: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    profileurl: jspb.Message.getFieldWithDefault(msg, 3, "")
+    profileurl: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    token: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -349,6 +350,10 @@ proto.SignInResponse.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setProfileurl(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToken(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -396,6 +401,13 @@ proto.SignInResponse.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -463,6 +475,24 @@ proto.SignInResponse.prototype.getProfileurl = function() {
  */
 proto.SignInResponse.prototype.setProfileurl = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string token = 4;
+ * @return {string}
+ */
+proto.SignInResponse.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.SignInResponse} returns this
+ */
+proto.SignInResponse.prototype.setToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

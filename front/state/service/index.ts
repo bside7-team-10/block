@@ -1,10 +1,10 @@
-import { User } from '../user';
+import { LoginUser, User } from '../user';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
-import { SignUpRequest } from '../../_generated/UserProtocol_pb';
+import { SignInRequest, SignUpRequest } from '../../_generated/UserProtocol_pb';
 
 interface ServiceInterface {
   signup: (user: User) => Promise<any>;
-  login: (user: User) => Promise<any>;
+  login: (user: LoginUser) => Promise<any>;
   getLocation: () => Promise<any>;
 }
 
@@ -33,17 +33,21 @@ const Service = () => {
     });
   };
 
-  self.login = ({ email, password }: User) => {
+  self.login = ({ email, password }: LoginUser) => {
     return new Promise((resolve, reject) => {
-      if (email && password) {
-        if (email === 'test@test.com' && password === '1234') {
-          resolve(1);
+      const req = new SignInRequest();
+      req.setEmail(email);
+      req.setPassword(password);
+      const userClient = new UserProtocolClient('http://52.78.170.114:8081');
+      userClient.signIn(req, (err, res) => {
+        if (err !== null) {
+          // console.error(err);
+          reject(err);
         } else {
-          reject('아이디 혹은 비밀번호가 틀립니다.');
+          // console.log(res);
+          resolve(res);
         }
-        return;
-      }
-      reject('login failed');
+      });
     });
   };
 

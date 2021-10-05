@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import router from 'next/router';
 
 import { useActions } from '../hooks/use-actions';
-import { User } from '../state';
+import { LoginUser } from '../state';
 import Fields from './common/fields/Fields';
 import {
   FullWidthButton,
@@ -31,7 +31,7 @@ const LoginEmail = () => {
 
   const { userLogin } = useActions();
 
-  const onLoginSubmit = (data: User) => {
+  const onLoginSubmit = (data: LoginUser) => {
     userLogin(data, onLoginSuccessCallback);
   };
 
