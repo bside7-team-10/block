@@ -35,6 +35,8 @@ public class Posts {
 
     private int commentsCount;
 
+    private String location;
+
     @Column
     @CreatedDate
     private LocalDateTime createdAt;
@@ -44,11 +46,12 @@ public class Posts {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Posts(User userId, String contents, String imageContents,int likesCount, int commentsCount) {
+    public Posts(User userId, String contents, String imageContents,int likesCount, int commentsCount, String location) {
         this.userId=userId;
         this.contents = contents;
         this.imageContents = imageContents;
         this.likesCount = likesCount;
         this.commentsCount = commentsCount;
+        this.location = location;
     }
 }
