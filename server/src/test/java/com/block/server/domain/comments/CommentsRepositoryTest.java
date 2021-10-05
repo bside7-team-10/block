@@ -1,4 +1,4 @@
-package com.block.server.domain.Comments;
+package com.block.server.domain.comments;
 
 import com.block.server.domain.posts.PostRepository;
 import com.block.server.domain.user.UserRepository;

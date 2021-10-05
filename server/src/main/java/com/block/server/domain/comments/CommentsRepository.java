@@ -1,4 +1,4 @@
-package com.block.server.domain.Comments;
+package com.block.server.domain.comments;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
