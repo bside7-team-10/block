@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import Service from '../service';
-import { User } from '../user';
+import { LoginUser, User } from '../user';
 
 const service = Service();
 
@@ -19,7 +19,7 @@ export const userSignup = (user: User) => {
   };
 };
 
-export const userLogin = (user: User, callBack: () => void) => {
+export const userLogin = (user: LoginUser, callBack: () => void) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.USER_LOGIN_REQUEST });
     try {
