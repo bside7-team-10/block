@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import router from 'next/router';
 
 import { useActions } from '../hooks/use-actions';
-import { LoginUser } from '../state';
 import Fields from './common/fields/Fields';
 import {
   FullWidthButton,
@@ -16,6 +15,7 @@ import {
   Wrapper,
 } from './styled/LoginCommonStyle';
 import { COMMON_PADDING_M, WHITE_COLOR } from '../utils/theme/theme';
+import { User } from '../state';
 
 const defaultValues = {
   email: '',
@@ -31,7 +31,7 @@ const LoginEmail = () => {
 
   const { userLogin } = useActions();
 
-  const onLoginSubmit = (data: LoginUser) => {
+  const onLoginSubmit = (data: User) => {
     userLogin(data, onLoginSuccessCallback);
   };
 
