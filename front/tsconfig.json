@@ -14,6 +14,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.setup.js", "__test__/login.test.js", "jest.config.cjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.setup.js", "__test__/login.test.js", "jest.config.cjs", "state/reducers/loginReducer.test.js"],
   "exclude": ["node_modules"]
 }
