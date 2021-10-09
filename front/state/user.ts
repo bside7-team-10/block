@@ -6,11 +6,6 @@ export interface User {
   nickName: string;
   birthday: string;
   gender: 0 | 1;
-  latitude: number;
-  longitude: number;
-}
-
-export interface LoginUser {
-  email: string;
-  password: string;
+  latitude?: number;
+  longitude?: number;
 }

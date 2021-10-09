@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import Service from '../service';
-import { LoginUser, User } from '../user';
+import { User } from '../user';
 
 const service = Service();
 
@@ -19,12 +19,12 @@ export const userSignup = (user: User) => {
   };
 };
 
-export const userLogin = (user: LoginUser, callBack: () => void) => {
+export const userLogin = (user: User, callBack: () => void) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.USER_LOGIN_REQUEST });
     try {
-      await service.login(user);
-      dispatch({ type: ActionType.USER_LOGIN_SUCCESS });
+      const result = await service.login(user);
+      dispatch({ type: ActionType.USER_LOGIN_SUCCESS, payload: result });
       callBack();
     } catch (error: any) {
       dispatch({ type: ActionType.USER_LOGIN_ERROR, payload: error });

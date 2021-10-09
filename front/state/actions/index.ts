@@ -1,3 +1,4 @@
+import { LoginUser } from './../loginUser';
 import { ActionType } from '../action-types';
 
 export interface UserSignupRequestAction {
@@ -19,6 +20,7 @@ export interface UserLoginRequestAction {
 
 export interface UserLoginSuccessAction {
   type: ActionType.USER_LOGIN_SUCCESS;
+  payload: LoginUser;
 }
 
 export interface UserLoginErrorAction {
