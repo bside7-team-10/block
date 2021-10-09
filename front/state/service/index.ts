@@ -1,10 +1,11 @@
-import { LoginUser, User } from '../user';
+import { User } from '../user';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { SignInRequest, SignUpRequest } from '../../_generated/UserProtocol_pb';
+import { LoginUser } from '../loginUser';
 
 interface ServiceInterface {
   signup: (user: User) => Promise<any>;
-  login: (user: LoginUser) => Promise<any>;
+  login: (user: User) => Promise<any>;
   getLocation: () => Promise<any>;
 }
 
@@ -33,7 +34,7 @@ const Service = () => {
     });
   };
 
-  self.login = ({ email, password }: LoginUser) => {
+  self.login = ({ email, password }: User) => {
     return new Promise((resolve, reject) => {
       const req = new SignInRequest();
       req.setEmail(email);
@@ -41,11 +42,15 @@ const Service = () => {
       const userClient = new UserProtocolClient('http://52.78.170.114:8081');
       userClient.signIn(req, (err, res) => {
         if (err !== null) {
-          // console.error(err);
-          reject(err);
+          reject('아이디 또는 비밀번호가 다릅니다.');
         } else {
-          // console.log(res);
-          resolve(res);
+          const loginUser: LoginUser = {
+            nickname: res?.getNickname(),
+            profileUrl: res?.getProfileurl(),
+            token: res?.getToken(),
+          };
+          localStorage.setItem('userAuthToken', JSON.stringify(loginUser.token));
+          resolve(loginUser);
         }
       });
     });
