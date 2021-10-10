@@ -1,5 +1,6 @@
-package com.block.server.domain.posts;
+package com.block.server.domain.comment;
 
+import com.block.server.domain.post.Post;
 import com.block.server.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,8 +16,8 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name="Posts")
-public class Posts {
+@Table(name="Comment")
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,16 +27,12 @@ public class Posts {
     @ManyToOne(fetch = FetchType.LAZY)
     private User userId;
 
+    @JoinColumn(name = "postId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Post postId;
+
     @Column(length = 500, nullable = false)
-    private String contents;
-
-    private String imageContents;
-
-    private int likesCount;
-
-    private int commentsCount;
-
-    private String location;
+    private String content;
 
     @Column
     @CreatedDate
@@ -46,12 +43,10 @@ public class Posts {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Posts(User userId, String contents, String imageContents,int likesCount, int commentsCount, String location) {
+    public Comment(User userId, Post postId, String contents) {
         this.userId=userId;
-        this.contents = contents;
-        this.imageContents = imageContents;
-        this.likesCount = likesCount;
-        this.commentsCount = commentsCount;
-        this.location = location;
+        this.postId=postId;
+        this.content = contents;
+
     }
 }

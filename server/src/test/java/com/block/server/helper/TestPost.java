@@ -1,50 +1,48 @@
 package com.block.server.helper;
 
-import com.block.server.domain.posts.Posts;
+import com.block.server.domain.post.Post;
 import com.block.server.domain.user.User;
-import com.block.server.domain.user.UserRepository;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.Point;
 
 
 @Getter
 @NoArgsConstructor
-public class TestPosts {
+public class TestPost {
     private User userId;
-    private String contents;
+    private String content;
     private String imageContents;
     private int likesCount;
     private int commentsCount;
-    private String location;
+    private Point location;
 
-
-    public static TestPosts U1(User user) {
-        return TestPosts.builder()
+    public static TestPost P1(User user) {
+        return TestPost.builder()
                 .userId(user)
-                .contents("Posts contest Test")
+                .content("Posts content Test")
                 .imageContents("img.png")
                 .likesCount(0)
                 .commentsCount(0)
-                .location("14139569.9979095")
+                .location(new Point(33.450701, 126.570667))
                 .build();
     }
 
     @Builder
-    public TestPosts(User userId, String contents, String imageContents, int likesCount, int commentsCount,String location) {
+    public TestPost(User userId, String content, String imageContents, int likesCount, int commentsCount, Point location){
         this.userId = userId;
-        this.contents = contents;
+        this.content = content;
         this.imageContents = imageContents;
         this.likesCount = likesCount;
         this.commentsCount = commentsCount;
         this.location = location;
     }
 
-    public Posts toPost() {
-        return Posts.builder()
+    public Post toPost() {
+        return Post.builder()
             .userId(userId)
-            .contents(contents)
+            .contents(content)
             .imageContents(imageContents)
             .likesCount(likesCount)
             .commentsCount(commentsCount)

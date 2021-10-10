@@ -1,8 +1,7 @@
 package com.block.server.domain.likepost;
 
-import com.block.server.domain.posts.Posts;
+import com.block.server.domain.post.Post;
 import com.block.server.domain.user.User;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
@@ -36,14 +34,14 @@ public class LikePost {
 
     @JoinColumn(name = "postId")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Posts postId;
+    private Post postId;
 
     @Column
     @CreatedDate
     private LocalDateTime createdAt;
 
     @Builder
-    public LikePost(User userId, Posts postId) {
+    public LikePost(User userId, Post postId) {
         this.userId=userId;
         this.postId = postId;
     }
