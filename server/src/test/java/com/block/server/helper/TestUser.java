@@ -1,12 +1,16 @@
 package com.block.server.helper;
 
 import com.block.server._generated.proto.userservice.SignUpRequest;
+import com.block.server.domain.HashTag;
 import com.block.server.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
@@ -20,6 +24,7 @@ public class TestUser {
     private SignUpRequest.Gender gender;
     private String social;
     private String role;
+    private List<String> interestHashTags;
 
     public static TestUser U1() {
         return TestUser.builder()
@@ -30,11 +35,12 @@ public class TestUser {
                 .gender(SignUpRequest.Gender.MALE)
                 .nickname("helloworld")
                 .role("test-role")
+                .interestHashTags(Arrays.asList("test1", "test2"))
                 .build();
     }
 
     @Builder
-    public TestUser(String email, String rawPassword, String nickname, String avatar, String birthdayStr, SignUpRequest.Gender gender, String social, String role) {
+    public TestUser(String email, String rawPassword, String nickname, String avatar, String birthdayStr, SignUpRequest.Gender gender, String social, String role, List<String> interestHashTags) {
         this.email = email;
         this.rawPassword = rawPassword;
         this.nickname = nickname;
@@ -43,6 +49,7 @@ public class TestUser {
         this.gender = gender;
         this.social = social;
         this.role = role;
+        this.interestHashTags = interestHashTags;
     }
 
     public User toUser() {
@@ -58,6 +65,9 @@ public class TestUser {
                 .gender(gender)
                 .nickname(nickname)
                 .roles(role)
+                .interestHashTags(interestHashTags.stream()
+                        .map(x -> HashTag.builder().tagName(x).build())
+                        .collect(Collectors.toList()))
                 .build();
     }
 }

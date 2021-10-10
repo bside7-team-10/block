@@ -87,6 +87,11 @@ export class SignUpRequest extends jspb.Message {
   getBirthday(): string;
   setBirthday(value: string): void;
 
+  clearInteresthashtagsList(): void;
+  getInteresthashtagsList(): Array<string>;
+  setInteresthashtagsList(value: Array<string>): void;
+  addInteresthashtags(value: string, index?: number): string;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SignUpRequest.AsObject;
   static toObject(includeInstance: boolean, msg: SignUpRequest): SignUpRequest.AsObject;
@@ -105,6 +110,7 @@ export namespace SignUpRequest {
     gender: SignUpRequest.GenderMap[keyof SignUpRequest.GenderMap],
     avatar: string,
     birthday: string,
+    interesthashtagsList: Array<string>,
   }
 
   export interface GenderMap {

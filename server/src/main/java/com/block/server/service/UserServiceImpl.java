@@ -18,6 +18,7 @@ import io.github.majusko.grpc.jwt.service.dto.JwtData;
 
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
 
+    private final HashTagService hashTagService;
 
     @Transactional
     public SignInResponse signIn(SignInRequest signInRequest)  {
@@ -78,6 +80,9 @@ public class UserServiceImpl implements UserService {
                     .build();
         }
 
+        var hashTags = request.getInterestHashTagsList().stream()
+                .map(x -> hashTagService.getOrCreateTag(x)).collect(Collectors.toList());
+
         var encodedPassword = passwordEncoder.encode(request.getPassword());
         var profileUrl = "http://example.com/image/" + request.getAvatar();
         var user = User.builder()
@@ -89,6 +94,7 @@ public class UserServiceImpl implements UserService {
                 .profile(profileUrl)
                 .social("")                 // temp
                 .roles(Roles.USER)          // default role
+                .interestHashTags(hashTags)
                 .build();
 
         var savedUser = userRepository.save(user);

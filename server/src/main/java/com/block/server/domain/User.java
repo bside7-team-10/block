@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -54,8 +55,12 @@ public class User {
     @Column
     private String roles;
 
+    @OneToMany
+    @JoinColumn(name="HASHTAG_ID")
+    private List<HashTag> interestHashTags;
+
     @Builder
-    public User(String email, String password, String nickname, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles) {
+    public User(String email, String password, String nickname, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles, List<HashTag> interestHashTags) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
@@ -64,5 +69,6 @@ public class User {
         this.gender = gender;
         this.social = social;
         this.roles = roles;
+        this.interestHashTags = interestHashTags;
     }
 }

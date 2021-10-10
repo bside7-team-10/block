@@ -75,7 +75,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.SignUpRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SignUpRequest.repeatedFields_, null);
 };
 goog.inherits(proto.SignUpRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -497,6 +497,13 @@ proto.SignInResponse.prototype.setToken = function(value) {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SignUpRequest.repeatedFields_ = [7];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -533,7 +540,8 @@ proto.SignUpRequest.toObject = function(includeInstance, msg) {
     nickname: jspb.Message.getFieldWithDefault(msg, 3, ""),
     gender: jspb.Message.getFieldWithDefault(msg, 4, 0),
     avatar: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    birthday: jspb.Message.getFieldWithDefault(msg, 6, "")
+    birthday: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    interesthashtagsList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -593,6 +601,10 @@ proto.SignUpRequest.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setBirthday(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addInteresthashtags(value);
       break;
     default:
       reader.skipField();
@@ -662,6 +674,13 @@ proto.SignUpRequest.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getInteresthashtagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      7,
       f
     );
   }
@@ -781,6 +800,43 @@ proto.SignUpRequest.prototype.getBirthday = function() {
  */
 proto.SignUpRequest.prototype.setBirthday = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * repeated string interestHashTags = 7;
+ * @return {!Array<string>}
+ */
+proto.SignUpRequest.prototype.getInteresthashtagsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 7));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.SignUpRequest} returns this
+ */
+proto.SignUpRequest.prototype.setInteresthashtagsList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.SignUpRequest} returns this
+ */
+proto.SignUpRequest.prototype.addInteresthashtags = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.SignUpRequest} returns this
+ */
+proto.SignUpRequest.prototype.clearInteresthashtagsList = function() {
+  return this.setInteresthashtagsList([]);
 };
 
 

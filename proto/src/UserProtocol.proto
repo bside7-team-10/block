@@ -40,6 +40,7 @@ message SignUpRequest {
     Gender gender = 4;
     string avatar = 5;
     string birthday = 6;
+    repeated string interestHashTags = 7;
 }
 
 message SignUpResponse {
