@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.block.server._generated.proto.postservice";
+
+// The greeting service definition.
+service PostProtocol {
+
+    rpc GetPost (GetPostRequest) returns (GetPostResponse) {}
+
+    rpc GetPosts (GetPostsRequest) returns (GetPostsResponse) {}
+
+    rpc CreatePost (CreatePostRequest) returns (CreatePostResponse) {}
+
+    rpc ModifyPost (ModifyPostRequest) returns (ModifyPostResponse) {}
+
+    rpc DeletePost (DeletePostRequest) returns (DeletePostResponse) {}
+
+    rpc CreateComment (CreateCommentRequest) returns (CreateCommentResponse) {}
+
+    rpc ModifyComment (ModifyCommentRequest) returns (ModifyCommentResponse) {}
+
+    rpc DeleteComment (DeleteCommentRequest) returns (DeleteCommentResponse) {}
+
+    rpc LikePost (LikePostRequest) returns (LikePostResponse) {}
+
+    rpc CancelLikePost(LikePostRequest) returns (LikePostResponse) {}
+}
+
+enum PostProtocolStatus {
+    SUCCESS = 0;
+    NO_POST = 1;
+    NO_COMMENT = 2;
+    NOT_AUTHORIZED = 3;
+    INTERNAL_ERROR = 99;
+}
+
+message Location {
+    double lat = 1;
+    double long = 2;
+}
+
+message Comment {
+    string commentId = 1;
+    string author = 2;
+    string content = 3;
+    int32 createdTS = 4;
+    int32 modifiedTS = 5;
+}
+
+message Post {
+    string postId = 1;
+    string author = 2;
+    string content = 3;
+    string imageUrl = 4;
+    int32 likes = 5;
+    repeated Comment comments = 6;
+    Location location = 7;
+}
+
+message GetPostRequest {
+    string postId = 1;
+}
+
+message GetPostResponse {
+    PostProtocolStatus status = 1;
+    Post post = 2;
+}
+
+message GetPostsRequest {
+    int32 pageNumber = 1;
+    optional int32 resultPerPage = 2; // default = 10
+    Location currentLocation = 3;
+    message Filter {
+        message DistanceFilter {
+            bool enabled = 1;
+            int32 distance = 2;
+        }
+        DistanceFilter distanceFilter = 1;
+        bool rightNowFilter = 2;
+    }
+    Filter filter = 4;
+}
+
+message GetPostsResponse {
+    PostProtocolStatus status = 1;
+    repeated Post posts = 2;
+}
+
+message CreatePostRequest {
+    string author = 1;
+    string content = 2;
+    bytes image = 3;
+    Location location = 4;
+}
+
+message CreatePostResponse {
+    PostProtocolStatus status = 1;
+    string postId = 2;
+}
+
+message ModifyPostRequest {
+    string postId = 1;
+    string content = 2;
+    bool modifiedImage = 3;
+    optional bytes image = 4;
+}
+
+message ModifyPostResponse {
+    PostProtocolStatus status = 1;
+    string postId = 2;
+}
+
+message DeletePostRequest {
+    string postId = 1;
+}
+
+message DeletePostResponse {
+    PostProtocolStatus status = 1;
+    string postId = 2;
+}
+
+message CreateCommentRequest {
+    string author = 1;
+    string postId = 2;
+    string content = 3;
+}
+
+message CreateCommentResponse {
+    PostProtocolStatus status = 1;
+    string commentId = 2;
+}
+
+message ModifyCommentRequest {
+    string commentId = 1;
+    string content = 2;
+}
+
+message ModifyCommentResponse {
+    PostProtocolStatus status = 1;
+    string commentId = 2;
+}
+
+message DeleteCommentRequest {
+    string commentId = 1;
+}
+
+message DeleteCommentResponse {
+    PostProtocolStatus status = 1;
+}
+
+message LikePostRequest {
+    string postId = 1;
+    bool like = 2;
+}
+
+message LikePostResponse {
+    PostProtocolStatus status = 1;
+    Post post = 2;
+}
