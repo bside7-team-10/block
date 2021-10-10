@@ -31,8 +31,8 @@ export class Comment extends jspb.Message {
   getCommentid(): string;
   setCommentid(value: string): void;
 
-  getWriter(): string;
-  setWriter(value: string): void;
+  getAuthor(): string;
+  setAuthor(value: string): void;
 
   getContent(): string;
   setContent(value: string): void;
@@ -56,7 +56,7 @@ export class Comment extends jspb.Message {
 export namespace Comment {
   export type AsObject = {
     commentid: string,
-    writer: string,
+    author: string,
     content: string,
     createdts: number,
     modifiedts: number,
@@ -67,8 +67,8 @@ export class Post extends jspb.Message {
   getPostid(): string;
   setPostid(value: string): void;
 
-  getWriter(): string;
-  setWriter(value: string): void;
+  getAuthor(): string;
+  setAuthor(value: string): void;
 
   getContent(): string;
   setContent(value: string): void;
@@ -102,7 +102,7 @@ export class Post extends jspb.Message {
 export namespace Post {
   export type AsObject = {
     postid: string,
-    writer: string,
+    author: string,
     content: string,
     imageurl: string,
     likes: number,
@@ -272,8 +272,8 @@ export namespace GetPostsResponse {
 }
 
 export class CreatePostRequest extends jspb.Message {
-  getWriter(): string;
-  setWriter(value: string): void;
+  getAuthor(): string;
+  setAuthor(value: string): void;
 
   getContent(): string;
   setContent(value: string): void;
@@ -300,7 +300,7 @@ export class CreatePostRequest extends jspb.Message {
 
 export namespace CreatePostRequest {
   export type AsObject = {
-    writer: string,
+    author: string,
     content: string,
     image: Uint8Array | string,
     location?: Location.AsObject,
@@ -436,8 +436,8 @@ export namespace DeletePostResponse {
 }
 
 export class CreateCommentRequest extends jspb.Message {
-  getWriter(): string;
-  setWriter(value: string): void;
+  getAuthor(): string;
+  setAuthor(value: string): void;
 
   getPostid(): string;
   setPostid(value: string): void;
@@ -457,7 +457,7 @@ export class CreateCommentRequest extends jspb.Message {
 
 export namespace CreateCommentRequest {
   export type AsObject = {
-    writer: string,
+    author: string,
     postid: string,
     content: string,
   }

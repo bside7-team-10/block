@@ -91,8 +91,8 @@ PostProtocol.LikePost = {
   responseType: PostProtocol_pb.LikePostResponse
 };
 
-PostProtocol.CancleLikePost = {
-  methodName: "CancleLikePost",
+PostProtocol.CancelLikePost = {
+  methodName: "CancelLikePost",
   service: PostProtocol,
   requestStream: false,
   responseStream: false,
@@ -386,11 +386,11 @@ PostProtocolClient.prototype.likePost = function likePost(requestMessage, metada
   };
 };
 
-PostProtocolClient.prototype.cancleLikePost = function cancleLikePost(requestMessage, metadata, callback) {
+PostProtocolClient.prototype.cancelLikePost = function cancelLikePost(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(PostProtocol.CancleLikePost, {
+  var client = grpc.unary(PostProtocol.CancelLikePost, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

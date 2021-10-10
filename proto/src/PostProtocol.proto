@@ -24,7 +24,7 @@ service PostProtocol {
 
     rpc LikePost (LikePostRequest) returns (LikePostResponse) {}
 
-    rpc CancleLikePost(LikePostRequest) returns (LikePostResponse) {}
+    rpc CancelLikePost(LikePostRequest) returns (LikePostResponse) {}
 }
 
 enum PostProtocolStatus {
@@ -36,13 +36,13 @@ enum PostProtocolStatus {
 }
 
 message Location {
-    float lat = 1;
-    float long = 2;
+    double lat = 1;
+    double long = 2;
 }
 
 message Comment {
     string commentId = 1;
-    string writer = 2;
+    string author = 2;
     string content = 3;
     int32 createdTS = 4;
     int32 modifiedTS = 5;
@@ -50,7 +50,7 @@ message Comment {
 
 message Post {
     string postId = 1;
-    string writer = 2;
+    string author = 2;
     string content = 3;
     string imageUrl = 4;
     int32 likes = 5;
@@ -88,7 +88,7 @@ message GetPostsResponse {
 }
 
 message CreatePostRequest {
-    string writer = 1;
+    string author = 1;
     string content = 2;
     bytes image = 3;
     Location location = 4;
@@ -121,7 +121,7 @@ message DeletePostResponse {
 }
 
 message CreateCommentRequest {
-    string writer = 1;
+    string author = 1;
     string postId = 2;
     string content = 3;
 }

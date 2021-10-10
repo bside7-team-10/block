@@ -85,7 +85,7 @@ type PostProtocolLikePost = {
   readonly responseType: typeof PostProtocol_pb.LikePostResponse;
 };
 
-type PostProtocolCancleLikePost = {
+type PostProtocolCancelLikePost = {
   readonly methodName: string;
   readonly service: typeof PostProtocol;
   readonly requestStream: false;
@@ -105,7 +105,7 @@ export class PostProtocol {
   static readonly ModifyComment: PostProtocolModifyComment;
   static readonly DeleteComment: PostProtocolDeleteComment;
   static readonly LikePost: PostProtocolLikePost;
-  static readonly CancleLikePost: PostProtocolCancleLikePost;
+  static readonly CancelLikePost: PostProtocolCancelLikePost;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -221,12 +221,12 @@ export class PostProtocolClient {
     requestMessage: PostProtocol_pb.LikePostRequest,
     callback: (error: ServiceError|null, responseMessage: PostProtocol_pb.LikePostResponse|null) => void
   ): UnaryResponse;
-  cancleLikePost(
+  cancelLikePost(
     requestMessage: PostProtocol_pb.LikePostRequest,
     metadata: grpc.Metadata,
     callback: (error: ServiceError|null, responseMessage: PostProtocol_pb.LikePostResponse|null) => void
   ): UnaryResponse;
-  cancleLikePost(
+  cancelLikePost(
     requestMessage: PostProtocol_pb.LikePostRequest,
     callback: (error: ServiceError|null, responseMessage: PostProtocol_pb.LikePostResponse|null) => void
   ): UnaryResponse;
