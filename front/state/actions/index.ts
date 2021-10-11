@@ -42,6 +42,34 @@ export interface GetUserLocationErrorAction {
   payload: string;
 }
 
+export interface AddPostRequestAction {
+  type: ActionType.ADD_POST_REQUEST;
+}
+
+export interface AddPostSuccessAction {
+  type: ActionType.ADD_POST_SUCCESS;
+  payload: string;
+}
+
+export interface AddPostErrorAction {
+  type: ActionType.ADD_POST_ERROR;
+  payload: string;
+}
+
+export interface CaptureImageRequestAction {
+  type: ActionType.CAPTURE_IMAGE_REQUEST;
+}
+
+export interface CaptureImageSuccessAction {
+  type: ActionType.CAPTURE_IMAGE_SUCCESS;
+  payload: string;
+}
+
+export interface CaptureImageErrorAction {
+  type: ActionType.CAPTURE_IMAGE_ERROR;
+  payload: string;
+}
+
 export type Action =
   | UserSignupRequestAction
   | UserSignupSuccessAction
@@ -51,4 +79,10 @@ export type Action =
   | UserLoginErrorAction
   | GetUserLocationRequestAction
   | GetUserLocationSuccessAction
-  | GetUserLocationErrorAction;
+  | GetUserLocationErrorAction
+  | AddPostRequestAction
+  | AddPostSuccessAction
+  | AddPostErrorAction
+  | CaptureImageRequestAction
+  | CaptureImageSuccessAction
+  | CaptureImageErrorAction;
