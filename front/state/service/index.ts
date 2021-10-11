@@ -1,3 +1,5 @@
+import { Cookies } from 'react-cookie';
+
 import { User } from '../user';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { SignInRequest, SignUpRequest } from '../../_generated/UserProtocol_pb';
@@ -49,7 +51,11 @@ const Service = () => {
             profileUrl: res?.getProfileurl(),
             token: res?.getToken(),
           };
-          localStorage.setItem('userAuthToken', JSON.stringify(loginUser.token));
+          const cookie = new Cookies();
+          cookie.set('accessToken', loginUser.token, {
+            path: '/login/email',
+            secure: true,
+          });
           resolve(loginUser);
         }
       });
