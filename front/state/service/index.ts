@@ -57,7 +57,7 @@ const Service = () => {
           };
           const cookie = new Cookies();
           cookie.set('accessToken', loginUser.token, {
-            path: '/login/email',
+            path: '/',
             secure: true,
           });
           resolve(loginUser);
