@@ -2,6 +2,8 @@ import { Dispatch } from 'redux';
 
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
+import { Image } from '../image';
+import { Post } from '../post';
 import Service from '../service';
 import { User } from '../user';
 
@@ -40,6 +42,33 @@ export const getUserLocation = () => {
       dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: position });
     } catch (error: any) {
       dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: error });
+    }
+  };
+};
+
+export const addPost = (data: Post, callback: () => void) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.ADD_POST_REQUEST });
+    try {
+      const response = await service.addPost(data);
+      dispatch({ type: ActionType.ADD_POST_SUCCESS, payload: response });
+      callback();
+    } catch (error: any) {
+      dispatch({ type: ActionType.ADD_POST_ERROR, payload: error });
+    }
+  };
+};
+
+export const captureImage = (image: Image, callback: () => void) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.CAPTURE_IMAGE_REQUEST });
+    try {
+      const response = await service.captureImage(image);
+      dispatch({ type: ActionType.CAPTURE_IMAGE_SUCCESS, payload: response });
+    } catch (error: any) {
+      dispatch({ type: ActionType.CAPTURE_IMAGE_ERROR, payload: error });
+    } finally {
+      callback();
     }
   };
 };
