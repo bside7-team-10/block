@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useActions } from '../hooks/use-actions';
 import { RootState } from '../state';
+import { Post } from '../state/post';
 
 import { COMMON_SIZE_12PX, GREY_COLOR } from '../utils/theme/theme';
 import TextareaField from './common/fields/TextareaField';
@@ -31,13 +32,13 @@ const BoardWrite = () => {
   const { addPost } = useActions();
 
   const src = useSelector((state: RootState) => state.image.src);
+  const { latitude, longitude } = useSelector((state: RootState) => state.location);
 
   useEffect(() => {
     const content = sessionStorage.getItem('postContent');
     const rightNow = sessionStorage.getItem('postRightNow');
     setValue('content', content !== null ? content : '');
     setValue('rightNow', rightNow === 'true' ? true : false);
-    // console.log(content, rightNow);
   }, []);
 
   const removesessionStorageItems = () => {
@@ -47,7 +48,16 @@ const BoardWrite = () => {
   };
 
   const onSubmit: SubmitHandler<BoardWriteForm> = (data: BoardWriteForm) => {
-    addPost(data, removesessionStorageItems);
+    const { content, rightNow } = data;
+
+    const post: Post = {
+      content,
+      rightNow,
+      latitude,
+      longitude,
+    };
+
+    addPost(post, removesessionStorageItems);
   };
 
   const onClickCaptureButton = () => {
@@ -156,8 +166,6 @@ const Address = styled.div`
   line-height: 1.4;
   margin-left: 40px;
 `;
-
-const TextBox = styled.div``;
 
 const PictureInfo = styled.div`
   height: 86px;

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useEffect } from 'react';
 import { RootStateOrAny, useSelector } from 'react-redux';
@@ -10,6 +11,8 @@ declare const kakao: any;
 const Map = () => {
   const { latitude, longitude } = useSelector((state: RootStateOrAny) => state.location);
   const { getUserLocation } = useActions();
+
+  const router = useRouter();
 
   useEffect(() => {
     getUserLocation();
@@ -25,10 +28,15 @@ const Map = () => {
     marker.setMap(map);
   }, [latitude, longitude]);
 
+  const onClickWriteButton = () => {
+    router.push('/board/write');
+  };
+
   return (
     <>
       <Wrapper>
         <div id="map" style={{ width: '300px', height: '300px' }}></div>
+        <button onClick={onClickWriteButton}>글 쓰기</button>
       </Wrapper>
     </>
   );
