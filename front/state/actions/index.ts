@@ -1,5 +1,6 @@
 import { LoginUser } from './../loginUser';
 import { ActionType } from '../action-types';
+import { Post } from '../post';
 
 export interface UserSignupRequestAction {
   type: ActionType.USER_SIGNUP_REQUEST;
@@ -70,6 +71,15 @@ export interface CaptureImageErrorAction {
   payload: string;
 }
 
+export interface SaveTempPost {
+  type: ActionType.SAVE_TEMP_POST;
+  payload: Post;
+}
+
+export interface RemoveTempPost {
+  type: ActionType.REMOVE_TEMP_POST;
+}
+
 export type Action =
   | UserSignupRequestAction
   | UserSignupSuccessAction
@@ -85,4 +95,6 @@ export type Action =
   | AddPostErrorAction
   | CaptureImageRequestAction
   | CaptureImageSuccessAction
-  | CaptureImageErrorAction;
+  | CaptureImageErrorAction
+  | SaveTempPost
+  | RemoveTempPost;

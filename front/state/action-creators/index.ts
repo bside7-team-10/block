@@ -59,6 +59,18 @@ export const addPost = (data: Post, callback: () => void) => {
   };
 };
 
+export const saveTempPost = (data: Post) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.SAVE_TEMP_POST, payload: data });
+  };
+};
+
+export const removeTempPost = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.REMOVE_TEMP_POST });
+  };
+};
+
 export const captureImage = (image: Image, callback: () => void) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.CAPTURE_IMAGE_REQUEST });
