@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
 import Checkbox from 'antd/lib/checkbox/Checkbox';
+import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -29,44 +30,43 @@ const BoardWrite = () => {
 
   const router = useRouter();
 
-  const { addPost } = useActions();
+  const { addPost, saveTempPost } = useActions();
 
   const src = useSelector((state: RootState) => state.image.src);
   const { latitude, longitude } = useSelector((state: RootState) => state.location);
 
-  useEffect(() => {
-    const content = sessionStorage.getItem('postContent');
-    const rightNow = sessionStorage.getItem('postRightNow');
-    setValue('content', content !== null ? content : '');
-    setValue('rightNow', rightNow === 'true' ? true : false);
-  }, []);
+  const { content, rightNow, removeTempPost } = useSelector((state: RootState) => state.post);
 
-  const removesessionStorageItems = () => {
-    sessionStorage.removeItem('postContent');
-    sessionStorage.removeItem('postRightNow');
-    sessionStorage.removeItem('toComeBackPath');
-  };
+  useEffect(() => {
+    setValue('content', content !== null ? content : '');
+    setValue('rightNow', rightNow === true ? true : false);
+  }, []);
 
   const onSubmit: SubmitHandler<BoardWriteForm> = (data: BoardWriteForm) => {
     const { content, rightNow } = data;
-
+    const date = dayjs().format('YYYY-MM-DD HH:mm:ss');
     const post: Post = {
       content,
       rightNow,
       latitude,
       longitude,
+      date,
     };
 
-    addPost(post, removesessionStorageItems);
+    addPost(post, removeTempPost);
   };
 
   const onClickCaptureButton = () => {
     const content = getValues('content');
     const rightNow = getValues('rightNow');
 
-    sessionStorage.setItem('postContent', content);
-    sessionStorage.setItem('postRightNow', rightNow.toString());
-    sessionStorage.setItem('toComeBackPath', '/board/write');
+    const data: Post = {
+      content,
+      rightNow,
+      toComeBackPath: '/board/write',
+    };
+
+    saveTempPost(data);
     router.push('/camera');
   };
 
