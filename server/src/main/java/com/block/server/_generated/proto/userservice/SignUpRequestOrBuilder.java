@@ -77,4 +77,29 @@ public interface SignUpRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getBirthdayBytes();
+
+  /**
+   * <code>repeated string interestHashTags = 7;</code>
+   * @return A list containing the interestHashTags.
+   */
+  java.util.List<java.lang.String>
+      getInterestHashTagsList();
+  /**
+   * <code>repeated string interestHashTags = 7;</code>
+   * @return The count of interestHashTags.
+   */
+  int getInterestHashTagsCount();
+  /**
+   * <code>repeated string interestHashTags = 7;</code>
+   * @param index The index of the element to return.
+   * @return The interestHashTags at the given index.
+   */
+  java.lang.String getInterestHashTags(int index);
+  /**
+   * <code>repeated string interestHashTags = 7;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the interestHashTags at the given index.
+   */
+  com.google.protobuf.ByteString
+      getInterestHashTagsBytes(int index);
 }

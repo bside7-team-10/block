@@ -4,32 +4,26 @@ import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
 import com.block.server._generated.proto.userservice.SignUpRequest;
 import com.block.server._generated.proto.userservice.SignUpResponse;
+import com.block.server.domain.HashTag;
 import com.block.server.domain.Roles;
 import com.block.server.domain.User;
 import com.block.server.domain.repository.UserRepository;
 import com.block.server.exception.PasswordDoesNotMatchException;
-import com.block.server.exception.UserNotFoundException;
 import com.block.server.helper.TestUser;
+import com.block.server.service.HashTagService;
 import com.block.server.service.UserServiceImpl;
-import io.github.majusko.grpc.jwt.service.GrpcRole;
 import io.github.majusko.grpc.jwt.service.JwtService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -51,6 +45,9 @@ public class UserServiceTest {
 
     @Mock
     private JwtService jwtService;
+
+    @Mock
+    private HashTagService hashTagService;
 
     @InjectMocks
     private UserServiceImpl userService;
@@ -135,6 +132,7 @@ public class UserServiceTest {
                 .setBirthday(testUser.getBirthdayStr())
                 .setGender(testUser.getGender())
                 .setNickname(testUser.getNickname())
+                .addAllInterestHashTags(testUser.getInterestHashTags())
                 .build();
 
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
@@ -147,6 +145,11 @@ public class UserServiceTest {
         doReturn(Optional.empty())
                 .when(userRepository)
                 .findByEmail(any());
+
+        var mockHashTag = Mockito.mock(HashTag.class);
+        doReturn(mockHashTag)
+                .when(hashTagService)
+                .getOrCreateTag(any());
 
         var response = userService.signUp(signUpRequest);
 
@@ -219,7 +222,7 @@ public class UserServiceTest {
 
     @Test
     @DisplayName("signUp 시 role이 기본으로 입력되어야 함")
-    public void signUp_should_create_default_role() {
+    public void signUp_should_create_default_role() throws Exception {
         var testUser = TestUser.U1();
 
         var signUpRequest = SignUpRequest.newBuilder()
