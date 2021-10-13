@@ -1,7 +1,7 @@
 package com.block.server.service.hashtag;
 
-import com.block.server.domain.HashTag;
-import com.block.server.domain.repository.HashTagRepository;
+import com.block.server.domain.hashtag.HashTag;
+import com.block.server.domain.hashtag.HashTagRepository;
 import com.block.server.service.HashTagServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.client.ExpectedCount.times;
 
 @ExtendWith(MockitoExtension.class)
 public class HashTagServiceTest {

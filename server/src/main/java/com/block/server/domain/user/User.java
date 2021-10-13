@@ -1,6 +1,7 @@
-package com.block.server.domain;
+package com.block.server.domain.user;
 
 import com.block.server._generated.proto.userservice.SignUpRequest;
+import com.block.server.domain.hashtag.HashTag;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -297,34 +297,34 @@ public final class PostProtocolGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.block.server._generated.proto.postservice.LikePostRequest,
-      com.block.server._generated.proto.postservice.LikePostResponse> getCancleLikePostMethod;
+      com.block.server._generated.proto.postservice.LikePostResponse> getCancelLikePostMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CancleLikePost",
+      fullMethodName = SERVICE_NAME + '/' + "CancelLikePost",
       requestType = com.block.server._generated.proto.postservice.LikePostRequest.class,
       responseType = com.block.server._generated.proto.postservice.LikePostResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.block.server._generated.proto.postservice.LikePostRequest,
-      com.block.server._generated.proto.postservice.LikePostResponse> getCancleLikePostMethod() {
-    io.grpc.MethodDescriptor<com.block.server._generated.proto.postservice.LikePostRequest, com.block.server._generated.proto.postservice.LikePostResponse> getCancleLikePostMethod;
-    if ((getCancleLikePostMethod = PostProtocolGrpc.getCancleLikePostMethod) == null) {
+      com.block.server._generated.proto.postservice.LikePostResponse> getCancelLikePostMethod() {
+    io.grpc.MethodDescriptor<com.block.server._generated.proto.postservice.LikePostRequest, com.block.server._generated.proto.postservice.LikePostResponse> getCancelLikePostMethod;
+    if ((getCancelLikePostMethod = PostProtocolGrpc.getCancelLikePostMethod) == null) {
       synchronized (PostProtocolGrpc.class) {
-        if ((getCancleLikePostMethod = PostProtocolGrpc.getCancleLikePostMethod) == null) {
-          PostProtocolGrpc.getCancleLikePostMethod = getCancleLikePostMethod =
+        if ((getCancelLikePostMethod = PostProtocolGrpc.getCancelLikePostMethod) == null) {
+          PostProtocolGrpc.getCancelLikePostMethod = getCancelLikePostMethod =
               io.grpc.MethodDescriptor.<com.block.server._generated.proto.postservice.LikePostRequest, com.block.server._generated.proto.postservice.LikePostResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CancleLikePost"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CancelLikePost"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.block.server._generated.proto.postservice.LikePostRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.block.server._generated.proto.postservice.LikePostResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new PostProtocolMethodDescriptorSupplier("CancleLikePost"))
+              .setSchemaDescriptor(new PostProtocolMethodDescriptorSupplier("CancelLikePost"))
               .build();
         }
       }
     }
-    return getCancleLikePostMethod;
+    return getCancelLikePostMethod;
   }
 
   /**
@@ -443,9 +443,9 @@ public final class PostProtocolGrpc {
 
     /**
      */
-    public void cancleLikePost(com.block.server._generated.proto.postservice.LikePostRequest request,
+    public void cancelLikePost(com.block.server._generated.proto.postservice.LikePostRequest request,
         io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.LikePostResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCancleLikePostMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCancelLikePostMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -514,12 +514,12 @@ public final class PostProtocolGrpc {
                 com.block.server._generated.proto.postservice.LikePostResponse>(
                   this, METHODID_LIKE_POST)))
           .addMethod(
-            getCancleLikePostMethod(),
+            getCancelLikePostMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.block.server._generated.proto.postservice.LikePostRequest,
                 com.block.server._generated.proto.postservice.LikePostResponse>(
-                  this, METHODID_CANCLE_LIKE_POST)))
+                  this, METHODID_CANCEL_LIKE_POST)))
           .build();
     }
   }
@@ -615,10 +615,10 @@ public final class PostProtocolGrpc {
 
     /**
      */
-    public void cancleLikePost(com.block.server._generated.proto.postservice.LikePostRequest request,
+    public void cancelLikePost(com.block.server._generated.proto.postservice.LikePostRequest request,
         io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.LikePostResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCancleLikePostMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getCancelLikePostMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -704,9 +704,9 @@ public final class PostProtocolGrpc {
 
     /**
      */
-    public com.block.server._generated.proto.postservice.LikePostResponse cancleLikePost(com.block.server._generated.proto.postservice.LikePostRequest request) {
+    public com.block.server._generated.proto.postservice.LikePostResponse cancelLikePost(com.block.server._generated.proto.postservice.LikePostRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCancleLikePostMethod(), getCallOptions(), request);
+          getChannel(), getCancelLikePostMethod(), getCallOptions(), request);
     }
   }
 
@@ -801,10 +801,10 @@ public final class PostProtocolGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.block.server._generated.proto.postservice.LikePostResponse> cancleLikePost(
+    public com.google.common.util.concurrent.ListenableFuture<com.block.server._generated.proto.postservice.LikePostResponse> cancelLikePost(
         com.block.server._generated.proto.postservice.LikePostRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCancleLikePostMethod(), getCallOptions()), request);
+          getChannel().newCall(getCancelLikePostMethod(), getCallOptions()), request);
     }
   }
 
@@ -817,7 +817,7 @@ public final class PostProtocolGrpc {
   private static final int METHODID_MODIFY_COMMENT = 6;
   private static final int METHODID_DELETE_COMMENT = 7;
   private static final int METHODID_LIKE_POST = 8;
-  private static final int METHODID_CANCLE_LIKE_POST = 9;
+  private static final int METHODID_CANCEL_LIKE_POST = 9;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -872,8 +872,8 @@ public final class PostProtocolGrpc {
           serviceImpl.likePost((com.block.server._generated.proto.postservice.LikePostRequest) request,
               (io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.LikePostResponse>) responseObserver);
           break;
-        case METHODID_CANCLE_LIKE_POST:
-          serviceImpl.cancleLikePost((com.block.server._generated.proto.postservice.LikePostRequest) request,
+        case METHODID_CANCEL_LIKE_POST:
+          serviceImpl.cancelLikePost((com.block.server._generated.proto.postservice.LikePostRequest) request,
               (io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.LikePostResponse>) responseObserver);
           break;
         default:
@@ -946,7 +946,7 @@ public final class PostProtocolGrpc {
               .addMethod(getModifyCommentMethod())
               .addMethod(getDeleteCommentMethod())
               .addMethod(getLikePostMethod())
-              .addMethod(getCancleLikePostMethod())
+              .addMethod(getCancelLikePostMethod())
               .build();
         }
       }

@@ -1,7 +1,7 @@
 package com.block.server.service;
 
-import com.block.server.domain.HashTag;
-import com.block.server.domain.repository.HashTagRepository;
+import com.block.server.domain.hashtag.HashTag;
+import com.block.server.domain.hashtag.HashTagRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -139,10 +139,10 @@ public final class PostProtocolOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\022PostProtocol.proto\"%\n\010Location\022\013\n\003lat\030" +
-      "\001 \001(\002\022\014\n\004long\030\002 \001(\002\"d\n\007Comment\022\021\n\tcommen" +
-      "tId\030\001 \001(\t\022\016\n\006writer\030\002 \001(\t\022\017\n\007content\030\003 \001" +
+      "\001 \001(\001\022\014\n\004long\030\002 \001(\001\"d\n\007Comment\022\021\n\tcommen" +
+      "tId\030\001 \001(\t\022\016\n\006author\030\002 \001(\t\022\017\n\007content\030\003 \001" +
       "(\t\022\021\n\tcreatedTS\030\004 \001(\005\022\022\n\nmodifiedTS\030\005 \001(" +
-      "\005\"\221\001\n\004Post\022\016\n\006postId\030\001 \001(\t\022\016\n\006writer\030\002 \001" +
+      "\005\"\221\001\n\004Post\022\016\n\006postId\030\001 \001(\t\022\016\n\006author\030\002 \001" +
       "(\t\022\017\n\007content\030\003 \001(\t\022\020\n\010imageUrl\030\004 \001(\t\022\r\n" +
       "\005likes\030\005 \001(\005\022\032\n\010comments\030\006 \003(\0132\010.Comment" +
       "\022\033\n\010location\030\007 \001(\0132\t.Location\" \n\016GetPost" +
@@ -158,8 +158,8 @@ public final class PostProtocolOuterClass {
       "er\022\017\n\007enabled\030\001 \001(\010\022\020\n\010distance\030\002 \001(\005B\020\n" +
       "\016_resultPerPage\"M\n\020GetPostsResponse\022#\n\006s" +
       "tatus\030\001 \001(\0162\023.PostProtocolStatus\022\024\n\005post" +
-      "s\030\002 \003(\0132\005.Post\"`\n\021CreatePostRequest\022\016\n\006w" +
-      "riter\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\022\r\n\005image\030\003 " +
+      "s\030\002 \003(\0132\005.Post\"`\n\021CreatePostRequest\022\016\n\006a" +
+      "uthor\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\022\r\n\005image\030\003 " +
       "\001(\014\022\033\n\010location\030\004 \001(\0132\t.Location\"I\n\022Crea" +
       "tePostResponse\022#\n\006status\030\001 \001(\0162\023.PostPro" +
       "tocolStatus\022\016\n\006postId\030\002 \001(\t\"i\n\021ModifyPos" +
@@ -170,7 +170,7 @@ public final class PostProtocolOuterClass {
       "tId\030\002 \001(\t\"#\n\021DeletePostRequest\022\016\n\006postId" +
       "\030\001 \001(\t\"I\n\022DeletePostResponse\022#\n\006status\030\001" +
       " \001(\0162\023.PostProtocolStatus\022\016\n\006postId\030\002 \001(" +
-      "\t\"G\n\024CreateCommentRequest\022\016\n\006writer\030\001 \001(" +
+      "\t\"G\n\024CreateCommentRequest\022\016\n\006author\030\001 \001(" +
       "\t\022\016\n\006postId\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\"O\n\025Cr" +
       "eateCommentResponse\022#\n\006status\030\001 \001(\0162\023.Po" +
       "stProtocolStatus\022\021\n\tcommentId\030\002 \001(\t\":\n\024M" +
@@ -199,7 +199,7 @@ public final class PostProtocolOuterClass {
       "tResponse\"\000\022@\n\rDeleteComment\022\025.DeleteCom" +
       "mentRequest\032\026.DeleteCommentResponse\"\000\0221\n" +
       "\010LikePost\022\020.LikePostRequest\032\021.LikePostRe" +
-      "sponse\"\000\0227\n\016CancleLikePost\022\020.LikePostReq" +
+      "sponse\"\000\0227\n\016CancelLikePost\022\020.LikePostReq" +
       "uest\032\021.LikePostResponse\"\000B1\n-com.block.s" +
       "erver._generated.proto.postserviceP\001b\006pr" +
       "oto3"
@@ -219,13 +219,13 @@ public final class PostProtocolOuterClass {
     internal_static_Comment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Comment_descriptor,
-        new java.lang.String[] { "CommentId", "Writer", "Content", "CreatedTS", "ModifiedTS", });
+        new java.lang.String[] { "CommentId", "Author", "Content", "CreatedTS", "ModifiedTS", });
     internal_static_Post_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Post_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Post_descriptor,
-        new java.lang.String[] { "PostId", "Writer", "Content", "ImageUrl", "Likes", "Comments", "Location", });
+        new java.lang.String[] { "PostId", "Author", "Content", "ImageUrl", "Likes", "Comments", "Location", });
     internal_static_GetPostRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_GetPostRequest_fieldAccessorTable = new
@@ -267,7 +267,7 @@ public final class PostProtocolOuterClass {
     internal_static_CreatePostRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreatePostRequest_descriptor,
-        new java.lang.String[] { "Writer", "Content", "Image", "Location", });
+        new java.lang.String[] { "Author", "Content", "Image", "Location", });
     internal_static_CreatePostResponse_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_CreatePostResponse_fieldAccessorTable = new
@@ -303,7 +303,7 @@ public final class PostProtocolOuterClass {
     internal_static_CreateCommentRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreateCommentRequest_descriptor,
-        new java.lang.String[] { "Writer", "PostId", "Content", });
+        new java.lang.String[] { "Author", "PostId", "Content", });
     internal_static_CreateCommentResponse_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_CreateCommentResponse_fieldAccessorTable = new

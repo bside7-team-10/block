@@ -1,6 +1,5 @@
-package com.block.server.domain.repository;
+package com.block.server.domain.hashtag;
 
-import com.block.server.domain.HashTag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

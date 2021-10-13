@@ -1,4 +1,4 @@
-package com.block.server.domain;
+package com.block.server.domain.user;
 
 public class Roles {
     public static final String USER = "user";
