@@ -2,7 +2,7 @@ import React from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import styled from 'styled-components';
 import { DatePicker } from 'antd';
-import { THEME_COLOR1, WHITE_COLOR, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
+import { PRIMARY_COLOR2, WHITE_COLOR, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
 
 export interface DatePickerFieldProps {
   type?: string;
@@ -86,7 +86,7 @@ const StyledDatePicker = styled(DatePicker)`
   }
 
   & input::placeholder {
-    color: ${({ error }: ErrorProps) => (error ? FORM_ERROR_COLOR : THEME_COLOR1)};
+    color: ${({ error }: ErrorProps) => (error ? FORM_ERROR_COLOR : PRIMARY_COLOR2)};
     font-style: normal;
     font-weight: normal;
     font-size: 14px;

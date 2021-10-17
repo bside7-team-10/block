@@ -6,7 +6,7 @@ import DatePickerField, { DatePickerFieldProps } from './DatePickerField';
 import InputField, { InputFieldProps } from './InputField';
 import RadioField, { RadioFieldProps } from './RadioField';
 import CheckboxField, { CheckboxFieldProps } from './CheckboxField';
-import { THEME_COLOR1, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
+import { PRIMARY_COLOR2, FORM_ERROR_COLOR } from '../../../utils/theme/theme';
 
 type FieldsInterface =
   | DatePickerFieldProps
@@ -23,7 +23,7 @@ const Fields = (props: FieldsInterface) => {
     prefix,
     inputcolor,
     trigger,
-    color = THEME_COLOR1,
+    color = PRIMARY_COLOR2,
     marginBottom = '10px',
     required = false,
     ...rest

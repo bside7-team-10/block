@@ -12,7 +12,7 @@ import {
   TitleImage,
   FullWidthButton,
 } from './styled/LoginCommonStyle';
-import { SUB_COLOR3, WHITE_COLOR } from '../utils/theme/theme';
+import { PRIMARY_COLOR2, WHITE_COLOR } from '../utils/theme/theme';
 
 const { TabPane } = Tabs;
 
@@ -116,7 +116,7 @@ const StyledTabs = styled(Tabs)`
           display: block; /* centers text inside tabs */
           flex: 1;
           text-align: center;
-          color: ${() => SUB_COLOR3};
+          color: ${() => PRIMARY_COLOR2};
           font-size: 18px;
           line-height: 26px;
           font-weight: bold;
