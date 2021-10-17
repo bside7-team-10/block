@@ -5,7 +5,7 @@ import { Checkbox } from 'antd';
 import {
   BLACK_COLOR,
   FORM_ERROR_COLOR,
-  THEME_COLOR1,
+  PRIMARY_COLOR2,
   WHITE_COLOR,
 } from '../../../utils/theme/theme';
 
@@ -29,7 +29,7 @@ export interface CheckboxFieldProps {
 
 const CheckboxField = (props: CheckboxFieldProps) => {
   const { name, control, rules, trigger, setFormColor, current, error, options = null } = props;
-  const [color, setColor] = useState(THEME_COLOR1);
+  const [color, setColor] = useState(PRIMARY_COLOR2);
 
   const onBlur = async () => {
     if (trigger) {
@@ -39,8 +39,8 @@ const CheckboxField = (props: CheckboxFieldProps) => {
         setColor(WHITE_COLOR);
         return;
       }
-      setFormColor(THEME_COLOR1);
-      setColor(THEME_COLOR1);
+      setFormColor(PRIMARY_COLOR2);
+      setColor(PRIMARY_COLOR2);
     }
   };
 
@@ -95,7 +95,7 @@ const StyledCheckboxGroup = styled(Checkbox.Group)`
   & span.ant-checkbox-inner {
     background-color: transparent;
     border: ${({ error }: StyleProps) =>
-      error ? `1px solid ${FORM_ERROR_COLOR}` : `1px solid ${THEME_COLOR1}`};
+      error ? `1px solid ${FORM_ERROR_COLOR}` : `1px solid ${PRIMARY_COLOR2}`};
     box-sizing: border-box;
     border-radius: 4px;
   }

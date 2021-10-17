@@ -1,33 +1,37 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Controller } from 'react-hook-form';
-import { WHITE_COLOR } from '../../../utils/theme/theme';
-import Avatar from '../../../assets/Avatar';
+import { PRIMARY_COLOR } from '../../../utils/theme/theme';
 
 export interface SelectButtonFieldProps {
   name: string;
   control: any;
   required: boolean;
+  options: any;
+}
+
+interface AvatarOption {
+  option: string;
+  checked: boolean;
 }
 
 const SelectAvatarField = (props: SelectButtonFieldProps) => {
-  const { name, control } = props;
+  const { name, control, options } = props;
   const [avatarOptions, setAvatarOptions] = useState(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    [...new Array(20)].map((_) => ({ checked: false }))
+    options.map((option: string) => ({ option, checked: false }))
   );
 
   const onAvatarClicked = (index: number, onChange: any) => {
-    const newOptions = avatarOptions.map(({ checked }, i) => {
+    const newOptions = avatarOptions.map(({ option, checked }: AvatarOption, i: number) => {
       if (i === index) {
-        return { checked: !checked };
+        return { option, checked: !checked };
       }
-      return { checked: false };
+      return { option, checked: false };
     });
     setAvatarOptions([...newOptions]);
-    const checkedOption = newOptions.filter((option) => option.checked);
+    const checkedOption = newOptions.filter((option: AvatarOption) => option.checked);
     if (checkedOption.length) {
-      onChange(true);
+      onChange(checkedOption[0].option);
     } else {
       onChange(false);
     }
@@ -40,13 +44,9 @@ const SelectAvatarField = (props: SelectButtonFieldProps) => {
       render={({ field: { onChange } }) => {
         return (
           <Wrapper>
-            {avatarOptions.map((option, i) => (
-              <AvatarWrapper
-                key={i}
-                onClick={() => onAvatarClicked(i, onChange)}
-                checked={option.checked}
-              >
-                <Avatar />
+            {avatarOptions.map(({ option, checked }: AvatarOption, i: number) => (
+              <AvatarWrapper key={i} onClick={() => onAvatarClicked(i, onChange)} checked={checked}>
+                <img src={`/static/images/signup/${option}`} width="50" height="50" key={i} />
               </AvatarWrapper>
             ))}
           </Wrapper>
@@ -73,5 +73,5 @@ const AvatarWrapper = styled.div`
   margin-right: 5px;
   margin-bottom: 5px;
   border: ${({ checked }: AvatarWrapperProps) =>
-    checked ? `3px solid ${WHITE_COLOR}` : '3px solid transparent'};
+    checked ? `3px solid ${PRIMARY_COLOR}` : '3px solid transparent'};
 `;

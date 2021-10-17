@@ -2,7 +2,7 @@ import React from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import { Input } from 'antd';
-import { FORM_ERROR_COLOR, THEME_COLOR1, WHITE_COLOR } from '../../../utils/theme/theme';
+import { FORM_ERROR_COLOR, PRIMARY_COLOR2, WHITE_COLOR } from '../../../utils/theme/theme';
 
 export interface InputFieldProps {
   type?: string;
@@ -35,7 +35,7 @@ const InputField = (props: InputFieldProps) => {
     setFormColor,
     allowClear = false,
     opacity = 1.0,
-    color = THEME_COLOR1,
+    color = PRIMARY_COLOR2,
     inputcolor = WHITE_COLOR,
     error,
   } = props;

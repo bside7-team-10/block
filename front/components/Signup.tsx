@@ -15,7 +15,7 @@ import SelectAvatarField from './common/fields/SelectAvatarField';
 import { HorizontalSpace } from './common/Spaces';
 import {
   PRIMARY_COLOR,
-  THEME_COLOR1,
+  PRIMARY_COLOR2,
   WHITE_COLOR,
   COMMON_SIZE_72PX,
   COMMON_SIZE_32PX,
@@ -181,6 +181,9 @@ const Signup = () => {
     }
   }, [step]);
 
+  const selectedNickname = getValues(FIELDS_NAME.NICKNAME);
+  const selectedAvatar = getValues(FIELDS_NAME.AVATAR);
+
   return (
     <Wrapper>
       <SignupGlobalStyle />
@@ -296,10 +299,23 @@ const Signup = () => {
             />
           )}
           {step === SIGNUP_STEP.STEP4 && (
-            <SelectAvatarField name={FIELDS_NAME.AVATAR} control={control} required />
+            <SelectAvatarField
+              name={FIELDS_NAME.AVATAR}
+              control={control}
+              options={avatarOptions}
+              required
+            />
           )}
-          {/* TODO STEP5 Component */}
-          {step === SIGNUP_STEP.STEP5 && <></>}
+          {step === SIGNUP_STEP.STEP5 && (
+            <Step5Wrapper>
+              <img src={`/static/images/signup/${selectedAvatar}`} width="200" height="200" />
+              <HorizontalSpace height={COMMON_SIZE_24PX} />
+              <WelcomeText>
+                &ldquo;{selectedNickname}&rdquo;님 반가워요~!
+                <br /> 이제 주변의 블록으로 떠나볼까요!
+              </WelcomeText>
+            </Step5Wrapper>
+          )}
         </FieldsWrapper>
         <ReturnButtonComponent
           step={step}
@@ -333,7 +349,7 @@ const ReturnButtonComponent = ({
   }
   if (step === SIGNUP_STEP.STEP4) {
     return (
-      <ButtonCommon onClick={handleSubmit(onSubmit)} active={nextBtnActive}>
+      <ButtonCommon onClick={onNextButtonClicked} active={nextBtnActive}>
         NEXT
       </ButtonCommon>
     );
@@ -408,6 +424,22 @@ const interestOptions = [
   '후기공유',
 ].map((option: string) => ({ label: `#${option}`, value: option, checked: false }));
 
+const avatarOptions = [
+  'avatar1.png',
+  'avatar2.png',
+  'avatar3.png',
+  'avatar4.png',
+  'avatar5.png',
+  'avatar6.png',
+  'avatar7.png',
+  'avatar8.png',
+  'avatar9.png',
+  'avatar10.png',
+  'avatar11.png',
+  'avatar12.png',
+  'avatar13.png',
+];
+
 interface FormSelectOptions {
   [index: number]: { label: string; value: number };
 }
@@ -424,7 +456,7 @@ const LogoWrapper = styled.div`
 
 const Description = styled.div`
   font-size: 14px;
-  color: ${THEME_COLOR1};
+  color: ${PRIMARY_COLOR2};
 `;
 
 const Wrapper = styled.div`
@@ -454,4 +486,18 @@ const Title = styled.div`
   line-height: 39px;
   color: ${() => PRIMARY_COLOR};
   font-weight: 800;
+`;
+
+const Step5Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const WelcomeText = styled.div`
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  color: ${PRIMARY_COLOR2};
+  text-align: center;
 `;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import styled from 'styled-components';
 import { Radio } from 'antd';
-import { THEME_COLOR1, WHITE_COLOR } from '../../../utils/theme/theme';
+import { PRIMARY_COLOR2, WHITE_COLOR } from '../../../utils/theme/theme';
 
 interface RadioOption {
   label: string;
@@ -28,7 +28,7 @@ export interface RadioFieldProps {
 
 const RadioField = (props: RadioFieldProps) => {
   const { name, control, rules, size, trigger, setFormColor, options = null } = props;
-  const [color, setColor] = useState(THEME_COLOR1);
+  const [color, setColor] = useState(PRIMARY_COLOR2);
 
   const radioOptions = options?.map(({ label, value }: RadioOption, i: number) => (
     <StyledRadio key={i} value={value}>
@@ -87,19 +87,19 @@ const StyledRadioGroup = styled(Radio.Group)`
 
   & span.ant-radio-inner {
     background-color: transparent;
-    border: 1px solid ${THEME_COLOR1};
+    border: 1px solid ${PRIMARY_COLOR2};
     box-sizing: border-box;
     border-radius: 4px;
     transform: matrix(1, 0, 0, -1, 0, 0);
   }
 
   & span.ant-radio-inner::after {
-    background-color: ${() => THEME_COLOR1};
+    background-color: ${() => PRIMARY_COLOR2};
   }
 
   & span.ant-radio:hover,
   & span.ant-radio:hover .ant-radio-inner {
-    border-color: ${THEME_COLOR1};
+    border-color: ${PRIMARY_COLOR2};
   }
 `;
 

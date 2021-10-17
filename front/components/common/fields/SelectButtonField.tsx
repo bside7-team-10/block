@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import styled from 'styled-components';
-import { THEME_COLOR1, WHITE_COLOR, BLACK_COLOR } from '../../../utils/theme/theme';
+import { PRIMARY_COLOR2, WHITE_COLOR, BLACK_COLOR } from '../../../utils/theme/theme';
 
 export interface SelectButtonFieldProps {
   name: string;
@@ -64,7 +64,7 @@ const StyledButton = styled.button`
   margin-right: 5px;
   margin-bottom: 5px;
   border: ${({ checked }: ButtonProps) =>
-    checked ? '1px solid transparent' : `1px solid ${THEME_COLOR1}`};
-  color: ${({ checked }: ButtonProps) => (checked ? `${BLACK_COLOR}` : `${THEME_COLOR1}`)};
+    checked ? '1px solid transparent' : `1px solid ${PRIMARY_COLOR2}`};
+  color: ${({ checked }: ButtonProps) => (checked ? `${BLACK_COLOR}` : `${PRIMARY_COLOR2}`)};
   background-color: ${({ checked }: ButtonProps) => (checked ? `${WHITE_COLOR}` : 'transparent')};
 `;
