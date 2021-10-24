@@ -56,7 +56,7 @@ public class TestUser {
                 .profile(profileUrl)
                 .birthday(LocalDate.parse(birthdayStr))
                 .gender(gender)
-                .nickname(nickname)
+                .nickName(nickname)
                 .roles(role)
                 .build();
     }

@@ -29,7 +29,7 @@ public class User {
     private String password;
 
     @Column
-    private String nickname;
+    private String nickName;
 
     @Column
     private String profile;
@@ -55,14 +55,16 @@ public class User {
     private String roles;
 
     @Builder
-    public User(String email, String password, String nickname, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles) {
+    public User(String email, String password, String nickName, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles) {
         this.email = email;
         this.password = password;
-        this.nickname = nickname;
+        this.nickName = nickName;
         this.profile = profile;
         this.birthday = birthday;
         this.gender = gender;
         this.social = social;
         this.roles = roles;
     }
+
+
 }
