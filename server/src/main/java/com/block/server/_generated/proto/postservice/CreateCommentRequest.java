@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CreateCommentRequest() {
-    writer_ = "";
+    author_ = "";
     postId_ = "";
     content_ = "";
   }
@@ -54,7 +54,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            writer_ = s;
+            author_ = s;
             break;
           }
           case 18: {
@@ -101,38 +101,38 @@ private static final long serialVersionUID = 0L;
             com.block.server._generated.proto.postservice.CreateCommentRequest.class, com.block.server._generated.proto.postservice.CreateCommentRequest.Builder.class);
   }
 
-  public static final int WRITER_FIELD_NUMBER = 1;
-  private volatile java.lang.Object writer_;
+  public static final int AUTHOR_FIELD_NUMBER = 1;
+  private volatile java.lang.Object author_;
   /**
-   * <code>string writer = 1;</code>
-   * @return The writer.
+   * <code>string author = 1;</code>
+   * @return The author.
    */
   @java.lang.Override
-  public java.lang.String getWriter() {
-    java.lang.Object ref = writer_;
+  public java.lang.String getAuthor() {
+    java.lang.Object ref = author_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      writer_ = s;
+      author_ = s;
       return s;
     }
   }
   /**
-   * <code>string writer = 1;</code>
-   * @return The bytes for writer.
+   * <code>string author = 1;</code>
+   * @return The bytes for author.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getWriterBytes() {
-    java.lang.Object ref = writer_;
+      getAuthorBytes() {
+    java.lang.Object ref = author_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      writer_ = b;
+      author_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -229,8 +229,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getWriterBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, writer_);
+    if (!getAuthorBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, author_);
     }
     if (!getPostIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, postId_);
@@ -247,8 +247,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getWriterBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, writer_);
+    if (!getAuthorBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, author_);
     }
     if (!getPostIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, postId_);
@@ -271,8 +271,8 @@ private static final long serialVersionUID = 0L;
     }
     com.block.server._generated.proto.postservice.CreateCommentRequest other = (com.block.server._generated.proto.postservice.CreateCommentRequest) obj;
 
-    if (!getWriter()
-        .equals(other.getWriter())) return false;
+    if (!getAuthor()
+        .equals(other.getAuthor())) return false;
     if (!getPostId()
         .equals(other.getPostId())) return false;
     if (!getContent()
@@ -288,8 +288,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + WRITER_FIELD_NUMBER;
-    hash = (53 * hash) + getWriter().hashCode();
+    hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
+    hash = (53 * hash) + getAuthor().hashCode();
     hash = (37 * hash) + POSTID_FIELD_NUMBER;
     hash = (53 * hash) + getPostId().hashCode();
     hash = (37 * hash) + CONTENT_FIELD_NUMBER;
@@ -427,7 +427,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      writer_ = "";
+      author_ = "";
 
       postId_ = "";
 
@@ -459,7 +459,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.block.server._generated.proto.postservice.CreateCommentRequest buildPartial() {
       com.block.server._generated.proto.postservice.CreateCommentRequest result = new com.block.server._generated.proto.postservice.CreateCommentRequest(this);
-      result.writer_ = writer_;
+      result.author_ = author_;
       result.postId_ = postId_;
       result.content_ = content_;
       onBuilt();
@@ -510,8 +510,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.block.server._generated.proto.postservice.CreateCommentRequest other) {
       if (other == com.block.server._generated.proto.postservice.CreateCommentRequest.getDefaultInstance()) return this;
-      if (!other.getWriter().isEmpty()) {
-        writer_ = other.writer_;
+      if (!other.getAuthor().isEmpty()) {
+        author_ = other.author_;
         onChanged();
       }
       if (!other.getPostId().isEmpty()) {
@@ -551,78 +551,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object writer_ = "";
+    private java.lang.Object author_ = "";
     /**
-     * <code>string writer = 1;</code>
-     * @return The writer.
+     * <code>string author = 1;</code>
+     * @return The author.
      */
-    public java.lang.String getWriter() {
-      java.lang.Object ref = writer_;
+    public java.lang.String getAuthor() {
+      java.lang.Object ref = author_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        writer_ = s;
+        author_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string writer = 1;</code>
-     * @return The bytes for writer.
+     * <code>string author = 1;</code>
+     * @return The bytes for author.
      */
     public com.google.protobuf.ByteString
-        getWriterBytes() {
-      java.lang.Object ref = writer_;
+        getAuthorBytes() {
+      java.lang.Object ref = author_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        writer_ = b;
+        author_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string writer = 1;</code>
-     * @param value The writer to set.
+     * <code>string author = 1;</code>
+     * @param value The author to set.
      * @return This builder for chaining.
      */
-    public Builder setWriter(
+    public Builder setAuthor(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      writer_ = value;
+      author_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string writer = 1;</code>
+     * <code>string author = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearWriter() {
+    public Builder clearAuthor() {
       
-      writer_ = getDefaultInstance().getWriter();
+      author_ = getDefaultInstance().getAuthor();
       onChanged();
       return this;
     }
     /**
-     * <code>string writer = 1;</code>
-     * @param value The bytes for writer to set.
+     * <code>string author = 1;</code>
+     * @param value The bytes for author to set.
      * @return This builder for chaining.
      */
-    public Builder setWriterBytes(
+    public Builder setAuthorBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      writer_ = value;
+      author_ = value;
       onChanged();
       return this;
     }

@@ -20,16 +20,16 @@ public interface PostOrBuilder extends
       getPostIdBytes();
 
   /**
-   * <code>string writer = 2;</code>
-   * @return The writer.
+   * <code>string author = 2;</code>
+   * @return The author.
    */
-  java.lang.String getWriter();
+  java.lang.String getAuthor();
   /**
-   * <code>string writer = 2;</code>
-   * @return The bytes for writer.
+   * <code>string author = 2;</code>
+   * @return The bytes for author.
    */
   com.google.protobuf.ByteString
-      getWriterBytes();
+      getAuthorBytes();
 
   /**
    * <code>string content = 3;</code>

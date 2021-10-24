@@ -8,14 +8,14 @@ public interface LocationOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>float lat = 1;</code>
+   * <code>double lat = 1;</code>
    * @return The lat.
    */
-  float getLat();
+  double getLat();
 
   /**
-   * <code>float long = 2;</code>
+   * <code>double long = 2;</code>
    * @return The long.
    */
-  float getLong();
+  double getLong();
 }
