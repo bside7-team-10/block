@@ -15,9 +15,7 @@ public class UserProtocol extends UserProtocolGrpc.UserProtocolImplBase {
 
     @Override
     public void signIn(SignInRequest request, StreamObserver<SignInResponse> responseObserver) {
-
         var user = userService.signIn(request);
-
         responseObserver.onNext(user);
         responseObserver.onCompleted();
 

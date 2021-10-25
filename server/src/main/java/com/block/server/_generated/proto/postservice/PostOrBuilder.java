@@ -8,28 +8,25 @@ public interface PostOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string postId = 1;</code>
+   * <code>int64 postId = 1;</code>
    * @return The postId.
    */
-  java.lang.String getPostId();
-  /**
-   * <code>string postId = 1;</code>
-   * @return The bytes for postId.
-   */
-  com.google.protobuf.ByteString
-      getPostIdBytes();
+  long getPostId();
 
   /**
-   * <code>string author = 2;</code>
+   * <code>.User author = 2;</code>
+   * @return Whether the author field is set.
+   */
+  boolean hasAuthor();
+  /**
+   * <code>.User author = 2;</code>
    * @return The author.
    */
-  java.lang.String getAuthor();
+  com.block.server._generated.proto.postservice.User getAuthor();
   /**
-   * <code>string author = 2;</code>
-   * @return The bytes for author.
+   * <code>.User author = 2;</code>
    */
-  com.google.protobuf.ByteString
-      getAuthorBytes();
+  com.block.server._generated.proto.postservice.UserOrBuilder getAuthorOrBuilder();
 
   /**
    * <code>string content = 3;</code>

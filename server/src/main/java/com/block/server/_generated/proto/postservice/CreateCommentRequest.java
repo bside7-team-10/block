@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private CreateCommentRequest() {
     author_ = "";
-    postId_ = "";
     content_ = "";
   }
 
@@ -57,10 +56,9 @@ private static final long serialVersionUID = 0L;
             author_ = s;
             break;
           }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 16: {
 
-            postId_ = s;
+            postId_ = input.readInt64();
             break;
           }
           case 26: {
@@ -140,41 +138,14 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int POSTID_FIELD_NUMBER = 2;
-  private volatile java.lang.Object postId_;
+  private long postId_;
   /**
-   * <code>string postId = 2;</code>
+   * <code>int64 postId = 2;</code>
    * @return The postId.
    */
   @java.lang.Override
-  public java.lang.String getPostId() {
-    java.lang.Object ref = postId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      postId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string postId = 2;</code>
-   * @return The bytes for postId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getPostIdBytes() {
-    java.lang.Object ref = postId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      postId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public long getPostId() {
+    return postId_;
   }
 
   public static final int CONTENT_FIELD_NUMBER = 3;
@@ -232,8 +203,8 @@ private static final long serialVersionUID = 0L;
     if (!getAuthorBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, author_);
     }
-    if (!getPostIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, postId_);
+    if (postId_ != 0L) {
+      output.writeInt64(2, postId_);
     }
     if (!getContentBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, content_);
@@ -250,8 +221,9 @@ private static final long serialVersionUID = 0L;
     if (!getAuthorBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, author_);
     }
-    if (!getPostIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, postId_);
+    if (postId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(2, postId_);
     }
     if (!getContentBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, content_);
@@ -273,8 +245,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getAuthor()
         .equals(other.getAuthor())) return false;
-    if (!getPostId()
-        .equals(other.getPostId())) return false;
+    if (getPostId()
+        != other.getPostId()) return false;
     if (!getContent()
         .equals(other.getContent())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -291,7 +263,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
     hash = (53 * hash) + getAuthor().hashCode();
     hash = (37 * hash) + POSTID_FIELD_NUMBER;
-    hash = (53 * hash) + getPostId().hashCode();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getPostId());
     hash = (37 * hash) + CONTENT_FIELD_NUMBER;
     hash = (53 * hash) + getContent().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -429,7 +402,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       author_ = "";
 
-      postId_ = "";
+      postId_ = 0L;
 
       content_ = "";
 
@@ -514,9 +487,8 @@ private static final long serialVersionUID = 0L;
         author_ = other.author_;
         onChanged();
       }
-      if (!other.getPostId().isEmpty()) {
-        postId_ = other.postId_;
-        onChanged();
+      if (other.getPostId() != 0L) {
+        setPostId(other.getPostId());
       }
       if (!other.getContent().isEmpty()) {
         content_ = other.content_;
@@ -627,78 +599,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object postId_ = "";
+    private long postId_ ;
     /**
-     * <code>string postId = 2;</code>
+     * <code>int64 postId = 2;</code>
      * @return The postId.
      */
-    public java.lang.String getPostId() {
-      java.lang.Object ref = postId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        postId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public long getPostId() {
+      return postId_;
     }
     /**
-     * <code>string postId = 2;</code>
-     * @return The bytes for postId.
-     */
-    public com.google.protobuf.ByteString
-        getPostIdBytes() {
-      java.lang.Object ref = postId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        postId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string postId = 2;</code>
+     * <code>int64 postId = 2;</code>
      * @param value The postId to set.
      * @return This builder for chaining.
      */
-    public Builder setPostId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setPostId(long value) {
+      
       postId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string postId = 2;</code>
+     * <code>int64 postId = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearPostId() {
       
-      postId_ = getDefaultInstance().getPostId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string postId = 2;</code>
-     * @param value The bytes for postId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPostIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      postId_ = value;
+      postId_ = 0L;
       onChanged();
       return this;
     }

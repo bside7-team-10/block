@@ -14,7 +14,7 @@ public interface LocationOrBuilder extends
   double getLat();
 
   /**
-   * <code>double long = 2;</code>
+   * <code>double Long = 2;</code>
    * @return The long.
    */
   double getLong();
