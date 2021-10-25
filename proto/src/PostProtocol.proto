@@ -37,7 +37,7 @@ enum PostProtocolStatus {
 
 message Location {
     double lat = 1;
-    double long = 2;
+    double Long = 2;
 }
 
 message Comment {
@@ -48,9 +48,14 @@ message Comment {
     int32 modifiedTS = 5;
 }
 
+message User{
+    string nickname = 1;
+    string profileUrl = 2;
+}
+
 message Post {
-    string postId = 1;
-    string author = 2;
+    int64 postId = 1;
+    User author = 2;
     string content = 3;
     string imageUrl = 4;
     int32 likes = 5;
@@ -59,7 +64,7 @@ message Post {
 }
 
 message GetPostRequest {
-    string postId = 1;
+    int64 postId = 1;
 }
 
 message GetPostResponse {
@@ -96,11 +101,11 @@ message CreatePostRequest {
 
 message CreatePostResponse {
     PostProtocolStatus status = 1;
-    string postId = 2;
+    int64 postId = 2;
 }
 
 message ModifyPostRequest {
-    string postId = 1;
+    int64 postId = 1;
     string content = 2;
     bool modifiedImage = 3;
     optional bytes image = 4;
@@ -108,41 +113,41 @@ message ModifyPostRequest {
 
 message ModifyPostResponse {
     PostProtocolStatus status = 1;
-    string postId = 2;
+    int64 postId = 2;
 }
 
 message DeletePostRequest {
-    string postId = 1;
+    int64 postId = 1;
 }
 
 message DeletePostResponse {
     PostProtocolStatus status = 1;
-    string postId = 2;
+    int64 postId = 2;
 }
 
 message CreateCommentRequest {
     string author = 1;
-    string postId = 2;
+    int64 postId = 2;
     string content = 3;
 }
 
 message CreateCommentResponse {
     PostProtocolStatus status = 1;
-    string commentId = 2;
+    int64 commentId = 2;
 }
 
 message ModifyCommentRequest {
-    string commentId = 1;
+    int64 commentId = 1;
     string content = 2;
 }
 
 message ModifyCommentResponse {
     PostProtocolStatus status = 1;
-    string commentId = 2;
+    int64 commentId = 2;
 }
 
 message DeleteCommentRequest {
-    string commentId = 1;
+    int64 commentId = 1;
 }
 
 message DeleteCommentResponse {
@@ -150,7 +155,7 @@ message DeleteCommentResponse {
 }
 
 message LikePostRequest {
-    string postId = 1;
+    int64 postId = 1;
     bool like = 2;
 }
 

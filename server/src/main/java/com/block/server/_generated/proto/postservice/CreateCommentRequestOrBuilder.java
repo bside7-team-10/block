@@ -20,16 +20,10 @@ public interface CreateCommentRequestOrBuilder extends
       getAuthorBytes();
 
   /**
-   * <code>string postId = 2;</code>
+   * <code>int64 postId = 2;</code>
    * @return The postId.
    */
-  java.lang.String getPostId();
-  /**
-   * <code>string postId = 2;</code>
-   * @return The bytes for postId.
-   */
-  com.google.protobuf.ByteString
-      getPostIdBytes();
+  long getPostId();
 
   /**
    * <code>string content = 3;</code>
