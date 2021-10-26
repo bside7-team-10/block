@@ -1,9 +1,7 @@
-import { Button } from 'antd';
-import Avatar from 'antd/lib/avatar/avatar';
-import Checkbox from 'antd/lib/checkbox/Checkbox';
+import { Button, Switch } from 'antd';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -11,39 +9,74 @@ import { useActions } from '../hooks/use-actions';
 import { RootState } from '../state';
 import { Post } from '../state/post';
 
-import { COMMON_SIZE_12PX, GREY_COLOR } from '../utils/theme/theme';
+import {
+  COMMON_SIZE_16PX,
+  COMMON_SIZE_12PX,
+  GREY_3,
+  GREY_4,
+  WHITE_COLOR,
+  DARK_COLOR1,
+  GREY_COLOR,
+  BACK_COLOR2,
+} from '../utils/theme/theme';
+import SelectButtonField from './common/fields/SelectButtonField';
 import TextareaField from './common/fields/TextareaField';
 import { HorizontalSpace } from './common/Spaces';
+import CloseIcon from '../assets/CloseIcon';
 
 interface BoardWriteForm {
   content: string;
   rightNow: boolean;
+  hashtag: string[];
 }
+
+const hashtagOptions = [
+  '오늘의이야기',
+  '그냥하는말',
+  '대나무숲',
+  '제보',
+  '하소연',
+  '댓글고고',
+  '도움요청',
+  '친구해요',
+  '고백해요',
+  '나눔',
+  '힐링합시다',
+  '장소추천',
+  '뷰맛집',
+  '동네맛집',
+  '후기공유',
+].map((option: string, index: number) => ({
+  label: `#${option}`,
+  value: option,
+  checked: index === 0 ? true : false,
+}));
 
 const BoardWrite = () => {
   const { control, handleSubmit, getValues, setValue } = useForm<BoardWriteForm>({
     defaultValues: {
       content: '',
-      rightNow: false,
+      rightNow: true,
+      hashtag: ['오늘의이야기'],
     },
   });
 
   const router = useRouter();
 
-  const { addPost, saveTempPost } = useActions();
+  const { addPost, saveTempPost, removeTempImage } = useActions();
 
-  const src = useSelector((state: RootState) => state.image.src);
+  const { imageSource } = useSelector((state: RootState) => state.post);
   const { latitude, longitude } = useSelector((state: RootState) => state.location);
 
   const { content, rightNow, removeTempPost } = useSelector((state: RootState) => state.post);
 
   useEffect(() => {
     setValue('content', content !== null ? content : '');
-    setValue('rightNow', rightNow === true ? true : false);
+    setValue('rightNow', rightNow === null ? true : rightNow);
   }, []);
 
   const onSubmit: SubmitHandler<BoardWriteForm> = (data: BoardWriteForm) => {
-    const { content, rightNow } = data;
+    const { content, rightNow, hashtag } = data;
     const date = dayjs().format('YYYY-MM-DD HH:mm:ss');
     const post: Post = {
       content,
@@ -51,6 +84,8 @@ const BoardWrite = () => {
       latitude,
       longitude,
       date,
+      hashtag,
+      imageSource,
     };
 
     addPost(post, removeTempPost);
@@ -70,54 +105,75 @@ const BoardWrite = () => {
     router.push('/camera');
   };
 
+  const onClickRemoveImageButton = () => {
+    removeTempImage();
+  };
+
   return (
     <Wrapper>
       <InnerWrapper>
         <Container>
-          <UserInfo>
-            <ProfileImage
-              shape="square"
-              size={36}
-              src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
-            />
-            <Nickname>닉네임</Nickname>
-            <Address>GPS(지정한 정확도에 따라 주소명)</Address>
-          </UserInfo>
+          <Address>서울시 종로구 소공동 81</Address>
+          <IP>123.45.678.91</IP>
+
           <HorizontalSpace height={COMMON_SIZE_12PX} />
           <form onSubmit={handleSubmit(onSubmit)}>
-            <TextareaField
-              name="content"
-              control={control}
-              rows={10}
-              placeholder="무슨 생각을 하고 계신가요?"
-            />
+            <TextAreaWithCheckboxes>
+              <TextareaField
+                name="content"
+                control={control}
+                rows={7}
+                placeholder="어떤 생각을 하고 계신가요?"
+              />
+              <Hr />
+              <SelectButtonField
+                name="hashtag"
+                control={control}
+                options={hashtagOptions}
+                page="write"
+                required
+              />
+            </TextAreaWithCheckboxes>
             <HorizontalSpace height={COMMON_SIZE_12PX} />
             <PictureInfo>
-              {src !== null ? (
-                <CapturedImage src={src} />
+              {imageSource !== null ? (
+                <span style={{ position: 'relative' }}>
+                  <CloseButton onClick={onClickRemoveImageButton}>
+                    <CloseIcon />
+                  </CloseButton>
+                  <CapturedImage src={imageSource} />
+                </span>
               ) : (
                 <CaptureButton onClick={onClickCaptureButton}>
-                  <CaptureButtonIcon src="https://cdn4.iconfinder.com/data/icons/ios7-essence/23/device_camera_capture_photo__-1024.png" />
+                  <CaptureButtonIcon
+                    src="https://cdn4.iconfinder.com/data/icons/ios7-essence/23/device_camera_capture_photo__-1024.png"
+                    height="18"
+                    width="18"
+                  />
+                  <span>카메라 열기</span>
                 </CaptureButton>
               )}
-              <GuideMessage>
-                지금 찍은 사진도
-                <br />
-                공유해보는건 어떨까요?
-              </GuideMessage>
             </PictureInfo>
-            <HorizontalSpace height={COMMON_SIZE_12PX} />
-            <Bottom>
+            <Hr />
+            <div>
+              <span>‘NOW’로 업로드</span>
               <Controller
                 name="rightNow"
                 control={control}
-                render={({ field: { name, onChange, value } }) => (
-                  <Checkbox name={name} onChange={onChange} checked={value}>
-                    Right Now?
-                  </Checkbox>
+                render={({ field: { onChange, value } }) => (
+                  <StyledSwitch onChange={onChange} checked={value} defaultChecked />
                 )}
               />
-              <WritingButton htmlType="submit">글쓰기</WritingButton>
+              <br />
+              <NowDescription>
+                ‘NOW’로 업로드된 피드는 5시간 후에 자동 삭제되며,
+                <br />
+                지도 상에 빨간색 블럭으로 표시됩니다.
+              </NowDescription>
+            </div>
+            <HorizontalSpace height={COMMON_SIZE_12PX} />
+            <Bottom>
+              <WritingButton htmlType="submit">공유하기</WritingButton>
             </Bottom>
           </form>
         </Container>
@@ -136,70 +192,97 @@ export const Wrapper = styled.div`
   // height: 420px;
   margin-left: auto;
   margin-right: auto;
-  background-color: blue;
+  background-color: ${() => DARK_COLOR1};
+
+  border: 1px solid black;
 `;
 
 const InnerWrapper = styled.div`
-  margin: 9px 10px;
-  background-color: ${() => GREY_COLOR};
+  margin: 24px 0px 0px 0px;
+  background-color: ${() => WHITE_COLOR};
+  border-radius: 10px 10px 0px 0px;
 `;
 
 const Container = styled.div`
-  margin: 9px 10px;
+  margin: 16px 23px;
 `;
 
-const UserInfo = styled.div`
-  height: 36px;
+const IP = styled.div`
+  color: ${() => GREY_4};
+  font-size: 10px;
 `;
 
-const ProfileImage = styled(Avatar)`
-  float: left;
-`;
-
-const Nickname = styled.div`
-  font-size: 13px;
-  line-height: 1.4;
-  margin-left: 40px;
-`;
 const Address = styled.div`
   font-size: 13px;
   line-height: 1.4;
-  margin-left: 40px;
+  font-weight: 500;
+`;
+
+const TextAreaWithCheckboxes = styled.div`
+  background-color: #f5f5f5;
+  padding: 16px;
+  border-radius: 12px;
+`;
+
+const Hr = styled.hr`
+  margin-top: ${() => COMMON_SIZE_16PX};
+  margin-bottom: ${() => COMMON_SIZE_16PX};
+  background-color: ${() => GREY_COLOR};
 `;
 
 const PictureInfo = styled.div`
-  height: 86px;
+  // height: 86px;
 `;
 
 const CaptureButtonIcon = styled.img`
-  width: 100%;
+  margin-right: 6px;
+`;
+
+const CloseButton = styled.button`
+  width: 17px;
+  height: 17px;
+  border-radius: 100px;
+  position: absolute;
+  // z-index: 1;
+  right: 0;
+  right: -8px;
+  top: -28px;
+  border: none;
+  padding: 0px;
+  background-color: ${BACK_COLOR2};
 `;
 
 const CapturedImage = styled.img`
-  width: 86px;
-  height: 86px;
-  float: right;
+  width: 63px;
+  height: 63px;
+  // float: right;
   border: none;
   border-radius: 4px;
 `;
 
 const CaptureButton = styled(Button)`
-  width: 86px;
-  height: 86px;
-  float: right;
-  border: none;
-  border-radius: 4px;
+  width: 124px;
+  height: 34px;
+  border: 1px solid ${() => GREY_4};
+  border-radius: 6px;
 `;
 
-const GuideMessage = styled.div`
-  text-align: right;
-  margin-right: 94px;
+const StyledSwitch = styled(Switch)`
+  float: right;
+`;
+
+const NowDescription = styled.div`
+  color: ${() => GREY_3};
+  font-size: 10px;
 `;
 
 const WritingButton = styled(Button)`
-  width: 130px;
+  margin-top: 83px;
+  width: 100%;
   height: 48px;
   border-radius: 4px;
+  background-color: ${() => DARK_COLOR1};
+  color: ${() => WHITE_COLOR};
 `;
 
 const Bottom = styled.div`
