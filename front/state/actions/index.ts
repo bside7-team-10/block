@@ -54,11 +54,7 @@ export interface AddPostSuccessAction {
 
 export interface AddPostErrorAction {
   type: ActionType.ADD_POST_ERROR;
-  payload: string;
-}
-
-export interface CaptureImageRequestAction {
-  type: ActionType.CAPTURE_IMAGE_REQUEST;
+  payload: string | unknown;
 }
 
 export interface CaptureImageSuccessAction {
@@ -80,6 +76,10 @@ export interface RemoveTempPost {
   type: ActionType.REMOVE_TEMP_POST;
 }
 
+export interface RemoveTempImage {
+  type: ActionType.REMOVE_TEMP_IMAGE;
+}
+
 export type Action =
   | UserSignupRequestAction
   | UserSignupSuccessAction
@@ -93,8 +93,8 @@ export type Action =
   | AddPostRequestAction
   | AddPostSuccessAction
   | AddPostErrorAction
-  | CaptureImageRequestAction
   | CaptureImageSuccessAction
   | CaptureImageErrorAction
   | SaveTempPost
-  | RemoveTempPost;
+  | RemoveTempPost
+  | RemoveTempImage;

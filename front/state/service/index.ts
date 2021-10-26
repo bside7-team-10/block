@@ -5,14 +5,12 @@ import { LoginUser } from '../loginUser';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { User } from '../user';
 import { Post } from '../post';
-import { Image } from '../image';
 
-interface ServiceInterface {
+export interface ServiceInterface {
   signup: (user: User) => Promise<any>;
   login: (user: User) => Promise<any>;
   getLocation: () => Promise<any>;
   addPost: (data: Post) => Promise<any>;
-  captureImage: (image: Image) => Promise<any>;
 }
 
 const Service = () => {
@@ -82,17 +80,6 @@ const Service = () => {
         resolve('게시글이 등록되었습니다.');
       } else {
         reject('오류가 발생했습니다.');
-      }
-    });
-  };
-
-  self.captureImage = (image: Image) => {
-    return new Promise((resolve, reject) => {
-      const { src, date } = image;
-      if (src) {
-        resolve(src);
-      } else {
-        reject('이미지 등록에 실패했습니다.');
       }
     });
   };
