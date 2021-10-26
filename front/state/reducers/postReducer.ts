@@ -5,16 +5,20 @@ interface InitialState {
   loading: boolean;
   message: string | null;
   content: string | null;
-  rightNow: boolean;
+  rightNow: boolean | null;
   toComeBackPath: string | null;
+  imageSource: string | null;
+  hashtag: string[] | null;
 }
 
 const initialState: InitialState = {
   loading: false,
   message: null,
   content: null,
-  rightNow: false,
+  rightNow: null,
   toComeBackPath: null,
+  imageSource: null,
+  hashtag: null,
 };
 
 const postReducer = (state = initialState, action: Action) => {
@@ -42,6 +46,7 @@ const postReducer = (state = initialState, action: Action) => {
         content: action.payload.content,
         rightNow: action.payload.rightNow,
         toComeBackPath: action.payload.toComeBackPath,
+        hashtag: action.payload.hashtag,
       };
     case ActionType.REMOVE_TEMP_POST:
       return {
@@ -49,6 +54,23 @@ const postReducer = (state = initialState, action: Action) => {
         content: null,
         rightNow: false,
         toComeBackPath: null,
+      };
+    case ActionType.CAPTURE_IMAGE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        imageSource: action.payload,
+      };
+    case ActionType.CAPTURE_IMAGE_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case ActionType.REMOVE_TEMP_IMAGE:
+      return {
+        ...state,
+        imageSource: null,
       };
     default:
       return state;

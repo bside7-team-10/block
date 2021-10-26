@@ -2,7 +2,6 @@ import { Dispatch } from 'redux';
 
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
-import { Image } from '../image';
 import { Post } from '../post';
 import Service from '../service';
 import { User } from '../user';
@@ -71,16 +70,19 @@ export const removeTempPost = () => {
   };
 };
 
-export const captureImage = (image: Image, callback: () => void) => {
+export const removeTempImage = () => {
   return async (dispatch: Dispatch<Action>) => {
-    dispatch({ type: ActionType.CAPTURE_IMAGE_REQUEST });
-    try {
-      const response = await service.captureImage(image);
-      dispatch({ type: ActionType.CAPTURE_IMAGE_SUCCESS, payload: response });
-    } catch (error: any) {
-      dispatch({ type: ActionType.CAPTURE_IMAGE_ERROR, payload: error });
-    } finally {
-      callback();
+    dispatch({ type: ActionType.REMOVE_TEMP_IMAGE });
+  };
+};
+
+export const captureImage = (image: string, callback: () => void) => {
+  return async (dispatch: Dispatch<Action>) => {
+    if (image) {
+      dispatch({ type: ActionType.CAPTURE_IMAGE_SUCCESS, payload: image });
+    } else {
+      dispatch({ type: ActionType.CAPTURE_IMAGE_ERROR, payload: '이미지 등록에 실패했습니다.' });
     }
+    callback();
   };
 };

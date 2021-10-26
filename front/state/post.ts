@@ -5,4 +5,6 @@ export interface Post {
   longitude?: number;
   date?: string;
   toComeBackPath?: string; //촬영 후 다시 돌아 올 주소
+  hashtag?: string[];
+  imageSource?: string | null;
 }
