@@ -1,6 +1,7 @@
 import TextArea from 'antd/lib/input/TextArea';
 import React from 'react';
 import { Controller } from 'react-hook-form';
+import styled from 'styled-components';
 
 interface TextareaFieldProps {
   type?: string;
@@ -12,14 +13,14 @@ interface TextareaFieldProps {
 }
 
 const Textarea = (props: TextareaFieldProps) => {
-  const { name, control, placeholder, rows, ...rest } = props;
+  const { name, control, placeholder, rows } = props;
 
   return (
     <Controller
       control={control}
       name={name}
       render={({ field: { name, onChange, value } }) => (
-        <TextArea
+        <StyledTextArea
           name={name}
           value={value}
           placeholder={placeholder}
@@ -32,3 +33,10 @@ const Textarea = (props: TextareaFieldProps) => {
 };
 
 export default Textarea;
+
+const StyledTextArea = styled(TextArea)`
+  border: none;
+  background-color: inherit;
+  padding: 0px;
+  resize: none;
+`;

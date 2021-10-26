@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React, { useCallback, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,7 +5,6 @@ import Webcam from 'react-webcam';
 import styled from 'styled-components';
 import { useActions } from '../hooks/use-actions';
 import { RootState } from '../state';
-import { Image } from '../state/image';
 
 const videoConstraintsInitialState = {
   width: 360,
@@ -16,7 +14,7 @@ const videoConstraintsInitialState = {
 
 const WebcamCamera = () => {
   const webcamRef = useRef<any>(null);
-  const [videoConstraints, setVideoConstraints] = useState(videoConstraintsInitialState);
+  const [videoConstraints] = useState(videoConstraintsInitialState);
 
   const { captureImage } = useActions();
   const router = useRouter();
@@ -33,14 +31,7 @@ const WebcamCamera = () => {
 
   const onClickCapture = useCallback(() => {
     const src = webcamRef.current?.getScreenshot();
-    const date = dayjs().format('YYYY-MM-DD HH:mm:ss');
-
-    const image: Image = {
-      src,
-      date,
-    };
-
-    captureImage(image, callback);
+    captureImage(src, callback);
   }, [webcamRef]);
 
   return (

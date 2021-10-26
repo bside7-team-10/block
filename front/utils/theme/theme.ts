@@ -14,6 +14,9 @@ export const WHITE_COLOR = '#FFFFFF';
 export const GREY_COLOR = '#C8C8C8';
 export const BLACK_COLOR = '#000000';
 
+export const GREY_4 = '#57585E';
+export const GREY_3 = '#A5A5A5';
+
 export const COMMON_PADDING_XL = '72px';
 export const COMMON_PADDING_L = '32px';
 export const COMMON_PADDING_M = '24px';
