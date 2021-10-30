@@ -8,16 +8,10 @@ public interface ModifyCommentRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string commentId = 1;</code>
+   * <code>int64 commentId = 1;</code>
    * @return The commentId.
    */
-  java.lang.String getCommentId();
-  /**
-   * <code>string commentId = 1;</code>
-   * @return The bytes for commentId.
-   */
-  com.google.protobuf.ByteString
-      getCommentIdBytes();
+  long getCommentId();
 
   /**
    * <code>string content = 2;</code>

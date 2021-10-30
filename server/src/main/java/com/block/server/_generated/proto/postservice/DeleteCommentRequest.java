@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DeleteCommentRequest() {
-    commentId_ = "";
   }
 
   @java.lang.Override
@@ -49,10 +48,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            commentId_ = s;
+            commentId_ = input.readInt64();
             break;
           }
           default: {
@@ -88,41 +86,14 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int COMMENTID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object commentId_;
+  private long commentId_;
   /**
-   * <code>string commentId = 1;</code>
+   * <code>int64 commentId = 1;</code>
    * @return The commentId.
    */
   @java.lang.Override
-  public java.lang.String getCommentId() {
-    java.lang.Object ref = commentId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      commentId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string commentId = 1;</code>
-   * @return The bytes for commentId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getCommentIdBytes() {
-    java.lang.Object ref = commentId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      commentId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public long getCommentId() {
+    return commentId_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -139,8 +110,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getCommentIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, commentId_);
+    if (commentId_ != 0L) {
+      output.writeInt64(1, commentId_);
     }
     unknownFields.writeTo(output);
   }
@@ -151,8 +122,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getCommentIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, commentId_);
+    if (commentId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(1, commentId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -169,8 +141,8 @@ private static final long serialVersionUID = 0L;
     }
     com.block.server._generated.proto.postservice.DeleteCommentRequest other = (com.block.server._generated.proto.postservice.DeleteCommentRequest) obj;
 
-    if (!getCommentId()
-        .equals(other.getCommentId())) return false;
+    if (getCommentId()
+        != other.getCommentId()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -183,7 +155,8 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + COMMENTID_FIELD_NUMBER;
-    hash = (53 * hash) + getCommentId().hashCode();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getCommentId());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -317,7 +290,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      commentId_ = "";
+      commentId_ = 0L;
 
       return this;
     }
@@ -394,9 +367,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.block.server._generated.proto.postservice.DeleteCommentRequest other) {
       if (other == com.block.server._generated.proto.postservice.DeleteCommentRequest.getDefaultInstance()) return this;
-      if (!other.getCommentId().isEmpty()) {
-        commentId_ = other.commentId_;
-        onChanged();
+      if (other.getCommentId() != 0L) {
+        setCommentId(other.getCommentId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -427,78 +399,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object commentId_ = "";
+    private long commentId_ ;
     /**
-     * <code>string commentId = 1;</code>
+     * <code>int64 commentId = 1;</code>
      * @return The commentId.
      */
-    public java.lang.String getCommentId() {
-      java.lang.Object ref = commentId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        commentId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public long getCommentId() {
+      return commentId_;
     }
     /**
-     * <code>string commentId = 1;</code>
-     * @return The bytes for commentId.
-     */
-    public com.google.protobuf.ByteString
-        getCommentIdBytes() {
-      java.lang.Object ref = commentId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        commentId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string commentId = 1;</code>
+     * <code>int64 commentId = 1;</code>
      * @param value The commentId to set.
      * @return This builder for chaining.
      */
-    public Builder setCommentId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setCommentId(long value) {
+      
       commentId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string commentId = 1;</code>
+     * <code>int64 commentId = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearCommentId() {
       
-      commentId_ = getDefaultInstance().getCommentId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string commentId = 1;</code>
-     * @param value The bytes for commentId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCommentIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      commentId_ = value;
+      commentId_ = 0L;
       onChanged();
       return this;
     }

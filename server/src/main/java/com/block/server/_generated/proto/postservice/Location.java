@@ -104,7 +104,7 @@ private static final long serialVersionUID = 0L;
   public static final int LONG_FIELD_NUMBER = 2;
   private double long_;
   /**
-   * <code>double long = 2;</code>
+   * <code>double Long = 2;</code>
    * @return The long.
    */
   @java.lang.Override
@@ -468,7 +468,7 @@ private static final long serialVersionUID = 0L;
 
     private double long_ ;
     /**
-     * <code>double long = 2;</code>
+     * <code>double Long = 2;</code>
      * @return The long.
      */
     @java.lang.Override
@@ -476,7 +476,7 @@ private static final long serialVersionUID = 0L;
       return long_;
     }
     /**
-     * <code>double long = 2;</code>
+     * <code>double Long = 2;</code>
      * @param value The long to set.
      * @return This builder for chaining.
      */
@@ -487,7 +487,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double long = 2;</code>
+     * <code>double Long = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearLong() {

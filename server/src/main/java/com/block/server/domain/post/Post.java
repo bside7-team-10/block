@@ -5,6 +5,7 @@ import com.google.type.LatLng;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.geo.Point;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name="Post")
+@DynamicInsert
 public class Post {
 
     @Id
@@ -28,7 +30,7 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     private User userId;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 2000, nullable = false)
     private String content;
 
     @Column

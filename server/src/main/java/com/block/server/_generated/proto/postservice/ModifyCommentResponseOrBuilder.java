@@ -19,14 +19,8 @@ public interface ModifyCommentResponseOrBuilder extends
   com.block.server._generated.proto.postservice.PostProtocolStatus getStatus();
 
   /**
-   * <code>string commentId = 2;</code>
+   * <code>int64 commentId = 2;</code>
    * @return The commentId.
    */
-  java.lang.String getCommentId();
-  /**
-   * <code>string commentId = 2;</code>
-   * @return The bytes for commentId.
-   */
-  com.google.protobuf.ByteString
-      getCommentIdBytes();
+  long getCommentId();
 }

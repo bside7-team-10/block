@@ -19,14 +19,8 @@ public interface DeletePostResponseOrBuilder extends
   com.block.server._generated.proto.postservice.PostProtocolStatus getStatus();
 
   /**
-   * <code>string postId = 2;</code>
+   * <code>int64 postId = 2;</code>
    * @return The postId.
    */
-  java.lang.String getPostId();
-  /**
-   * <code>string postId = 2;</code>
-   * @return The bytes for postId.
-   */
-  com.google.protobuf.ByteString
-      getPostIdBytes();
+  long getPostId();
 }
