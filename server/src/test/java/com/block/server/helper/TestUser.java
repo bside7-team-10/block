@@ -7,11 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Random;
+import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
 public class TestUser {
-
     private String email;
     private String rawPassword;
     private String nickname;
@@ -56,7 +57,7 @@ public class TestUser {
                 .profile(profileUrl)
                 .birthday(LocalDate.parse(birthdayStr))
                 .gender(gender)
-                .nickname(nickname)
+                .nickName(nickname)
                 .roles(role)
                 .build();
     }

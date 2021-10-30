@@ -4,27 +4,27 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code CreateCommentRequest}
+ * Protobuf type {@code User}
  */
-public final class CreateCommentRequest extends
+public final class User extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:CreateCommentRequest)
-    CreateCommentRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:User)
+    UserOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use CreateCommentRequest.newBuilder() to construct.
-  private CreateCommentRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use User.newBuilder() to construct.
+  private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private CreateCommentRequest() {
-    author_ = "";
-    content_ = "";
+  private User() {
+    nickname_ = "";
+    profileUrl_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new CreateCommentRequest();
+    return new User();
   }
 
   @java.lang.Override
@@ -32,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private CreateCommentRequest(
+  private User(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -53,18 +53,13 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            author_ = s;
+            nickname_ = s;
             break;
           }
-          case 16: {
-
-            postId_ = input.readInt64();
-            break;
-          }
-          case 26: {
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            content_ = s;
+            profileUrl_ = s;
             break;
           }
           default: {
@@ -88,98 +83,87 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.CreateCommentRequest.class, com.block.server._generated.proto.postservice.CreateCommentRequest.Builder.class);
+            com.block.server._generated.proto.postservice.User.class, com.block.server._generated.proto.postservice.User.Builder.class);
   }
 
-  public static final int AUTHOR_FIELD_NUMBER = 1;
-  private volatile java.lang.Object author_;
+  public static final int NICKNAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object nickname_;
   /**
-   * <code>string author = 1;</code>
-   * @return The author.
+   * <code>string nickname = 1;</code>
+   * @return The nickname.
    */
   @java.lang.Override
-  public java.lang.String getAuthor() {
-    java.lang.Object ref = author_;
+  public java.lang.String getNickname() {
+    java.lang.Object ref = nickname_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      author_ = s;
+      nickname_ = s;
       return s;
     }
   }
   /**
-   * <code>string author = 1;</code>
-   * @return The bytes for author.
+   * <code>string nickname = 1;</code>
+   * @return The bytes for nickname.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getAuthorBytes() {
-    java.lang.Object ref = author_;
+      getNicknameBytes() {
+    java.lang.Object ref = nickname_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      author_ = b;
+      nickname_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int POSTID_FIELD_NUMBER = 2;
-  private long postId_;
+  public static final int PROFILEURL_FIELD_NUMBER = 2;
+  private volatile java.lang.Object profileUrl_;
   /**
-   * <code>int64 postId = 2;</code>
-   * @return The postId.
+   * <code>string profileUrl = 2;</code>
+   * @return The profileUrl.
    */
   @java.lang.Override
-  public long getPostId() {
-    return postId_;
-  }
-
-  public static final int CONTENT_FIELD_NUMBER = 3;
-  private volatile java.lang.Object content_;
-  /**
-   * <code>string content = 3;</code>
-   * @return The content.
-   */
-  @java.lang.Override
-  public java.lang.String getContent() {
-    java.lang.Object ref = content_;
+  public java.lang.String getProfileUrl() {
+    java.lang.Object ref = profileUrl_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      content_ = s;
+      profileUrl_ = s;
       return s;
     }
   }
   /**
-   * <code>string content = 3;</code>
-   * @return The bytes for content.
+   * <code>string profileUrl = 2;</code>
+   * @return The bytes for profileUrl.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getContentBytes() {
-    java.lang.Object ref = content_;
+      getProfileUrlBytes() {
+    java.lang.Object ref = profileUrl_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      content_ = b;
+      profileUrl_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -200,14 +184,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getAuthorBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, author_);
+    if (!getNicknameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nickname_);
     }
-    if (postId_ != 0L) {
-      output.writeInt64(2, postId_);
-    }
-    if (!getContentBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, content_);
+    if (!getProfileUrlBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, profileUrl_);
     }
     unknownFields.writeTo(output);
   }
@@ -218,15 +199,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getAuthorBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, author_);
+    if (!getNicknameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nickname_);
     }
-    if (postId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, postId_);
-    }
-    if (!getContentBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, content_);
+    if (!getProfileUrlBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, profileUrl_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -238,17 +215,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.CreateCommentRequest)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.User)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.CreateCommentRequest other = (com.block.server._generated.proto.postservice.CreateCommentRequest) obj;
+    com.block.server._generated.proto.postservice.User other = (com.block.server._generated.proto.postservice.User) obj;
 
-    if (!getAuthor()
-        .equals(other.getAuthor())) return false;
-    if (getPostId()
-        != other.getPostId()) return false;
-    if (!getContent()
-        .equals(other.getContent())) return false;
+    if (!getNickname()
+        .equals(other.getNickname())) return false;
+    if (!getProfileUrl()
+        .equals(other.getProfileUrl())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -260,81 +235,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
-    hash = (53 * hash) + getAuthor().hashCode();
-    hash = (37 * hash) + POSTID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getPostId());
-    hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-    hash = (53 * hash) + getContent().hashCode();
+    hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getNickname().hashCode();
+    hash = (37 * hash) + PROFILEURL_FIELD_NUMBER;
+    hash = (53 * hash) + getProfileUrl().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.User parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.User parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.User parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.User parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.User parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -347,7 +319,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.CreateCommentRequest prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.User prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -363,26 +335,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code CreateCommentRequest}
+   * Protobuf type {@code User}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:CreateCommentRequest)
-      com.block.server._generated.proto.postservice.CreateCommentRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:User)
+      com.block.server._generated.proto.postservice.UserOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.CreateCommentRequest.class, com.block.server._generated.proto.postservice.CreateCommentRequest.Builder.class);
+              com.block.server._generated.proto.postservice.User.class, com.block.server._generated.proto.postservice.User.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.CreateCommentRequest.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.User.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -400,11 +372,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      author_ = "";
+      nickname_ = "";
 
-      postId_ = 0L;
-
-      content_ = "";
+      profileUrl_ = "";
 
       return this;
     }
@@ -412,17 +382,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.CreateCommentRequest.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.User getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.User.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest build() {
-      com.block.server._generated.proto.postservice.CreateCommentRequest result = buildPartial();
+    public com.block.server._generated.proto.postservice.User build() {
+      com.block.server._generated.proto.postservice.User result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -430,11 +400,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest buildPartial() {
-      com.block.server._generated.proto.postservice.CreateCommentRequest result = new com.block.server._generated.proto.postservice.CreateCommentRequest(this);
-      result.author_ = author_;
-      result.postId_ = postId_;
-      result.content_ = content_;
+    public com.block.server._generated.proto.postservice.User buildPartial() {
+      com.block.server._generated.proto.postservice.User result = new com.block.server._generated.proto.postservice.User(this);
+      result.nickname_ = nickname_;
+      result.profileUrl_ = profileUrl_;
       onBuilt();
       return result;
     }
@@ -473,25 +442,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.CreateCommentRequest) {
-        return mergeFrom((com.block.server._generated.proto.postservice.CreateCommentRequest)other);
+      if (other instanceof com.block.server._generated.proto.postservice.User) {
+        return mergeFrom((com.block.server._generated.proto.postservice.User)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.CreateCommentRequest other) {
-      if (other == com.block.server._generated.proto.postservice.CreateCommentRequest.getDefaultInstance()) return this;
-      if (!other.getAuthor().isEmpty()) {
-        author_ = other.author_;
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.User other) {
+      if (other == com.block.server._generated.proto.postservice.User.getDefaultInstance()) return this;
+      if (!other.getNickname().isEmpty()) {
+        nickname_ = other.nickname_;
         onChanged();
       }
-      if (other.getPostId() != 0L) {
-        setPostId(other.getPostId());
-      }
-      if (!other.getContent().isEmpty()) {
-        content_ = other.content_;
+      if (!other.getProfileUrl().isEmpty()) {
+        profileUrl_ = other.profileUrl_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -509,11 +475,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.CreateCommentRequest parsedMessage = null;
+      com.block.server._generated.proto.postservice.User parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.CreateCommentRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.User) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -523,185 +489,154 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object author_ = "";
+    private java.lang.Object nickname_ = "";
     /**
-     * <code>string author = 1;</code>
-     * @return The author.
+     * <code>string nickname = 1;</code>
+     * @return The nickname.
      */
-    public java.lang.String getAuthor() {
-      java.lang.Object ref = author_;
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        author_ = s;
+        nickname_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string author = 1;</code>
-     * @return The bytes for author.
+     * <code>string nickname = 1;</code>
+     * @return The bytes for nickname.
      */
     public com.google.protobuf.ByteString
-        getAuthorBytes() {
-      java.lang.Object ref = author_;
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        author_ = b;
+        nickname_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string author = 1;</code>
-     * @param value The author to set.
+     * <code>string nickname = 1;</code>
+     * @param value The nickname to set.
      * @return This builder for chaining.
      */
-    public Builder setAuthor(
+    public Builder setNickname(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      author_ = value;
+      nickname_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string author = 1;</code>
+     * <code>string nickname = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearAuthor() {
+    public Builder clearNickname() {
       
-      author_ = getDefaultInstance().getAuthor();
+      nickname_ = getDefaultInstance().getNickname();
       onChanged();
       return this;
     }
     /**
-     * <code>string author = 1;</code>
-     * @param value The bytes for author to set.
+     * <code>string nickname = 1;</code>
+     * @param value The bytes for nickname to set.
      * @return This builder for chaining.
      */
-    public Builder setAuthorBytes(
+    public Builder setNicknameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      author_ = value;
+      nickname_ = value;
       onChanged();
       return this;
     }
 
-    private long postId_ ;
+    private java.lang.Object profileUrl_ = "";
     /**
-     * <code>int64 postId = 2;</code>
-     * @return The postId.
+     * <code>string profileUrl = 2;</code>
+     * @return The profileUrl.
      */
-    @java.lang.Override
-    public long getPostId() {
-      return postId_;
-    }
-    /**
-     * <code>int64 postId = 2;</code>
-     * @param value The postId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPostId(long value) {
-      
-      postId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 postId = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearPostId() {
-      
-      postId_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object content_ = "";
-    /**
-     * <code>string content = 3;</code>
-     * @return The content.
-     */
-    public java.lang.String getContent() {
-      java.lang.Object ref = content_;
+    public java.lang.String getProfileUrl() {
+      java.lang.Object ref = profileUrl_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        content_ = s;
+        profileUrl_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string content = 3;</code>
-     * @return The bytes for content.
+     * <code>string profileUrl = 2;</code>
+     * @return The bytes for profileUrl.
      */
     public com.google.protobuf.ByteString
-        getContentBytes() {
-      java.lang.Object ref = content_;
+        getProfileUrlBytes() {
+      java.lang.Object ref = profileUrl_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        content_ = b;
+        profileUrl_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string content = 3;</code>
-     * @param value The content to set.
+     * <code>string profileUrl = 2;</code>
+     * @param value The profileUrl to set.
      * @return This builder for chaining.
      */
-    public Builder setContent(
+    public Builder setProfileUrl(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      content_ = value;
+      profileUrl_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string content = 3;</code>
+     * <code>string profileUrl = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearContent() {
+    public Builder clearProfileUrl() {
       
-      content_ = getDefaultInstance().getContent();
+      profileUrl_ = getDefaultInstance().getProfileUrl();
       onChanged();
       return this;
     }
     /**
-     * <code>string content = 3;</code>
-     * @param value The bytes for content to set.
+     * <code>string profileUrl = 2;</code>
+     * @param value The bytes for profileUrl to set.
      * @return This builder for chaining.
      */
-    public Builder setContentBytes(
+    public Builder setProfileUrlBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      content_ = value;
+      profileUrl_ = value;
       onChanged();
       return this;
     }
@@ -718,41 +653,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:CreateCommentRequest)
+    // @@protoc_insertion_point(builder_scope:User)
   }
 
-  // @@protoc_insertion_point(class_scope:CreateCommentRequest)
-  private static final com.block.server._generated.proto.postservice.CreateCommentRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:User)
+  private static final com.block.server._generated.proto.postservice.User DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.CreateCommentRequest();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.User();
   }
 
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.User getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateCommentRequest>
-      PARSER = new com.google.protobuf.AbstractParser<CreateCommentRequest>() {
+  private static final com.google.protobuf.Parser<User>
+      PARSER = new com.google.protobuf.AbstractParser<User>() {
     @java.lang.Override
-    public CreateCommentRequest parsePartialFrom(
+    public User parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new CreateCommentRequest(input, extensionRegistry);
+      return new User(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<CreateCommentRequest> parser() {
+  public static com.google.protobuf.Parser<User> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<CreateCommentRequest> getParserForType() {
+  public com.google.protobuf.Parser<User> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.User getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

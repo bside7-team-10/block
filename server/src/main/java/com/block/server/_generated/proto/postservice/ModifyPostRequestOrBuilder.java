@@ -8,16 +8,10 @@ public interface ModifyPostRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string postId = 1;</code>
+   * <code>int64 postId = 1;</code>
    * @return The postId.
    */
-  java.lang.String getPostId();
-  /**
-   * <code>string postId = 1;</code>
-   * @return The bytes for postId.
-   */
-  com.google.protobuf.ByteString
-      getPostIdBytes();
+  long getPostId();
 
   /**
    * <code>string content = 2;</code>

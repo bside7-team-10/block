@@ -48,14 +48,14 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 13: {
+          case 9: {
 
-            lat_ = input.readFloat();
+            lat_ = input.readDouble();
             break;
           }
-          case 21: {
+          case 17: {
 
-            long_ = input.readFloat();
+            long_ = input.readDouble();
             break;
           }
           default: {
@@ -91,24 +91,24 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int LAT_FIELD_NUMBER = 1;
-  private float lat_;
+  private double lat_;
   /**
-   * <code>float lat = 1;</code>
+   * <code>double lat = 1;</code>
    * @return The lat.
    */
   @java.lang.Override
-  public float getLat() {
+  public double getLat() {
     return lat_;
   }
 
   public static final int LONG_FIELD_NUMBER = 2;
-  private float long_;
+  private double long_;
   /**
-   * <code>float long = 2;</code>
+   * <code>double Long = 2;</code>
    * @return The long.
    */
   @java.lang.Override
-  public float getLong() {
+  public double getLong() {
     return long_;
   }
 
@@ -126,11 +126,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (lat_ != 0F) {
-      output.writeFloat(1, lat_);
+    if (lat_ != 0D) {
+      output.writeDouble(1, lat_);
     }
-    if (long_ != 0F) {
-      output.writeFloat(2, long_);
+    if (long_ != 0D) {
+      output.writeDouble(2, long_);
     }
     unknownFields.writeTo(output);
   }
@@ -141,13 +141,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (lat_ != 0F) {
+    if (lat_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(1, lat_);
+        .computeDoubleSize(1, lat_);
     }
-    if (long_ != 0F) {
+    if (long_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(2, long_);
+        .computeDoubleSize(2, long_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -164,11 +164,11 @@ private static final long serialVersionUID = 0L;
     }
     com.block.server._generated.proto.postservice.Location other = (com.block.server._generated.proto.postservice.Location) obj;
 
-    if (java.lang.Float.floatToIntBits(getLat())
-        != java.lang.Float.floatToIntBits(
+    if (java.lang.Double.doubleToLongBits(getLat())
+        != java.lang.Double.doubleToLongBits(
             other.getLat())) return false;
-    if (java.lang.Float.floatToIntBits(getLong())
-        != java.lang.Float.floatToIntBits(
+    if (java.lang.Double.doubleToLongBits(getLong())
+        != java.lang.Double.doubleToLongBits(
             other.getLong())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -182,11 +182,11 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + LAT_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getLat());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getLat()));
     hash = (37 * hash) + LONG_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getLong());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getLong()));
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -320,9 +320,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      lat_ = 0F;
+      lat_ = 0D;
 
-      long_ = 0F;
+      long_ = 0D;
 
       return this;
     }
@@ -400,10 +400,10 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.block.server._generated.proto.postservice.Location other) {
       if (other == com.block.server._generated.proto.postservice.Location.getDefaultInstance()) return this;
-      if (other.getLat() != 0F) {
+      if (other.getLat() != 0D) {
         setLat(other.getLat());
       }
-      if (other.getLong() != 0F) {
+      if (other.getLong() != 0D) {
         setLong(other.getLong());
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -435,64 +435,64 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private float lat_ ;
+    private double lat_ ;
     /**
-     * <code>float lat = 1;</code>
+     * <code>double lat = 1;</code>
      * @return The lat.
      */
     @java.lang.Override
-    public float getLat() {
+    public double getLat() {
       return lat_;
     }
     /**
-     * <code>float lat = 1;</code>
+     * <code>double lat = 1;</code>
      * @param value The lat to set.
      * @return This builder for chaining.
      */
-    public Builder setLat(float value) {
+    public Builder setLat(double value) {
       
       lat_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>float lat = 1;</code>
+     * <code>double lat = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearLat() {
       
-      lat_ = 0F;
+      lat_ = 0D;
       onChanged();
       return this;
     }
 
-    private float long_ ;
+    private double long_ ;
     /**
-     * <code>float long = 2;</code>
+     * <code>double Long = 2;</code>
      * @return The long.
      */
     @java.lang.Override
-    public float getLong() {
+    public double getLong() {
       return long_;
     }
     /**
-     * <code>float long = 2;</code>
+     * <code>double Long = 2;</code>
      * @param value The long to set.
      * @return This builder for chaining.
      */
-    public Builder setLong(float value) {
+    public Builder setLong(double value) {
       
       long_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>float long = 2;</code>
+     * <code>double Long = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearLong() {
       
-      long_ = 0F;
+      long_ = 0D;
       onChanged();
       return this;
     }
