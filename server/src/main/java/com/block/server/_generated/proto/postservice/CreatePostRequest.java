@@ -18,7 +18,6 @@ private static final long serialVersionUID = 0L;
   private CreatePostRequest() {
     author_ = "";
     content_ = "";
-    image_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -64,16 +63,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 26: {
-
-            image_ = input.readBytes();
-            break;
-          }
-          case 34: {
-            com.block.server._generated.proto.postservice.Location.Builder subBuilder = null;
+            com.block.server._generated.proto.postservice.LocationDto.Builder subBuilder = null;
             if (location_ != null) {
               subBuilder = location_.toBuilder();
             }
-            location_ = input.readMessage(com.block.server._generated.proto.postservice.Location.parser(), extensionRegistry);
+            location_ = input.readMessage(com.block.server._generated.proto.postservice.LocationDto.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(location_);
               location_ = subBuilder.buildPartial();
@@ -189,21 +183,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int IMAGE_FIELD_NUMBER = 3;
-  private com.google.protobuf.ByteString image_;
+  public static final int LOCATION_FIELD_NUMBER = 3;
+  private com.block.server._generated.proto.postservice.LocationDto location_;
   /**
-   * <code>bytes image = 3;</code>
-   * @return The image.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getImage() {
-    return image_;
-  }
-
-  public static final int LOCATION_FIELD_NUMBER = 4;
-  private com.block.server._generated.proto.postservice.Location location_;
-  /**
-   * <code>.Location location = 4;</code>
+   * <code>.LocationDto location = 3;</code>
    * @return Whether the location field is set.
    */
   @java.lang.Override
@@ -211,18 +194,18 @@ private static final long serialVersionUID = 0L;
     return location_ != null;
   }
   /**
-   * <code>.Location location = 4;</code>
+   * <code>.LocationDto location = 3;</code>
    * @return The location.
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Location getLocation() {
-    return location_ == null ? com.block.server._generated.proto.postservice.Location.getDefaultInstance() : location_;
+  public com.block.server._generated.proto.postservice.LocationDto getLocation() {
+    return location_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
   }
   /**
-   * <code>.Location location = 4;</code>
+   * <code>.LocationDto location = 3;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.LocationOrBuilder getLocationOrBuilder() {
+  public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
     return getLocation();
   }
 
@@ -246,11 +229,8 @@ private static final long serialVersionUID = 0L;
     if (!getContentBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, content_);
     }
-    if (!image_.isEmpty()) {
-      output.writeBytes(3, image_);
-    }
     if (location_ != null) {
-      output.writeMessage(4, getLocation());
+      output.writeMessage(3, getLocation());
     }
     unknownFields.writeTo(output);
   }
@@ -267,13 +247,9 @@ private static final long serialVersionUID = 0L;
     if (!getContentBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, content_);
     }
-    if (!image_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(3, image_);
-    }
     if (location_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getLocation());
+        .computeMessageSize(3, getLocation());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -294,8 +270,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getAuthor())) return false;
     if (!getContent()
         .equals(other.getContent())) return false;
-    if (!getImage()
-        .equals(other.getImage())) return false;
     if (hasLocation() != other.hasLocation()) return false;
     if (hasLocation()) {
       if (!getLocation()
@@ -316,8 +290,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getAuthor().hashCode();
     hash = (37 * hash) + CONTENT_FIELD_NUMBER;
     hash = (53 * hash) + getContent().hashCode();
-    hash = (37 * hash) + IMAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getImage().hashCode();
     if (hasLocation()) {
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
@@ -459,8 +431,6 @@ private static final long serialVersionUID = 0L;
 
       content_ = "";
 
-      image_ = com.google.protobuf.ByteString.EMPTY;
-
       if (locationBuilder_ == null) {
         location_ = null;
       } else {
@@ -495,7 +465,6 @@ private static final long serialVersionUID = 0L;
       com.block.server._generated.proto.postservice.CreatePostRequest result = new com.block.server._generated.proto.postservice.CreatePostRequest(this);
       result.author_ = author_;
       result.content_ = content_;
-      result.image_ = image_;
       if (locationBuilder_ == null) {
         result.location_ = location_;
       } else {
@@ -556,9 +525,6 @@ private static final long serialVersionUID = 0L;
       if (!other.getContent().isEmpty()) {
         content_ = other.content_;
         onChanged();
-      }
-      if (other.getImage() != com.google.protobuf.ByteString.EMPTY) {
-        setImage(other.getImage());
       }
       if (other.hasLocation()) {
         mergeLocation(other.getLocation());
@@ -744,65 +710,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <code>bytes image = 3;</code>
-     * @return The image.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getImage() {
-      return image_;
-    }
-    /**
-     * <code>bytes image = 3;</code>
-     * @param value The image to set.
-     * @return This builder for chaining.
-     */
-    public Builder setImage(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      image_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bytes image = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearImage() {
-      
-      image_ = getDefaultInstance().getImage();
-      onChanged();
-      return this;
-    }
-
-    private com.block.server._generated.proto.postservice.Location location_;
+    private com.block.server._generated.proto.postservice.LocationDto location_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder> locationBuilder_;
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> locationBuilder_;
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      * @return Whether the location field is set.
      */
     public boolean hasLocation() {
       return locationBuilder_ != null || location_ != null;
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      * @return The location.
      */
-    public com.block.server._generated.proto.postservice.Location getLocation() {
+    public com.block.server._generated.proto.postservice.LocationDto getLocation() {
       if (locationBuilder_ == null) {
-        return location_ == null ? com.block.server._generated.proto.postservice.Location.getDefaultInstance() : location_;
+        return location_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
       } else {
         return locationBuilder_.getMessage();
       }
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      */
-    public Builder setLocation(com.block.server._generated.proto.postservice.Location value) {
+    public Builder setLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (locationBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -816,10 +748,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      */
     public Builder setLocation(
-        com.block.server._generated.proto.postservice.Location.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.LocationDto.Builder builderForValue) {
       if (locationBuilder_ == null) {
         location_ = builderForValue.build();
         onChanged();
@@ -830,13 +762,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      */
-    public Builder mergeLocation(com.block.server._generated.proto.postservice.Location value) {
+    public Builder mergeLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (locationBuilder_ == null) {
         if (location_ != null) {
           location_ =
-            com.block.server._generated.proto.postservice.Location.newBuilder(location_).mergeFrom(value).buildPartial();
+            com.block.server._generated.proto.postservice.LocationDto.newBuilder(location_).mergeFrom(value).buildPartial();
         } else {
           location_ = value;
         }
@@ -848,7 +780,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      */
     public Builder clearLocation() {
       if (locationBuilder_ == null) {
@@ -862,33 +794,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      */
-    public com.block.server._generated.proto.postservice.Location.Builder getLocationBuilder() {
+    public com.block.server._generated.proto.postservice.LocationDto.Builder getLocationBuilder() {
       
       onChanged();
       return getLocationFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      */
-    public com.block.server._generated.proto.postservice.LocationOrBuilder getLocationOrBuilder() {
+    public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
       if (locationBuilder_ != null) {
         return locationBuilder_.getMessageOrBuilder();
       } else {
         return location_ == null ?
-            com.block.server._generated.proto.postservice.Location.getDefaultInstance() : location_;
+            com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
       }
     }
     /**
-     * <code>.Location location = 4;</code>
+     * <code>.LocationDto location = 3;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder> 
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> 
         getLocationFieldBuilder() {
       if (locationBuilder_ == null) {
         locationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder>(
+            com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder>(
                 getLocation(),
                 getParentForChildren(),
                 isClean());

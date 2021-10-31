@@ -56,11 +56,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            com.block.server._generated.proto.postservice.Post.Builder subBuilder = null;
+            com.block.server._generated.proto.postservice.PostDto.Builder subBuilder = null;
             if (post_ != null) {
               subBuilder = post_.toBuilder();
             }
-            post_ = input.readMessage(com.block.server._generated.proto.postservice.Post.parser(), extensionRegistry);
+            post_ = input.readMessage(com.block.server._generated.proto.postservice.PostDto.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(post_);
               post_ = subBuilder.buildPartial();
@@ -120,9 +120,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int POST_FIELD_NUMBER = 2;
-  private com.block.server._generated.proto.postservice.Post post_;
+  private com.block.server._generated.proto.postservice.PostDto post_;
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    * @return Whether the post field is set.
    */
   @java.lang.Override
@@ -130,18 +130,18 @@ private static final long serialVersionUID = 0L;
     return post_ != null;
   }
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    * @return The post.
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Post getPost() {
-    return post_ == null ? com.block.server._generated.proto.postservice.Post.getDefaultInstance() : post_;
+  public com.block.server._generated.proto.postservice.PostDto getPost() {
+    return post_ == null ? com.block.server._generated.proto.postservice.PostDto.getDefaultInstance() : post_;
   }
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.PostOrBuilder getPostOrBuilder() {
+  public com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostOrBuilder() {
     return getPost();
   }
 
@@ -530,31 +530,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.block.server._generated.proto.postservice.Post post_;
+    private com.block.server._generated.proto.postservice.PostDto post_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder> postBuilder_;
+        com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder> postBuilder_;
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      * @return Whether the post field is set.
      */
     public boolean hasPost() {
       return postBuilder_ != null || post_ != null;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      * @return The post.
      */
-    public com.block.server._generated.proto.postservice.Post getPost() {
+    public com.block.server._generated.proto.postservice.PostDto getPost() {
       if (postBuilder_ == null) {
-        return post_ == null ? com.block.server._generated.proto.postservice.Post.getDefaultInstance() : post_;
+        return post_ == null ? com.block.server._generated.proto.postservice.PostDto.getDefaultInstance() : post_;
       } else {
         return postBuilder_.getMessage();
       }
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public Builder setPost(com.block.server._generated.proto.postservice.Post value) {
+    public Builder setPost(com.block.server._generated.proto.postservice.PostDto value) {
       if (postBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -568,10 +568,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
     public Builder setPost(
-        com.block.server._generated.proto.postservice.Post.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.PostDto.Builder builderForValue) {
       if (postBuilder_ == null) {
         post_ = builderForValue.build();
         onChanged();
@@ -582,13 +582,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public Builder mergePost(com.block.server._generated.proto.postservice.Post value) {
+    public Builder mergePost(com.block.server._generated.proto.postservice.PostDto value) {
       if (postBuilder_ == null) {
         if (post_ != null) {
           post_ =
-            com.block.server._generated.proto.postservice.Post.newBuilder(post_).mergeFrom(value).buildPartial();
+            com.block.server._generated.proto.postservice.PostDto.newBuilder(post_).mergeFrom(value).buildPartial();
         } else {
           post_ = value;
         }
@@ -600,7 +600,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
     public Builder clearPost() {
       if (postBuilder_ == null) {
@@ -614,33 +614,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.Post.Builder getPostBuilder() {
+    public com.block.server._generated.proto.postservice.PostDto.Builder getPostBuilder() {
       
       onChanged();
       return getPostFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.PostOrBuilder getPostOrBuilder() {
+    public com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostOrBuilder() {
       if (postBuilder_ != null) {
         return postBuilder_.getMessageOrBuilder();
       } else {
         return post_ == null ?
-            com.block.server._generated.proto.postservice.Post.getDefaultInstance() : post_;
+            com.block.server._generated.proto.postservice.PostDto.getDefaultInstance() : post_;
       }
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder> 
+        com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder> 
         getPostFieldBuilder() {
       if (postBuilder_ == null) {
         postBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder>(
+            com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder>(
                 getPost(),
                 getParentForChildren(),
                 isClean());

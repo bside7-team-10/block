@@ -327,6 +327,37 @@ public final class PostProtocolGrpc {
     return getCancelLikePostMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.block.server._generated.proto.postservice.UploadImageResultRequest,
+      com.block.server._generated.proto.postservice.UploadImageResultResponse> getUploadImageResultMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UploadImageResult",
+      requestType = com.block.server._generated.proto.postservice.UploadImageResultRequest.class,
+      responseType = com.block.server._generated.proto.postservice.UploadImageResultResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.block.server._generated.proto.postservice.UploadImageResultRequest,
+      com.block.server._generated.proto.postservice.UploadImageResultResponse> getUploadImageResultMethod() {
+    io.grpc.MethodDescriptor<com.block.server._generated.proto.postservice.UploadImageResultRequest, com.block.server._generated.proto.postservice.UploadImageResultResponse> getUploadImageResultMethod;
+    if ((getUploadImageResultMethod = PostProtocolGrpc.getUploadImageResultMethod) == null) {
+      synchronized (PostProtocolGrpc.class) {
+        if ((getUploadImageResultMethod = PostProtocolGrpc.getUploadImageResultMethod) == null) {
+          PostProtocolGrpc.getUploadImageResultMethod = getUploadImageResultMethod =
+              io.grpc.MethodDescriptor.<com.block.server._generated.proto.postservice.UploadImageResultRequest, com.block.server._generated.proto.postservice.UploadImageResultResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UploadImageResult"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.block.server._generated.proto.postservice.UploadImageResultRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.block.server._generated.proto.postservice.UploadImageResultResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PostProtocolMethodDescriptorSupplier("UploadImageResult"))
+              .build();
+        }
+      }
+    }
+    return getUploadImageResultMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -448,6 +479,13 @@ public final class PostProtocolGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCancelLikePostMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void uploadImageResult(com.block.server._generated.proto.postservice.UploadImageResultRequest request,
+        io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.UploadImageResultResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUploadImageResultMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -520,6 +558,13 @@ public final class PostProtocolGrpc {
                 com.block.server._generated.proto.postservice.LikePostRequest,
                 com.block.server._generated.proto.postservice.LikePostResponse>(
                   this, METHODID_CANCEL_LIKE_POST)))
+          .addMethod(
+            getUploadImageResultMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.block.server._generated.proto.postservice.UploadImageResultRequest,
+                com.block.server._generated.proto.postservice.UploadImageResultResponse>(
+                  this, METHODID_UPLOAD_IMAGE_RESULT)))
           .build();
     }
   }
@@ -620,6 +665,14 @@ public final class PostProtocolGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCancelLikePostMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void uploadImageResult(com.block.server._generated.proto.postservice.UploadImageResultRequest request,
+        io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.UploadImageResultResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUploadImageResultMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -707,6 +760,13 @@ public final class PostProtocolGrpc {
     public com.block.server._generated.proto.postservice.LikePostResponse cancelLikePost(com.block.server._generated.proto.postservice.LikePostRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCancelLikePostMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.block.server._generated.proto.postservice.UploadImageResultResponse uploadImageResult(com.block.server._generated.proto.postservice.UploadImageResultRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUploadImageResultMethod(), getCallOptions(), request);
     }
   }
 
@@ -806,6 +866,14 @@ public final class PostProtocolGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCancelLikePostMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.block.server._generated.proto.postservice.UploadImageResultResponse> uploadImageResult(
+        com.block.server._generated.proto.postservice.UploadImageResultRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUploadImageResultMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_POST = 0;
@@ -818,6 +886,7 @@ public final class PostProtocolGrpc {
   private static final int METHODID_DELETE_COMMENT = 7;
   private static final int METHODID_LIKE_POST = 8;
   private static final int METHODID_CANCEL_LIKE_POST = 9;
+  private static final int METHODID_UPLOAD_IMAGE_RESULT = 10;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -875,6 +944,10 @@ public final class PostProtocolGrpc {
         case METHODID_CANCEL_LIKE_POST:
           serviceImpl.cancelLikePost((com.block.server._generated.proto.postservice.LikePostRequest) request,
               (io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.LikePostResponse>) responseObserver);
+          break;
+        case METHODID_UPLOAD_IMAGE_RESULT:
+          serviceImpl.uploadImageResult((com.block.server._generated.proto.postservice.UploadImageResultRequest) request,
+              (io.grpc.stub.StreamObserver<com.block.server._generated.proto.postservice.UploadImageResultResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -947,6 +1020,7 @@ public final class PostProtocolGrpc {
               .addMethod(getDeleteCommentMethod())
               .addMethod(getLikePostMethod())
               .addMethod(getCancelLikePostMethod())
+              .addMethod(getUploadImageResultMethod())
               .build();
         }
       }

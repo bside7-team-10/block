@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private ModifyPostRequest() {
     content_ = "";
-    image_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -40,7 +39,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -65,11 +63,6 @@ private static final long serialVersionUID = 0L;
           case 24: {
 
             modifiedImage_ = input.readBool();
-            break;
-          }
-          case 34: {
-            bitField0_ |= 0x00000001;
-            image_ = input.readBytes();
             break;
           }
           default: {
@@ -104,7 +97,6 @@ private static final long serialVersionUID = 0L;
             com.block.server._generated.proto.postservice.ModifyPostRequest.class, com.block.server._generated.proto.postservice.ModifyPostRequest.Builder.class);
   }
 
-  private int bitField0_;
   public static final int POSTID_FIELD_NUMBER = 1;
   private long postId_;
   /**
@@ -165,25 +157,6 @@ private static final long serialVersionUID = 0L;
     return modifiedImage_;
   }
 
-  public static final int IMAGE_FIELD_NUMBER = 4;
-  private com.google.protobuf.ByteString image_;
-  /**
-   * <code>optional bytes image = 4;</code>
-   * @return Whether the image field is set.
-   */
-  @java.lang.Override
-  public boolean hasImage() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional bytes image = 4;</code>
-   * @return The image.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getImage() {
-    return image_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -207,9 +180,6 @@ private static final long serialVersionUID = 0L;
     if (modifiedImage_ != false) {
       output.writeBool(3, modifiedImage_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeBytes(4, image_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -229,10 +199,6 @@ private static final long serialVersionUID = 0L;
     if (modifiedImage_ != false) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(3, modifiedImage_);
-    }
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(4, image_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -255,11 +221,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getContent())) return false;
     if (getModifiedImage()
         != other.getModifiedImage()) return false;
-    if (hasImage() != other.hasImage()) return false;
-    if (hasImage()) {
-      if (!getImage()
-          .equals(other.getImage())) return false;
-    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -279,10 +240,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + MODIFIEDIMAGE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getModifiedImage());
-    if (hasImage()) {
-      hash = (37 * hash) + IMAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getImage().hashCode();
-    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -422,8 +379,6 @@ private static final long serialVersionUID = 0L;
 
       modifiedImage_ = false;
 
-      image_ = com.google.protobuf.ByteString.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -450,16 +405,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.block.server._generated.proto.postservice.ModifyPostRequest buildPartial() {
       com.block.server._generated.proto.postservice.ModifyPostRequest result = new com.block.server._generated.proto.postservice.ModifyPostRequest(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       result.postId_ = postId_;
       result.content_ = content_;
       result.modifiedImage_ = modifiedImage_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        to_bitField0_ |= 0x00000001;
-      }
-      result.image_ = image_;
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -518,9 +466,6 @@ private static final long serialVersionUID = 0L;
       if (other.getModifiedImage() != false) {
         setModifiedImage(other.getModifiedImage());
       }
-      if (other.hasImage()) {
-        setImage(other.getImage());
-      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -549,7 +494,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
     private long postId_ ;
     /**
@@ -685,48 +629,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearModifiedImage() {
       
       modifiedImage_ = false;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <code>optional bytes image = 4;</code>
-     * @return Whether the image field is set.
-     */
-    @java.lang.Override
-    public boolean hasImage() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional bytes image = 4;</code>
-     * @return The image.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getImage() {
-      return image_;
-    }
-    /**
-     * <code>optional bytes image = 4;</code>
-     * @param value The image to set.
-     * @return This builder for chaining.
-     */
-    public Builder setImage(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-      image_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional bytes image = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearImage() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      image_ = getDefaultInstance().getImage();
       onChanged();
       return this;
     }

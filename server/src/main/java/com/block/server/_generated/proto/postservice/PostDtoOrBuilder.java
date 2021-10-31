@@ -3,8 +3,8 @@
 
 package com.block.server._generated.proto.postservice;
 
-public interface PostOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Post)
+public interface PostDtoOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:PostDto)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -14,19 +14,19 @@ public interface PostOrBuilder extends
   long getPostId();
 
   /**
-   * <code>.User author = 2;</code>
+   * <code>.UserDto author = 2;</code>
    * @return Whether the author field is set.
    */
   boolean hasAuthor();
   /**
-   * <code>.User author = 2;</code>
+   * <code>.UserDto author = 2;</code>
    * @return The author.
    */
-  com.block.server._generated.proto.postservice.User getAuthor();
+  com.block.server._generated.proto.postservice.UserDto getAuthor();
   /**
-   * <code>.User author = 2;</code>
+   * <code>.UserDto author = 2;</code>
    */
-  com.block.server._generated.proto.postservice.UserOrBuilder getAuthorOrBuilder();
+  com.block.server._generated.proto.postservice.UserDtoOrBuilder getAuthorOrBuilder();
 
   /**
    * <code>string content = 3;</code>
@@ -59,41 +59,41 @@ public interface PostOrBuilder extends
   int getLikes();
 
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
-  java.util.List<com.block.server._generated.proto.postservice.Comment> 
+  java.util.List<com.block.server._generated.proto.postservice.CommentDto> 
       getCommentsList();
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
-  com.block.server._generated.proto.postservice.Comment getComments(int index);
+  com.block.server._generated.proto.postservice.CommentDto getComments(int index);
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
   int getCommentsCount();
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
-  java.util.List<? extends com.block.server._generated.proto.postservice.CommentOrBuilder> 
+  java.util.List<? extends com.block.server._generated.proto.postservice.CommentDtoOrBuilder> 
       getCommentsOrBuilderList();
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
-  com.block.server._generated.proto.postservice.CommentOrBuilder getCommentsOrBuilder(
+  com.block.server._generated.proto.postservice.CommentDtoOrBuilder getCommentsOrBuilder(
       int index);
 
   /**
-   * <code>.Location location = 7;</code>
+   * <code>.LocationDto location = 7;</code>
    * @return Whether the location field is set.
    */
   boolean hasLocation();
   /**
-   * <code>.Location location = 7;</code>
+   * <code>.LocationDto location = 7;</code>
    * @return The location.
    */
-  com.block.server._generated.proto.postservice.Location getLocation();
+  com.block.server._generated.proto.postservice.LocationDto getLocation();
   /**
-   * <code>.Location location = 7;</code>
+   * <code>.LocationDto location = 7;</code>
    */
-  com.block.server._generated.proto.postservice.LocationOrBuilder getLocationOrBuilder();
+  com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
 }

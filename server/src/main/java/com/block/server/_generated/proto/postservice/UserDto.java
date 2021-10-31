@@ -4,18 +4,18 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code User}
+ * Protobuf type {@code UserDto}
  */
-public final class User extends
+public final class UserDto extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:User)
-    UserOrBuilder {
+    // @@protoc_insertion_point(message_implements:UserDto)
+    UserDtoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use User.newBuilder() to construct.
-  private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UserDto.newBuilder() to construct.
+  private UserDto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private User() {
+  private UserDto() {
     nickname_ = "";
     profileUrl_ = "";
   }
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new User();
+    return new UserDto();
   }
 
   @java.lang.Override
@@ -32,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private User(
+  private UserDto(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -83,15 +83,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UserDto_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UserDto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.User.class, com.block.server._generated.proto.postservice.User.Builder.class);
+            com.block.server._generated.proto.postservice.UserDto.class, com.block.server._generated.proto.postservice.UserDto.Builder.class);
   }
 
   public static final int NICKNAME_FIELD_NUMBER = 1;
@@ -215,10 +215,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.User)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.UserDto)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.User other = (com.block.server._generated.proto.postservice.User) obj;
+    com.block.server._generated.proto.postservice.UserDto other = (com.block.server._generated.proto.postservice.UserDto) obj;
 
     if (!getNickname()
         .equals(other.getNickname())) return false;
@@ -244,69 +244,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.User parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.UserDto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.User parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.User parseFrom(
+  public static com.block.server._generated.proto.postservice.UserDto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -319,7 +319,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.User prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.UserDto prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -335,26 +335,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code User}
+   * Protobuf type {@code UserDto}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:User)
-      com.block.server._generated.proto.postservice.UserOrBuilder {
+      // @@protoc_insertion_point(builder_implements:UserDto)
+      com.block.server._generated.proto.postservice.UserDtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UserDto_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UserDto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.User.class, com.block.server._generated.proto.postservice.User.Builder.class);
+              com.block.server._generated.proto.postservice.UserDto.class, com.block.server._generated.proto.postservice.UserDto.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.User.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.UserDto.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -382,17 +382,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_User_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UserDto_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.User getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.User.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.UserDto getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.UserDto.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.User build() {
-      com.block.server._generated.proto.postservice.User result = buildPartial();
+    public com.block.server._generated.proto.postservice.UserDto build() {
+      com.block.server._generated.proto.postservice.UserDto result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -400,8 +400,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.User buildPartial() {
-      com.block.server._generated.proto.postservice.User result = new com.block.server._generated.proto.postservice.User(this);
+    public com.block.server._generated.proto.postservice.UserDto buildPartial() {
+      com.block.server._generated.proto.postservice.UserDto result = new com.block.server._generated.proto.postservice.UserDto(this);
       result.nickname_ = nickname_;
       result.profileUrl_ = profileUrl_;
       onBuilt();
@@ -442,16 +442,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.User) {
-        return mergeFrom((com.block.server._generated.proto.postservice.User)other);
+      if (other instanceof com.block.server._generated.proto.postservice.UserDto) {
+        return mergeFrom((com.block.server._generated.proto.postservice.UserDto)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.User other) {
-      if (other == com.block.server._generated.proto.postservice.User.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.UserDto other) {
+      if (other == com.block.server._generated.proto.postservice.UserDto.getDefaultInstance()) return this;
       if (!other.getNickname().isEmpty()) {
         nickname_ = other.nickname_;
         onChanged();
@@ -475,11 +475,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.User parsedMessage = null;
+      com.block.server._generated.proto.postservice.UserDto parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.User) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.UserDto) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -653,41 +653,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:User)
+    // @@protoc_insertion_point(builder_scope:UserDto)
   }
 
-  // @@protoc_insertion_point(class_scope:User)
-  private static final com.block.server._generated.proto.postservice.User DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:UserDto)
+  private static final com.block.server._generated.proto.postservice.UserDto DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.User();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.UserDto();
   }
 
-  public static com.block.server._generated.proto.postservice.User getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.UserDto getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<User>
-      PARSER = new com.google.protobuf.AbstractParser<User>() {
+  private static final com.google.protobuf.Parser<UserDto>
+      PARSER = new com.google.protobuf.AbstractParser<UserDto>() {
     @java.lang.Override
-    public User parsePartialFrom(
+    public UserDto parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new User(input, extensionRegistry);
+      return new UserDto(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<User> parser() {
+  public static com.google.protobuf.Parser<UserDto> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<User> getParserForType() {
+  public com.google.protobuf.Parser<UserDto> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.User getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.UserDto getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
