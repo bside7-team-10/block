@@ -295,6 +295,7 @@ const Signup = () => {
               name={FIELDS_NAME.INTERESTS}
               control={control}
               options={interestOptions}
+              page="signup"
               required
             />
           )}
