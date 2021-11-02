@@ -189,7 +189,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 360px;
-  // height: 420px;
   margin-left: auto;
   margin-right: auto;
   background-color: ${() => DARK_COLOR1};
@@ -230,9 +229,7 @@ const Hr = styled.hr`
   background-color: ${() => GREY_COLOR};
 `;
 
-const PictureInfo = styled.div`
-  // height: 86px;
-`;
+const PictureInfo = styled.div``;
 
 const CaptureButtonIcon = styled.img`
   margin-right: 6px;
@@ -243,7 +240,6 @@ const CloseButton = styled.button`
   height: 17px;
   border-radius: 100px;
   position: absolute;
-  // z-index: 1;
   right: 0;
   right: -8px;
   top: -28px;
@@ -255,7 +251,6 @@ const CloseButton = styled.button`
 const CapturedImage = styled.img`
   width: 63px;
   height: 63px;
-  // float: right;
   border: none;
   border-radius: 4px;
 `;
