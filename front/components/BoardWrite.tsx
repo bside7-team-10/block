@@ -18,6 +18,7 @@ import {
   DARK_COLOR1,
   GREY_COLOR,
   BACK_COLOR2,
+  SUB_COLOR1,
 } from '../utils/theme/theme';
 import SelectButtonField from './common/fields/SelectButtonField';
 import TextareaField from './common/fields/TextareaField';
@@ -113,8 +114,15 @@ const BoardWrite = () => {
     <Wrapper>
       <InnerWrapper>
         <Container>
-          <Address>서울시 종로구 소공동 81</Address>
-          <IP>123.45.678.91</IP>
+          <div>
+            <span style={{ position: 'relative', float: 'right', top: '30px', right: '10px' }}>
+              <CloseButton>
+                <CloseIcon />
+              </CloseButton>
+            </span>
+            <Address>서울시 종로구 소공동 81</Address>
+            <IP>123.45.678.91</IP>
+          </div>
 
           <HorizontalSpace height={COMMON_SIZE_12PX} />
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -138,9 +146,9 @@ const BoardWrite = () => {
             <PictureInfo>
               {imageSource !== null ? (
                 <span style={{ position: 'relative' }}>
-                  <CloseButton onClick={onClickRemoveImageButton}>
+                  <DeletePhotoButton onClick={onClickRemoveImageButton}>
                     <CloseIcon />
-                  </CloseButton>
+                  </DeletePhotoButton>
                   <CapturedImage src={imageSource} />
                 </span>
               ) : (
@@ -235,7 +243,7 @@ const CaptureButtonIcon = styled.img`
   margin-right: 6px;
 `;
 
-const CloseButton = styled.button`
+const DeletePhotoButton = styled.button`
   width: 17px;
   height: 17px;
   border-radius: 100px;
@@ -246,6 +254,29 @@ const CloseButton = styled.button`
   border: none;
   padding: 0px;
   background-color: ${BACK_COLOR2};
+
+  & > svg {
+    width: 12px;
+    height: 12px;
+  }
+`;
+
+const CloseButton = styled.button`
+  width: 24px;
+  height: 24px;
+  border-radius: 100px;
+  position: absolute;
+  right: 0;
+  right: -8px;
+  top: -28px;
+  border: none;
+  padding: 0px;
+  background-color: ${BACK_COLOR2};
+
+  & > svg {
+    position: relative;
+    top: 4px;
+  }
 `;
 
 const CapturedImage = styled.img`
@@ -260,10 +291,28 @@ const CaptureButton = styled(Button)`
   height: 34px;
   border: 1px solid ${() => GREY_4};
   border-radius: 6px;
+
+  &:hover {
+    border: 1px solid ${() => GREY_4};
+    color: ${GREY_4};
+  }
 `;
 
 const StyledSwitch = styled(Switch)`
+  height: 23px;
+  min-width: 38px;
+
+  & > .ant-switch-handle::before {
+    right: 1px;
+  }
+  & > .ant-switch-handle {
+    width: 20px;
+    height: 20px;
+    top: 1px;
+  }
+
   float: right;
+  background-color: ${SUB_COLOR1};
 `;
 
 const NowDescription = styled.div`
@@ -278,6 +327,19 @@ const WritingButton = styled(Button)`
   border-radius: 4px;
   background-color: ${() => DARK_COLOR1};
   color: ${() => WHITE_COLOR};
+
+  &:hover {
+    background-color: ${() => DARK_COLOR1};
+    color: ${() => WHITE_COLOR};
+  }
+  &:active {
+    background-color: ${() => DARK_COLOR1};
+    color: ${() => WHITE_COLOR};
+  }
+  &:focus {
+    background-color: ${() => DARK_COLOR1};
+    color: ${() => WHITE_COLOR};
+  }
 `;
 
 const Bottom = styled.div`
