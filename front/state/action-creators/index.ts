@@ -2,9 +2,8 @@ import { Dispatch } from 'redux';
 
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
-import { Post } from '../post';
 import Service from '../service';
-import { User } from '../user';
+import { User, Post, LatLng } from '../';
 
 const service = Service();
 
@@ -41,6 +40,58 @@ export const getUserLocation = () => {
       dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: position });
     } catch (error: any) {
       dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: error });
+    }
+  };
+};
+
+let init = true;
+let i = 1;
+let unit = 0.001;
+
+const getFakePosition = (data: LatLng) => {
+  const { latitude, longitude } = data;
+  const calcI = i++
+
+  if (i == 7) i = 1;
+
+  if (i < 7) {
+    return { latitude: latitude + unit * calcI, longitude: longitude + unit * calcI }
+  }
+}
+
+export const getFakeUserLocation = (data: LatLng) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.GET_USER_LOCATION_REQUEST });
+    try {
+      let position;
+      if (init) {
+        position = await service.getLocation();
+      } else {
+        position = getFakePosition(data)
+        position = {
+          coords: {
+            latitude: position.latitude,
+            longitude: position.longitude
+          }
+        }
+      }
+
+      init = false;
+      dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: position });
+    } catch (error: any) {
+      dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: error });
+    }
+  };
+};
+
+export const getAddressByLocation = (data: LatLng) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.GET_ADDRESS_BY_LOCATION_REQUEST });
+    try {
+      const address = await service.getAddressByLocation(data);
+      dispatch({ type: ActionType.GET_ADDRESS_BY_LOCATION_SUCCESS, payload: address });
+    } catch (error: any) {
+      dispatch({ type: ActionType.GET_ADDRESS_BY_LOCATION_ERROR, payload: error });
     }
   };
 };

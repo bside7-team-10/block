@@ -43,6 +43,20 @@ export interface GetUserLocationErrorAction {
   payload: string;
 }
 
+export interface GetAddressByLocationRequestAction {
+  type: ActionType.GET_ADDRESS_BY_LOCATION_REQUEST;
+}
+
+export interface GetAddressByLocationSuccessAction {
+  type: ActionType.GET_ADDRESS_BY_LOCATION_SUCCESS;
+  payload: any;
+}
+
+export interface GetAddressLocationErrorAction {
+  type: ActionType.GET_ADDRESS_BY_LOCATION_ERROR;
+  payload: string;
+}
+
 export interface AddPostRequestAction {
   type: ActionType.ADD_POST_REQUEST;
 }
@@ -97,4 +111,7 @@ export type Action =
   | CaptureImageErrorAction
   | SaveTempPost
   | RemoveTempPost
-  | RemoveTempImage;
+  | RemoveTempImage
+  | GetAddressByLocationRequestAction
+  | GetAddressByLocationSuccessAction
+  | GetAddressLocationErrorAction
