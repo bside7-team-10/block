@@ -8,6 +8,7 @@ export const PRIMARY_COLOR3 = '#18217A';
 export const DARK_COLOR1 = '#0C0C33';
 export const SUB_COLOR1 = '#FF4258';
 export const SUB_COLOR2 = '#00C5A0';
+export const SUB_COLOR3 = '#7377A7';
 export const BACK_COLOR1 = '#0C0C33';
 export const BACK_COLOR2 = '#EFEFEF';
 export const WHITE_COLOR = '#FFFFFF';

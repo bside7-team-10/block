@@ -7,11 +7,11 @@ import { CreatePostRequest, GetPostRequest, LocationDto, UploadImageResultReques
 import { LoginUser } from '../loginUser';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { PostProtocolClient } from '../../_generated/PostProtocol_pb_service';
-import { User } from '../user';
-import { Post } from '../post';
-import reducer from '../reducers/signupReducer';
+import { User, Post, LatLng } from '../';
+import { createAxios } from '../../lib/axios';
+import config from '../../config/test-config';
 
-const serverUrl = "https://dev-be.block-app.io"; 
+const serverUrl = "https://dev-be.block-app.io";
 // const serverUrl = "http://localhost:8081"; 
 export interface ServiceInterface {
   signup: (user: User) => Promise<any>;
@@ -19,6 +19,7 @@ export interface ServiceInterface {
   getLocation: () => Promise<any>;
   addPost: (data: Post) => Promise<any>;
   getPost: (postId: number) => Promise<any>;
+  getAddressByLocation: (data: LatLng) => Promise<any>;
 }
 
 const Service = () => {
@@ -60,9 +61,9 @@ const Service = () => {
           console.log('success');
 
           const loginUser: LoginUser = {
-            nickname: res?.getNickname(),
-            profileUrl: res?.getProfileurl(),
-            token: res?.getToken(),
+            nickname: res ?.getNickname(),
+            profileUrl: res ?.getProfileurl(),
+            token: res ?.getToken(),
           };
           const cookie = new Cookies();
           cookie.set('accessToken', loginUser.token, {
@@ -124,7 +125,7 @@ const Service = () => {
       });
     });
   };
-    
+
   self.getPost = (postId: number) => {
     return new Promise((resolve, reject) => {
       const req = new GetPostRequest();
@@ -146,7 +147,7 @@ const Service = () => {
           const imageResult = await axios.get(imageUrl);
 
           const responsePost = {
-            post:  res.getPost(),
+            post: res.getPost(),
             image: imageResult.data
           };
           resolve(responsePost);
@@ -154,6 +155,20 @@ const Service = () => {
       });
     });
   };
+
+  self.getAddressByLocation = async ({ latitude, longitude }: LatLng) => {
+    const axios = createAxios(`https://maps.googleapis.com/maps/api/geocode/json`);
+
+    const params = {
+      params: {
+        latlng: `${latitude},${longitude}`,
+        key: `${config.GOOGLE_MAP_KEY}`
+      }
+    };
+
+    const response = await axios.get('', params);
+    return response.data;
+  }
 
   return self;
 };
