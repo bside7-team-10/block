@@ -4,27 +4,26 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code ModifyPostResponse}
+ * Protobuf type {@code UploadImageResultResponse}
  */
-public final class ModifyPostResponse extends
+public final class UploadImageResultResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ModifyPostResponse)
-    ModifyPostResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:UploadImageResultResponse)
+    UploadImageResultResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ModifyPostResponse.newBuilder() to construct.
-  private ModifyPostResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UploadImageResultResponse.newBuilder() to construct.
+  private UploadImageResultResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ModifyPostResponse() {
+  private UploadImageResultResponse() {
     status_ = 0;
-    uploadImageUrl_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new ModifyPostResponse();
+    return new UploadImageResultResponse();
   }
 
   @java.lang.Override
@@ -32,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ModifyPostResponse(
+  private UploadImageResultResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -61,12 +60,6 @@ private static final long serialVersionUID = 0L;
             postId_ = input.readInt64();
             break;
           }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            uploadImageUrl_ = s;
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -88,15 +81,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_ModifyPostResponse_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_ModifyPostResponse_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.ModifyPostResponse.class, com.block.server._generated.proto.postservice.ModifyPostResponse.Builder.class);
+            com.block.server._generated.proto.postservice.UploadImageResultResponse.class, com.block.server._generated.proto.postservice.UploadImageResultResponse.Builder.class);
   }
 
   public static final int STATUS_FIELD_NUMBER = 1;
@@ -129,44 +122,6 @@ private static final long serialVersionUID = 0L;
     return postId_;
   }
 
-  public static final int UPLOADIMAGEURL_FIELD_NUMBER = 3;
-  private volatile java.lang.Object uploadImageUrl_;
-  /**
-   * <code>string uploadImageUrl = 3;</code>
-   * @return The uploadImageUrl.
-   */
-  @java.lang.Override
-  public java.lang.String getUploadImageUrl() {
-    java.lang.Object ref = uploadImageUrl_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      uploadImageUrl_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string uploadImageUrl = 3;</code>
-   * @return The bytes for uploadImageUrl.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getUploadImageUrlBytes() {
-    java.lang.Object ref = uploadImageUrl_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      uploadImageUrl_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -187,9 +142,6 @@ private static final long serialVersionUID = 0L;
     if (postId_ != 0L) {
       output.writeInt64(2, postId_);
     }
-    if (!getUploadImageUrlBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, uploadImageUrl_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -207,9 +159,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(2, postId_);
     }
-    if (!getUploadImageUrlBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, uploadImageUrl_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -220,16 +169,14 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.ModifyPostResponse)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.UploadImageResultResponse)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.ModifyPostResponse other = (com.block.server._generated.proto.postservice.ModifyPostResponse) obj;
+    com.block.server._generated.proto.postservice.UploadImageResultResponse other = (com.block.server._generated.proto.postservice.UploadImageResultResponse) obj;
 
     if (status_ != other.status_) return false;
     if (getPostId()
         != other.getPostId()) return false;
-    if (!getUploadImageUrl()
-        .equals(other.getUploadImageUrl())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -246,76 +193,74 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + POSTID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getPostId());
-    hash = (37 * hash) + UPLOADIMAGEURL_FIELD_NUMBER;
-    hash = (53 * hash) + getUploadImageUrl().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -328,7 +273,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.ModifyPostResponse prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.UploadImageResultResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -344,26 +289,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ModifyPostResponse}
+   * Protobuf type {@code UploadImageResultResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ModifyPostResponse)
-      com.block.server._generated.proto.postservice.ModifyPostResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:UploadImageResultResponse)
+      com.block.server._generated.proto.postservice.UploadImageResultResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_ModifyPostResponse_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_ModifyPostResponse_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.ModifyPostResponse.class, com.block.server._generated.proto.postservice.ModifyPostResponse.Builder.class);
+              com.block.server._generated.proto.postservice.UploadImageResultResponse.class, com.block.server._generated.proto.postservice.UploadImageResultResponse.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.ModifyPostResponse.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.UploadImageResultResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -385,25 +330,23 @@ private static final long serialVersionUID = 0L;
 
       postId_ = 0L;
 
-      uploadImageUrl_ = "";
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_ModifyPostResponse_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.ModifyPostResponse getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.ModifyPostResponse.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.UploadImageResultResponse getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.UploadImageResultResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.ModifyPostResponse build() {
-      com.block.server._generated.proto.postservice.ModifyPostResponse result = buildPartial();
+    public com.block.server._generated.proto.postservice.UploadImageResultResponse build() {
+      com.block.server._generated.proto.postservice.UploadImageResultResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -411,11 +354,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.ModifyPostResponse buildPartial() {
-      com.block.server._generated.proto.postservice.ModifyPostResponse result = new com.block.server._generated.proto.postservice.ModifyPostResponse(this);
+    public com.block.server._generated.proto.postservice.UploadImageResultResponse buildPartial() {
+      com.block.server._generated.proto.postservice.UploadImageResultResponse result = new com.block.server._generated.proto.postservice.UploadImageResultResponse(this);
       result.status_ = status_;
       result.postId_ = postId_;
-      result.uploadImageUrl_ = uploadImageUrl_;
       onBuilt();
       return result;
     }
@@ -454,25 +396,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.ModifyPostResponse) {
-        return mergeFrom((com.block.server._generated.proto.postservice.ModifyPostResponse)other);
+      if (other instanceof com.block.server._generated.proto.postservice.UploadImageResultResponse) {
+        return mergeFrom((com.block.server._generated.proto.postservice.UploadImageResultResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.ModifyPostResponse other) {
-      if (other == com.block.server._generated.proto.postservice.ModifyPostResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.UploadImageResultResponse other) {
+      if (other == com.block.server._generated.proto.postservice.UploadImageResultResponse.getDefaultInstance()) return this;
       if (other.status_ != 0) {
         setStatusValue(other.getStatusValue());
       }
       if (other.getPostId() != 0L) {
         setPostId(other.getPostId());
-      }
-      if (!other.getUploadImageUrl().isEmpty()) {
-        uploadImageUrl_ = other.uploadImageUrl_;
-        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -489,11 +427,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.ModifyPostResponse parsedMessage = null;
+      com.block.server._generated.proto.postservice.UploadImageResultResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.ModifyPostResponse) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.UploadImageResultResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -587,82 +525,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private java.lang.Object uploadImageUrl_ = "";
-    /**
-     * <code>string uploadImageUrl = 3;</code>
-     * @return The uploadImageUrl.
-     */
-    public java.lang.String getUploadImageUrl() {
-      java.lang.Object ref = uploadImageUrl_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        uploadImageUrl_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string uploadImageUrl = 3;</code>
-     * @return The bytes for uploadImageUrl.
-     */
-    public com.google.protobuf.ByteString
-        getUploadImageUrlBytes() {
-      java.lang.Object ref = uploadImageUrl_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        uploadImageUrl_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string uploadImageUrl = 3;</code>
-     * @param value The uploadImageUrl to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUploadImageUrl(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      uploadImageUrl_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string uploadImageUrl = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUploadImageUrl() {
-      
-      uploadImageUrl_ = getDefaultInstance().getUploadImageUrl();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string uploadImageUrl = 3;</code>
-     * @param value The bytes for uploadImageUrl to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUploadImageUrlBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      uploadImageUrl_ = value;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -676,41 +538,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ModifyPostResponse)
+    // @@protoc_insertion_point(builder_scope:UploadImageResultResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:ModifyPostResponse)
-  private static final com.block.server._generated.proto.postservice.ModifyPostResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:UploadImageResultResponse)
+  private static final com.block.server._generated.proto.postservice.UploadImageResultResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.ModifyPostResponse();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.UploadImageResultResponse();
   }
 
-  public static com.block.server._generated.proto.postservice.ModifyPostResponse getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.UploadImageResultResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ModifyPostResponse>
-      PARSER = new com.google.protobuf.AbstractParser<ModifyPostResponse>() {
+  private static final com.google.protobuf.Parser<UploadImageResultResponse>
+      PARSER = new com.google.protobuf.AbstractParser<UploadImageResultResponse>() {
     @java.lang.Override
-    public ModifyPostResponse parsePartialFrom(
+    public UploadImageResultResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ModifyPostResponse(input, extensionRegistry);
+      return new UploadImageResultResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ModifyPostResponse> parser() {
+  public static com.google.protobuf.Parser<UploadImageResultResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ModifyPostResponse> getParserForType() {
+  public com.google.protobuf.Parser<UploadImageResultResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.ModifyPostResponse getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.UploadImageResultResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

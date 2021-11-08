@@ -32,23 +32,17 @@ public interface CreatePostRequestOrBuilder extends
       getContentBytes();
 
   /**
-   * <code>bytes image = 3;</code>
-   * @return The image.
-   */
-  com.google.protobuf.ByteString getImage();
-
-  /**
-   * <code>.Location location = 4;</code>
+   * <code>.LocationDto location = 3;</code>
    * @return Whether the location field is set.
    */
   boolean hasLocation();
   /**
-   * <code>.Location location = 4;</code>
+   * <code>.LocationDto location = 3;</code>
    * @return The location.
    */
-  com.block.server._generated.proto.postservice.Location getLocation();
+  com.block.server._generated.proto.postservice.LocationDto getLocation();
   /**
-   * <code>.Location location = 4;</code>
+   * <code>.LocationDto location = 3;</code>
    */
-  com.block.server._generated.proto.postservice.LocationOrBuilder getLocationOrBuilder();
+  com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
 }

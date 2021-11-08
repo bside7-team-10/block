@@ -3,8 +3,8 @@
 
 package com.block.server._generated.proto.postservice;
 
-public interface CreatePostResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:CreatePostResponse)
+public interface UploadImageResultResponseOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:UploadImageResultResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -23,16 +23,4 @@ public interface CreatePostResponseOrBuilder extends
    * @return The postId.
    */
   long getPostId();
-
-  /**
-   * <code>string uploadImageUrl = 3;</code>
-   * @return The uploadImageUrl.
-   */
-  java.lang.String getUploadImageUrl();
-  /**
-   * <code>string uploadImageUrl = 3;</code>
-   * @return The bytes for uploadImageUrl.
-   */
-  com.google.protobuf.ByteString
-      getUploadImageUrlBytes();
 }

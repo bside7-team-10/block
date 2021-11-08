@@ -59,11 +59,11 @@ private static final long serialVersionUID = 0L;
           }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              posts_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.Post>();
+              posts_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.PostDto>();
               mutable_bitField0_ |= 0x00000001;
             }
             posts_.add(
-                input.readMessage(com.block.server._generated.proto.postservice.Post.parser(), extensionRegistry));
+                input.readMessage(com.block.server._generated.proto.postservice.PostDto.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -121,41 +121,41 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int POSTS_FIELD_NUMBER = 2;
-  private java.util.List<com.block.server._generated.proto.postservice.Post> posts_;
+  private java.util.List<com.block.server._generated.proto.postservice.PostDto> posts_;
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
   @java.lang.Override
-  public java.util.List<com.block.server._generated.proto.postservice.Post> getPostsList() {
+  public java.util.List<com.block.server._generated.proto.postservice.PostDto> getPostsList() {
     return posts_;
   }
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.block.server._generated.proto.postservice.PostOrBuilder> 
+  public java.util.List<? extends com.block.server._generated.proto.postservice.PostDtoOrBuilder> 
       getPostsOrBuilderList() {
     return posts_;
   }
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
   @java.lang.Override
   public int getPostsCount() {
     return posts_.size();
   }
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Post getPosts(int index) {
+  public com.block.server._generated.proto.postservice.PostDto getPosts(int index) {
     return posts_.get(index);
   }
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.PostOrBuilder getPostsOrBuilder(
+  public com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostsOrBuilder(
       int index) {
     return posts_.get(index);
   }
@@ -572,22 +572,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.block.server._generated.proto.postservice.Post> posts_ =
+    private java.util.List<com.block.server._generated.proto.postservice.PostDto> posts_ =
       java.util.Collections.emptyList();
     private void ensurePostsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        posts_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.Post>(posts_);
+        posts_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.PostDto>(posts_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder> postsBuilder_;
+        com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder> postsBuilder_;
 
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public java.util.List<com.block.server._generated.proto.postservice.Post> getPostsList() {
+    public java.util.List<com.block.server._generated.proto.postservice.PostDto> getPostsList() {
       if (postsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(posts_);
       } else {
@@ -595,7 +595,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public int getPostsCount() {
       if (postsBuilder_ == null) {
@@ -605,9 +605,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.Post getPosts(int index) {
+    public com.block.server._generated.proto.postservice.PostDto getPosts(int index) {
       if (postsBuilder_ == null) {
         return posts_.get(index);
       } else {
@@ -615,10 +615,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder setPosts(
-        int index, com.block.server._generated.proto.postservice.Post value) {
+        int index, com.block.server._generated.proto.postservice.PostDto value) {
       if (postsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -632,10 +632,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder setPosts(
-        int index, com.block.server._generated.proto.postservice.Post.Builder builderForValue) {
+        int index, com.block.server._generated.proto.postservice.PostDto.Builder builderForValue) {
       if (postsBuilder_ == null) {
         ensurePostsIsMutable();
         posts_.set(index, builderForValue.build());
@@ -646,9 +646,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public Builder addPosts(com.block.server._generated.proto.postservice.Post value) {
+    public Builder addPosts(com.block.server._generated.proto.postservice.PostDto value) {
       if (postsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -662,10 +662,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder addPosts(
-        int index, com.block.server._generated.proto.postservice.Post value) {
+        int index, com.block.server._generated.proto.postservice.PostDto value) {
       if (postsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -679,10 +679,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder addPosts(
-        com.block.server._generated.proto.postservice.Post.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.PostDto.Builder builderForValue) {
       if (postsBuilder_ == null) {
         ensurePostsIsMutable();
         posts_.add(builderForValue.build());
@@ -693,10 +693,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder addPosts(
-        int index, com.block.server._generated.proto.postservice.Post.Builder builderForValue) {
+        int index, com.block.server._generated.proto.postservice.PostDto.Builder builderForValue) {
       if (postsBuilder_ == null) {
         ensurePostsIsMutable();
         posts_.add(index, builderForValue.build());
@@ -707,10 +707,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder addAllPosts(
-        java.lang.Iterable<? extends com.block.server._generated.proto.postservice.Post> values) {
+        java.lang.Iterable<? extends com.block.server._generated.proto.postservice.PostDto> values) {
       if (postsBuilder_ == null) {
         ensurePostsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -722,7 +722,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder clearPosts() {
       if (postsBuilder_ == null) {
@@ -735,7 +735,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
     public Builder removePosts(int index) {
       if (postsBuilder_ == null) {
@@ -748,16 +748,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.Post.Builder getPostsBuilder(
+    public com.block.server._generated.proto.postservice.PostDto.Builder getPostsBuilder(
         int index) {
       return getPostsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.PostOrBuilder getPostsOrBuilder(
+    public com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostsOrBuilder(
         int index) {
       if (postsBuilder_ == null) {
         return posts_.get(index);  } else {
@@ -765,9 +765,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public java.util.List<? extends com.block.server._generated.proto.postservice.PostOrBuilder> 
+    public java.util.List<? extends com.block.server._generated.proto.postservice.PostDtoOrBuilder> 
          getPostsOrBuilderList() {
       if (postsBuilder_ != null) {
         return postsBuilder_.getMessageOrBuilderList();
@@ -776,33 +776,33 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.Post.Builder addPostsBuilder() {
+    public com.block.server._generated.proto.postservice.PostDto.Builder addPostsBuilder() {
       return getPostsFieldBuilder().addBuilder(
-          com.block.server._generated.proto.postservice.Post.getDefaultInstance());
+          com.block.server._generated.proto.postservice.PostDto.getDefaultInstance());
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.Post.Builder addPostsBuilder(
+    public com.block.server._generated.proto.postservice.PostDto.Builder addPostsBuilder(
         int index) {
       return getPostsFieldBuilder().addBuilder(
-          index, com.block.server._generated.proto.postservice.Post.getDefaultInstance());
+          index, com.block.server._generated.proto.postservice.PostDto.getDefaultInstance());
     }
     /**
-     * <code>repeated .Post posts = 2;</code>
+     * <code>repeated .PostDto posts = 2;</code>
      */
-    public java.util.List<com.block.server._generated.proto.postservice.Post.Builder> 
+    public java.util.List<com.block.server._generated.proto.postservice.PostDto.Builder> 
          getPostsBuilderList() {
       return getPostsFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder> 
+        com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder> 
         getPostsFieldBuilder() {
       if (postsBuilder_ == null) {
         postsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder>(
+            com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder>(
                 posts_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),

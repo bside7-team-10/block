@@ -25,6 +25,8 @@ service PostProtocol {
     rpc LikePost (LikePostRequest) returns (LikePostResponse) {}
 
     rpc CancelLikePost(LikePostRequest) returns (LikePostResponse) {}
+
+    rpc UploadImageResult(UploadImageResultRequest) returns (UploadImageResultResponse) {}
 }
 
 enum PostProtocolStatus {
@@ -35,12 +37,12 @@ enum PostProtocolStatus {
     INTERNAL_ERROR = 99;
 }
 
-message Location {
+message LocationDto {
     double lat = 1;
-    double Long = 2;
+    double long = 2;
 }
 
-message Comment {
+message CommentDto {
     string commentId = 1;
     string author = 2;
     string content = 3;
@@ -48,19 +50,19 @@ message Comment {
     int32 modifiedTS = 5;
 }
 
-message User{
+message UserDto {
     string nickname = 1;
     string profileUrl = 2;
 }
 
-message Post {
+message PostDto {
     int64 postId = 1;
-    User author = 2;
+    UserDto author = 2;
     string content = 3;
     string imageUrl = 4;
     int32 likes = 5;
-    repeated Comment comments = 6;
-    Location location = 7;
+    repeated CommentDto comments = 6;
+    LocationDto location = 7;
 }
 
 message GetPostRequest {
@@ -69,13 +71,14 @@ message GetPostRequest {
 
 message GetPostResponse {
     PostProtocolStatus status = 1;
-    Post post = 2;
+    PostDto post = 2;
+    string imageUploadUrl = 3;
 }
 
 message GetPostsRequest {
     int32 pageNumber = 1;
     optional int32 resultPerPage = 2; // default = 10
-    Location currentLocation = 3;
+    LocationDto currentLocation = 3;
     message Filter {
         message DistanceFilter {
             bool enabled = 1;
@@ -89,31 +92,31 @@ message GetPostsRequest {
 
 message GetPostsResponse {
     PostProtocolStatus status = 1;
-    repeated Post posts = 2;
+    repeated PostDto posts = 2;
 }
 
 message CreatePostRequest {
     string author = 1;
     string content = 2;
-    bytes image = 3;
-    Location location = 4;
+    LocationDto location = 3;
 }
 
 message CreatePostResponse {
     PostProtocolStatus status = 1;
     int64 postId = 2;
+    string uploadImageUrl = 3;
 }
 
 message ModifyPostRequest {
     int64 postId = 1;
     string content = 2;
     bool modifiedImage = 3;
-    optional bytes image = 4;
 }
 
 message ModifyPostResponse {
     PostProtocolStatus status = 1;
     int64 postId = 2;
+    string uploadImageUrl = 3;
 }
 
 message DeletePostRequest {
@@ -161,5 +164,15 @@ message LikePostRequest {
 
 message LikePostResponse {
     PostProtocolStatus status = 1;
-    Post post = 2;
+    PostDto post = 2;
+}
+
+message UploadImageResultRequest {
+    int64 postId = 1;
+    bool success = 2;
+}
+
+message UploadImageResultResponse {
+    PostProtocolStatus status = 1;
+    int64 postId = 2;
 }

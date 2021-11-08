@@ -3,7 +3,7 @@
 
 import * as jspb from "google-protobuf";
 
-export class Location extends jspb.Message {
+export class LocationDto extends jspb.Message {
   getLat(): number;
   setLat(value: number): void;
 
@@ -11,23 +11,23 @@ export class Location extends jspb.Message {
   setLong(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Location.AsObject;
-  static toObject(includeInstance: boolean, msg: Location): Location.AsObject;
+  toObject(includeInstance?: boolean): LocationDto.AsObject;
+  static toObject(includeInstance: boolean, msg: LocationDto): LocationDto.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: Location, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Location;
-  static deserializeBinaryFromReader(message: Location, reader: jspb.BinaryReader): Location;
+  static serializeBinaryToWriter(message: LocationDto, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LocationDto;
+  static deserializeBinaryFromReader(message: LocationDto, reader: jspb.BinaryReader): LocationDto;
 }
 
-export namespace Location {
+export namespace LocationDto {
   export type AsObject = {
     lat: number,
     pb_long: number,
   }
 }
 
-export class Comment extends jspb.Message {
+export class CommentDto extends jspb.Message {
   getCommentid(): string;
   setCommentid(value: string): void;
 
@@ -44,16 +44,16 @@ export class Comment extends jspb.Message {
   setModifiedts(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Comment.AsObject;
-  static toObject(includeInstance: boolean, msg: Comment): Comment.AsObject;
+  toObject(includeInstance?: boolean): CommentDto.AsObject;
+  static toObject(includeInstance: boolean, msg: CommentDto): CommentDto.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: Comment, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Comment;
-  static deserializeBinaryFromReader(message: Comment, reader: jspb.BinaryReader): Comment;
+  static serializeBinaryToWriter(message: CommentDto, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CommentDto;
+  static deserializeBinaryFromReader(message: CommentDto, reader: jspb.BinaryReader): CommentDto;
 }
 
-export namespace Comment {
+export namespace CommentDto {
   export type AsObject = {
     commentid: string,
     author: string,
@@ -63,12 +63,38 @@ export namespace Comment {
   }
 }
 
-export class Post extends jspb.Message {
-  getPostid(): string;
-  setPostid(value: string): void;
+export class UserDto extends jspb.Message {
+  getNickname(): string;
+  setNickname(value: string): void;
 
-  getAuthor(): string;
-  setAuthor(value: string): void;
+  getProfileurl(): string;
+  setProfileurl(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserDto.AsObject;
+  static toObject(includeInstance: boolean, msg: UserDto): UserDto.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UserDto, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserDto;
+  static deserializeBinaryFromReader(message: UserDto, reader: jspb.BinaryReader): UserDto;
+}
+
+export namespace UserDto {
+  export type AsObject = {
+    nickname: string,
+    profileurl: string,
+  }
+}
+
+export class PostDto extends jspb.Message {
+  getPostid(): number;
+  setPostid(value: number): void;
+
+  hasAuthor(): boolean;
+  clearAuthor(): void;
+  getAuthor(): UserDto | undefined;
+  setAuthor(value?: UserDto): void;
 
   getContent(): string;
   setContent(value: string): void;
@@ -80,40 +106,40 @@ export class Post extends jspb.Message {
   setLikes(value: number): void;
 
   clearCommentsList(): void;
-  getCommentsList(): Array<Comment>;
-  setCommentsList(value: Array<Comment>): void;
-  addComments(value?: Comment, index?: number): Comment;
+  getCommentsList(): Array<CommentDto>;
+  setCommentsList(value: Array<CommentDto>): void;
+  addComments(value?: CommentDto, index?: number): CommentDto;
 
   hasLocation(): boolean;
   clearLocation(): void;
-  getLocation(): Location | undefined;
-  setLocation(value?: Location): void;
+  getLocation(): LocationDto | undefined;
+  setLocation(value?: LocationDto): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Post.AsObject;
-  static toObject(includeInstance: boolean, msg: Post): Post.AsObject;
+  toObject(includeInstance?: boolean): PostDto.AsObject;
+  static toObject(includeInstance: boolean, msg: PostDto): PostDto.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: Post, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Post;
-  static deserializeBinaryFromReader(message: Post, reader: jspb.BinaryReader): Post;
+  static serializeBinaryToWriter(message: PostDto, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PostDto;
+  static deserializeBinaryFromReader(message: PostDto, reader: jspb.BinaryReader): PostDto;
 }
 
-export namespace Post {
+export namespace PostDto {
   export type AsObject = {
-    postid: string,
-    author: string,
+    postid: number,
+    author?: UserDto.AsObject,
     content: string,
     imageurl: string,
     likes: number,
-    commentsList: Array<Comment.AsObject>,
-    location?: Location.AsObject,
+    commentsList: Array<CommentDto.AsObject>,
+    location?: LocationDto.AsObject,
   }
 }
 
 export class GetPostRequest extends jspb.Message {
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetPostRequest.AsObject;
@@ -127,7 +153,7 @@ export class GetPostRequest extends jspb.Message {
 
 export namespace GetPostRequest {
   export type AsObject = {
-    postid: string,
+    postid: number,
   }
 }
 
@@ -137,8 +163,11 @@ export class GetPostResponse extends jspb.Message {
 
   hasPost(): boolean;
   clearPost(): void;
-  getPost(): Post | undefined;
-  setPost(value?: Post): void;
+  getPost(): PostDto | undefined;
+  setPost(value?: PostDto): void;
+
+  getImageuploadurl(): string;
+  setImageuploadurl(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetPostResponse.AsObject;
@@ -153,7 +182,8 @@ export class GetPostResponse extends jspb.Message {
 export namespace GetPostResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    post?: Post.AsObject,
+    post?: PostDto.AsObject,
+    imageuploadurl: string,
   }
 }
 
@@ -168,8 +198,8 @@ export class GetPostsRequest extends jspb.Message {
 
   hasCurrentlocation(): boolean;
   clearCurrentlocation(): void;
-  getCurrentlocation(): Location | undefined;
-  setCurrentlocation(value?: Location): void;
+  getCurrentlocation(): LocationDto | undefined;
+  setCurrentlocation(value?: LocationDto): void;
 
   hasFilter(): boolean;
   clearFilter(): void;
@@ -190,7 +220,7 @@ export namespace GetPostsRequest {
   export type AsObject = {
     pagenumber: number,
     resultperpage: number,
-    currentlocation?: Location.AsObject,
+    currentlocation?: LocationDto.AsObject,
     filter?: GetPostsRequest.Filter.AsObject,
   }
 
@@ -250,9 +280,9 @@ export class GetPostsResponse extends jspb.Message {
   setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
 
   clearPostsList(): void;
-  getPostsList(): Array<Post>;
-  setPostsList(value: Array<Post>): void;
-  addPosts(value?: Post, index?: number): Post;
+  getPostsList(): Array<PostDto>;
+  setPostsList(value: Array<PostDto>): void;
+  addPosts(value?: PostDto, index?: number): PostDto;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetPostsResponse.AsObject;
@@ -267,7 +297,7 @@ export class GetPostsResponse extends jspb.Message {
 export namespace GetPostsResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    postsList: Array<Post.AsObject>,
+    postsList: Array<PostDto.AsObject>,
   }
 }
 
@@ -278,15 +308,10 @@ export class CreatePostRequest extends jspb.Message {
   getContent(): string;
   setContent(value: string): void;
 
-  getImage(): Uint8Array | string;
-  getImage_asU8(): Uint8Array;
-  getImage_asB64(): string;
-  setImage(value: Uint8Array | string): void;
-
   hasLocation(): boolean;
   clearLocation(): void;
-  getLocation(): Location | undefined;
-  setLocation(value?: Location): void;
+  getLocation(): LocationDto | undefined;
+  setLocation(value?: LocationDto): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreatePostRequest.AsObject;
@@ -302,8 +327,7 @@ export namespace CreatePostRequest {
   export type AsObject = {
     author: string,
     content: string,
-    image: Uint8Array | string,
-    location?: Location.AsObject,
+    location?: LocationDto.AsObject,
   }
 }
 
@@ -311,8 +335,11 @@ export class CreatePostResponse extends jspb.Message {
   getStatus(): PostProtocolStatusMap[keyof PostProtocolStatusMap];
   setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
 
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
+
+  getUploadimageurl(): string;
+  setUploadimageurl(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreatePostResponse.AsObject;
@@ -327,26 +354,20 @@ export class CreatePostResponse extends jspb.Message {
 export namespace CreatePostResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    postid: string,
+    postid: number,
+    uploadimageurl: string,
   }
 }
 
 export class ModifyPostRequest extends jspb.Message {
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
 
   getContent(): string;
   setContent(value: string): void;
 
   getModifiedimage(): boolean;
   setModifiedimage(value: boolean): void;
-
-  hasImage(): boolean;
-  clearImage(): void;
-  getImage(): Uint8Array | string;
-  getImage_asU8(): Uint8Array;
-  getImage_asB64(): string;
-  setImage(value: Uint8Array | string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ModifyPostRequest.AsObject;
@@ -360,10 +381,9 @@ export class ModifyPostRequest extends jspb.Message {
 
 export namespace ModifyPostRequest {
   export type AsObject = {
-    postid: string,
+    postid: number,
     content: string,
     modifiedimage: boolean,
-    image: Uint8Array | string,
   }
 }
 
@@ -371,8 +391,11 @@ export class ModifyPostResponse extends jspb.Message {
   getStatus(): PostProtocolStatusMap[keyof PostProtocolStatusMap];
   setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
 
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
+
+  getUploadimageurl(): string;
+  setUploadimageurl(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ModifyPostResponse.AsObject;
@@ -387,13 +410,14 @@ export class ModifyPostResponse extends jspb.Message {
 export namespace ModifyPostResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    postid: string,
+    postid: number,
+    uploadimageurl: string,
   }
 }
 
 export class DeletePostRequest extends jspb.Message {
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeletePostRequest.AsObject;
@@ -407,7 +431,7 @@ export class DeletePostRequest extends jspb.Message {
 
 export namespace DeletePostRequest {
   export type AsObject = {
-    postid: string,
+    postid: number,
   }
 }
 
@@ -415,8 +439,8 @@ export class DeletePostResponse extends jspb.Message {
   getStatus(): PostProtocolStatusMap[keyof PostProtocolStatusMap];
   setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
 
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeletePostResponse.AsObject;
@@ -431,7 +455,7 @@ export class DeletePostResponse extends jspb.Message {
 export namespace DeletePostResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    postid: string,
+    postid: number,
   }
 }
 
@@ -439,8 +463,8 @@ export class CreateCommentRequest extends jspb.Message {
   getAuthor(): string;
   setAuthor(value: string): void;
 
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
 
   getContent(): string;
   setContent(value: string): void;
@@ -458,7 +482,7 @@ export class CreateCommentRequest extends jspb.Message {
 export namespace CreateCommentRequest {
   export type AsObject = {
     author: string,
-    postid: string,
+    postid: number,
     content: string,
   }
 }
@@ -467,8 +491,8 @@ export class CreateCommentResponse extends jspb.Message {
   getStatus(): PostProtocolStatusMap[keyof PostProtocolStatusMap];
   setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
 
-  getCommentid(): string;
-  setCommentid(value: string): void;
+  getCommentid(): number;
+  setCommentid(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateCommentResponse.AsObject;
@@ -483,13 +507,13 @@ export class CreateCommentResponse extends jspb.Message {
 export namespace CreateCommentResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    commentid: string,
+    commentid: number,
   }
 }
 
 export class ModifyCommentRequest extends jspb.Message {
-  getCommentid(): string;
-  setCommentid(value: string): void;
+  getCommentid(): number;
+  setCommentid(value: number): void;
 
   getContent(): string;
   setContent(value: string): void;
@@ -506,7 +530,7 @@ export class ModifyCommentRequest extends jspb.Message {
 
 export namespace ModifyCommentRequest {
   export type AsObject = {
-    commentid: string,
+    commentid: number,
     content: string,
   }
 }
@@ -515,8 +539,8 @@ export class ModifyCommentResponse extends jspb.Message {
   getStatus(): PostProtocolStatusMap[keyof PostProtocolStatusMap];
   setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
 
-  getCommentid(): string;
-  setCommentid(value: string): void;
+  getCommentid(): number;
+  setCommentid(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ModifyCommentResponse.AsObject;
@@ -531,13 +555,13 @@ export class ModifyCommentResponse extends jspb.Message {
 export namespace ModifyCommentResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    commentid: string,
+    commentid: number,
   }
 }
 
 export class DeleteCommentRequest extends jspb.Message {
-  getCommentid(): string;
-  setCommentid(value: string): void;
+  getCommentid(): number;
+  setCommentid(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteCommentRequest.AsObject;
@@ -551,7 +575,7 @@ export class DeleteCommentRequest extends jspb.Message {
 
 export namespace DeleteCommentRequest {
   export type AsObject = {
-    commentid: string,
+    commentid: number,
   }
 }
 
@@ -576,8 +600,8 @@ export namespace DeleteCommentResponse {
 }
 
 export class LikePostRequest extends jspb.Message {
-  getPostid(): string;
-  setPostid(value: string): void;
+  getPostid(): number;
+  setPostid(value: number): void;
 
   getLike(): boolean;
   setLike(value: boolean): void;
@@ -594,7 +618,7 @@ export class LikePostRequest extends jspb.Message {
 
 export namespace LikePostRequest {
   export type AsObject = {
-    postid: string,
+    postid: number,
     like: boolean,
   }
 }
@@ -605,8 +629,8 @@ export class LikePostResponse extends jspb.Message {
 
   hasPost(): boolean;
   clearPost(): void;
-  getPost(): Post | undefined;
-  setPost(value?: Post): void;
+  getPost(): PostDto | undefined;
+  setPost(value?: PostDto): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LikePostResponse.AsObject;
@@ -621,7 +645,55 @@ export class LikePostResponse extends jspb.Message {
 export namespace LikePostResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    post?: Post.AsObject,
+    post?: PostDto.AsObject,
+  }
+}
+
+export class UploadImageResultRequest extends jspb.Message {
+  getPostid(): number;
+  setPostid(value: number): void;
+
+  getSuccess(): boolean;
+  setSuccess(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UploadImageResultRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UploadImageResultRequest): UploadImageResultRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UploadImageResultRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UploadImageResultRequest;
+  static deserializeBinaryFromReader(message: UploadImageResultRequest, reader: jspb.BinaryReader): UploadImageResultRequest;
+}
+
+export namespace UploadImageResultRequest {
+  export type AsObject = {
+    postid: number,
+    success: boolean,
+  }
+}
+
+export class UploadImageResultResponse extends jspb.Message {
+  getStatus(): PostProtocolStatusMap[keyof PostProtocolStatusMap];
+  setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
+
+  getPostid(): number;
+  setPostid(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UploadImageResultResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UploadImageResultResponse): UploadImageResultResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UploadImageResultResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UploadImageResultResponse;
+  static deserializeBinaryFromReader(message: UploadImageResultResponse, reader: jspb.BinaryReader): UploadImageResultResponse;
+}
+
+export namespace UploadImageResultResponse {
+  export type AsObject = {
+    status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
+    postid: number,
   }
 }
 

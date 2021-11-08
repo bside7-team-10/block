@@ -100,6 +100,15 @@ PostProtocol.CancelLikePost = {
   responseType: PostProtocol_pb.LikePostResponse
 };
 
+PostProtocol.UploadImageResult = {
+  methodName: "UploadImageResult",
+  service: PostProtocol,
+  requestStream: false,
+  responseStream: false,
+  requestType: PostProtocol_pb.UploadImageResultRequest,
+  responseType: PostProtocol_pb.UploadImageResultResponse
+};
+
 exports.PostProtocol = PostProtocol;
 
 function PostProtocolClient(serviceHost, options) {
@@ -391,6 +400,37 @@ PostProtocolClient.prototype.cancelLikePost = function cancelLikePost(requestMes
     callback = arguments[1];
   }
   var client = grpc.unary(PostProtocol.CancelLikePost, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+PostProtocolClient.prototype.uploadImageResult = function uploadImageResult(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(PostProtocol.UploadImageResult, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

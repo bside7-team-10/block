@@ -33,19 +33,19 @@ public interface GetPostsRequestOrBuilder extends
   int getResultPerPage();
 
   /**
-   * <code>.Location currentLocation = 3;</code>
+   * <code>.LocationDto currentLocation = 3;</code>
    * @return Whether the currentLocation field is set.
    */
   boolean hasCurrentLocation();
   /**
-   * <code>.Location currentLocation = 3;</code>
+   * <code>.LocationDto currentLocation = 3;</code>
    * @return The currentLocation.
    */
-  com.block.server._generated.proto.postservice.Location getCurrentLocation();
+  com.block.server._generated.proto.postservice.LocationDto getCurrentLocation();
   /**
-   * <code>.Location currentLocation = 3;</code>
+   * <code>.LocationDto currentLocation = 3;</code>
    */
-  com.block.server._generated.proto.postservice.LocationOrBuilder getCurrentLocationOrBuilder();
+  com.block.server._generated.proto.postservice.LocationDtoOrBuilder getCurrentLocationOrBuilder();
 
   /**
    * <code>.GetPostsRequest.Filter filter = 4;</code>

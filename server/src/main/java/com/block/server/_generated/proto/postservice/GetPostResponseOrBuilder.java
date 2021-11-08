@@ -19,17 +19,29 @@ public interface GetPostResponseOrBuilder extends
   com.block.server._generated.proto.postservice.PostProtocolStatus getStatus();
 
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    * @return Whether the post field is set.
    */
   boolean hasPost();
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    * @return The post.
    */
-  com.block.server._generated.proto.postservice.Post getPost();
+  com.block.server._generated.proto.postservice.PostDto getPost();
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    */
-  com.block.server._generated.proto.postservice.PostOrBuilder getPostOrBuilder();
+  com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostOrBuilder();
+
+  /**
+   * <code>string imageUploadUrl = 3;</code>
+   * @return The imageUploadUrl.
+   */
+  java.lang.String getImageUploadUrl();
+  /**
+   * <code>string imageUploadUrl = 3;</code>
+   * @return The bytes for imageUploadUrl.
+   */
+  com.google.protobuf.ByteString
+      getImageUploadUrlBytes();
 }
