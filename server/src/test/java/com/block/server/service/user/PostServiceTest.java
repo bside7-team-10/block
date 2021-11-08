@@ -5,6 +5,7 @@ import com.block.server.domain.post.PostRepository;
 import com.block.server.helper.TestPost;
 import com.block.server.helper.TestUser;
 import com.block.server.service.post.PostServiceImpl;
+import com.block.server.service.postimagestorage.PostImageStorageService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,9 @@ public class PostServiceTest {
     @Mock
     private PostRepository postRepository;
 
+    @Mock
+    private PostImageStorageService postImageStorageService;
+
     @InjectMocks
     private PostServiceImpl postService;
 
@@ -41,8 +45,6 @@ public class PostServiceTest {
     @Test
     @DisplayName("포스트 작성, response")
     public void CreatePost() {
-
-        postService = new PostServiceImpl(postRepository);
 
         var testUser = TestUser.U1().toUser();
         ReflectionTestUtils.setField(testUser, "id", 1L);
@@ -54,7 +56,7 @@ public class PostServiceTest {
                 .setAuthor(testUser.getNickName())
                 .setContent(testPost.getContent())
                 .setLocation(
-                        Location.newBuilder()
+                        LocationDto.newBuilder()
                                 .setLat(testPost.getLocation().getX())
                                 .setLong(testPost.getLocation().getY())
                                 .build())
@@ -64,7 +66,11 @@ public class PostServiceTest {
                 .when(postRepository)
                 .save(any());
 
-        var createPost = postService.create(createPostRequest, testUser);
+        doReturn("")
+                .when(postImageStorageService)
+                .getUploadUrl(any());
+
+        var createPost = postService.createPost(createPostRequest, testUser);
 
         assertThat(createPost, Matchers.is(notNullValue()));
         assertEquals(PostProtocolStatus.SUCCESS, createPost.getStatus());
@@ -74,8 +80,6 @@ public class PostServiceTest {
     @Test
     @DisplayName("포스트를 가져온다")
     public void GetPost() {
-
-        postService = new PostServiceImpl(postRepository);
 
         var testUser = TestUser.U1().toUser();
         ReflectionTestUtils.setField(testUser, "id", 1L);
@@ -91,6 +95,10 @@ public class PostServiceTest {
                 .when(postRepository)
                 .findById(any());
 
+        doReturn("")
+                .when(postImageStorageService)
+                .getDownloadUrl(any());
+
         var getPost = postService.getPost(getPostRequest);
 
         assertThat(getPost, Matchers.is(notNullValue()));
@@ -104,7 +112,6 @@ public class PostServiceTest {
     @DisplayName("post를 가져온다.")
     @Test
     void GetPosts() {
-        postService = new PostServiceImpl(postRepository);
 
         var testUser = TestUser.U1().toUser();
         ReflectionTestUtils.setField(testUser, "id", 1L);
@@ -133,6 +140,10 @@ public class PostServiceTest {
         doReturn(list)
                 .when(postRepository)
                 .findWithPagination(any());
+
+        doReturn("")
+                .when(postImageStorageService)
+                .getDownloadUrl(any());
 
 
         var posts = postService.getPosts(getPostsRequest);

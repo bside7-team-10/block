@@ -19,26 +19,26 @@ public interface GetPostsResponseOrBuilder extends
   com.block.server._generated.proto.postservice.PostProtocolStatus getStatus();
 
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
-  java.util.List<com.block.server._generated.proto.postservice.Post> 
+  java.util.List<com.block.server._generated.proto.postservice.PostDto> 
       getPostsList();
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
-  com.block.server._generated.proto.postservice.Post getPosts(int index);
+  com.block.server._generated.proto.postservice.PostDto getPosts(int index);
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
   int getPostsCount();
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
-  java.util.List<? extends com.block.server._generated.proto.postservice.PostOrBuilder> 
+  java.util.List<? extends com.block.server._generated.proto.postservice.PostDtoOrBuilder> 
       getPostsOrBuilderList();
   /**
-   * <code>repeated .Post posts = 2;</code>
+   * <code>repeated .PostDto posts = 2;</code>
    */
-  com.block.server._generated.proto.postservice.PostOrBuilder getPostsOrBuilder(
+  com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostsOrBuilder(
       int index);
 }

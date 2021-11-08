@@ -1,7 +1,6 @@
 package com.block.server.domain.post;
 
 import com.block.server.domain.user.User;
-import com.google.type.LatLng;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,7 +33,7 @@ public class Post {
     private String content;
 
     @Column
-    private String imageUrl;
+    private String imageKey;
 
     @Column
     private int likesCount;
@@ -54,12 +53,16 @@ public class Post {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Post(User userId, String contents, String imageUrl, int likesCount, int commentsCount, Point location) {
+    public Post(User userId, String contents, String imageKey, int likesCount, int commentsCount, Point location) {
         this.userId=userId;
         this.content = contents;
-        this.imageUrl = imageUrl;
+        this.imageKey = imageKey;
         this.likesCount = likesCount;
         this.commentsCount = commentsCount;
         this.location = location;
+    }
+
+    public void setImageKey(String key) {
+        this.imageKey = key;
     }
 }

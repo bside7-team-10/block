@@ -30,15 +30,4 @@ public interface ModifyPostRequestOrBuilder extends
    * @return The modifiedImage.
    */
   boolean getModifiedImage();
-
-  /**
-   * <code>optional bytes image = 4;</code>
-   * @return Whether the image field is set.
-   */
-  boolean hasImage();
-  /**
-   * <code>optional bytes image = 4;</code>
-   * @return The image.
-   */
-  com.google.protobuf.ByteString getImage();
 }

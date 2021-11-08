@@ -4,25 +4,25 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code Location}
+ * Protobuf type {@code UploadImageResultRequest}
  */
-public final class Location extends
+public final class UploadImageResultRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Location)
-    LocationOrBuilder {
+    // @@protoc_insertion_point(message_implements:UploadImageResultRequest)
+    UploadImageResultRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Location.newBuilder() to construct.
-  private Location(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UploadImageResultRequest.newBuilder() to construct.
+  private UploadImageResultRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Location() {
+  private UploadImageResultRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Location();
+    return new UploadImageResultRequest();
   }
 
   @java.lang.Override
@@ -30,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Location(
+  private UploadImageResultRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -48,14 +48,14 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 9: {
+          case 8: {
 
-            lat_ = input.readDouble();
+            postId_ = input.readInt64();
             break;
           }
-          case 17: {
+          case 16: {
 
-            long_ = input.readDouble();
+            success_ = input.readBool();
             break;
           }
           default: {
@@ -79,37 +79,37 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Location_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Location_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.Location.class, com.block.server._generated.proto.postservice.Location.Builder.class);
+            com.block.server._generated.proto.postservice.UploadImageResultRequest.class, com.block.server._generated.proto.postservice.UploadImageResultRequest.Builder.class);
   }
 
-  public static final int LAT_FIELD_NUMBER = 1;
-  private double lat_;
+  public static final int POSTID_FIELD_NUMBER = 1;
+  private long postId_;
   /**
-   * <code>double lat = 1;</code>
-   * @return The lat.
+   * <code>int64 postId = 1;</code>
+   * @return The postId.
    */
   @java.lang.Override
-  public double getLat() {
-    return lat_;
+  public long getPostId() {
+    return postId_;
   }
 
-  public static final int LONG_FIELD_NUMBER = 2;
-  private double long_;
+  public static final int SUCCESS_FIELD_NUMBER = 2;
+  private boolean success_;
   /**
-   * <code>double Long = 2;</code>
-   * @return The long.
+   * <code>bool success = 2;</code>
+   * @return The success.
    */
   @java.lang.Override
-  public double getLong() {
-    return long_;
+  public boolean getSuccess() {
+    return success_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -126,11 +126,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (lat_ != 0D) {
-      output.writeDouble(1, lat_);
+    if (postId_ != 0L) {
+      output.writeInt64(1, postId_);
     }
-    if (long_ != 0D) {
-      output.writeDouble(2, long_);
+    if (success_ != false) {
+      output.writeBool(2, success_);
     }
     unknownFields.writeTo(output);
   }
@@ -141,13 +141,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (lat_ != 0D) {
+    if (postId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(1, lat_);
+        .computeInt64Size(1, postId_);
     }
-    if (long_ != 0D) {
+    if (success_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(2, long_);
+        .computeBoolSize(2, success_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -159,17 +159,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.Location)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.UploadImageResultRequest)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.Location other = (com.block.server._generated.proto.postservice.Location) obj;
+    com.block.server._generated.proto.postservice.UploadImageResultRequest other = (com.block.server._generated.proto.postservice.UploadImageResultRequest) obj;
 
-    if (java.lang.Double.doubleToLongBits(getLat())
-        != java.lang.Double.doubleToLongBits(
-            other.getLat())) return false;
-    if (java.lang.Double.doubleToLongBits(getLong())
-        != java.lang.Double.doubleToLongBits(
-            other.getLong())) return false;
+    if (getPostId()
+        != other.getPostId()) return false;
+    if (getSuccess()
+        != other.getSuccess()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -181,80 +179,80 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + LAT_FIELD_NUMBER;
+    hash = (37 * hash) + POSTID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getLat()));
-    hash = (37 * hash) + LONG_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getLong()));
+        getPostId());
+    hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getSuccess());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Location parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Location parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Location parseFrom(
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -267,7 +265,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.Location prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.UploadImageResultRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -283,26 +281,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code Location}
+   * Protobuf type {@code UploadImageResultRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Location)
-      com.block.server._generated.proto.postservice.LocationOrBuilder {
+      // @@protoc_insertion_point(builder_implements:UploadImageResultRequest)
+      com.block.server._generated.proto.postservice.UploadImageResultRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Location_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Location_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.Location.class, com.block.server._generated.proto.postservice.Location.Builder.class);
+              com.block.server._generated.proto.postservice.UploadImageResultRequest.class, com.block.server._generated.proto.postservice.UploadImageResultRequest.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.Location.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.UploadImageResultRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -320,9 +318,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      lat_ = 0D;
+      postId_ = 0L;
 
-      long_ = 0D;
+      success_ = false;
 
       return this;
     }
@@ -330,17 +328,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Location_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_UploadImageResultRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Location getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.Location.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.UploadImageResultRequest getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.UploadImageResultRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Location build() {
-      com.block.server._generated.proto.postservice.Location result = buildPartial();
+    public com.block.server._generated.proto.postservice.UploadImageResultRequest build() {
+      com.block.server._generated.proto.postservice.UploadImageResultRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -348,10 +346,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Location buildPartial() {
-      com.block.server._generated.proto.postservice.Location result = new com.block.server._generated.proto.postservice.Location(this);
-      result.lat_ = lat_;
-      result.long_ = long_;
+    public com.block.server._generated.proto.postservice.UploadImageResultRequest buildPartial() {
+      com.block.server._generated.proto.postservice.UploadImageResultRequest result = new com.block.server._generated.proto.postservice.UploadImageResultRequest(this);
+      result.postId_ = postId_;
+      result.success_ = success_;
       onBuilt();
       return result;
     }
@@ -390,21 +388,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.Location) {
-        return mergeFrom((com.block.server._generated.proto.postservice.Location)other);
+      if (other instanceof com.block.server._generated.proto.postservice.UploadImageResultRequest) {
+        return mergeFrom((com.block.server._generated.proto.postservice.UploadImageResultRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.Location other) {
-      if (other == com.block.server._generated.proto.postservice.Location.getDefaultInstance()) return this;
-      if (other.getLat() != 0D) {
-        setLat(other.getLat());
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.UploadImageResultRequest other) {
+      if (other == com.block.server._generated.proto.postservice.UploadImageResultRequest.getDefaultInstance()) return this;
+      if (other.getPostId() != 0L) {
+        setPostId(other.getPostId());
       }
-      if (other.getLong() != 0D) {
-        setLong(other.getLong());
+      if (other.getSuccess() != false) {
+        setSuccess(other.getSuccess());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -421,11 +419,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.Location parsedMessage = null;
+      com.block.server._generated.proto.postservice.UploadImageResultRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.Location) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.UploadImageResultRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -435,64 +433,64 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private double lat_ ;
+    private long postId_ ;
     /**
-     * <code>double lat = 1;</code>
-     * @return The lat.
+     * <code>int64 postId = 1;</code>
+     * @return The postId.
      */
     @java.lang.Override
-    public double getLat() {
-      return lat_;
+    public long getPostId() {
+      return postId_;
     }
     /**
-     * <code>double lat = 1;</code>
-     * @param value The lat to set.
+     * <code>int64 postId = 1;</code>
+     * @param value The postId to set.
      * @return This builder for chaining.
      */
-    public Builder setLat(double value) {
+    public Builder setPostId(long value) {
       
-      lat_ = value;
+      postId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>double lat = 1;</code>
+     * <code>int64 postId = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearLat() {
+    public Builder clearPostId() {
       
-      lat_ = 0D;
+      postId_ = 0L;
       onChanged();
       return this;
     }
 
-    private double long_ ;
+    private boolean success_ ;
     /**
-     * <code>double Long = 2;</code>
-     * @return The long.
+     * <code>bool success = 2;</code>
+     * @return The success.
      */
     @java.lang.Override
-    public double getLong() {
-      return long_;
+    public boolean getSuccess() {
+      return success_;
     }
     /**
-     * <code>double Long = 2;</code>
-     * @param value The long to set.
+     * <code>bool success = 2;</code>
+     * @param value The success to set.
      * @return This builder for chaining.
      */
-    public Builder setLong(double value) {
+    public Builder setSuccess(boolean value) {
       
-      long_ = value;
+      success_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>double Long = 2;</code>
+     * <code>bool success = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearLong() {
+    public Builder clearSuccess() {
       
-      long_ = 0D;
+      success_ = false;
       onChanged();
       return this;
     }
@@ -509,41 +507,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Location)
+    // @@protoc_insertion_point(builder_scope:UploadImageResultRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:Location)
-  private static final com.block.server._generated.proto.postservice.Location DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:UploadImageResultRequest)
+  private static final com.block.server._generated.proto.postservice.UploadImageResultRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.Location();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.UploadImageResultRequest();
   }
 
-  public static com.block.server._generated.proto.postservice.Location getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.UploadImageResultRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Location>
-      PARSER = new com.google.protobuf.AbstractParser<Location>() {
+  private static final com.google.protobuf.Parser<UploadImageResultRequest>
+      PARSER = new com.google.protobuf.AbstractParser<UploadImageResultRequest>() {
     @java.lang.Override
-    public Location parsePartialFrom(
+    public UploadImageResultRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Location(input, extensionRegistry);
+      return new UploadImageResultRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Location> parser() {
+  public static com.google.protobuf.Parser<UploadImageResultRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Location> getParserForType() {
+  public com.google.protobuf.Parser<UploadImageResultRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Location getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.UploadImageResultRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

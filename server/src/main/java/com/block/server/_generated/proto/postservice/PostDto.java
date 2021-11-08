@@ -4,18 +4,18 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code Post}
+ * Protobuf type {@code PostDto}
  */
-public final class Post extends
+public final class PostDto extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Post)
-    PostOrBuilder {
+    // @@protoc_insertion_point(message_implements:PostDto)
+    PostDtoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Post.newBuilder() to construct.
-  private Post(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use PostDto.newBuilder() to construct.
+  private PostDto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Post() {
+  private PostDto() {
     content_ = "";
     imageUrl_ = "";
     comments_ = java.util.Collections.emptyList();
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Post();
+    return new PostDto();
   }
 
   @java.lang.Override
@@ -33,7 +33,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Post(
+  private PostDto(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -58,11 +58,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            com.block.server._generated.proto.postservice.User.Builder subBuilder = null;
+            com.block.server._generated.proto.postservice.UserDto.Builder subBuilder = null;
             if (author_ != null) {
               subBuilder = author_.toBuilder();
             }
-            author_ = input.readMessage(com.block.server._generated.proto.postservice.User.parser(), extensionRegistry);
+            author_ = input.readMessage(com.block.server._generated.proto.postservice.UserDto.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(author_);
               author_ = subBuilder.buildPartial();
@@ -89,19 +89,19 @@ private static final long serialVersionUID = 0L;
           }
           case 50: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              comments_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.Comment>();
+              comments_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.CommentDto>();
               mutable_bitField0_ |= 0x00000001;
             }
             comments_.add(
-                input.readMessage(com.block.server._generated.proto.postservice.Comment.parser(), extensionRegistry));
+                input.readMessage(com.block.server._generated.proto.postservice.CommentDto.parser(), extensionRegistry));
             break;
           }
           case 58: {
-            com.block.server._generated.proto.postservice.Location.Builder subBuilder = null;
+            com.block.server._generated.proto.postservice.LocationDto.Builder subBuilder = null;
             if (location_ != null) {
               subBuilder = location_.toBuilder();
             }
-            location_ = input.readMessage(com.block.server._generated.proto.postservice.Location.parser(), extensionRegistry);
+            location_ = input.readMessage(com.block.server._generated.proto.postservice.LocationDto.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(location_);
               location_ = subBuilder.buildPartial();
@@ -133,15 +133,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Post_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostDto_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Post_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostDto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.Post.class, com.block.server._generated.proto.postservice.Post.Builder.class);
+            com.block.server._generated.proto.postservice.PostDto.class, com.block.server._generated.proto.postservice.PostDto.Builder.class);
   }
 
   public static final int POSTID_FIELD_NUMBER = 1;
@@ -156,9 +156,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int AUTHOR_FIELD_NUMBER = 2;
-  private com.block.server._generated.proto.postservice.User author_;
+  private com.block.server._generated.proto.postservice.UserDto author_;
   /**
-   * <code>.User author = 2;</code>
+   * <code>.UserDto author = 2;</code>
    * @return Whether the author field is set.
    */
   @java.lang.Override
@@ -166,18 +166,18 @@ private static final long serialVersionUID = 0L;
     return author_ != null;
   }
   /**
-   * <code>.User author = 2;</code>
+   * <code>.UserDto author = 2;</code>
    * @return The author.
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.User getAuthor() {
-    return author_ == null ? com.block.server._generated.proto.postservice.User.getDefaultInstance() : author_;
+  public com.block.server._generated.proto.postservice.UserDto getAuthor() {
+    return author_ == null ? com.block.server._generated.proto.postservice.UserDto.getDefaultInstance() : author_;
   }
   /**
-   * <code>.User author = 2;</code>
+   * <code>.UserDto author = 2;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.UserOrBuilder getAuthorOrBuilder() {
+  public com.block.server._generated.proto.postservice.UserDtoOrBuilder getAuthorOrBuilder() {
     return getAuthor();
   }
 
@@ -269,49 +269,49 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int COMMENTS_FIELD_NUMBER = 6;
-  private java.util.List<com.block.server._generated.proto.postservice.Comment> comments_;
+  private java.util.List<com.block.server._generated.proto.postservice.CommentDto> comments_;
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
   @java.lang.Override
-  public java.util.List<com.block.server._generated.proto.postservice.Comment> getCommentsList() {
+  public java.util.List<com.block.server._generated.proto.postservice.CommentDto> getCommentsList() {
     return comments_;
   }
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.block.server._generated.proto.postservice.CommentOrBuilder> 
+  public java.util.List<? extends com.block.server._generated.proto.postservice.CommentDtoOrBuilder> 
       getCommentsOrBuilderList() {
     return comments_;
   }
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
   @java.lang.Override
   public int getCommentsCount() {
     return comments_.size();
   }
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Comment getComments(int index) {
+  public com.block.server._generated.proto.postservice.CommentDto getComments(int index) {
     return comments_.get(index);
   }
   /**
-   * <code>repeated .Comment comments = 6;</code>
+   * <code>repeated .CommentDto comments = 6;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.CommentOrBuilder getCommentsOrBuilder(
+  public com.block.server._generated.proto.postservice.CommentDtoOrBuilder getCommentsOrBuilder(
       int index) {
     return comments_.get(index);
   }
 
   public static final int LOCATION_FIELD_NUMBER = 7;
-  private com.block.server._generated.proto.postservice.Location location_;
+  private com.block.server._generated.proto.postservice.LocationDto location_;
   /**
-   * <code>.Location location = 7;</code>
+   * <code>.LocationDto location = 7;</code>
    * @return Whether the location field is set.
    */
   @java.lang.Override
@@ -319,18 +319,18 @@ private static final long serialVersionUID = 0L;
     return location_ != null;
   }
   /**
-   * <code>.Location location = 7;</code>
+   * <code>.LocationDto location = 7;</code>
    * @return The location.
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Location getLocation() {
-    return location_ == null ? com.block.server._generated.proto.postservice.Location.getDefaultInstance() : location_;
+  public com.block.server._generated.proto.postservice.LocationDto getLocation() {
+    return location_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
   }
   /**
-   * <code>.Location location = 7;</code>
+   * <code>.LocationDto location = 7;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.LocationOrBuilder getLocationOrBuilder() {
+  public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
     return getLocation();
   }
 
@@ -414,10 +414,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.Post)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.PostDto)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.Post other = (com.block.server._generated.proto.postservice.Post) obj;
+    com.block.server._generated.proto.postservice.PostDto other = (com.block.server._generated.proto.postservice.PostDto) obj;
 
     if (getPostId()
         != other.getPostId()) return false;
@@ -476,69 +476,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Post parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.PostDto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Post parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Post parseFrom(
+  public static com.block.server._generated.proto.postservice.PostDto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -551,7 +551,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.Post prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.PostDto prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -567,26 +567,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code Post}
+   * Protobuf type {@code PostDto}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Post)
-      com.block.server._generated.proto.postservice.PostOrBuilder {
+      // @@protoc_insertion_point(builder_implements:PostDto)
+      com.block.server._generated.proto.postservice.PostDtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Post_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostDto_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Post_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostDto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.Post.class, com.block.server._generated.proto.postservice.Post.Builder.class);
+              com.block.server._generated.proto.postservice.PostDto.class, com.block.server._generated.proto.postservice.PostDto.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.Post.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.PostDto.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -637,17 +637,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Post_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostDto_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Post getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.Post.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.PostDto getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.PostDto.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Post build() {
-      com.block.server._generated.proto.postservice.Post result = buildPartial();
+    public com.block.server._generated.proto.postservice.PostDto build() {
+      com.block.server._generated.proto.postservice.PostDto result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -655,8 +655,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Post buildPartial() {
-      com.block.server._generated.proto.postservice.Post result = new com.block.server._generated.proto.postservice.Post(this);
+    public com.block.server._generated.proto.postservice.PostDto buildPartial() {
+      com.block.server._generated.proto.postservice.PostDto result = new com.block.server._generated.proto.postservice.PostDto(this);
       int from_bitField0_ = bitField0_;
       result.postId_ = postId_;
       if (authorBuilder_ == null) {
@@ -719,16 +719,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.Post) {
-        return mergeFrom((com.block.server._generated.proto.postservice.Post)other);
+      if (other instanceof com.block.server._generated.proto.postservice.PostDto) {
+        return mergeFrom((com.block.server._generated.proto.postservice.PostDto)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.Post other) {
-      if (other == com.block.server._generated.proto.postservice.Post.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.PostDto other) {
+      if (other == com.block.server._generated.proto.postservice.PostDto.getDefaultInstance()) return this;
       if (other.getPostId() != 0L) {
         setPostId(other.getPostId());
       }
@@ -790,11 +790,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.Post parsedMessage = null;
+      com.block.server._generated.proto.postservice.PostDto parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.Post) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.PostDto) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -836,31 +836,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.block.server._generated.proto.postservice.User author_;
+    private com.block.server._generated.proto.postservice.UserDto author_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.User, com.block.server._generated.proto.postservice.User.Builder, com.block.server._generated.proto.postservice.UserOrBuilder> authorBuilder_;
+        com.block.server._generated.proto.postservice.UserDto, com.block.server._generated.proto.postservice.UserDto.Builder, com.block.server._generated.proto.postservice.UserDtoOrBuilder> authorBuilder_;
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      * @return Whether the author field is set.
      */
     public boolean hasAuthor() {
       return authorBuilder_ != null || author_ != null;
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      * @return The author.
      */
-    public com.block.server._generated.proto.postservice.User getAuthor() {
+    public com.block.server._generated.proto.postservice.UserDto getAuthor() {
       if (authorBuilder_ == null) {
-        return author_ == null ? com.block.server._generated.proto.postservice.User.getDefaultInstance() : author_;
+        return author_ == null ? com.block.server._generated.proto.postservice.UserDto.getDefaultInstance() : author_;
       } else {
         return authorBuilder_.getMessage();
       }
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      */
-    public Builder setAuthor(com.block.server._generated.proto.postservice.User value) {
+    public Builder setAuthor(com.block.server._generated.proto.postservice.UserDto value) {
       if (authorBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -874,10 +874,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      */
     public Builder setAuthor(
-        com.block.server._generated.proto.postservice.User.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.UserDto.Builder builderForValue) {
       if (authorBuilder_ == null) {
         author_ = builderForValue.build();
         onChanged();
@@ -888,13 +888,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      */
-    public Builder mergeAuthor(com.block.server._generated.proto.postservice.User value) {
+    public Builder mergeAuthor(com.block.server._generated.proto.postservice.UserDto value) {
       if (authorBuilder_ == null) {
         if (author_ != null) {
           author_ =
-            com.block.server._generated.proto.postservice.User.newBuilder(author_).mergeFrom(value).buildPartial();
+            com.block.server._generated.proto.postservice.UserDto.newBuilder(author_).mergeFrom(value).buildPartial();
         } else {
           author_ = value;
         }
@@ -906,7 +906,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      */
     public Builder clearAuthor() {
       if (authorBuilder_ == null) {
@@ -920,33 +920,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.User.Builder getAuthorBuilder() {
+    public com.block.server._generated.proto.postservice.UserDto.Builder getAuthorBuilder() {
       
       onChanged();
       return getAuthorFieldBuilder().getBuilder();
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.UserOrBuilder getAuthorOrBuilder() {
+    public com.block.server._generated.proto.postservice.UserDtoOrBuilder getAuthorOrBuilder() {
       if (authorBuilder_ != null) {
         return authorBuilder_.getMessageOrBuilder();
       } else {
         return author_ == null ?
-            com.block.server._generated.proto.postservice.User.getDefaultInstance() : author_;
+            com.block.server._generated.proto.postservice.UserDto.getDefaultInstance() : author_;
       }
     }
     /**
-     * <code>.User author = 2;</code>
+     * <code>.UserDto author = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.User, com.block.server._generated.proto.postservice.User.Builder, com.block.server._generated.proto.postservice.UserOrBuilder> 
+        com.block.server._generated.proto.postservice.UserDto, com.block.server._generated.proto.postservice.UserDto.Builder, com.block.server._generated.proto.postservice.UserDtoOrBuilder> 
         getAuthorFieldBuilder() {
       if (authorBuilder_ == null) {
         authorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.block.server._generated.proto.postservice.User, com.block.server._generated.proto.postservice.User.Builder, com.block.server._generated.proto.postservice.UserOrBuilder>(
+            com.block.server._generated.proto.postservice.UserDto, com.block.server._generated.proto.postservice.UserDto.Builder, com.block.server._generated.proto.postservice.UserDtoOrBuilder>(
                 getAuthor(),
                 getParentForChildren(),
                 isClean());
@@ -1138,22 +1138,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.block.server._generated.proto.postservice.Comment> comments_ =
+    private java.util.List<com.block.server._generated.proto.postservice.CommentDto> comments_ =
       java.util.Collections.emptyList();
     private void ensureCommentsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        comments_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.Comment>(comments_);
+        comments_ = new java.util.ArrayList<com.block.server._generated.proto.postservice.CommentDto>(comments_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Comment, com.block.server._generated.proto.postservice.Comment.Builder, com.block.server._generated.proto.postservice.CommentOrBuilder> commentsBuilder_;
+        com.block.server._generated.proto.postservice.CommentDto, com.block.server._generated.proto.postservice.CommentDto.Builder, com.block.server._generated.proto.postservice.CommentDtoOrBuilder> commentsBuilder_;
 
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public java.util.List<com.block.server._generated.proto.postservice.Comment> getCommentsList() {
+    public java.util.List<com.block.server._generated.proto.postservice.CommentDto> getCommentsList() {
       if (commentsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(comments_);
       } else {
@@ -1161,7 +1161,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public int getCommentsCount() {
       if (commentsBuilder_ == null) {
@@ -1171,9 +1171,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public com.block.server._generated.proto.postservice.Comment getComments(int index) {
+    public com.block.server._generated.proto.postservice.CommentDto getComments(int index) {
       if (commentsBuilder_ == null) {
         return comments_.get(index);
       } else {
@@ -1181,10 +1181,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder setComments(
-        int index, com.block.server._generated.proto.postservice.Comment value) {
+        int index, com.block.server._generated.proto.postservice.CommentDto value) {
       if (commentsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1198,10 +1198,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder setComments(
-        int index, com.block.server._generated.proto.postservice.Comment.Builder builderForValue) {
+        int index, com.block.server._generated.proto.postservice.CommentDto.Builder builderForValue) {
       if (commentsBuilder_ == null) {
         ensureCommentsIsMutable();
         comments_.set(index, builderForValue.build());
@@ -1212,9 +1212,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public Builder addComments(com.block.server._generated.proto.postservice.Comment value) {
+    public Builder addComments(com.block.server._generated.proto.postservice.CommentDto value) {
       if (commentsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1228,10 +1228,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder addComments(
-        int index, com.block.server._generated.proto.postservice.Comment value) {
+        int index, com.block.server._generated.proto.postservice.CommentDto value) {
       if (commentsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1245,10 +1245,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder addComments(
-        com.block.server._generated.proto.postservice.Comment.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.CommentDto.Builder builderForValue) {
       if (commentsBuilder_ == null) {
         ensureCommentsIsMutable();
         comments_.add(builderForValue.build());
@@ -1259,10 +1259,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder addComments(
-        int index, com.block.server._generated.proto.postservice.Comment.Builder builderForValue) {
+        int index, com.block.server._generated.proto.postservice.CommentDto.Builder builderForValue) {
       if (commentsBuilder_ == null) {
         ensureCommentsIsMutable();
         comments_.add(index, builderForValue.build());
@@ -1273,10 +1273,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder addAllComments(
-        java.lang.Iterable<? extends com.block.server._generated.proto.postservice.Comment> values) {
+        java.lang.Iterable<? extends com.block.server._generated.proto.postservice.CommentDto> values) {
       if (commentsBuilder_ == null) {
         ensureCommentsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1288,7 +1288,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder clearComments() {
       if (commentsBuilder_ == null) {
@@ -1301,7 +1301,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
     public Builder removeComments(int index) {
       if (commentsBuilder_ == null) {
@@ -1314,16 +1314,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public com.block.server._generated.proto.postservice.Comment.Builder getCommentsBuilder(
+    public com.block.server._generated.proto.postservice.CommentDto.Builder getCommentsBuilder(
         int index) {
       return getCommentsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public com.block.server._generated.proto.postservice.CommentOrBuilder getCommentsOrBuilder(
+    public com.block.server._generated.proto.postservice.CommentDtoOrBuilder getCommentsOrBuilder(
         int index) {
       if (commentsBuilder_ == null) {
         return comments_.get(index);  } else {
@@ -1331,9 +1331,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public java.util.List<? extends com.block.server._generated.proto.postservice.CommentOrBuilder> 
+    public java.util.List<? extends com.block.server._generated.proto.postservice.CommentDtoOrBuilder> 
          getCommentsOrBuilderList() {
       if (commentsBuilder_ != null) {
         return commentsBuilder_.getMessageOrBuilderList();
@@ -1342,33 +1342,33 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public com.block.server._generated.proto.postservice.Comment.Builder addCommentsBuilder() {
+    public com.block.server._generated.proto.postservice.CommentDto.Builder addCommentsBuilder() {
       return getCommentsFieldBuilder().addBuilder(
-          com.block.server._generated.proto.postservice.Comment.getDefaultInstance());
+          com.block.server._generated.proto.postservice.CommentDto.getDefaultInstance());
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public com.block.server._generated.proto.postservice.Comment.Builder addCommentsBuilder(
+    public com.block.server._generated.proto.postservice.CommentDto.Builder addCommentsBuilder(
         int index) {
       return getCommentsFieldBuilder().addBuilder(
-          index, com.block.server._generated.proto.postservice.Comment.getDefaultInstance());
+          index, com.block.server._generated.proto.postservice.CommentDto.getDefaultInstance());
     }
     /**
-     * <code>repeated .Comment comments = 6;</code>
+     * <code>repeated .CommentDto comments = 6;</code>
      */
-    public java.util.List<com.block.server._generated.proto.postservice.Comment.Builder> 
+    public java.util.List<com.block.server._generated.proto.postservice.CommentDto.Builder> 
          getCommentsBuilderList() {
       return getCommentsFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Comment, com.block.server._generated.proto.postservice.Comment.Builder, com.block.server._generated.proto.postservice.CommentOrBuilder> 
+        com.block.server._generated.proto.postservice.CommentDto, com.block.server._generated.proto.postservice.CommentDto.Builder, com.block.server._generated.proto.postservice.CommentDtoOrBuilder> 
         getCommentsFieldBuilder() {
       if (commentsBuilder_ == null) {
         commentsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.block.server._generated.proto.postservice.Comment, com.block.server._generated.proto.postservice.Comment.Builder, com.block.server._generated.proto.postservice.CommentOrBuilder>(
+            com.block.server._generated.proto.postservice.CommentDto, com.block.server._generated.proto.postservice.CommentDto.Builder, com.block.server._generated.proto.postservice.CommentDtoOrBuilder>(
                 comments_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
@@ -1378,31 +1378,31 @@ private static final long serialVersionUID = 0L;
       return commentsBuilder_;
     }
 
-    private com.block.server._generated.proto.postservice.Location location_;
+    private com.block.server._generated.proto.postservice.LocationDto location_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder> locationBuilder_;
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> locationBuilder_;
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      * @return Whether the location field is set.
      */
     public boolean hasLocation() {
       return locationBuilder_ != null || location_ != null;
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      * @return The location.
      */
-    public com.block.server._generated.proto.postservice.Location getLocation() {
+    public com.block.server._generated.proto.postservice.LocationDto getLocation() {
       if (locationBuilder_ == null) {
-        return location_ == null ? com.block.server._generated.proto.postservice.Location.getDefaultInstance() : location_;
+        return location_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
       } else {
         return locationBuilder_.getMessage();
       }
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      */
-    public Builder setLocation(com.block.server._generated.proto.postservice.Location value) {
+    public Builder setLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (locationBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1416,10 +1416,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      */
     public Builder setLocation(
-        com.block.server._generated.proto.postservice.Location.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.LocationDto.Builder builderForValue) {
       if (locationBuilder_ == null) {
         location_ = builderForValue.build();
         onChanged();
@@ -1430,13 +1430,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      */
-    public Builder mergeLocation(com.block.server._generated.proto.postservice.Location value) {
+    public Builder mergeLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (locationBuilder_ == null) {
         if (location_ != null) {
           location_ =
-            com.block.server._generated.proto.postservice.Location.newBuilder(location_).mergeFrom(value).buildPartial();
+            com.block.server._generated.proto.postservice.LocationDto.newBuilder(location_).mergeFrom(value).buildPartial();
         } else {
           location_ = value;
         }
@@ -1448,7 +1448,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      */
     public Builder clearLocation() {
       if (locationBuilder_ == null) {
@@ -1462,33 +1462,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      */
-    public com.block.server._generated.proto.postservice.Location.Builder getLocationBuilder() {
+    public com.block.server._generated.proto.postservice.LocationDto.Builder getLocationBuilder() {
       
       onChanged();
       return getLocationFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      */
-    public com.block.server._generated.proto.postservice.LocationOrBuilder getLocationOrBuilder() {
+    public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
       if (locationBuilder_ != null) {
         return locationBuilder_.getMessageOrBuilder();
       } else {
         return location_ == null ?
-            com.block.server._generated.proto.postservice.Location.getDefaultInstance() : location_;
+            com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
       }
     }
     /**
-     * <code>.Location location = 7;</code>
+     * <code>.LocationDto location = 7;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder> 
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> 
         getLocationFieldBuilder() {
       if (locationBuilder_ == null) {
         locationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder>(
+            com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder>(
                 getLocation(),
                 getParentForChildren(),
                 isClean());
@@ -1509,41 +1509,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Post)
+    // @@protoc_insertion_point(builder_scope:PostDto)
   }
 
-  // @@protoc_insertion_point(class_scope:Post)
-  private static final com.block.server._generated.proto.postservice.Post DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:PostDto)
+  private static final com.block.server._generated.proto.postservice.PostDto DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.Post();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.PostDto();
   }
 
-  public static com.block.server._generated.proto.postservice.Post getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.PostDto getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Post>
-      PARSER = new com.google.protobuf.AbstractParser<Post>() {
+  private static final com.google.protobuf.Parser<PostDto>
+      PARSER = new com.google.protobuf.AbstractParser<PostDto>() {
     @java.lang.Override
-    public Post parsePartialFrom(
+    public PostDto parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Post(input, extensionRegistry);
+      return new PostDto(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Post> parser() {
+  public static com.google.protobuf.Parser<PostDto> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Post> getParserForType() {
+  public com.google.protobuf.Parser<PostDto> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Post getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.PostDto getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

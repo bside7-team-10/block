@@ -94,6 +94,15 @@ type PostProtocolCancelLikePost = {
   readonly responseType: typeof PostProtocol_pb.LikePostResponse;
 };
 
+type PostProtocolUploadImageResult = {
+  readonly methodName: string;
+  readonly service: typeof PostProtocol;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof PostProtocol_pb.UploadImageResultRequest;
+  readonly responseType: typeof PostProtocol_pb.UploadImageResultResponse;
+};
+
 export class PostProtocol {
   static readonly serviceName: string;
   static readonly GetPost: PostProtocolGetPost;
@@ -106,6 +115,7 @@ export class PostProtocol {
   static readonly DeleteComment: PostProtocolDeleteComment;
   static readonly LikePost: PostProtocolLikePost;
   static readonly CancelLikePost: PostProtocolCancelLikePost;
+  static readonly UploadImageResult: PostProtocolUploadImageResult;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -229,6 +239,15 @@ export class PostProtocolClient {
   cancelLikePost(
     requestMessage: PostProtocol_pb.LikePostRequest,
     callback: (error: ServiceError|null, responseMessage: PostProtocol_pb.LikePostResponse|null) => void
+  ): UnaryResponse;
+  uploadImageResult(
+    requestMessage: PostProtocol_pb.UploadImageResultRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: PostProtocol_pb.UploadImageResultResponse|null) => void
+  ): UnaryResponse;
+  uploadImageResult(
+    requestMessage: PostProtocol_pb.UploadImageResultRequest,
+    callback: (error: ServiceError|null, responseMessage: PostProtocol_pb.UploadImageResultResponse|null) => void
   ): UnaryResponse;
 }
 

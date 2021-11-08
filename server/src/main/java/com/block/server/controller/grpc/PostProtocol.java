@@ -9,6 +9,8 @@ import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.stream.Stream;
+
 
 @RequiredArgsConstructor
 @GRpcService
@@ -22,7 +24,7 @@ public class PostProtocol extends PostProtocolGrpc.PostProtocolImplBase {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User)authentication.getPrincipal();
 
-        var response = postService.create(request,user);
+        var response = postService.createPost(request,user);
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();
@@ -42,6 +44,15 @@ public class PostProtocol extends PostProtocolGrpc.PostProtocolImplBase {
     public void getPosts(GetPostsRequest request, StreamObserver<GetPostsResponse> responseObserver ){
 
         var response = postService.getPosts(request);
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void uploadImageResult(UploadImageResultRequest request, StreamObserver<UploadImageResultResponse> responseObserver) {
+
+        var response = postService.uploadImageResult(request);
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();

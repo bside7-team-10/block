@@ -3,8 +3,8 @@
 
 package com.block.server._generated.proto.postservice;
 
-public interface LocationOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Location)
+public interface LocationDtoOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:LocationDto)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -14,7 +14,7 @@ public interface LocationOrBuilder extends
   double getLat();
 
   /**
-   * <code>double Long = 2;</code>
+   * <code>double long = 2;</code>
    * @return The long.
    */
   double getLong();

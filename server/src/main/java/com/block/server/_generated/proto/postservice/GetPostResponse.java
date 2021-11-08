@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private GetPostResponse() {
     status_ = 0;
+    imageUploadUrl_ = "";
   }
 
   @java.lang.Override
@@ -56,16 +57,22 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            com.block.server._generated.proto.postservice.Post.Builder subBuilder = null;
+            com.block.server._generated.proto.postservice.PostDto.Builder subBuilder = null;
             if (post_ != null) {
               subBuilder = post_.toBuilder();
             }
-            post_ = input.readMessage(com.block.server._generated.proto.postservice.Post.parser(), extensionRegistry);
+            post_ = input.readMessage(com.block.server._generated.proto.postservice.PostDto.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(post_);
               post_ = subBuilder.buildPartial();
             }
 
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            imageUploadUrl_ = s;
             break;
           }
           default: {
@@ -120,9 +127,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int POST_FIELD_NUMBER = 2;
-  private com.block.server._generated.proto.postservice.Post post_;
+  private com.block.server._generated.proto.postservice.PostDto post_;
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    * @return Whether the post field is set.
    */
   @java.lang.Override
@@ -130,19 +137,57 @@ private static final long serialVersionUID = 0L;
     return post_ != null;
   }
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    * @return The post.
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Post getPost() {
-    return post_ == null ? com.block.server._generated.proto.postservice.Post.getDefaultInstance() : post_;
+  public com.block.server._generated.proto.postservice.PostDto getPost() {
+    return post_ == null ? com.block.server._generated.proto.postservice.PostDto.getDefaultInstance() : post_;
   }
   /**
-   * <code>.Post post = 2;</code>
+   * <code>.PostDto post = 2;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.PostOrBuilder getPostOrBuilder() {
+  public com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostOrBuilder() {
     return getPost();
+  }
+
+  public static final int IMAGEUPLOADURL_FIELD_NUMBER = 3;
+  private volatile java.lang.Object imageUploadUrl_;
+  /**
+   * <code>string imageUploadUrl = 3;</code>
+   * @return The imageUploadUrl.
+   */
+  @java.lang.Override
+  public java.lang.String getImageUploadUrl() {
+    java.lang.Object ref = imageUploadUrl_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      imageUploadUrl_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string imageUploadUrl = 3;</code>
+   * @return The bytes for imageUploadUrl.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getImageUploadUrlBytes() {
+    java.lang.Object ref = imageUploadUrl_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      imageUploadUrl_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -165,6 +210,9 @@ private static final long serialVersionUID = 0L;
     if (post_ != null) {
       output.writeMessage(2, getPost());
     }
+    if (!getImageUploadUrlBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, imageUploadUrl_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -181,6 +229,9 @@ private static final long serialVersionUID = 0L;
     if (post_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getPost());
+    }
+    if (!getImageUploadUrlBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, imageUploadUrl_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -203,6 +254,8 @@ private static final long serialVersionUID = 0L;
       if (!getPost()
           .equals(other.getPost())) return false;
     }
+    if (!getImageUploadUrl()
+        .equals(other.getImageUploadUrl())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -220,6 +273,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + POST_FIELD_NUMBER;
       hash = (53 * hash) + getPost().hashCode();
     }
+    hash = (37 * hash) + IMAGEUPLOADURL_FIELD_NUMBER;
+    hash = (53 * hash) + getImageUploadUrl().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -361,6 +416,8 @@ private static final long serialVersionUID = 0L;
         post_ = null;
         postBuilder_ = null;
       }
+      imageUploadUrl_ = "";
+
       return this;
     }
 
@@ -393,6 +450,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.post_ = postBuilder_.build();
       }
+      result.imageUploadUrl_ = imageUploadUrl_;
       onBuilt();
       return result;
     }
@@ -446,6 +504,10 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasPost()) {
         mergePost(other.getPost());
+      }
+      if (!other.getImageUploadUrl().isEmpty()) {
+        imageUploadUrl_ = other.imageUploadUrl_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -530,31 +592,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.block.server._generated.proto.postservice.Post post_;
+    private com.block.server._generated.proto.postservice.PostDto post_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder> postBuilder_;
+        com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder> postBuilder_;
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      * @return Whether the post field is set.
      */
     public boolean hasPost() {
       return postBuilder_ != null || post_ != null;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      * @return The post.
      */
-    public com.block.server._generated.proto.postservice.Post getPost() {
+    public com.block.server._generated.proto.postservice.PostDto getPost() {
       if (postBuilder_ == null) {
-        return post_ == null ? com.block.server._generated.proto.postservice.Post.getDefaultInstance() : post_;
+        return post_ == null ? com.block.server._generated.proto.postservice.PostDto.getDefaultInstance() : post_;
       } else {
         return postBuilder_.getMessage();
       }
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public Builder setPost(com.block.server._generated.proto.postservice.Post value) {
+    public Builder setPost(com.block.server._generated.proto.postservice.PostDto value) {
       if (postBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -568,10 +630,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
     public Builder setPost(
-        com.block.server._generated.proto.postservice.Post.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.PostDto.Builder builderForValue) {
       if (postBuilder_ == null) {
         post_ = builderForValue.build();
         onChanged();
@@ -582,13 +644,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public Builder mergePost(com.block.server._generated.proto.postservice.Post value) {
+    public Builder mergePost(com.block.server._generated.proto.postservice.PostDto value) {
       if (postBuilder_ == null) {
         if (post_ != null) {
           post_ =
-            com.block.server._generated.proto.postservice.Post.newBuilder(post_).mergeFrom(value).buildPartial();
+            com.block.server._generated.proto.postservice.PostDto.newBuilder(post_).mergeFrom(value).buildPartial();
         } else {
           post_ = value;
         }
@@ -600,7 +662,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
     public Builder clearPost() {
       if (postBuilder_ == null) {
@@ -614,39 +676,115 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.Post.Builder getPostBuilder() {
+    public com.block.server._generated.proto.postservice.PostDto.Builder getPostBuilder() {
       
       onChanged();
       return getPostFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
-    public com.block.server._generated.proto.postservice.PostOrBuilder getPostOrBuilder() {
+    public com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostOrBuilder() {
       if (postBuilder_ != null) {
         return postBuilder_.getMessageOrBuilder();
       } else {
         return post_ == null ?
-            com.block.server._generated.proto.postservice.Post.getDefaultInstance() : post_;
+            com.block.server._generated.proto.postservice.PostDto.getDefaultInstance() : post_;
       }
     }
     /**
-     * <code>.Post post = 2;</code>
+     * <code>.PostDto post = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder> 
+        com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder> 
         getPostFieldBuilder() {
       if (postBuilder_ == null) {
         postBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.block.server._generated.proto.postservice.Post, com.block.server._generated.proto.postservice.Post.Builder, com.block.server._generated.proto.postservice.PostOrBuilder>(
+            com.block.server._generated.proto.postservice.PostDto, com.block.server._generated.proto.postservice.PostDto.Builder, com.block.server._generated.proto.postservice.PostDtoOrBuilder>(
                 getPost(),
                 getParentForChildren(),
                 isClean());
         post_ = null;
       }
       return postBuilder_;
+    }
+
+    private java.lang.Object imageUploadUrl_ = "";
+    /**
+     * <code>string imageUploadUrl = 3;</code>
+     * @return The imageUploadUrl.
+     */
+    public java.lang.String getImageUploadUrl() {
+      java.lang.Object ref = imageUploadUrl_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imageUploadUrl_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string imageUploadUrl = 3;</code>
+     * @return The bytes for imageUploadUrl.
+     */
+    public com.google.protobuf.ByteString
+        getImageUploadUrlBytes() {
+      java.lang.Object ref = imageUploadUrl_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imageUploadUrl_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string imageUploadUrl = 3;</code>
+     * @param value The imageUploadUrl to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageUploadUrl(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      imageUploadUrl_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string imageUploadUrl = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearImageUploadUrl() {
+      
+      imageUploadUrl_ = getDefaultInstance().getImageUploadUrl();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string imageUploadUrl = 3;</code>
+     * @param value The bytes for imageUploadUrl to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageUploadUrlBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      imageUploadUrl_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

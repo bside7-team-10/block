@@ -4,18 +4,18 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code Comment}
+ * Protobuf type {@code CommentDto}
  */
-public final class Comment extends
+public final class CommentDto extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Comment)
-    CommentOrBuilder {
+    // @@protoc_insertion_point(message_implements:CommentDto)
+    CommentDtoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Comment.newBuilder() to construct.
-  private Comment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CommentDto.newBuilder() to construct.
+  private CommentDto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Comment() {
+  private CommentDto() {
     commentId_ = "";
     author_ = "";
     content_ = "";
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Comment();
+    return new CommentDto();
   }
 
   @java.lang.Override
@@ -33,7 +33,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Comment(
+  private CommentDto(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -100,15 +100,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Comment_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CommentDto_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Comment_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CommentDto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.Comment.class, com.block.server._generated.proto.postservice.Comment.Builder.class);
+            com.block.server._generated.proto.postservice.CommentDto.class, com.block.server._generated.proto.postservice.CommentDto.Builder.class);
   }
 
   public static final int COMMENTID_FIELD_NUMBER = 1;
@@ -312,10 +312,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.Comment)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.CommentDto)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.Comment other = (com.block.server._generated.proto.postservice.Comment) obj;
+    com.block.server._generated.proto.postservice.CommentDto other = (com.block.server._generated.proto.postservice.CommentDto) obj;
 
     if (!getCommentId()
         .equals(other.getCommentId())) return false;
@@ -353,69 +353,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.CommentDto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.Comment parseFrom(
+  public static com.block.server._generated.proto.postservice.CommentDto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -428,7 +428,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.Comment prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.CommentDto prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -444,26 +444,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code Comment}
+   * Protobuf type {@code CommentDto}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Comment)
-      com.block.server._generated.proto.postservice.CommentOrBuilder {
+      // @@protoc_insertion_point(builder_implements:CommentDto)
+      com.block.server._generated.proto.postservice.CommentDtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Comment_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CommentDto_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Comment_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CommentDto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.Comment.class, com.block.server._generated.proto.postservice.Comment.Builder.class);
+              com.block.server._generated.proto.postservice.CommentDto.class, com.block.server._generated.proto.postservice.CommentDto.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.Comment.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.CommentDto.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -497,17 +497,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_Comment_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CommentDto_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Comment getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.Comment.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.CommentDto getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.CommentDto.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Comment build() {
-      com.block.server._generated.proto.postservice.Comment result = buildPartial();
+    public com.block.server._generated.proto.postservice.CommentDto build() {
+      com.block.server._generated.proto.postservice.CommentDto result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -515,8 +515,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.Comment buildPartial() {
-      com.block.server._generated.proto.postservice.Comment result = new com.block.server._generated.proto.postservice.Comment(this);
+    public com.block.server._generated.proto.postservice.CommentDto buildPartial() {
+      com.block.server._generated.proto.postservice.CommentDto result = new com.block.server._generated.proto.postservice.CommentDto(this);
       result.commentId_ = commentId_;
       result.author_ = author_;
       result.content_ = content_;
@@ -560,16 +560,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.Comment) {
-        return mergeFrom((com.block.server._generated.proto.postservice.Comment)other);
+      if (other instanceof com.block.server._generated.proto.postservice.CommentDto) {
+        return mergeFrom((com.block.server._generated.proto.postservice.CommentDto)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.Comment other) {
-      if (other == com.block.server._generated.proto.postservice.Comment.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.CommentDto other) {
+      if (other == com.block.server._generated.proto.postservice.CommentDto.getDefaultInstance()) return this;
       if (!other.getCommentId().isEmpty()) {
         commentId_ = other.commentId_;
         onChanged();
@@ -603,11 +603,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.Comment parsedMessage = null;
+      com.block.server._generated.proto.postservice.CommentDto parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.Comment) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.CommentDto) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -919,41 +919,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Comment)
+    // @@protoc_insertion_point(builder_scope:CommentDto)
   }
 
-  // @@protoc_insertion_point(class_scope:Comment)
-  private static final com.block.server._generated.proto.postservice.Comment DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:CommentDto)
+  private static final com.block.server._generated.proto.postservice.CommentDto DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.Comment();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.CommentDto();
   }
 
-  public static com.block.server._generated.proto.postservice.Comment getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.CommentDto getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Comment>
-      PARSER = new com.google.protobuf.AbstractParser<Comment>() {
+  private static final com.google.protobuf.Parser<CommentDto>
+      PARSER = new com.google.protobuf.AbstractParser<CommentDto>() {
     @java.lang.Override
-    public Comment parsePartialFrom(
+    public CommentDto parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Comment(input, extensionRegistry);
+      return new CommentDto(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Comment> parser() {
+  public static com.google.protobuf.Parser<CommentDto> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Comment> getParserForType() {
+  public com.google.protobuf.Parser<CommentDto> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Comment getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.CommentDto getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

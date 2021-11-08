@@ -23,4 +23,16 @@ public interface ModifyPostResponseOrBuilder extends
    * @return The postId.
    */
   long getPostId();
+
+  /**
+   * <code>string uploadImageUrl = 3;</code>
+   * @return The uploadImageUrl.
+   */
+  java.lang.String getUploadImageUrl();
+  /**
+   * <code>string uploadImageUrl = 3;</code>
+   * @return The bytes for uploadImageUrl.
+   */
+  com.google.protobuf.ByteString
+      getUploadImageUrlBytes();
 }

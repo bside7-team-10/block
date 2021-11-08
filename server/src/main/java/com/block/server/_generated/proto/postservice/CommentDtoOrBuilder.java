@@ -3,8 +3,8 @@
 
 package com.block.server._generated.proto.postservice;
 
-public interface CommentOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Comment)
+public interface CommentDtoOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:CommentDto)
     com.google.protobuf.MessageOrBuilder {
 
   /**

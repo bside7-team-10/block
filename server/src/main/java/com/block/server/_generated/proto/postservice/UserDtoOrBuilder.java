@@ -3,8 +3,8 @@
 
 package com.block.server._generated.proto.postservice;
 
-public interface UserOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:User)
+public interface UserDtoOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:UserDto)
     com.google.protobuf.MessageOrBuilder {
 
   /**

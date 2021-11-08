@@ -60,11 +60,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 26: {
-            com.block.server._generated.proto.postservice.Location.Builder subBuilder = null;
+            com.block.server._generated.proto.postservice.LocationDto.Builder subBuilder = null;
             if (currentLocation_ != null) {
               subBuilder = currentLocation_.toBuilder();
             }
-            currentLocation_ = input.readMessage(com.block.server._generated.proto.postservice.Location.parser(), extensionRegistry);
+            currentLocation_ = input.readMessage(com.block.server._generated.proto.postservice.LocationDto.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(currentLocation_);
               currentLocation_ = subBuilder.buildPartial();
@@ -1408,9 +1408,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int CURRENTLOCATION_FIELD_NUMBER = 3;
-  private com.block.server._generated.proto.postservice.Location currentLocation_;
+  private com.block.server._generated.proto.postservice.LocationDto currentLocation_;
   /**
-   * <code>.Location currentLocation = 3;</code>
+   * <code>.LocationDto currentLocation = 3;</code>
    * @return Whether the currentLocation field is set.
    */
   @java.lang.Override
@@ -1418,18 +1418,18 @@ private static final long serialVersionUID = 0L;
     return currentLocation_ != null;
   }
   /**
-   * <code>.Location currentLocation = 3;</code>
+   * <code>.LocationDto currentLocation = 3;</code>
    * @return The currentLocation.
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.Location getCurrentLocation() {
-    return currentLocation_ == null ? com.block.server._generated.proto.postservice.Location.getDefaultInstance() : currentLocation_;
+  public com.block.server._generated.proto.postservice.LocationDto getCurrentLocation() {
+    return currentLocation_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : currentLocation_;
   }
   /**
-   * <code>.Location currentLocation = 3;</code>
+   * <code>.LocationDto currentLocation = 3;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.LocationOrBuilder getCurrentLocationOrBuilder() {
+  public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getCurrentLocationOrBuilder() {
     return getCurrentLocation();
   }
 
@@ -1936,31 +1936,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.block.server._generated.proto.postservice.Location currentLocation_;
+    private com.block.server._generated.proto.postservice.LocationDto currentLocation_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder> currentLocationBuilder_;
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> currentLocationBuilder_;
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      * @return Whether the currentLocation field is set.
      */
     public boolean hasCurrentLocation() {
       return currentLocationBuilder_ != null || currentLocation_ != null;
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      * @return The currentLocation.
      */
-    public com.block.server._generated.proto.postservice.Location getCurrentLocation() {
+    public com.block.server._generated.proto.postservice.LocationDto getCurrentLocation() {
       if (currentLocationBuilder_ == null) {
-        return currentLocation_ == null ? com.block.server._generated.proto.postservice.Location.getDefaultInstance() : currentLocation_;
+        return currentLocation_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : currentLocation_;
       } else {
         return currentLocationBuilder_.getMessage();
       }
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      */
-    public Builder setCurrentLocation(com.block.server._generated.proto.postservice.Location value) {
+    public Builder setCurrentLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (currentLocationBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1974,10 +1974,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      */
     public Builder setCurrentLocation(
-        com.block.server._generated.proto.postservice.Location.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.LocationDto.Builder builderForValue) {
       if (currentLocationBuilder_ == null) {
         currentLocation_ = builderForValue.build();
         onChanged();
@@ -1988,13 +1988,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      */
-    public Builder mergeCurrentLocation(com.block.server._generated.proto.postservice.Location value) {
+    public Builder mergeCurrentLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (currentLocationBuilder_ == null) {
         if (currentLocation_ != null) {
           currentLocation_ =
-            com.block.server._generated.proto.postservice.Location.newBuilder(currentLocation_).mergeFrom(value).buildPartial();
+            com.block.server._generated.proto.postservice.LocationDto.newBuilder(currentLocation_).mergeFrom(value).buildPartial();
         } else {
           currentLocation_ = value;
         }
@@ -2006,7 +2006,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      */
     public Builder clearCurrentLocation() {
       if (currentLocationBuilder_ == null) {
@@ -2020,33 +2020,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      */
-    public com.block.server._generated.proto.postservice.Location.Builder getCurrentLocationBuilder() {
+    public com.block.server._generated.proto.postservice.LocationDto.Builder getCurrentLocationBuilder() {
       
       onChanged();
       return getCurrentLocationFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      */
-    public com.block.server._generated.proto.postservice.LocationOrBuilder getCurrentLocationOrBuilder() {
+    public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getCurrentLocationOrBuilder() {
       if (currentLocationBuilder_ != null) {
         return currentLocationBuilder_.getMessageOrBuilder();
       } else {
         return currentLocation_ == null ?
-            com.block.server._generated.proto.postservice.Location.getDefaultInstance() : currentLocation_;
+            com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : currentLocation_;
       }
     }
     /**
-     * <code>.Location currentLocation = 3;</code>
+     * <code>.LocationDto currentLocation = 3;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder> 
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> 
         getCurrentLocationFieldBuilder() {
       if (currentLocationBuilder_ == null) {
         currentLocationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.block.server._generated.proto.postservice.Location, com.block.server._generated.proto.postservice.Location.Builder, com.block.server._generated.proto.postservice.LocationOrBuilder>(
+            com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder>(
                 getCurrentLocation(),
                 getParentForChildren(),
                 isClean());
