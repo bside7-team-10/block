@@ -75,6 +75,11 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 32: {
+
+            rightNow_ = input.readBool();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -209,6 +214,17 @@ private static final long serialVersionUID = 0L;
     return getLocation();
   }
 
+  public static final int RIGHTNOW_FIELD_NUMBER = 4;
+  private boolean rightNow_;
+  /**
+   * <code>bool rightNow = 4;</code>
+   * @return The rightNow.
+   */
+  @java.lang.Override
+  public boolean getRightNow() {
+    return rightNow_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -232,6 +248,9 @@ private static final long serialVersionUID = 0L;
     if (location_ != null) {
       output.writeMessage(3, getLocation());
     }
+    if (rightNow_ != false) {
+      output.writeBool(4, rightNow_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -250,6 +269,10 @@ private static final long serialVersionUID = 0L;
     if (location_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, getLocation());
+    }
+    if (rightNow_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(4, rightNow_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -275,6 +298,8 @@ private static final long serialVersionUID = 0L;
       if (!getLocation()
           .equals(other.getLocation())) return false;
     }
+    if (getRightNow()
+        != other.getRightNow()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -294,6 +319,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
     }
+    hash = (37 * hash) + RIGHTNOW_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getRightNow());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -437,6 +465,8 @@ private static final long serialVersionUID = 0L;
         location_ = null;
         locationBuilder_ = null;
       }
+      rightNow_ = false;
+
       return this;
     }
 
@@ -470,6 +500,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.location_ = locationBuilder_.build();
       }
+      result.rightNow_ = rightNow_;
       onBuilt();
       return result;
     }
@@ -528,6 +559,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasLocation()) {
         mergeLocation(other.getLocation());
+      }
+      if (other.getRightNow() != false) {
+        setRightNow(other.getRightNow());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -827,6 +861,37 @@ private static final long serialVersionUID = 0L;
         location_ = null;
       }
       return locationBuilder_;
+    }
+
+    private boolean rightNow_ ;
+    /**
+     * <code>bool rightNow = 4;</code>
+     * @return The rightNow.
+     */
+    @java.lang.Override
+    public boolean getRightNow() {
+      return rightNow_;
+    }
+    /**
+     * <code>bool rightNow = 4;</code>
+     * @param value The rightNow to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRightNow(boolean value) {
+      
+      rightNow_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool rightNow = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRightNow() {
+      
+      rightNow_ = false;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

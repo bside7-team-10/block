@@ -99,6 +99,7 @@ message CreatePostRequest {
     string author = 1;
     string content = 2;
     LocationDto location = 3;
+	bool rightNow = 4;
 }
 
 message CreatePostResponse {

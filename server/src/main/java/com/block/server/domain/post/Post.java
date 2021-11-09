@@ -45,6 +45,9 @@ public class Post {
     private Point location;
 
     @Column
+    private boolean rightNow;
+
+    @Column
     @CreatedDate
     private LocalDateTime createdAt;
 
@@ -53,16 +56,18 @@ public class Post {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Post(User userId, String contents, String imageKey, int likesCount, int commentsCount, Point location) {
+    public Post(User userId, String contents, String imageKey, int likesCount, int commentsCount, Point location, boolean rightNow) {
         this.userId=userId;
         this.content = contents;
         this.imageKey = imageKey;
         this.likesCount = likesCount;
         this.commentsCount = commentsCount;
         this.location = location;
+        this.rightNow = rightNow;
     }
 
     public void setImageKey(String key) {
         this.imageKey = key;
     }
+
 }

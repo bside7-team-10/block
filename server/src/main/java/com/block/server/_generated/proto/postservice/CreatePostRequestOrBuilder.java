@@ -45,4 +45,10 @@ public interface CreatePostRequestOrBuilder extends
    * <code>.LocationDto location = 3;</code>
    */
   com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
+
+  /**
+   * <code>bool rightNow = 4;</code>
+   * @return The rightNow.
+   */
+  boolean getRightNow();
 }

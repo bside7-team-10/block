@@ -12,6 +12,11 @@ import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -28,6 +33,7 @@ public class PostServiceImpl implements PostService {
                 .userId(user)
                 .contents(createPostRequest.getContent())
                 .location(new Point(createPostRequest.getLocation().getLat(), createPostRequest.getLocation().getLong()))
+                .rightNow(createPostRequest.getRightNow())
                 .build();
 
         var savedPost = postRepository.save(post);
@@ -61,7 +67,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public GetPostsResponse getPosts(GetPostsRequest getPostsRequest) {
 
-        var posts = postRepository.findWithPagination(PageRequest.of(getPostsRequest.getPageNumber(), getPostsRequest.getResultPerPage()));
+        var posts = postRepository.findWithPagination(PageRequest.of(getPostsRequest.getPageNumber(), getPostsRequest.getResultPerPage()))
+                .stream().filter(post -> !post.isRightNow() || (post.isRightNow() && post.getCreatedAt().isAfter(LocalDateTime.now().minusDays(1))))
+                .collect(Collectors.toList());
+
         var postMapper = com.block.server._generated.proto.postservice.PostDto.getDefaultInstance();
         var response = GetPostsResponse.newBuilder();
 

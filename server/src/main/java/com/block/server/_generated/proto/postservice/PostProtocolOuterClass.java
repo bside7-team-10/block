@@ -176,56 +176,56 @@ public final class PostProtocolOuterClass {
       "\001(\010\022\020\n\010distance\030\002 \001(\005B\020\n\016_resultPerPage\"" +
       "P\n\020GetPostsResponse\022#\n\006status\030\001 \001(\0162\023.Po" +
       "stProtocolStatus\022\027\n\005posts\030\002 \003(\0132\010.PostDt" +
-      "o\"T\n\021CreatePostRequest\022\016\n\006author\030\001 \001(\t\022\017" +
+      "o\"f\n\021CreatePostRequest\022\016\n\006author\030\001 \001(\t\022\017" +
       "\n\007content\030\002 \001(\t\022\036\n\010location\030\003 \001(\0132\014.Loca" +
-      "tionDto\"a\n\022CreatePostResponse\022#\n\006status\030" +
-      "\001 \001(\0162\023.PostProtocolStatus\022\016\n\006postId\030\002 \001" +
-      "(\003\022\026\n\016uploadImageUrl\030\003 \001(\t\"K\n\021ModifyPost" +
-      "Request\022\016\n\006postId\030\001 \001(\003\022\017\n\007content\030\002 \001(\t" +
-      "\022\025\n\rmodifiedImage\030\003 \001(\010\"a\n\022ModifyPostRes" +
-      "ponse\022#\n\006status\030\001 \001(\0162\023.PostProtocolStat" +
-      "us\022\016\n\006postId\030\002 \001(\003\022\026\n\016uploadImageUrl\030\003 \001" +
-      "(\t\"#\n\021DeletePostRequest\022\016\n\006postId\030\001 \001(\003\"" +
-      "I\n\022DeletePostResponse\022#\n\006status\030\001 \001(\0162\023." +
-      "PostProtocolStatus\022\016\n\006postId\030\002 \001(\003\"G\n\024Cr" +
-      "eateCommentRequest\022\016\n\006author\030\001 \001(\t\022\016\n\006po" +
-      "stId\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\"O\n\025CreateCom" +
-      "mentResponse\022#\n\006status\030\001 \001(\0162\023.PostProto" +
-      "colStatus\022\021\n\tcommentId\030\002 \001(\003\":\n\024ModifyCo" +
-      "mmentRequest\022\021\n\tcommentId\030\001 \001(\003\022\017\n\007conte" +
-      "nt\030\002 \001(\t\"O\n\025ModifyCommentResponse\022#\n\006sta" +
-      "tus\030\001 \001(\0162\023.PostProtocolStatus\022\021\n\tcommen" +
-      "tId\030\002 \001(\003\")\n\024DeleteCommentRequest\022\021\n\tcom" +
-      "mentId\030\001 \001(\003\"<\n\025DeleteCommentResponse\022#\n" +
-      "\006status\030\001 \001(\0162\023.PostProtocolStatus\"/\n\017Li" +
-      "kePostRequest\022\016\n\006postId\030\001 \001(\003\022\014\n\004like\030\002 " +
-      "\001(\010\"O\n\020LikePostResponse\022#\n\006status\030\001 \001(\0162" +
-      "\023.PostProtocolStatus\022\026\n\004post\030\002 \001(\0132\010.Pos" +
-      "tDto\";\n\030UploadImageResultRequest\022\016\n\006post" +
-      "Id\030\001 \001(\003\022\017\n\007success\030\002 \001(\010\"P\n\031UploadImage" +
-      "ResultResponse\022#\n\006status\030\001 \001(\0162\023.PostPro" +
-      "tocolStatus\022\016\n\006postId\030\002 \001(\003*f\n\022PostProto" +
-      "colStatus\022\013\n\007SUCCESS\020\000\022\013\n\007NO_POST\020\001\022\016\n\nN" +
-      "O_COMMENT\020\002\022\022\n\016NOT_AUTHORIZED\020\003\022\022\n\016INTER" +
-      "NAL_ERROR\020c2\234\005\n\014PostProtocol\022.\n\007GetPost\022" +
-      "\017.GetPostRequest\032\020.GetPostResponse\"\000\0221\n\010" +
-      "GetPosts\022\020.GetPostsRequest\032\021.GetPostsRes" +
-      "ponse\"\000\0227\n\nCreatePost\022\022.CreatePostReques" +
-      "t\032\023.CreatePostResponse\"\000\0227\n\nModifyPost\022\022" +
-      ".ModifyPostRequest\032\023.ModifyPostResponse\"" +
-      "\000\0227\n\nDeletePost\022\022.DeletePostRequest\032\023.De" +
-      "letePostResponse\"\000\022@\n\rCreateComment\022\025.Cr" +
-      "eateCommentRequest\032\026.CreateCommentRespon" +
-      "se\"\000\022@\n\rModifyComment\022\025.ModifyCommentReq" +
-      "uest\032\026.ModifyCommentResponse\"\000\022@\n\rDelete" +
-      "Comment\022\025.DeleteCommentRequest\032\026.DeleteC" +
-      "ommentResponse\"\000\0221\n\010LikePost\022\020.LikePostR" +
-      "equest\032\021.LikePostResponse\"\000\0227\n\016CancelLik" +
-      "ePost\022\020.LikePostRequest\032\021.LikePostRespon" +
-      "se\"\000\022L\n\021UploadImageResult\022\031.UploadImageR" +
-      "esultRequest\032\032.UploadImageResultResponse" +
-      "\"\000B1\n-com.block.server._generated.proto." +
-      "postserviceP\001b\006proto3"
+      "tionDto\022\020\n\010rightNow\030\004 \001(\010\"a\n\022CreatePostR" +
+      "esponse\022#\n\006status\030\001 \001(\0162\023.PostProtocolSt" +
+      "atus\022\016\n\006postId\030\002 \001(\003\022\026\n\016uploadImageUrl\030\003" +
+      " \001(\t\"K\n\021ModifyPostRequest\022\016\n\006postId\030\001 \001(" +
+      "\003\022\017\n\007content\030\002 \001(\t\022\025\n\rmodifiedImage\030\003 \001(" +
+      "\010\"a\n\022ModifyPostResponse\022#\n\006status\030\001 \001(\0162" +
+      "\023.PostProtocolStatus\022\016\n\006postId\030\002 \001(\003\022\026\n\016" +
+      "uploadImageUrl\030\003 \001(\t\"#\n\021DeletePostReques" +
+      "t\022\016\n\006postId\030\001 \001(\003\"I\n\022DeletePostResponse\022" +
+      "#\n\006status\030\001 \001(\0162\023.PostProtocolStatus\022\016\n\006" +
+      "postId\030\002 \001(\003\"G\n\024CreateCommentRequest\022\016\n\006" +
+      "author\030\001 \001(\t\022\016\n\006postId\030\002 \001(\003\022\017\n\007content\030" +
+      "\003 \001(\t\"O\n\025CreateCommentResponse\022#\n\006status" +
+      "\030\001 \001(\0162\023.PostProtocolStatus\022\021\n\tcommentId" +
+      "\030\002 \001(\003\":\n\024ModifyCommentRequest\022\021\n\tcommen" +
+      "tId\030\001 \001(\003\022\017\n\007content\030\002 \001(\t\"O\n\025ModifyComm" +
+      "entResponse\022#\n\006status\030\001 \001(\0162\023.PostProtoc" +
+      "olStatus\022\021\n\tcommentId\030\002 \001(\003\")\n\024DeleteCom" +
+      "mentRequest\022\021\n\tcommentId\030\001 \001(\003\"<\n\025Delete" +
+      "CommentResponse\022#\n\006status\030\001 \001(\0162\023.PostPr" +
+      "otocolStatus\"/\n\017LikePostRequest\022\016\n\006postI" +
+      "d\030\001 \001(\003\022\014\n\004like\030\002 \001(\010\"O\n\020LikePostRespons" +
+      "e\022#\n\006status\030\001 \001(\0162\023.PostProtocolStatus\022\026" +
+      "\n\004post\030\002 \001(\0132\010.PostDto\";\n\030UploadImageRes" +
+      "ultRequest\022\016\n\006postId\030\001 \001(\003\022\017\n\007success\030\002 " +
+      "\001(\010\"P\n\031UploadImageResultResponse\022#\n\006stat" +
+      "us\030\001 \001(\0162\023.PostProtocolStatus\022\016\n\006postId\030" +
+      "\002 \001(\003*f\n\022PostProtocolStatus\022\013\n\007SUCCESS\020\000" +
+      "\022\013\n\007NO_POST\020\001\022\016\n\nNO_COMMENT\020\002\022\022\n\016NOT_AUT" +
+      "HORIZED\020\003\022\022\n\016INTERNAL_ERROR\020c2\234\005\n\014PostPr" +
+      "otocol\022.\n\007GetPost\022\017.GetPostRequest\032\020.Get" +
+      "PostResponse\"\000\0221\n\010GetPosts\022\020.GetPostsReq" +
+      "uest\032\021.GetPostsResponse\"\000\0227\n\nCreatePost\022" +
+      "\022.CreatePostRequest\032\023.CreatePostResponse" +
+      "\"\000\0227\n\nModifyPost\022\022.ModifyPostRequest\032\023.M" +
+      "odifyPostResponse\"\000\0227\n\nDeletePost\022\022.Dele" +
+      "tePostRequest\032\023.DeletePostResponse\"\000\022@\n\r" +
+      "CreateComment\022\025.CreateCommentRequest\032\026.C" +
+      "reateCommentResponse\"\000\022@\n\rModifyComment\022" +
+      "\025.ModifyCommentRequest\032\026.ModifyCommentRe" +
+      "sponse\"\000\022@\n\rDeleteComment\022\025.DeleteCommen" +
+      "tRequest\032\026.DeleteCommentResponse\"\000\0221\n\010Li" +
+      "kePost\022\020.LikePostRequest\032\021.LikePostRespo" +
+      "nse\"\000\0227\n\016CancelLikePost\022\020.LikePostReques" +
+      "t\032\021.LikePostResponse\"\000\022L\n\021UploadImageRes" +
+      "ult\022\031.UploadImageResultRequest\032\032.UploadI" +
+      "mageResultResponse\"\000B1\n-com.block.server" +
+      "._generated.proto.postserviceP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -296,7 +296,7 @@ public final class PostProtocolOuterClass {
     internal_static_CreatePostRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreatePostRequest_descriptor,
-        new java.lang.String[] { "Author", "Content", "Location", });
+        new java.lang.String[] { "Author", "Content", "Location", "RightNow", });
     internal_static_CreatePostResponse_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_CreatePostResponse_fieldAccessorTable = new

@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -78,7 +79,7 @@ public class PostServiceTest {
     }
 
     @Test
-    @DisplayName("포스트를 가져온다")
+    @DisplayName("post 가져온다")
     public void GetPost() {
 
         var testUser = TestUser.U1().toUser();
@@ -109,7 +110,7 @@ public class PostServiceTest {
         log.debug("포스트 목록 {}: {}", getPost.getPost(), getPost.getPost().getPostId());
     }
 
-    @DisplayName("post를 가져온다.")
+    @DisplayName("posts를 가져온다.")
     @Test
     void GetPosts() {
 
@@ -117,13 +118,22 @@ public class PostServiceTest {
         ReflectionTestUtils.setField(testUser, "id", 1L);
 
         var testPostOne = TestPost.P1(testUser).toPost();
+
         ReflectionTestUtils.setField(testPostOne, "id", 1L);
+        ReflectionTestUtils.setField(testPostOne, "rightNow", false);
+        ReflectionTestUtils.setField(testPostOne, "createdAt", LocalDateTime.now());
 
         var testPostTwo = TestPost.P1(testUser).toPost();
         ReflectionTestUtils.setField(testPostTwo, "id", 2L);
+        ReflectionTestUtils.setField(testPostTwo, "rightNow", true);
+        ReflectionTestUtils.setField(testPostTwo, "createdAt", LocalDateTime.now().minusDays(1));
+
 
         var testPostThree = TestPost.P1(testUser).toPost();
         ReflectionTestUtils.setField(testPostThree, "id", 3L);
+        ReflectionTestUtils.setField(testPostThree, "rightNow", true);
+        ReflectionTestUtils.setField(testPostThree, "createdAt", LocalDateTime.now().minusMinutes(30));
+
 
 
         var list = new ArrayList<>();
@@ -149,6 +159,8 @@ public class PostServiceTest {
         var posts = postService.getPosts(getPostsRequest);
 
         log.debug("포스트 목록 {}", posts);
+
+        assertEquals(posts.getPostsCount(), 2);
 
     }
 }
