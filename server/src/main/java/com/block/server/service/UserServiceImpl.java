@@ -4,9 +4,9 @@ import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
 import com.block.server._generated.proto.userservice.SignUpRequest;
 import com.block.server._generated.proto.userservice.SignUpResponse;
-import com.block.server.domain.Roles;
-import com.block.server.domain.User;
-import com.block.server.domain.repository.UserRepository;
+import com.block.server.domain.user.Roles;
+import com.block.server.domain.user.User;
+import com.block.server.domain.user.UserRepository;
 import com.block.server.exception.PasswordDoesNotMatchException;
 import com.block.server.exception.UserNotFoundException;
 import io.github.majusko.grpc.jwt.service.JwtService;
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
         SignInResponse response = SignInResponse.newBuilder()
                 .setStatus(SignInResponse.SignInStatus.SUCCESS)
-                .setNickname(user.get().getNickname())
+                .setNickname(user.get().getNickName())
                 .setProfileUrl(user.get().getProfile())
                 .setToken(token)
                 .build();
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
         var user = User.builder()
                 .email(request.getEmail())
                 .password(encodedPassword)
-                .nickname(request.getNickname())
+                .nickName(request.getNickname())
                 .birthday(LocalDate.parse(request.getBirthday()))
                 .gender(request.getGender())
                 .profile(profileUrl)
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
 
         return signUpResponseBuilder
                 .setStatus(SignUpResponse.SignUpStatus.SUCCESS)
-                .setNickname(savedUser.getNickname())
+                .setNickname(savedUser.getNickName())
                 .setProfileUrl(savedUser.getProfile())
                 .build();
     }

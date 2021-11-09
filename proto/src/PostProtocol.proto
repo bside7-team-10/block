@@ -1,0 +1,178 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.block.server._generated.proto.postservice";
+
+// The greeting service definition.
+service PostProtocol {
+
+    rpc GetPost (GetPostRequest) returns (GetPostResponse) {}
+
+    rpc GetPosts (GetPostsRequest) returns (GetPostsResponse) {}
+
+    rpc CreatePost (CreatePostRequest) returns (CreatePostResponse) {}
+
+    rpc ModifyPost (ModifyPostRequest) returns (ModifyPostResponse) {}
+
+    rpc DeletePost (DeletePostRequest) returns (DeletePostResponse) {}
+
+    rpc CreateComment (CreateCommentRequest) returns (CreateCommentResponse) {}
+
+    rpc ModifyComment (ModifyCommentRequest) returns (ModifyCommentResponse) {}
+
+    rpc DeleteComment (DeleteCommentRequest) returns (DeleteCommentResponse) {}
+
+    rpc LikePost (LikePostRequest) returns (LikePostResponse) {}
+
+    rpc CancelLikePost(LikePostRequest) returns (LikePostResponse) {}
+
+    rpc UploadImageResult(UploadImageResultRequest) returns (UploadImageResultResponse) {}
+}
+
+enum PostProtocolStatus {
+    SUCCESS = 0;
+    NO_POST = 1;
+    NO_COMMENT = 2;
+    NOT_AUTHORIZED = 3;
+    INTERNAL_ERROR = 99;
+}
+
+message LocationDto {
+    double lat = 1;
+    double long = 2;
+}
+
+message CommentDto {
+    string commentId = 1;
+    string author = 2;
+    string content = 3;
+    int32 createdTS = 4;
+    int32 modifiedTS = 5;
+}
+
+message UserDto {
+    string nickname = 1;
+    string profileUrl = 2;
+}
+
+message PostDto {
+    int64 postId = 1;
+    UserDto author = 2;
+    string content = 3;
+    string imageUrl = 4;
+    int32 likes = 5;
+    repeated CommentDto comments = 6;
+    LocationDto location = 7;
+}
+
+message GetPostRequest {
+    int64 postId = 1;
+}
+
+message GetPostResponse {
+    PostProtocolStatus status = 1;
+    PostDto post = 2;
+    string imageUploadUrl = 3;
+}
+
+message GetPostsRequest {
+    int32 pageNumber = 1;
+    optional int32 resultPerPage = 2; // default = 10
+    LocationDto currentLocation = 3;
+    message Filter {
+        message DistanceFilter {
+            bool enabled = 1;
+            int32 distance = 2;
+        }
+        DistanceFilter distanceFilter = 1;
+        bool rightNowFilter = 2;
+    }
+    Filter filter = 4;
+}
+
+message GetPostsResponse {
+    PostProtocolStatus status = 1;
+    repeated PostDto posts = 2;
+}
+
+message CreatePostRequest {
+    string author = 1;
+    string content = 2;
+    LocationDto location = 3;
+}
+
+message CreatePostResponse {
+    PostProtocolStatus status = 1;
+    int64 postId = 2;
+    string uploadImageUrl = 3;
+}
+
+message ModifyPostRequest {
+    int64 postId = 1;
+    string content = 2;
+    bool modifiedImage = 3;
+}
+
+message ModifyPostResponse {
+    PostProtocolStatus status = 1;
+    int64 postId = 2;
+    string uploadImageUrl = 3;
+}
+
+message DeletePostRequest {
+    int64 postId = 1;
+}
+
+message DeletePostResponse {
+    PostProtocolStatus status = 1;
+    int64 postId = 2;
+}
+
+message CreateCommentRequest {
+    string author = 1;
+    int64 postId = 2;
+    string content = 3;
+}
+
+message CreateCommentResponse {
+    PostProtocolStatus status = 1;
+    int64 commentId = 2;
+}
+
+message ModifyCommentRequest {
+    int64 commentId = 1;
+    string content = 2;
+}
+
+message ModifyCommentResponse {
+    PostProtocolStatus status = 1;
+    int64 commentId = 2;
+}
+
+message DeleteCommentRequest {
+    int64 commentId = 1;
+}
+
+message DeleteCommentResponse {
+    PostProtocolStatus status = 1;
+}
+
+message LikePostRequest {
+    int64 postId = 1;
+    bool like = 2;
+}
+
+message LikePostResponse {
+    PostProtocolStatus status = 1;
+    PostDto post = 2;
+}
+
+message UploadImageResultRequest {
+    int64 postId = 1;
+    bool success = 2;
+}
+
+message UploadImageResultResponse {
+    PostProtocolStatus status = 1;
+    int64 postId = 2;
+}

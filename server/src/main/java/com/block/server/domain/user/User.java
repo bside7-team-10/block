@@ -1,6 +1,7 @@
-package com.block.server.domain;
+package com.block.server.domain.user;
 
 import com.block.server._generated.proto.userservice.SignUpRequest;
+import com.block.server.domain.hashtag.HashTag;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,7 @@ public class User {
     private String password;
 
     @Column
-    private String nickname;
+    private String nickName;
 
     @Column
     private String profile;
@@ -60,10 +61,10 @@ public class User {
     private List<HashTag> interestHashTags;
 
     @Builder
-    public User(String email, String password, String nickname, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles, List<HashTag> interestHashTags) {
+    public User(String email, String password, String nickName, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles, List<HashTag> interestHashTags) {
         this.email = email;
         this.password = password;
-        this.nickname = nickname;
+        this.nickName = nickName;
         this.profile = profile;
         this.birthday = birthday;
         this.gender = gender;
@@ -71,4 +72,6 @@ public class User {
         this.roles = roles;
         this.interestHashTags = interestHashTags;
     }
+
+
 }

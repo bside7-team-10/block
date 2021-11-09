@@ -1,9 +1,10 @@
 package com.block.server.security;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.block.server._generated.proto.userservice.SignInRequest;
 import com.block.server._generated.proto.userservice.SignInResponse;
 import com.block.server._generated.proto.userservice.UserProtocolGrpc;
-import com.block.server.domain.repository.UserRepository;
+import com.block.server.domain.user.UserRepository;
 import com.block.server.helper.TestUser;
 import io.grpc.*;
 import org.junit.jupiter.api.Test;
@@ -63,32 +64,6 @@ public class gRpcJwtTest {
 
         channel.shutdown();
     }
-//
-//    @Test
-//    public void testSuccessInternalToken() throws IOException {
-//
-//
-//        //client Envoy proxy 구축 후 , 테스트
-//        final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:6565").usePlaintext().build();
-//        final Channel interceptedChannel = ClientInterceptors.intercept(channel,authClientInterceptor);
-//        final  UserProtocolGrpc.UserProtocolBlockingStub stub = UserProtocolGrpc.newBlockingStub(interceptedChannel);
-//
-//        SignInResponse signInResponse = stub.signIn(SignInRequest.newBuilder()
-//                .setEmail(email)
-//                .setPassword(passwordEncoder.encode(password))
-//                .build());
-//
-//
-//        var header = new Metadata();
-//        header.put(GrpcHeader.AUTHORIZATION, signInResponse.getToken());
-//
-//
-//        MetadataUtils.attachHeaders(stub, header);
-//
-//        Assertions.assertNotNull(signInResponse);
-//
-//        channel.shutdown();
-//    }
 
 
 }

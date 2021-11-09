@@ -1,4 +1,4 @@
-package com.block.server.domain;
+package com.block.server.domain.hashtag;
 
 import lombok.Builder;
 import lombok.Getter;

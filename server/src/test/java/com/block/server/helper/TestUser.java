@@ -1,8 +1,8 @@
 package com.block.server.helper;
 
 import com.block.server._generated.proto.userservice.SignUpRequest;
-import com.block.server.domain.HashTag;
-import com.block.server.domain.User;
+import com.block.server.domain.hashtag.HashTag;
+import com.block.server.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor
 public class TestUser {
-
     private String email;
     private String rawPassword;
     private String nickname;
@@ -63,7 +62,7 @@ public class TestUser {
                 .profile(profileUrl)
                 .birthday(LocalDate.parse(birthdayStr))
                 .gender(gender)
-                .nickname(nickname)
+                .nickName(nickname)
                 .roles(role)
                 .interestHashTags(interestHashTags.stream()
                         .map(x -> HashTag.builder().tagName(x).build())
