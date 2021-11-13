@@ -109,6 +109,19 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 66: {
+            com.google.protobuf.Timestamp.Builder subBuilder = null;
+            if (remainingTime_ != null) {
+              subBuilder = remainingTime_.toBuilder();
+            }
+            remainingTime_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(remainingTime_);
+              remainingTime_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -334,6 +347,32 @@ private static final long serialVersionUID = 0L;
     return getLocation();
   }
 
+  public static final int REMAININGTIME_FIELD_NUMBER = 8;
+  private com.google.protobuf.Timestamp remainingTime_;
+  /**
+   * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+   * @return Whether the remainingTime field is set.
+   */
+  @java.lang.Override
+  public boolean hasRemainingTime() {
+    return remainingTime_ != null;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+   * @return The remainingTime.
+   */
+  @java.lang.Override
+  public com.google.protobuf.Timestamp getRemainingTime() {
+    return remainingTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : remainingTime_;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+   */
+  @java.lang.Override
+  public com.google.protobuf.TimestampOrBuilder getRemainingTimeOrBuilder() {
+    return getRemainingTime();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -368,6 +407,9 @@ private static final long serialVersionUID = 0L;
     }
     if (location_ != null) {
       output.writeMessage(7, getLocation());
+    }
+    if (remainingTime_ != null) {
+      output.writeMessage(8, getRemainingTime());
     }
     unknownFields.writeTo(output);
   }
@@ -404,6 +446,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, getLocation());
     }
+    if (remainingTime_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(8, getRemainingTime());
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -439,6 +485,11 @@ private static final long serialVersionUID = 0L;
       if (!getLocation()
           .equals(other.getLocation())) return false;
     }
+    if (hasRemainingTime() != other.hasRemainingTime()) return false;
+    if (hasRemainingTime()) {
+      if (!getRemainingTime()
+          .equals(other.getRemainingTime())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -470,6 +521,10 @@ private static final long serialVersionUID = 0L;
     if (hasLocation()) {
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
+    }
+    if (hasRemainingTime()) {
+      hash = (37 * hash) + REMAININGTIME_FIELD_NUMBER;
+      hash = (53 * hash) + getRemainingTime().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -631,6 +686,12 @@ private static final long serialVersionUID = 0L;
         location_ = null;
         locationBuilder_ = null;
       }
+      if (remainingTimeBuilder_ == null) {
+        remainingTime_ = null;
+      } else {
+        remainingTime_ = null;
+        remainingTimeBuilder_ = null;
+      }
       return this;
     }
 
@@ -680,6 +741,11 @@ private static final long serialVersionUID = 0L;
         result.location_ = location_;
       } else {
         result.location_ = locationBuilder_.build();
+      }
+      if (remainingTimeBuilder_ == null) {
+        result.remainingTime_ = remainingTime_;
+      } else {
+        result.remainingTime_ = remainingTimeBuilder_.build();
       }
       onBuilt();
       return result;
@@ -774,6 +840,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasLocation()) {
         mergeLocation(other.getLocation());
+      }
+      if (other.hasRemainingTime()) {
+        mergeRemainingTime(other.getRemainingTime());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1495,6 +1564,125 @@ private static final long serialVersionUID = 0L;
         location_ = null;
       }
       return locationBuilder_;
+    }
+
+    private com.google.protobuf.Timestamp remainingTime_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> remainingTimeBuilder_;
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     * @return Whether the remainingTime field is set.
+     */
+    public boolean hasRemainingTime() {
+      return remainingTimeBuilder_ != null || remainingTime_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     * @return The remainingTime.
+     */
+    public com.google.protobuf.Timestamp getRemainingTime() {
+      if (remainingTimeBuilder_ == null) {
+        return remainingTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : remainingTime_;
+      } else {
+        return remainingTimeBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     */
+    public Builder setRemainingTime(com.google.protobuf.Timestamp value) {
+      if (remainingTimeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        remainingTime_ = value;
+        onChanged();
+      } else {
+        remainingTimeBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     */
+    public Builder setRemainingTime(
+        com.google.protobuf.Timestamp.Builder builderForValue) {
+      if (remainingTimeBuilder_ == null) {
+        remainingTime_ = builderForValue.build();
+        onChanged();
+      } else {
+        remainingTimeBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     */
+    public Builder mergeRemainingTime(com.google.protobuf.Timestamp value) {
+      if (remainingTimeBuilder_ == null) {
+        if (remainingTime_ != null) {
+          remainingTime_ =
+            com.google.protobuf.Timestamp.newBuilder(remainingTime_).mergeFrom(value).buildPartial();
+        } else {
+          remainingTime_ = value;
+        }
+        onChanged();
+      } else {
+        remainingTimeBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     */
+    public Builder clearRemainingTime() {
+      if (remainingTimeBuilder_ == null) {
+        remainingTime_ = null;
+        onChanged();
+      } else {
+        remainingTime_ = null;
+        remainingTimeBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     */
+    public com.google.protobuf.Timestamp.Builder getRemainingTimeBuilder() {
+      
+      onChanged();
+      return getRemainingTimeFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getRemainingTimeOrBuilder() {
+      if (remainingTimeBuilder_ != null) {
+        return remainingTimeBuilder_.getMessageOrBuilder();
+      } else {
+        return remainingTime_ == null ?
+            com.google.protobuf.Timestamp.getDefaultInstance() : remainingTime_;
+      }
+    }
+    /**
+     * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+        getRemainingTimeFieldBuilder() {
+      if (remainingTimeBuilder_ == null) {
+        remainingTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                getRemainingTime(),
+                getParentForChildren(),
+                isClean());
+        remainingTime_ = null;
+      }
+      return remainingTimeBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

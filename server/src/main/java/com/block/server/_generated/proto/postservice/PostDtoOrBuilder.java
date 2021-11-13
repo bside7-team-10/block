@@ -96,4 +96,19 @@ public interface PostDtoOrBuilder extends
    * <code>.LocationDto location = 7;</code>
    */
   com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
+
+  /**
+   * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+   * @return Whether the remainingTime field is set.
+   */
+  boolean hasRemainingTime();
+  /**
+   * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+   * @return The remainingTime.
+   */
+  com.google.protobuf.Timestamp getRemainingTime();
+  /**
+   * <code>.google.protobuf.Timestamp remainingTime = 8;</code>
+   */
+  com.google.protobuf.TimestampOrBuilder getRemainingTimeOrBuilder();
 }

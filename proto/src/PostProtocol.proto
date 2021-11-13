@@ -3,6 +3,8 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.block.server._generated.proto.postservice";
 
+import "google/protobuf/timestamp.proto";
+
 // The greeting service definition.
 service PostProtocol {
 
@@ -63,6 +65,7 @@ message PostDto {
     int32 likes = 5;
     repeated CommentDto comments = 6;
     LocationDto location = 7;
+	google.protobuf.Timestamp remainingTime = 8;
 }
 
 message GetPostRequest {
