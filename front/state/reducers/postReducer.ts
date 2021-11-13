@@ -3,12 +3,13 @@ import { Action } from '../actions/index';
 
 interface InitialState {
   loading: boolean;
-  message: string | null;
+  message: string | unknown | null;
   content: string | null;
   rightNow: boolean | null;
-  toComeBackPath: string | null;
-  imageSource: string | null;
-  hashtag: string[] | null;
+  toComeBackPath?: string | null;
+  imageSource?: string | null;
+  hashtag?: string[] | null;
+  hashtagIndex?: number[] | null;
 }
 
 const initialState: InitialState = {
@@ -19,6 +20,7 @@ const initialState: InitialState = {
   toComeBackPath: null,
   imageSource: null,
   hashtag: null,
+  hashtagIndex: null,
 };
 
 const postReducer = (state = initialState, action: Action) => {
@@ -47,6 +49,7 @@ const postReducer = (state = initialState, action: Action) => {
         rightNow: action.payload.rightNow,
         toComeBackPath: action.payload.toComeBackPath,
         hashtag: action.payload.hashtag,
+        hashtagIndex: action.payload.hashtagIndex,
       };
     case ActionType.REMOVE_TEMP_POST:
       return {
@@ -65,7 +68,7 @@ const postReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        message: action.payload,
       };
     case ActionType.REMOVE_TEMP_IMAGE:
       return {
