@@ -43,6 +43,7 @@ test('REMOVE_TEMP_IMAGE가 호출되면 state에 저장되어있는 사진은 nu
     rightNow: false,
     toComeBackPath: '/board/write',
     hashtag: ['오늘의이야기'],
+    hashtagIndex: [0],
     imageSource: 'image.jpg',
     loading: false,
     message: null,
