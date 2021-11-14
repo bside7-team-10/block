@@ -52,7 +52,7 @@ message CommentDto {
 
 message UserDto {
     string nickname = 1;
-    string profileUrl = 2;
+    string avatarId = 2;
 }
 
 message PostDto {
@@ -72,7 +72,6 @@ message GetPostRequest {
 message GetPostResponse {
     PostProtocolStatus status = 1;
     PostDto post = 2;
-    string imageUploadUrl = 3;
 }
 
 message GetPostsRequest {
@@ -96,9 +95,8 @@ message GetPostsResponse {
 }
 
 message CreatePostRequest {
-    string author = 1;
-    string content = 2;
-    LocationDto location = 3;
+    string content = 1;
+    LocationDto location = 2;
 }
 
 message CreatePostResponse {
@@ -129,9 +127,8 @@ message DeletePostResponse {
 }
 
 message CreateCommentRequest {
-    string author = 1;
-    int64 postId = 2;
-    string content = 3;
+    int64 postId = 1;
+    string content = 2;
 }
 
 message CreateCommentResponse {

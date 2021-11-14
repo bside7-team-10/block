@@ -18,7 +18,7 @@ public class TestUser {
     private String email;
     private String rawPassword;
     private String nickname;
-    private String avatar;
+    private String avatarId;
     private String birthdayStr;
     private SignUpRequest.Gender gender;
     private String social;
@@ -29,7 +29,7 @@ public class TestUser {
         return TestUser.builder()
                 .email("test@example.com")
                 .rawPassword("12345678")
-                .avatar("1.png")
+                .avatarId("1.png")
                 .birthdayStr("2020-01-01")
                 .gender(SignUpRequest.Gender.MALE)
                 .nickname("helloworld")
@@ -39,11 +39,11 @@ public class TestUser {
     }
 
     @Builder
-    public TestUser(String email, String rawPassword, String nickname, String avatar, String birthdayStr, SignUpRequest.Gender gender, String social, String role, List<String> interestHashTags) {
+    public TestUser(String email, String rawPassword, String nickname, String avatarId, String birthdayStr, SignUpRequest.Gender gender, String social, String role, List<String> interestHashTags) {
         this.email = email;
         this.rawPassword = rawPassword;
         this.nickname = nickname;
-        this.avatar = avatar;
+        this.avatarId = avatarId;
         this.birthdayStr = birthdayStr;
         this.gender = gender;
         this.social = social;
@@ -55,11 +55,11 @@ public class TestUser {
         return toUser("any-password", "any-url");
     }
 
-    public User toUser(String encryptedPassword, String profileUrl) {
+    public User toUser(String encryptedPassword, String avatarId) {
         return User.builder()
                 .email(email)
                 .password(encryptedPassword)
-                .profile(profileUrl)
+                .avatarId(avatarId)
                 .birthday(LocalDate.parse(birthdayStr))
                 .gender(gender)
                 .nickname(nickname)

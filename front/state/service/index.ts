@@ -31,7 +31,7 @@ const Service = () => {
       req.setPassword(password);
       req.setNickname(nickName);
       req.setBirthday(birthday);
-      req.setAvatar('1.png');
+      req.setAvatarid('1.png');
       req.setGender(gender);
       const userClient = new UserProtocolClient(serverUrl);
       userClient.signUp(req, (err, res) => {
@@ -61,7 +61,7 @@ const Service = () => {
 
           const loginUser: LoginUser = {
             nickname: res?.getNickname(),
-            profileUrl: res?.getProfileurl(),
+            avatarId: res?.getAvatarid(),
             token: res?.getToken(),
           };
           const cookie = new Cookies();

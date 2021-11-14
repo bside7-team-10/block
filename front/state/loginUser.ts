@@ -1,5 +1,5 @@
 export interface LoginUser {
   nickname?: string | null;
-  profileUrl?: string | null;
+  avatarId?: string | null;
   token?: string | null;
 }

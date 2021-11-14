@@ -32,16 +32,4 @@ public interface GetPostResponseOrBuilder extends
    * <code>.PostDto post = 2;</code>
    */
   com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostOrBuilder();
-
-  /**
-   * <code>string imageUploadUrl = 3;</code>
-   * @return The imageUploadUrl.
-   */
-  java.lang.String getImageUploadUrl();
-  /**
-   * <code>string imageUploadUrl = 3;</code>
-   * @return The bytes for imageUploadUrl.
-   */
-  com.google.protobuf.ByteString
-      getImageUploadUrlBytes();
 }

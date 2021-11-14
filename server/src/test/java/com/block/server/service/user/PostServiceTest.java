@@ -57,7 +57,6 @@ public class PostServiceTest {
         ReflectionTestUtils.setField(testPost, "id", 1L);
 
         CreatePostRequest createPostRequest = CreatePostRequest.newBuilder()
-                .setAuthor(testUser.getNickname())
                 .setContent(testPost.getContent())
                 .setLocation(
                         LocationDto.newBuilder()
@@ -111,7 +110,7 @@ public class PostServiceTest {
 
         assertThat(getPost, Matchers.is(notNullValue()));
         assertEquals(testPost.getUser().getNickname(), getPost.getPost().getAuthor().getNickname());
-        assertEquals(testPost.getUser().getProfile(), getPost.getPost().getAuthor().getProfileUrl());
+        assertEquals(testPost.getUser().getAvatarId(), getPost.getPost().getAuthor().getAvatarId());
         assertEquals(testPost.getLikesCount(), 0);
         assertEquals(testPost.getCommentsCount(), 0);
         log.debug("포스트 목록 {}: {}", getPost.getPost(), getPost.getPost().getPostId());

@@ -93,7 +93,7 @@ public class PostServiceImpl implements PostService {
                 .setAuthor(
                         com.block.server._generated.proto.postservice.UserDto.newBuilder()
                                 .setNickname(post.getUser().getNickname())
-                                .setProfileUrl(post.getUser().getProfile())
+                                .setAvatarId(post.getUser().getAvatarId())
                 )
                 .setContent(post.getContent())
                 .setImageUrl(imageUrl)

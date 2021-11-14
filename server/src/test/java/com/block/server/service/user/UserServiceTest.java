@@ -56,7 +56,7 @@ public class UserServiceTest {
 
     private void setTestUserOnRepository(@NotNull TestUser testUser) {
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var profileUrl = "http://example.com/image/" + testUser.getAvatarId();
         var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
 
         doReturn(Optional.ofNullable(expectedUser))
@@ -128,7 +128,7 @@ public class UserServiceTest {
         var signUpRequest = SignUpRequest.newBuilder()
                 .setEmail(testUser.getEmail())
                 .setPassword(testUser.getRawPassword())
-                .setAvatar(testUser.getAvatar())
+                .setAvatarId(testUser.getAvatarId())
                 .setBirthday(testUser.getBirthdayStr())
                 .setGender(testUser.getGender())
                 .setNickname(testUser.getNickname())
@@ -136,8 +136,8 @@ public class UserServiceTest {
                 .build();
 
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
-        var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
+        var avatarId = "http://example.com/image/" + testUser.getAvatarId();
+        var expectedUser = testUser.toUser(encryptedPassword, avatarId);
 
         doReturn(expectedUser)
                 .when(userRepository)
@@ -156,7 +156,7 @@ public class UserServiceTest {
         assertThat(response, is(notNullValue()));
         assertEquals(SignUpResponse.SignUpStatus.SUCCESS, response.getStatus());
         assertEquals(testUser.getNickname(), response.getNickname());
-        assertEquals(profileUrl, response.getProfileUrl());
+        assertEquals(avatarId, response.getAvatarId());
     }
 
     @Test
@@ -167,14 +167,14 @@ public class UserServiceTest {
         var signUpRequest = SignUpRequest.newBuilder()
                 .setEmail(testUser.getEmail())
                 .setPassword(testUser.getRawPassword())
-                .setAvatar(testUser.getAvatar())
+                .setAvatarId(testUser.getAvatarId())
                 .setBirthday(testUser.getBirthdayStr())
                 .setGender(testUser.getGender())
                 .setNickname(testUser.getNickname())
                 .build();
 
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var profileUrl = "http://example.com/image/" + testUser.getAvatarId();
         var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
 
         doReturn(expectedUser)
@@ -200,14 +200,14 @@ public class UserServiceTest {
         var signUpRequest = SignUpRequest.newBuilder()
                 .setEmail(testUser.getEmail())
                 .setPassword(testUser.getRawPassword())
-                .setAvatar(testUser.getAvatar())
+                .setAvatarId(testUser.getAvatarId())
                 .setBirthday(testUser.getBirthdayStr())
                 .setGender(testUser.getGender())
                 .setNickname(testUser.getNickname())
                 .build();
 
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var profileUrl = "http://example.com/image/" + testUser.getAvatarId();
         var existingUser = testUser.toUser(encryptedPassword, profileUrl);
 
         doReturn(Optional.ofNullable(existingUser))
@@ -228,14 +228,14 @@ public class UserServiceTest {
         var signUpRequest = SignUpRequest.newBuilder()
                 .setEmail(testUser.getEmail())
                 .setPassword(testUser.getRawPassword())
-                .setAvatar(testUser.getAvatar())
+                .setAvatarId(testUser.getAvatarId())
                 .setBirthday(testUser.getBirthdayStr())
                 .setGender(testUser.getGender())
                 .setNickname(testUser.getNickname())
                 .build();
 
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var profileUrl = "http://example.com/image/" + testUser.getAvatarId();
         var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
 
         doReturn(expectedUser)

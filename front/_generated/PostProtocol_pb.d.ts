@@ -67,8 +67,8 @@ export class UserDto extends jspb.Message {
   getNickname(): string;
   setNickname(value: string): void;
 
-  getProfileurl(): string;
-  setProfileurl(value: string): void;
+  getAvatarid(): string;
+  setAvatarid(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserDto.AsObject;
@@ -83,7 +83,7 @@ export class UserDto extends jspb.Message {
 export namespace UserDto {
   export type AsObject = {
     nickname: string,
-    profileurl: string,
+    avatarid: string,
   }
 }
 
@@ -166,9 +166,6 @@ export class GetPostResponse extends jspb.Message {
   getPost(): PostDto | undefined;
   setPost(value?: PostDto): void;
 
-  getImageuploadurl(): string;
-  setImageuploadurl(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetPostResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetPostResponse): GetPostResponse.AsObject;
@@ -183,7 +180,6 @@ export namespace GetPostResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
     post?: PostDto.AsObject,
-    imageuploadurl: string,
   }
 }
 
@@ -302,9 +298,6 @@ export namespace GetPostsResponse {
 }
 
 export class CreatePostRequest extends jspb.Message {
-  getAuthor(): string;
-  setAuthor(value: string): void;
-
   getContent(): string;
   setContent(value: string): void;
 
@@ -325,7 +318,6 @@ export class CreatePostRequest extends jspb.Message {
 
 export namespace CreatePostRequest {
   export type AsObject = {
-    author: string,
     content: string,
     location?: LocationDto.AsObject,
   }
@@ -460,9 +452,6 @@ export namespace DeletePostResponse {
 }
 
 export class CreateCommentRequest extends jspb.Message {
-  getAuthor(): string;
-  setAuthor(value: string): void;
-
   getPostid(): number;
   setPostid(value: number): void;
 
@@ -481,7 +470,6 @@ export class CreateCommentRequest extends jspb.Message {
 
 export namespace CreateCommentRequest {
   export type AsObject = {
-    author: string,
     postid: number,
     content: string,
   }

@@ -8,41 +8,29 @@ public interface CreatePostRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string author = 1;</code>
-   * @return The author.
-   */
-  java.lang.String getAuthor();
-  /**
-   * <code>string author = 1;</code>
-   * @return The bytes for author.
-   */
-  com.google.protobuf.ByteString
-      getAuthorBytes();
-
-  /**
-   * <code>string content = 2;</code>
+   * <code>string content = 1;</code>
    * @return The content.
    */
   java.lang.String getContent();
   /**
-   * <code>string content = 2;</code>
+   * <code>string content = 1;</code>
    * @return The bytes for content.
    */
   com.google.protobuf.ByteString
       getContentBytes();
 
   /**
-   * <code>.LocationDto location = 3;</code>
+   * <code>.LocationDto location = 2;</code>
    * @return Whether the location field is set.
    */
   boolean hasLocation();
   /**
-   * <code>.LocationDto location = 3;</code>
+   * <code>.LocationDto location = 2;</code>
    * @return The location.
    */
   com.block.server._generated.proto.postservice.LocationDto getLocation();
   /**
-   * <code>.LocationDto location = 3;</code>
+   * <code>.LocationDto location = 2;</code>
    */
   com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
 }

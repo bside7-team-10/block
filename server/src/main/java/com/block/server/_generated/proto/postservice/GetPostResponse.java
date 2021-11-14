@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private GetPostResponse() {
     status_ = 0;
-    imageUploadUrl_ = "";
   }
 
   @java.lang.Override
@@ -67,12 +66,6 @@ private static final long serialVersionUID = 0L;
               post_ = subBuilder.buildPartial();
             }
 
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            imageUploadUrl_ = s;
             break;
           }
           default: {
@@ -152,44 +145,6 @@ private static final long serialVersionUID = 0L;
     return getPost();
   }
 
-  public static final int IMAGEUPLOADURL_FIELD_NUMBER = 3;
-  private volatile java.lang.Object imageUploadUrl_;
-  /**
-   * <code>string imageUploadUrl = 3;</code>
-   * @return The imageUploadUrl.
-   */
-  @java.lang.Override
-  public java.lang.String getImageUploadUrl() {
-    java.lang.Object ref = imageUploadUrl_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      imageUploadUrl_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string imageUploadUrl = 3;</code>
-   * @return The bytes for imageUploadUrl.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getImageUploadUrlBytes() {
-    java.lang.Object ref = imageUploadUrl_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      imageUploadUrl_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -210,9 +165,6 @@ private static final long serialVersionUID = 0L;
     if (post_ != null) {
       output.writeMessage(2, getPost());
     }
-    if (!getImageUploadUrlBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, imageUploadUrl_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -229,9 +181,6 @@ private static final long serialVersionUID = 0L;
     if (post_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getPost());
-    }
-    if (!getImageUploadUrlBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, imageUploadUrl_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -254,8 +203,6 @@ private static final long serialVersionUID = 0L;
       if (!getPost()
           .equals(other.getPost())) return false;
     }
-    if (!getImageUploadUrl()
-        .equals(other.getImageUploadUrl())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -273,8 +220,6 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + POST_FIELD_NUMBER;
       hash = (53 * hash) + getPost().hashCode();
     }
-    hash = (37 * hash) + IMAGEUPLOADURL_FIELD_NUMBER;
-    hash = (53 * hash) + getImageUploadUrl().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -416,8 +361,6 @@ private static final long serialVersionUID = 0L;
         post_ = null;
         postBuilder_ = null;
       }
-      imageUploadUrl_ = "";
-
       return this;
     }
 
@@ -450,7 +393,6 @@ private static final long serialVersionUID = 0L;
       } else {
         result.post_ = postBuilder_.build();
       }
-      result.imageUploadUrl_ = imageUploadUrl_;
       onBuilt();
       return result;
     }
@@ -504,10 +446,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasPost()) {
         mergePost(other.getPost());
-      }
-      if (!other.getImageUploadUrl().isEmpty()) {
-        imageUploadUrl_ = other.imageUploadUrl_;
-        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -709,82 +647,6 @@ private static final long serialVersionUID = 0L;
         post_ = null;
       }
       return postBuilder_;
-    }
-
-    private java.lang.Object imageUploadUrl_ = "";
-    /**
-     * <code>string imageUploadUrl = 3;</code>
-     * @return The imageUploadUrl.
-     */
-    public java.lang.String getImageUploadUrl() {
-      java.lang.Object ref = imageUploadUrl_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        imageUploadUrl_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string imageUploadUrl = 3;</code>
-     * @return The bytes for imageUploadUrl.
-     */
-    public com.google.protobuf.ByteString
-        getImageUploadUrlBytes() {
-      java.lang.Object ref = imageUploadUrl_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        imageUploadUrl_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string imageUploadUrl = 3;</code>
-     * @param value The imageUploadUrl to set.
-     * @return This builder for chaining.
-     */
-    public Builder setImageUploadUrl(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      imageUploadUrl_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string imageUploadUrl = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearImageUploadUrl() {
-      
-      imageUploadUrl_ = getDefaultInstance().getImageUploadUrl();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string imageUploadUrl = 3;</code>
-     * @param value The bytes for imageUploadUrl to set.
-     * @return This builder for chaining.
-     */
-    public Builder setImageUploadUrlBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      imageUploadUrl_ = value;
-      onChanged();
-      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

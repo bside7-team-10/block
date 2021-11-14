@@ -34,7 +34,7 @@ public class User {
     private String nickname;
 
     @Column
-    private String profile;
+    private String avatarId;
 
     @Column
     private LocalDate birthday;
@@ -61,11 +61,11 @@ public class User {
     private List<HashTag> interestHashTags;
 
     @Builder
-    public User(String email, String password, String nickname, String profile, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles, List<HashTag> interestHashTags) {
+    public User(String email, String password, String nickname, String avatarId, LocalDate birthday, SignUpRequest.Gender gender, String social, String roles, List<HashTag> interestHashTags) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.profile = profile;
+        this.avatarId = avatarId;
         this.birthday = birthday;
         this.gender = gender;
         this.social = social;

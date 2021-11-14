@@ -1031,7 +1031,7 @@ proto.UserDto.prototype.toObject = function(opt_includeInstance) {
 proto.UserDto.toObject = function(includeInstance, msg) {
   var f, obj = {
     nickname: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    profileurl: jspb.Message.getFieldWithDefault(msg, 2, "")
+    avatarid: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1074,7 +1074,7 @@ proto.UserDto.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setProfileurl(value);
+      msg.setAvatarid(value);
       break;
     default:
       reader.skipField();
@@ -1112,7 +1112,7 @@ proto.UserDto.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getProfileurl();
+  f = message.getAvatarid();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -1141,10 +1141,10 @@ proto.UserDto.prototype.setNickname = function(value) {
 
 
 /**
- * optional string profileUrl = 2;
+ * optional string avatarId = 2;
  * @return {string}
  */
-proto.UserDto.prototype.getProfileurl = function() {
+proto.UserDto.prototype.getAvatarid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -1153,7 +1153,7 @@ proto.UserDto.prototype.getProfileurl = function() {
  * @param {string} value
  * @return {!proto.UserDto} returns this
  */
-proto.UserDto.prototype.setProfileurl = function(value) {
+proto.UserDto.prototype.setAvatarid = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -1703,8 +1703,7 @@ proto.GetPostResponse.prototype.toObject = function(opt_includeInstance) {
 proto.GetPostResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    post: (f = msg.getPost()) && proto.PostDto.toObject(includeInstance, f),
-    imageuploadurl: jspb.Message.getFieldWithDefault(msg, 3, "")
+    post: (f = msg.getPost()) && proto.PostDto.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1750,10 +1749,6 @@ proto.GetPostResponse.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,proto.PostDto.deserializeBinaryFromReader);
       msg.setPost(value);
       break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setImageuploadurl(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1796,13 +1791,6 @@ proto.GetPostResponse.serializeBinaryToWriter = function(message, writer) {
       2,
       f,
       proto.PostDto.serializeBinaryToWriter
-    );
-  }
-  f = message.getImageuploadurl();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
     );
   }
 };
@@ -1860,24 +1848,6 @@ proto.GetPostResponse.prototype.clearPost = function() {
  */
 proto.GetPostResponse.prototype.hasPost = function() {
   return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional string imageUploadUrl = 3;
- * @return {string}
- */
-proto.GetPostResponse.prototype.getImageuploadurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.GetPostResponse} returns this
- */
-proto.GetPostResponse.prototype.setImageuploadurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -2724,8 +2694,7 @@ proto.CreatePostRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.CreatePostRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    author: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    content: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    content: jspb.Message.getFieldWithDefault(msg, 1, ""),
     location: (f = msg.getLocation()) && proto.LocationDto.toObject(includeInstance, f)
   };
 
@@ -2765,13 +2734,9 @@ proto.CreatePostRequest.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAuthor(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
       msg.setContent(value);
       break;
-    case 3:
+    case 2:
       var value = new proto.LocationDto;
       reader.readMessage(value,proto.LocationDto.deserializeBinaryFromReader);
       msg.setLocation(value);
@@ -2805,24 +2770,17 @@ proto.CreatePostRequest.prototype.serializeBinary = function() {
  */
 proto.CreatePostRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAuthor();
+  f = message.getContent();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getContent();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
   f = message.getLocation();
   if (f != null) {
     writer.writeMessage(
-      3,
+      2,
       f,
       proto.LocationDto.serializeBinaryToWriter
     );
@@ -2831,10 +2789,10 @@ proto.CreatePostRequest.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string author = 1;
+ * optional string content = 1;
  * @return {string}
  */
-proto.CreatePostRequest.prototype.getAuthor = function() {
+proto.CreatePostRequest.prototype.getContent = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -2843,36 +2801,18 @@ proto.CreatePostRequest.prototype.getAuthor = function() {
  * @param {string} value
  * @return {!proto.CreatePostRequest} returns this
  */
-proto.CreatePostRequest.prototype.setAuthor = function(value) {
+proto.CreatePostRequest.prototype.setContent = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional string content = 2;
- * @return {string}
- */
-proto.CreatePostRequest.prototype.getContent = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.CreatePostRequest} returns this
- */
-proto.CreatePostRequest.prototype.setContent = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional LocationDto location = 3;
+ * optional LocationDto location = 2;
  * @return {?proto.LocationDto}
  */
 proto.CreatePostRequest.prototype.getLocation = function() {
   return /** @type{?proto.LocationDto} */ (
-    jspb.Message.getWrapperField(this, proto.LocationDto, 3));
+    jspb.Message.getWrapperField(this, proto.LocationDto, 2));
 };
 
 
@@ -2881,7 +2821,7 @@ proto.CreatePostRequest.prototype.getLocation = function() {
  * @return {!proto.CreatePostRequest} returns this
 */
 proto.CreatePostRequest.prototype.setLocation = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
@@ -2899,7 +2839,7 @@ proto.CreatePostRequest.prototype.clearLocation = function() {
  * @return {boolean}
  */
 proto.CreatePostRequest.prototype.hasLocation = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -3795,9 +3735,8 @@ proto.CreateCommentRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.CreateCommentRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    author: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    postid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    content: jspb.Message.getFieldWithDefault(msg, 3, "")
+    postid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    content: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -3835,14 +3774,10 @@ proto.CreateCommentRequest.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAuthor(value);
-      break;
-    case 2:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setPostid(value);
       break;
-    case 3:
+    case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setContent(value);
       break;
@@ -3875,24 +3810,17 @@ proto.CreateCommentRequest.prototype.serializeBinary = function() {
  */
 proto.CreateCommentRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAuthor();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
   f = message.getPostid();
   if (f !== 0) {
     writer.writeInt64(
-      2,
+      1,
       f
     );
   }
   f = message.getContent();
   if (f.length > 0) {
     writer.writeString(
-      3,
+      2,
       f
     );
   }
@@ -3900,29 +3828,11 @@ proto.CreateCommentRequest.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string author = 1;
- * @return {string}
- */
-proto.CreateCommentRequest.prototype.getAuthor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.CreateCommentRequest} returns this
- */
-proto.CreateCommentRequest.prototype.setAuthor = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional int64 postId = 2;
+ * optional int64 postId = 1;
  * @return {number}
  */
 proto.CreateCommentRequest.prototype.getPostid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
@@ -3931,16 +3841,16 @@ proto.CreateCommentRequest.prototype.getPostid = function() {
  * @return {!proto.CreateCommentRequest} returns this
  */
 proto.CreateCommentRequest.prototype.setPostid = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional string content = 3;
+ * optional string content = 2;
  * @return {string}
  */
 proto.CreateCommentRequest.prototype.getContent = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
@@ -3949,7 +3859,7 @@ proto.CreateCommentRequest.prototype.getContent = function() {
  * @return {!proto.CreateCommentRequest} returns this
  */
 proto.CreateCommentRequest.prototype.setContent = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
