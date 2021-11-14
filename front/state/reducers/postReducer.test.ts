@@ -11,6 +11,8 @@ test('SAVE_TEMP_POST가 호출되면 작성된 내용들은 임시 저장된다.
     rightNow: false,
     toComeBackPath: '/board/write',
     hashtag: ['오늘의이야기'],
+    latitude: 0,
+    longitude: 0,
   };
 
   const state = postReducer(undefined, { type: ActionType.SAVE_TEMP_POST, payload: tempPost });
@@ -63,6 +65,8 @@ test('내용이 있으면 글쓰기는 완료된다.', async () => {
     toComeBackPath: '/board/write',
     hashtag: ['오늘의이야기'],
     imageSource: 'image.jpg',
+    latitude: 0,
+    longitude: 0,
   };
 
   const result = await service.addPost(post);
@@ -81,6 +85,8 @@ test('내용이 없으면 글쓰기는 실패한다.', async () => {
     toComeBackPath: '/board/write',
     hashtag: ['오늘의이야기'],
     imageSource: 'image.jpg',
+    latitude: 0,
+    longitude: 0,
   };
 
   try {
