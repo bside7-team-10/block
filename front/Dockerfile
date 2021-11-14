@@ -1,19 +1,22 @@
-FROM node:alpine AS dependencies
+FROM node:lts-alpine AS dependencies
 WORKDIR /app
 COPY ./front/package.json ./front/yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-FROM node:alpine AS builder
+FROM node:lts-alpine AS builder
 WORKDIR /app
 COPY ./front/ .
 COPY --from=dependencies /app/node_modules ./node_modules
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
 # Production image, copy all the files and run next
-FROM node:alpine AS runner
+FROM node:lts-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
+ENV NEXT_KAKAO_MAP_URL ${NEXT_KAKAO_MAP_URL}
+ENV NEXT_GOOGLE_MAP_URL ${NEXT_GOOGLE_MAP_URL}
+ENV GOOGLE_MAP_KEY ${GOOGLE_MAP_KEY}
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
@@ -24,7 +27,6 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-
 USER nextjs
 
 EXPOSE 3000
