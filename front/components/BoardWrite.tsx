@@ -25,6 +25,7 @@ import TextareaField from './common/fields/TextareaField';
 import { HorizontalSpace } from './common/Spaces';
 import CloseIcon from '../assets/CloseIcon';
 import DialogModal from './common/DialogModal';
+import Service from '../state/service';
 
 interface IBoardWriteProp {
   onCloseDrawer: () => void;
@@ -68,6 +69,7 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
   const { addPost, saveTempPost, removeTempImage, removeTempPost } = useActions();
 
   const { latitude, longitude } = useSelector((state: RootState) => state.location);
+  const [ imageUrl, setImageUrl ] = useState("");
 
   const { content, rightNow, imageSource, hashtagIndex } = useSelector(
     (state: RootState) => state.post
@@ -146,6 +148,14 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
     setIsDialogModalVisible(true);
   };
 
+  // GetPost에서 이미지를 사용하는 법 예제입니다.
+  const testGetPostHandler = async () => {
+    const svc = Service();
+    const postId = 40;
+    const result = await svc.getPost(postId);
+    setImageUrl(result.image);
+  }
+
   return (
     <>
       <Wrapper>
@@ -217,6 +227,9 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
                 </NowDescription>
               </div> */}
               <HorizontalSpace height={COMMON_SIZE_12PX} />
+              {/* GetPost로 이미지 나오는거 테스트용 */}
+              <img src={imageUrl} />
+              <Button onClick={testGetPostHandler}>getImage</Button>
             </form>
           </Container>
         </InnerWrapper>

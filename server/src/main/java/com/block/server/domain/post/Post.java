@@ -26,7 +26,7 @@ public class Post {
     private Long id;
 
     @JoinColumn(name = "userId")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     @Column(length = 2000, nullable = false)
