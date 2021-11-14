@@ -39,7 +39,7 @@ public class PostImageStorageServiceImpl implements PostImageStorageService {
 
     public String getUploadUrl(String key) {
         try {
-            var request = new GeneratePresignedUrlRequest(serverInfoConfig.getPostimage().getBucketname(), key)
+            var request = new GeneratePresignedUrlRequest(serverInfoConfig.getPostimagebucket(), key)
                     .withMethod(HttpMethod.PUT)
                     .withExpiration(calculateExpiration());
             var url = amazonS3Client.generatePresignedUrl(request);
@@ -53,7 +53,7 @@ public class PostImageStorageServiceImpl implements PostImageStorageService {
 
     public String getDownloadUrl(String key) {
         try {
-            var request = new GeneratePresignedUrlRequest(serverInfoConfig.getPostimage().getBucketname(), key)
+            var request = new GeneratePresignedUrlRequest(serverInfoConfig.getPostimagebucket(), key)
                     .withMethod(HttpMethod.GET)
                     .withExpiration(calculateExpiration());
             var url = amazonS3Client.generatePresignedUrl(request);

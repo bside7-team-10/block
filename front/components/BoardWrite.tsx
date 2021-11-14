@@ -1,7 +1,7 @@
 import { Button, Switch } from 'antd';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -24,6 +24,7 @@ import SelectButtonField from './common/fields/SelectButtonField';
 import TextareaField from './common/fields/TextareaField';
 import { HorizontalSpace } from './common/Spaces';
 import CloseIcon from '../assets/CloseIcon';
+import Service from '../state/service';
 
 interface BoardWriteForm {
   content: string;
@@ -68,6 +69,7 @@ const BoardWrite = () => {
 
   const { imageSource } = useSelector((state: RootState) => state.post);
   const { latitude, longitude } = useSelector((state: RootState) => state.location);
+  const [ imageUrl, setImageUrl ] = useState("");
 
   const { content, rightNow, removeTempPost } = useSelector((state: RootState) => state.post);
 
@@ -109,6 +111,14 @@ const BoardWrite = () => {
   const onClickRemoveImageButton = () => {
     removeTempImage();
   };
+
+  // GetPost에서 이미지를 사용하는 법 예제입니다.
+  const testGetPostHandler = async () => {
+    const svc = Service();
+    const postId = 40;
+    const result = await svc.getPost(postId);
+    setImageUrl(result.image);
+  }
 
   return (
     <Wrapper>
@@ -182,6 +192,9 @@ const BoardWrite = () => {
             <HorizontalSpace height={COMMON_SIZE_12PX} />
             <Bottom>
               <WritingButton htmlType="submit">공유하기</WritingButton>
+              {/* GetPost로 이미지 나오는거 테스트용 */}
+              <img src={imageUrl} />
+              <Button onClick={testGetPostHandler}>hi</Button>
             </Bottom>
           </form>
         </Container>
