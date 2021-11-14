@@ -35,7 +35,7 @@ public class PostRepositoryTest {
 
         assertThat(result, is(notNullValue()));
         assertEquals(posts, result.get());
-        assertEquals(user, result.get().getUserId());
+        assertEquals(user, result.get().getUser());
     }
 
 }

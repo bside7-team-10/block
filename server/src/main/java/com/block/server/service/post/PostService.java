@@ -5,7 +5,7 @@ import com.block.server.domain.user.User;
 
 
 public interface PostService {
-    CreatePostResponse createPost(CreatePostRequest createPostRequest, User user);
+    CreatePostResponse createPost(CreatePostRequest createPostRequest, String userEmail);
     GetPostResponse getPost(GetPostRequest getPostRequest);
     GetPostsResponse getPosts(GetPostsRequest getPostsRequest);
     UploadImageResultResponse uploadImageResult(UploadImageResultRequest uploadImageResultRequest);

@@ -27,7 +27,7 @@ public class Post {
 
     @JoinColumn(name = "userId")
     @ManyToOne(fetch = FetchType.LAZY)
-    private User userId;
+    private User user;
 
     @Column(length = 2000, nullable = false)
     private String content;
@@ -53,8 +53,8 @@ public class Post {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Post(User userId, String contents, String imageKey, int likesCount, int commentsCount, Point location) {
-        this.userId=userId;
+    public Post(User user, String contents, String imageKey, int likesCount, int commentsCount, Point location) {
+        this.user = user;
         this.content = contents;
         this.imageKey = imageKey;
         this.likesCount = likesCount;

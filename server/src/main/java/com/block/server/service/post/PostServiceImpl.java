@@ -3,7 +3,8 @@ package com.block.server.service.post;
 import com.block.server._generated.proto.postservice.*;
 import com.block.server.domain.post.Post;
 import com.block.server.domain.post.PostRepository;
-import com.block.server.domain.user.User;
+import com.block.server.exception.UserNotFoundException;
+import com.block.server.service.UserService;
 import com.block.server.service.postimagestorage.PostImageStorageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,14 +19,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
+    private final UserService userService;
     private final PostImageStorageService postImageStorageService;
 
     @Override
     @Transactional
-    public CreatePostResponse createPost(CreatePostRequest createPostRequest, User user) {
+    public CreatePostResponse createPost(CreatePostRequest createPostRequest, String userEmail) {
 
+        var user = userService.findByEmail(userEmail)
+                .orElseThrow(() -> new UserNotFoundException());
         var post = Post.builder()
-                .userId(user)
+                .user(user)
                 .contents(createPostRequest.getContent())
                 .location(new Point(createPostRequest.getLocation().getLat(), createPostRequest.getLocation().getLong()))
                 .build();
@@ -86,8 +90,8 @@ public class PostServiceImpl implements PostService {
                 .setPostId(post.getId())
                 .setAuthor(
                         com.block.server._generated.proto.postservice.UserDto.newBuilder()
-                                .setNickname(post.getUserId().getNickName())
-                                .setProfileUrl(post.getUserId().getProfile())
+                                .setNickname(post.getUser().getNickname())
+                                .setProfileUrl(post.getUser().getProfile())
                 )
                 .setContent(post.getContent())
                 .setImageUrl(imageUrl)

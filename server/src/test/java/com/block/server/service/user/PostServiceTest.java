@@ -4,6 +4,7 @@ import com.block.server._generated.proto.postservice.*;
 import com.block.server.domain.post.PostRepository;
 import com.block.server.helper.TestPost;
 import com.block.server.helper.TestUser;
+import com.block.server.service.UserService;
 import com.block.server.service.post.PostServiceImpl;
 import com.block.server.service.postimagestorage.PostImageStorageService;
 import org.hamcrest.Matchers;
@@ -35,6 +36,9 @@ public class PostServiceTest {
     private PostRepository postRepository;
 
     @Mock
+    private UserService userService;
+
+    @Mock
     private PostImageStorageService postImageStorageService;
 
     @InjectMocks
@@ -53,7 +57,7 @@ public class PostServiceTest {
         ReflectionTestUtils.setField(testPost, "id", 1L);
 
         CreatePostRequest createPostRequest = CreatePostRequest.newBuilder()
-                .setAuthor(testUser.getNickName())
+                .setAuthor(testUser.getNickname())
                 .setContent(testPost.getContent())
                 .setLocation(
                         LocationDto.newBuilder()
@@ -70,7 +74,11 @@ public class PostServiceTest {
                 .when(postImageStorageService)
                 .getUploadUrl(any());
 
-        var createPost = postService.createPost(createPostRequest, testUser);
+        doReturn(Optional.of(testPost.getUser()))
+                .when(userService)
+                .findByEmail(any());
+
+        var createPost = postService.createPost(createPostRequest, testUser.getEmail());
 
         assertThat(createPost, Matchers.is(notNullValue()));
         assertEquals(PostProtocolStatus.SUCCESS, createPost.getStatus());
@@ -102,8 +110,8 @@ public class PostServiceTest {
         var getPost = postService.getPost(getPostRequest);
 
         assertThat(getPost, Matchers.is(notNullValue()));
-        assertEquals(testPost.getUserId().getNickName(), getPost.getPost().getAuthor().getNickname());
-        assertEquals(testPost.getUserId().getProfile(), getPost.getPost().getAuthor().getProfileUrl());
+        assertEquals(testPost.getUser().getNickname(), getPost.getPost().getAuthor().getNickname());
+        assertEquals(testPost.getUser().getProfile(), getPost.getPost().getAuthor().getProfileUrl());
         assertEquals(testPost.getLikesCount(), 0);
         assertEquals(testPost.getCommentsCount(), 0);
         log.debug("포스트 목록 {}: {}", getPost.getPost(), getPost.getPost().getPostId());

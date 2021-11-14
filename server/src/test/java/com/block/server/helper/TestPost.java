@@ -11,7 +11,7 @@ import org.springframework.data.geo.Point;
 @Getter
 @NoArgsConstructor
 public class TestPost {
-    private User userId;
+    private User user;
     private String content;
     private String imageKey;
     private int likesCount;
@@ -20,7 +20,7 @@ public class TestPost {
 
     public static TestPost P1(User user) {
         return TestPost.builder()
-                .userId(user)
+                .user(user)
                 .content("Posts content Test")
                 .imageKey("img.png")
                 .likesCount(0)
@@ -30,8 +30,8 @@ public class TestPost {
     }
 
     @Builder
-    public TestPost(User userId, String content, String imageKey, int likesCount, int commentsCount, Point location){
-        this.userId = userId;
+    public TestPost(User user, String content, String imageKey, int likesCount, int commentsCount, Point location){
+        this.user = user;
         this.content = content;
         this.imageKey = imageKey;
         this.likesCount = likesCount;
@@ -41,7 +41,7 @@ public class TestPost {
 
     public Post toPost() {
         return Post.builder()
-            .userId(userId)
+            .user(user)
             .contents(content)
             .imageKey(imageKey)
             .likesCount(likesCount)

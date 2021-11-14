@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
         SignInResponse response = SignInResponse.newBuilder()
                 .setStatus(SignInResponse.SignInStatus.SUCCESS)
-                .setNickname(user.get().getNickName())
+                .setNickname(user.get().getNickname())
                 .setProfileUrl(user.get().getProfile())
                 .setToken(token)
                 .build();
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
         var user = User.builder()
                 .email(request.getEmail())
                 .password(encodedPassword)
-                .nickName(request.getNickname())
+                .nickname(request.getNickname())
                 .birthday(LocalDate.parse(request.getBirthday()))
                 .gender(request.getGender())
                 .profile(profileUrl)
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
 
         return signUpResponseBuilder
                 .setStatus(SignUpResponse.SignUpStatus.SUCCESS)
-                .setNickname(savedUser.getNickName())
+                .setNickname(savedUser.getNickname())
                 .setProfileUrl(savedUser.getProfile())
                 .build();
     }

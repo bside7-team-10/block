@@ -62,7 +62,7 @@ public class TestUser {
                 .profile(profileUrl)
                 .birthday(LocalDate.parse(birthdayStr))
                 .gender(gender)
-                .nickName(nickname)
+                .nickname(nickname)
                 .roles(role)
                 .interestHashTags(interestHashTags.stream()
                         .map(x -> HashTag.builder().tagName(x).build())
