@@ -1,15 +1,19 @@
+import { grpc } from '@improbable-eng/grpc-web';
 import { Cookies } from 'react-cookie';
 
 import { SignInRequest, SignUpRequest } from '../../_generated/UserProtocol_pb';
-import { CreatePostRequest, LocationDto, UploadImageResultRequest } from '../../_generated/PostProtocol_pb';
+import {
+  CreatePostRequest,
+  LocationDto,
+  UploadImageResultRequest,
+} from '../../_generated/PostProtocol_pb';
 import { LoginUser } from '../loginUser';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { PostProtocolClient } from '../../_generated/PostProtocol_pb_service';
 import { User } from '../user';
 import { Post } from '../post';
-import { grpc } from '@improbable-eng/grpc-web';
 
-const serverUrl = "http://localhost:8081";
+const serverUrl = 'https://dev-be.block-app.io';
 export interface ServiceInterface {
   signup: (user: User) => Promise<any>;
   login: (user: User) => Promise<any>;
@@ -50,8 +54,11 @@ const Service = () => {
       const userClient = new UserProtocolClient(serverUrl);
       userClient.signIn(req, (err, res) => {
         if (err !== null) {
+          console.log('failure');
           reject('아이디 또는 비밀번호가 다릅니다.');
         } else {
+          console.log('success');
+
           const loginUser: LoginUser = {
             nickname: res?.getNickname(),
             profileUrl: res?.getProfileurl(),
@@ -77,33 +84,33 @@ const Service = () => {
     });
   };
 
-  self.addPost = (post: Post) => {
+  self.addPost = ({ content, latitude, longitude }: Post) => {
     return new Promise((resolve, reject) => {
       const req = new CreatePostRequest();
-      req.setAuthor("jjlee");
-      req.setContent(post.content);
+      req.setContent(content);
       const loc = new LocationDto();
-      loc.setLat(127);
-      loc.setLong(38);
+      loc.setLat(latitude);
+      loc.setLong(longitude);
       req.setLocation(loc);
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
-      headers.append("Authorization", "Bearer " + cookies.get("accessToken"));
+      headers.append('Authorization', 'Bearer ' + cookies.get('accessToken'));
       postClient.createPost(req, headers, async (err, res) => {
         if (err !== null) {
           console.error(err);
           reject(err);
         } else if (res !== null) {
-          console.log(res);
-          // const imageUrl = res.getUploadimageurl();
-          // const result = await axios.put(imageUrl, post.imageSource);
-          // console.log("upload image: ", result);
-          resolve(res);
+          const message = {
+            postId: res.getPostid(),
+            status: res.getStatus(),
+          };
+          console.log(message);
+          resolve(message);
         }
       });
     });
-  }
+  };
 
   return self;
 };

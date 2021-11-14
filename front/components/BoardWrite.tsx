@@ -118,6 +118,8 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
       rightNow,
       hashtagIndex: arr,
       toComeBackPath,
+      latitude,
+      longitude,
     };
 
     saveTempPost(data);
