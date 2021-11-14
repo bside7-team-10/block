@@ -199,8 +199,8 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
                   </CaptureButton>
                 )}
               </PictureInfo>
-              <Hr />
-              <div>
+              {/* <Hr /> */}
+              {/* <div>
                 <span>‘NOW’로 업로드</span>
                 <Controller
                   name="rightNow"
@@ -215,7 +215,7 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
                   <br />
                   지도 상에 빨간색 블럭으로 표시됩니다.
                 </NowDescription>
-              </div>
+              </div> */}
               <HorizontalSpace height={COMMON_SIZE_12PX} />
             </form>
           </Container>
