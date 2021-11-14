@@ -53,8 +53,9 @@ public class PostServiceImpl implements PostService {
 
         var post = postRepository.findById(request.getPostId()).orElse(null);
 
+        var postDto = mapper(post);
         var response = GetPostResponse.newBuilder()
-                .setPost(mapper(post))
+                .setPost(postDto)
                 .setStatus(PostProtocolStatus.SUCCESS)
                 .build();
 
@@ -62,6 +63,7 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    @Transactional
     @Override
     public GetPostsResponse getPosts(GetPostsRequest getPostsRequest) {
 
