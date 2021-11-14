@@ -63,6 +63,7 @@ public class PostServiceTest {
                                 .setLat(testPost.getLocation().getX())
                                 .setLong(testPost.getLocation().getY())
                                 .build())
+                .setAddress(testPost.getAddress())
                 .build();
 
         doReturn(testPost)

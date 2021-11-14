@@ -1204,7 +1204,8 @@ proto.PostDto.toObject = function(includeInstance, msg) {
     likes: jspb.Message.getFieldWithDefault(msg, 5, 0),
     commentsList: jspb.Message.toObjectList(msg.getCommentsList(),
     proto.CommentDto.toObject, includeInstance),
-    location: (f = msg.getLocation()) && proto.LocationDto.toObject(includeInstance, f)
+    location: (f = msg.getLocation()) && proto.LocationDto.toObject(includeInstance, f),
+    address: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -1271,6 +1272,10 @@ proto.PostDto.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.LocationDto;
       reader.readMessage(value,proto.LocationDto.deserializeBinaryFromReader);
       msg.setLocation(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAddress(value);
       break;
     default:
       reader.skipField();
@@ -1351,6 +1356,13 @@ proto.PostDto.serializeBinaryToWriter = function(message, writer) {
       7,
       f,
       proto.LocationDto.serializeBinaryToWriter
+    );
+  }
+  f = message.getAddress();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
     );
   }
 };
@@ -1537,6 +1549,24 @@ proto.PostDto.prototype.clearLocation = function() {
  */
 proto.PostDto.prototype.hasLocation = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional string address = 8;
+ * @return {string}
+ */
+proto.PostDto.prototype.getAddress = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.PostDto} returns this
+ */
+proto.PostDto.prototype.setAddress = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -2695,7 +2725,8 @@ proto.CreatePostRequest.prototype.toObject = function(opt_includeInstance) {
 proto.CreatePostRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     content: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    location: (f = msg.getLocation()) && proto.LocationDto.toObject(includeInstance, f)
+    location: (f = msg.getLocation()) && proto.LocationDto.toObject(includeInstance, f),
+    address: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -2741,6 +2772,10 @@ proto.CreatePostRequest.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,proto.LocationDto.deserializeBinaryFromReader);
       msg.setLocation(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAddress(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2783,6 +2818,13 @@ proto.CreatePostRequest.serializeBinaryToWriter = function(message, writer) {
       2,
       f,
       proto.LocationDto.serializeBinaryToWriter
+    );
+  }
+  f = message.getAddress();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
     );
   }
 };
@@ -2840,6 +2882,24 @@ proto.CreatePostRequest.prototype.clearLocation = function() {
  */
 proto.CreatePostRequest.prototype.hasLocation = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional string address = 3;
+ * @return {string}
+ */
+proto.CreatePostRequest.prototype.getAddress = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.CreatePostRequest} returns this
+ */
+proto.CreatePostRequest.prototype.setAddress = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

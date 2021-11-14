@@ -115,6 +115,9 @@ export class PostDto extends jspb.Message {
   getLocation(): LocationDto | undefined;
   setLocation(value?: LocationDto): void;
 
+  getAddress(): string;
+  setAddress(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PostDto.AsObject;
   static toObject(includeInstance: boolean, msg: PostDto): PostDto.AsObject;
@@ -134,6 +137,7 @@ export namespace PostDto {
     likes: number,
     commentsList: Array<CommentDto.AsObject>,
     location?: LocationDto.AsObject,
+    address: string,
   }
 }
 
@@ -306,6 +310,9 @@ export class CreatePostRequest extends jspb.Message {
   getLocation(): LocationDto | undefined;
   setLocation(value?: LocationDto): void;
 
+  getAddress(): string;
+  setAddress(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreatePostRequest.AsObject;
   static toObject(includeInstance: boolean, msg: CreatePostRequest): CreatePostRequest.AsObject;
@@ -320,6 +327,7 @@ export namespace CreatePostRequest {
   export type AsObject = {
     content: string,
     location?: LocationDto.AsObject,
+    address: string,
   }
 }
 

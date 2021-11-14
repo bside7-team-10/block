@@ -33,4 +33,16 @@ public interface CreatePostRequestOrBuilder extends
    * <code>.LocationDto location = 2;</code>
    */
   com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
+
+  /**
+   * <code>string address = 3;</code>
+   * @return The address.
+   */
+  java.lang.String getAddress();
+  /**
+   * <code>string address = 3;</code>
+   * @return The bytes for address.
+   */
+  com.google.protobuf.ByteString
+      getAddressBytes();
 }
