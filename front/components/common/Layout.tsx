@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import KakaoScript from './KakaoMapScript';
 import GoogleMapScript from './GoogleMapScript';
 
 interface LayoutProps {

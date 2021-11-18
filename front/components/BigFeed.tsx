@@ -2,12 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_COLOR2, WHITE_COLOR, SUB_COLOR3 } from '../utils/theme/theme';
 import FeedMenu from '../assets/FeedMenu';
+import { Post } from '../state';
 
 interface BigFeedInterface {
   setVisible: (arg: boolean) => void
+  post: Post
 }
 
-const BigFeed = ({ setVisible }: BigFeedInterface) => {
+const BigFeed = (props: BigFeedInterface) => {
+  const { post, setVisible } = props
 
   const tempTextContent =
     'big 유저는 지도상의 남이 쓴 게시글을 확인할 수 있다. 6.유저는 지도상의 남이 쓴 게시글을 클릭 시 스몰 썸네일 확인 7. 스몰썸네일 클릭해서 빅 썸네일로 볼 수 있음 big 유저는 지도상의';
@@ -57,7 +60,7 @@ const FeedBar = styled.div`
 
 const Wrapper = styled.div`
   background: #191d46;
-  border-radius: 13px;
+  border-radius: 13px 13px 0px 0px;
 `;
 
 const HeaderLeftWrapper = styled.div`

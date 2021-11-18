@@ -2,7 +2,7 @@ import { Button, Switch } from 'antd';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useActions } from '../hooks/use-actions';
@@ -15,7 +15,6 @@ import {
   GREY_3,
   GREY_4,
   WHITE_COLOR,
-  DARK_COLOR1,
   GREY_COLOR,
   BACK_COLOR2,
   SUB_COLOR1,
@@ -69,7 +68,7 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
   const { addPost, saveTempPost, removeTempImage, removeTempPost } = useActions();
 
   const { latitude, longitude } = useSelector((state: RootState) => state.location);
-  const [ imageUrl, setImageUrl ] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const { content, rightNow, imageSource, hashtagIndex } = useSelector(
     (state: RootState) => state.post
@@ -78,7 +77,7 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
   const hashtagOptions = hashtagOptionLabels.map((option: string, index: number) => ({
     label: `#${option}`,
     value: option,
-    checked: hashtagIndex?.includes(index) || index === 0 ? true : false,
+    checked: hashtagIndex ?.includes(index) || index === 0 ? true : false,
   }));
 
   const [isDialogModalVisible, setIsDialogModalVisible] = useState<boolean>(false);
@@ -199,15 +198,15 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
                     <CapturedImage src={imageSource} />
                   </span>
                 ) : (
-                  <CaptureButton onClick={onClickCaptureButton}>
-                    <CaptureButtonIcon
-                      src="https://cdn4.iconfinder.com/data/icons/ios7-essence/23/device_camera_capture_photo__-1024.png"
-                      height="18"
-                      width="18"
-                    />
-                    <span>카메라 열기</span>
-                  </CaptureButton>
-                )}
+                    <CaptureButton onClick={onClickCaptureButton}>
+                      <CaptureButtonIcon
+                        src="https://cdn4.iconfinder.com/data/icons/ios7-essence/23/device_camera_capture_photo__-1024.png"
+                        height="18"
+                        width="18"
+                      />
+                      <span>카메라 열기</span>
+                    </CaptureButton>
+                  )}
               </PictureInfo>
               {/* <Hr /> */}
               {/* <div>
@@ -351,27 +350,27 @@ const CaptureButton = styled(Button)`
   }
 `;
 
-const StyledSwitch = styled(Switch)`
-  height: 23px;
-  min-width: 38px;
-  float: right;
+// const StyledSwitch = styled(Switch)`
+//   height: 23px;
+//   min-width: 38px;
+//   float: right;
 
-  &.ant-switch-checked {
-    background-color: ${SUB_COLOR1};
-  }
+//   &.ant-switch-checked {
+//     background-color: ${SUB_COLOR1};
+//   }
 
-  & > .ant-switch-handle::before {
-    right: 1px;
-  }
+//   & > .ant-switch-handle::before {
+//     right: 1px;
+//   }
 
-  & > .ant-switch-handle {
-    width: 20px;
-    height: 20px;
-    top: 1px;
-  }
-`;
+//   & > .ant-switch-handle {
+//     width: 20px;
+//     height: 20px;
+//     top: 1px;
+//   }
+// `;
 
-const NowDescription = styled.div`
-  color: ${() => GREY_3};
-  font-size: 10px;
-`;
+// const NowDescription = styled.div`
+//   color: ${() => GREY_3};
+//   font-size: 10px;
+// `;

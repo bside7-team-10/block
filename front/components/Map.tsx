@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { RootStateOrAny, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import { Button, Drawer } from 'antd';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 import { useActions } from '../hooks/use-actions';
 import { RootState } from '../state';
+import { MPost, Post } from '../state'
 import BoardWrite from './BoardWrite';
 import SmallFeed from './SmallFeed';
 import BigFeed from './BigFeed';
@@ -17,21 +17,21 @@ import PlusIcon from '../assets/Plus'
 declare const google: any;
 
 const Map = () => {
+  const { getUserLocation, getFakeUserLocation, getPosts, getPost } = useActions();
   const { latitude, longitude } = useSelector((state: RootStateOrAny) => state.location);
-  const { getUserLocation, getFakeUserLocation, getAddressByLocation } = useActions();
   const { imageSource } = useSelector((state: RootState) => state.post);
+  const { posts }: { posts: MPost[] } = useSelector((state: RootState) => state.posts);
+  const { post }: { post: Post } = useSelector((state: RootState) => state.getPost);
   const [isDrawerVisable, setIsDrawerVisable] = useState(false);
   const [windowHeight, setWindowHeight] = useState(0);
   const [map, setMap] = useState(null);
-  const [userMarker, setUserMarker] = useState(null);
+  const [userMarker, setUserMarker] = useState<google.maps.Marker>();
   const [smallFeedVisible, setSmallFeedVisible] = useState(false);
   const [bigFeedVisible, setBigFeedVisible] = useState(false);
 
-  const router = useRouter();
-
   useEffect(() => {
-    getAddressByLocation({ latitude, longitude })
-  }, [latitude, longitude])
+    getPosts();
+  }, [])
 
   useEffect(() => {
     const getUserLocationInterval = setInterval(() => getFakeUserLocation({ latitude, longitude }), 2000);
@@ -50,14 +50,14 @@ const Map = () => {
     setMap(map)
   }, []);
 
-  useEffect(() => {
 
+  useEffect(() => {
     const options = {
       center: new google.maps.LatLng(latitude, longitude),
       level: 3,
     };
 
-    userMarker && userMarker.setMap(null)
+    userMarker && userMarker.setMap(null);
 
     const marker = new google.maps.Marker({
       position: options.center,
@@ -66,7 +66,6 @@ const Map = () => {
     });
 
     setUserMarker(marker)
-
   }, [latitude, longitude]);
 
   useEffect(() => {
@@ -79,8 +78,22 @@ const Map = () => {
     if (imageSource) setIsDrawerVisable(true);
   }, []);
 
-
   useEffect(() => {
+    if (map && posts) {
+      posts.map(({ postId, latitude, longitude }: MPost) => {
+        const marker = new google.maps.Marker({
+          position: new google.maps.LatLng(latitude, longitude),
+          icon: '/static/images/pin/pin.png',
+          map,
+        });
+        marker.addListener('click', () => {
+          getPost(postId);
+          !smallFeedVisible && setSmallFeedVisible(true);
+        });
+      })
+    }
+
+    // delete~
     const marker1 = new google.maps.Marker({
       position: new google.maps.LatLng(latitude + 0.001, longitude + 0.001),
       icon: '/static/images/pin/pin.png',
@@ -102,7 +115,8 @@ const Map = () => {
     marker1.addListener('click', () => setSmallFeedVisible(true));
     marker2.addListener('click', () => setSmallFeedVisible(true));
     marker3.addListener('click', () => setSmallFeedVisible(true));
-  }, [map])
+    //~delete
+  }, [map, posts])
 
   const onClickWriteButton = () => {
     setIsDrawerVisable(true);
@@ -126,12 +140,12 @@ const Map = () => {
         <SmallFeedWrapper onClick={() => { setBigFeedVisible(true) }}>
           <FeedBar />
           <HorizontalSpace height={COMMON_SIZE_12PX} />
-          <SmallFeed />
+          <SmallFeed post={post} />
         </SmallFeedWrapper>
       ) : <></>}
       {bigFeedVisible ? (
         <BigFeedWrapper>
-          <BigFeed setVisible={setBigFeedVisible} />
+          <BigFeed setVisible={setBigFeedVisible} post={post} />
         </BigFeedWrapper>) : <></>}
       {!smallFeedVisible && !bigFeedVisible && (
         <WritePostButtonWrapper>

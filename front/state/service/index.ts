@@ -13,12 +13,14 @@ import config from '../../config/test-config';
 
 const serverUrl = "https://dev-be.block-app.io";
 // const serverUrl = "http://localhost:8081"; 
+
 export interface ServiceInterface {
   signup: (user: User) => Promise<any>;
   login: (user: User) => Promise<any>;
   getLocation: () => Promise<any>;
   addPost: (data: Post) => Promise<any>;
   getPost: (postId: number) => Promise<any>;
+  getPosts: () => Promise<any>;
   getAddressByLocation: (data: LatLng) => Promise<any>;
 }
 
@@ -109,7 +111,7 @@ const Service = () => {
           const uploadSuccessResult = new UploadImageResultRequest();
           uploadSuccessResult.setPostid(res.getPostid());
           uploadSuccessResult.setSuccess(true);
-          postClient.uploadImageResult(uploadSuccessResult, headers, async (err, resres) => {
+          postClient.uploadImageResult(uploadSuccessResult, headers, async (err) => {
             if (err !== null) {
               console.error(err);
               return reject(err);
@@ -123,6 +125,12 @@ const Service = () => {
           });
         }
       });
+    });
+  };
+
+  self.getPosts = () => {
+    return new Promise((resolve, reject) => {
+      console.log("getPosts")
     });
   };
 

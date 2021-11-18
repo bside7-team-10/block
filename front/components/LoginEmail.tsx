@@ -6,11 +6,12 @@ import router from 'next/router';
 
 import { useActions } from '../hooks/use-actions';
 import Fields from './common/fields/Fields';
+import BlockLoginBottom from '../assets/BlockLoginBottom';
+import BlockLogin from '../assets/BlockLogin';
 import {
   FullWidthButton,
   LoginGlobalStyle,
   Title,
-  TitleImage,
   WholeMarginWrap,
   Wrapper,
 } from './styled/LoginCommonStyle';
@@ -45,7 +46,12 @@ const LoginEmail = () => {
       <Wrapper>
         <WholeMarginWrap>
           <Title>LOGIN</Title>
-          <TitleImage src="/static/images/login/login_email_bg.png" />
+          <SvgWrapper>
+            <BlockLoginWrapper>
+              <BlockLogin />
+            </BlockLoginWrapper>
+            <BlockLoginBottom />
+          </SvgWrapper>
           <form>
             <FieldsWrap>
               <Fields
@@ -91,6 +97,19 @@ const LoginEmail = () => {
 };
 
 export default LoginEmail;
+
+const BlockLoginWrapper = styled.div`
+  position: absolute;
+  bottom: 40px;
+`;
+
+const SvgWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
 
 const FieldsWrap = styled.div`
   overflow: clip;
