@@ -65,13 +65,6 @@ public class PostServiceImpl implements PostService {
 
     }
 
-    private Point KilometersToGeogrpahicDistance(int range) {
-        var latDiff = range / 110.574;
-        var longDiff = range / (111.320 * Math.cos(latDiff * Math.PI / 180));
-
-        return new Point(longDiff, latDiff);
-    }
-
     @Transactional
     @Override
     public GetPostsResponse getPosts(GetPostsRequest getPostsRequest) {
