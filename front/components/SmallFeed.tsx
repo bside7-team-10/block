@@ -1,12 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_COLOR2, WHITE_COLOR, SUB_COLOR3 } from '../utils/theme/theme';
-import Heart from '../assets/Heart';
-import Comment from '../assets/Comment';
 
-const SmallFeed = () => {
+import { PRIMARY_COLOR2, WHITE_COLOR, SUB_COLOR3 } from '../utils/theme/theme';
+// import Heart from '../assets/Heart';
+// import Comment from '../assets/Comment';
+import { Post } from '../state';
+
+interface SmallFeedInterface {
+  post: Post
+}
+
+const SmallFeed = (props: SmallFeedInterface) => {
+  const { post } = props;
   return (
-    <Wrapper onClick={() => { }}>
+    <Wrapper>
       <Contents>
         <TextWrapper>
           <Address>서울시 종로구 소공동 54</Address>
@@ -46,34 +53,34 @@ const Address = styled.div`
   color: ${PRIMARY_COLOR2};
 `;
 
-const HeartCount = styled.div`
-  font-size: 10px;
-  font-weight: 400;
-  color: ${PRIMARY_COLOR2};
-  margin-left: 2px;
-`;
+// const HeartCount = styled.div`
+//   font-size: 10px;
+//   font-weight: 400;
+//   color: ${PRIMARY_COLOR2};
+//   margin-left: 2px;
+// `;
 
-const HeartWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
+// const HeartWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
 
-const CommentCount = styled.div`
-  font-size: 10px;
-  font-weight: 400;
-  color: ${PRIMARY_COLOR2};
-  margin-left: 2px;
-`;
+// const CommentCount = styled.div`
+//   font-size: 10px;
+//   font-weight: 400;
+//   color: ${PRIMARY_COLOR2};
+//   margin-left: 2px;
+// `;
 
-const CommentWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 5px;
-`;
+// const CommentWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   margin-left: 5px;
+// `;
 
-const EngageWrapper = styled.div`
-  display: flex;
-`;
+// const EngageWrapper = styled.div`
+//   display: flex;
+// `;
 
 const Content = styled.div`
   color: ${WHITE_COLOR};

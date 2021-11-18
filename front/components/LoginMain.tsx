@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { Button } from 'antd';
 import router from 'next/router';
 
+import BlockMain from '../assets/BlockMain';
 import {
   LoginGlobalStyle,
   Wrapper,
   WholeMarginWrap,
-  TitleImage,
   FullWidthButtonWithRadius,
 } from './styled/LoginCommonStyle';
 import {
@@ -25,7 +25,9 @@ const LoginMain = () => {
       <LoginGlobalStyle />
       <Wrapper>
         <WholeMarginWrap>
-          <TitleImage src="/static/images/login/login_main_bg.png" />
+          <BlockMainWrapper>
+            <BlockMain />
+          </BlockMainWrapper>
           <IconGroup>
             <IconButton ghost>
               <img src="/static/images/login/facebook_icon.png" />
@@ -54,6 +56,11 @@ const LoginMain = () => {
 };
 
 export default LoginMain;
+
+const BlockMainWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 const IconGroup = styled.div`
   text-align: center;

@@ -6,7 +6,6 @@ interface InitialState {
   latitude: number;
   longitude: number;
   error: string | null;
-  init: boolean;
 }
 
 const initialState: InitialState = {

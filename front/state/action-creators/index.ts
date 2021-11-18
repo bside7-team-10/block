@@ -46,15 +46,15 @@ export const getUserLocation = () => {
 
 let init = true;
 let i = 1;
-let unit = 0.001;
+const unit = 0.0003;
 
 const getFakePosition = (data: LatLng) => {
   const { latitude, longitude } = data;
   const calcI = i++
 
-  if (i == 7) i = 1;
+  if (i == 20) i = 1;
 
-  if (i < 7) {
+  if (i < 20) {
     return { latitude: latitude + unit * calcI, longitude: longitude + unit * calcI }
   }
 }
@@ -70,8 +70,8 @@ export const getFakeUserLocation = (data: LatLng) => {
         position = getFakePosition(data)
         position = {
           coords: {
-            latitude: position.latitude,
-            longitude: position.longitude
+            latitude: position ?.latitude,
+            longitude: position ?.longitude
           }
         }
       }
@@ -105,6 +105,30 @@ export const addPost = (data: Post, callback: () => void) => {
       callback();
     } catch (error: any) {
       dispatch({ type: ActionType.ADD_POST_ERROR, payload: error });
+    }
+  };
+};
+
+export const getPost = (postId: number) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.ADD_POST_REQUEST });
+    try {
+      const response = await service.getPost(postId);
+      dispatch({ type: ActionType.ADD_POST_SUCCESS, payload: response });
+    } catch (error: any) {
+      dispatch({ type: ActionType.ADD_POST_ERROR, payload: error });
+    }
+  };
+};
+
+export const getPosts = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.GET_POSTS_REQUEST });
+    try {
+      const response = await service.getPosts();
+      dispatch({ type: ActionType.GET_POSTS_SUCCESS, payload: response });
+    } catch (error: any) {
+      dispatch({ type: ActionType.GET_POSTS_ERROR, payload: error });
     }
   };
 };

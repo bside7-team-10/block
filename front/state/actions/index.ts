@@ -71,6 +71,34 @@ export interface AddPostErrorAction {
   payload: string | unknown;
 }
 
+export interface GetPostsRequestAction {
+  type: ActionType.GET_POSTS_REQUEST;
+}
+
+export interface GetPostsSuccessAction {
+  type: ActionType.GET_POSTS_SUCCESS;
+  payload: string;
+}
+
+export interface GetPostsErrorAction {
+  type: ActionType.GET_POSTS_ERROR;
+  payload: string | unknown;
+}
+
+export interface GetPostRequestAction {
+  type: ActionType.GET_POST_REQUEST;
+}
+
+export interface GetPostSuccessAction {
+  type: ActionType.GET_POST_SUCCESS;
+  payload: string;
+}
+
+export interface GetPostErrorAction {
+  type: ActionType.GET_POST_ERROR;
+  payload: string | unknown;
+}
+
 export interface CaptureImageSuccessAction {
   type: ActionType.CAPTURE_IMAGE_SUCCESS;
   payload: string;
@@ -115,3 +143,9 @@ export type Action =
   | GetAddressByLocationRequestAction
   | GetAddressByLocationSuccessAction
   | GetAddressLocationErrorAction
+  | GetPostsRequestAction
+  | GetPostsSuccessAction
+  | GetPostsErrorAction
+  | GetPostRequestAction
+  | GetPostSuccessAction
+  | GetPostErrorAction
