@@ -31,8 +31,10 @@ const Map = () => {
   const [bigFeedVisible, setBigFeedVisible] = useState(false);
 
   useEffect(() => {
-    getPosts();
-  }, [])
+    if (latitude && longitude) {
+      getPosts({ latitude, longitude });
+    }
+  }, [latitude, longitude])
 
   useEffect(() => {
     const getUserLocationInterval = setInterval(() => getFakeUserLocation({ latitude, longitude }), 2000);
@@ -67,15 +69,6 @@ const Map = () => {
     });
 
     setUserMarker(marker)
-
-    // To 새글님
-    // - get posts 부르는 내용입니다.
-    
-    // const svc = Service();
-    // svc.getPosts({latitude, longitude}).then(posts => {
-    //   console.log(`posts : ${posts}`);
-    // });
-
   }, [latitude, longitude]);
 
   useEffect(() => {
@@ -103,29 +96,6 @@ const Map = () => {
       })
     }
 
-    // delete~
-    const marker1 = new google.maps.Marker({
-      position: new google.maps.LatLng(latitude + 0.001, longitude + 0.001),
-      icon: '/static/images/pin/pin.png',
-      map,
-    });
-
-    const marker2 = new google.maps.Marker({
-      position: new google.maps.LatLng(latitude - 0.001, longitude - 0.001),
-      icon: '/static/images/pin/pin.png',
-      map,
-    });
-
-    const marker3 = new google.maps.Marker({
-      position: new google.maps.LatLng(latitude - 0.005, longitude - 0.005),
-      icon: '/static/images/pin/pin.png',
-      map,
-    });
-
-    marker1.addListener('click', () => setSmallFeedVisible(true));
-    marker2.addListener('click', () => setSmallFeedVisible(true));
-    marker3.addListener('click', () => setSmallFeedVisible(true));
-    //~delete
   }, [map, posts])
 
   const onClickWriteButton = () => {
