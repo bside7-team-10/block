@@ -3,7 +3,7 @@ export interface Post {
   rightNow: boolean;
   latitude: number;
   longitude: number;
-  address: string;
+  address?: string;
   date?: string;
   toComeBackPath?: string; //촬영 후 다시 돌아 올 주소
   hashtagIndex?: number[];

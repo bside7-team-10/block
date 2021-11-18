@@ -55,7 +55,7 @@ const getFakePosition = (data: LatLng) => {
   if (i == 20) i = 1;
 
   if (i < 20) {
-    return { latitude: latitude + unit * calcI, longitude: longitude + unit * calcI };
+    return { latitude: latitude + unit * calcI, longitude: longitude - unit * calcI };
   }
   return { latitude, longitude };
 }
@@ -123,11 +123,11 @@ export const getPost = (postId: number) => {
   };
 };
 
-export const getPosts = () => {
+export const getPosts = ({ latitude, longitude }: LatLng) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.GET_POSTS_REQUEST });
     try {
-      const response = await service.getPosts();
+      const response = await service.getPosts({ latitude, longitude });
       dispatch({ type: ActionType.GET_POSTS_SUCCESS, payload: response });
     } catch (error: any) {
       dispatch({ type: ActionType.GET_POSTS_ERROR, payload: error });

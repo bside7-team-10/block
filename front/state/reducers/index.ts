@@ -7,12 +7,12 @@ import getPostReducer from './getPostReducer';
 import getPostsReducer from './getPostsReducer';
 
 const reducers = combineReducers({
+  posts: getPostsReducer,
   signup: signupReduer,
   login: loginReducer,
   location: locationReducer,
   post: postReducer,
   getPost: getPostReducer,
-  posts: getPostsReducer,
 });
 
 export default reducers;

@@ -20,9 +20,9 @@ export interface ServiceInterface {
   getLocation: () => Promise<any>;
   addPost: (data: Post) => Promise<any>;
   getPost: (postId: number) => Promise<any>;
-  getPosts: () => Promise<any>;
+  // getPosts: () => Promise<any>;
   getAddressByLocation: (data: LatLng) => Promise<any>;
-  getPosts: (user: LatLng) => Promise<any>;
+  getPosts: ({ latitude, longitude }: LatLng) => Promise<any>;
 }
 
 const Service = () => {
@@ -96,7 +96,7 @@ const Service = () => {
       loc.setLat(latitude);
       loc.setLong(longitude);
       req.setLocation(loc);
-      req.setAddress(address);
+      // req.setAddress(address);
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
@@ -127,12 +127,6 @@ const Service = () => {
           });
         }
       });
-    });
-  };
-
-  self.getPosts = () => {
-    return new Promise((resolve, reject) => {
-      console.log("getPosts")
     });
   };
 
@@ -175,13 +169,13 @@ const Service = () => {
       const location = new LocationDto();
       location.setLat(latitude);
       location.setLong(longitude);
-  
+
       const req = new GetPostsRequest();
       req.setFilter(filter);
       req.setPagenumber(0);
-      req.setResultperpage(1);
+      req.setResultperpage(10);
       req.setCurrentlocation(location);
-  
+
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
@@ -191,7 +185,7 @@ const Service = () => {
           console.error(err);
           reject(err);
         }
-        const posts = res?.getPostsList().map(x => ({postId: x.getPostid(), latitude: x.getLocation()?.getLat(), longitude: x.getLocation()?.getLong()})) || [];
+        const posts = res ?.getPostsList().map(x => ({ postId: x.getPostid(), latitude: x.getLocation() ?.getLat(), longitude: x.getLocation() ?.getLong()})) || [];
         console.log(posts);
         resolve(posts);
       })
