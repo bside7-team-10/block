@@ -86,17 +86,17 @@ const Signup = () => {
       // TODO. step3 validation
     } else if (step === SIGNUP_STEP.STEP4) {
       // TODO. step4 validation
-      const user: User = {
-        email: "test3@hello.com",
-        birthday: "2021-01-01",
-        gender: 0,
-        nickName: "test",
-        password: "test",
-        confirmPassword: "test",
-        latitude: 127,
-        longitude: 38
-      };
-      userSignup(user);
+      // const user: User = {
+      //   email: "test3@hello.com",
+      //   birthday: "2021-01-01",
+      //   gender: 0,
+      //   nickName: "test",
+      //   password: "test",
+      //   confirmPassword: "test",
+      //   latitude: 127,
+      //   longitude: 38
+      // };
+      // userSignup(user);
     }
     setStep(step + 1);
   };
@@ -361,7 +361,7 @@ const ReturnButtonComponent = ({
   }
   if (step === SIGNUP_STEP.STEP4) {
     return (
-      <ButtonCommon onClick={onNextButtonClicked} active={nextBtnActive}>
+      <ButtonCommon onClick={handleSubmit(onSubmit)} active={nextBtnActive}>
         NEXT
       </ButtonCommon>
     );
