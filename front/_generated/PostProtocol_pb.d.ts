@@ -115,6 +115,9 @@ export class PostDto extends jspb.Message {
   getLocation(): LocationDto | undefined;
   setLocation(value?: LocationDto): void;
 
+  getAddress(): string;
+  setAddress(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PostDto.AsObject;
   static toObject(includeInstance: boolean, msg: PostDto): PostDto.AsObject;
@@ -134,6 +137,7 @@ export namespace PostDto {
     likes: number,
     commentsList: Array<CommentDto.AsObject>,
     location?: LocationDto.AsObject,
+    address: string,
   }
 }
 
@@ -187,6 +191,56 @@ export namespace GetPostResponse {
   }
 }
 
+export class DistanceFilter extends jspb.Message {
+  getEnabled(): boolean;
+  setEnabled(value: boolean): void;
+
+  getDistance(): number;
+  setDistance(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DistanceFilter.AsObject;
+  static toObject(includeInstance: boolean, msg: DistanceFilter): DistanceFilter.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DistanceFilter, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DistanceFilter;
+  static deserializeBinaryFromReader(message: DistanceFilter, reader: jspb.BinaryReader): DistanceFilter;
+}
+
+export namespace DistanceFilter {
+  export type AsObject = {
+    enabled: boolean,
+    distance: number,
+  }
+}
+
+export class Filter extends jspb.Message {
+  hasDistancefilter(): boolean;
+  clearDistancefilter(): void;
+  getDistancefilter(): DistanceFilter | undefined;
+  setDistancefilter(value?: DistanceFilter): void;
+
+  getRightnowfilter(): boolean;
+  setRightnowfilter(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Filter.AsObject;
+  static toObject(includeInstance: boolean, msg: Filter): Filter.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Filter, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Filter;
+  static deserializeBinaryFromReader(message: Filter, reader: jspb.BinaryReader): Filter;
+}
+
+export namespace Filter {
+  export type AsObject = {
+    distancefilter?: DistanceFilter.AsObject,
+    rightnowfilter: boolean,
+  }
+}
+
 export class GetPostsRequest extends jspb.Message {
   getPagenumber(): number;
   setPagenumber(value: number): void;
@@ -203,8 +257,8 @@ export class GetPostsRequest extends jspb.Message {
 
   hasFilter(): boolean;
   clearFilter(): void;
-  getFilter(): GetPostsRequest.Filter | undefined;
-  setFilter(value?: GetPostsRequest.Filter): void;
+  getFilter(): Filter | undefined;
+  setFilter(value?: Filter): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetPostsRequest.AsObject;
@@ -221,57 +275,33 @@ export namespace GetPostsRequest {
     pagenumber: number,
     resultperpage: number,
     currentlocation?: LocationDto.AsObject,
-    filter?: GetPostsRequest.Filter.AsObject,
+    filter?: Filter.AsObject,
   }
+}
 
-  export class Filter extends jspb.Message {
-    hasDistancefilter(): boolean;
-    clearDistancefilter(): void;
-    getDistancefilter(): GetPostsRequest.Filter.DistanceFilter | undefined;
-    setDistancefilter(value?: GetPostsRequest.Filter.DistanceFilter): void;
+export class PostSummary extends jspb.Message {
+  getPostid(): number;
+  setPostid(value: number): void;
 
-    getRightnowfilter(): boolean;
-    setRightnowfilter(value: boolean): void;
+  hasLocation(): boolean;
+  clearLocation(): void;
+  getLocation(): LocationDto | undefined;
+  setLocation(value?: LocationDto): void;
 
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Filter.AsObject;
-    static toObject(includeInstance: boolean, msg: Filter): Filter.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: Filter, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Filter;
-    static deserializeBinaryFromReader(message: Filter, reader: jspb.BinaryReader): Filter;
-  }
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PostSummary.AsObject;
+  static toObject(includeInstance: boolean, msg: PostSummary): PostSummary.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: PostSummary, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PostSummary;
+  static deserializeBinaryFromReader(message: PostSummary, reader: jspb.BinaryReader): PostSummary;
+}
 
-  export namespace Filter {
-    export type AsObject = {
-      distancefilter?: GetPostsRequest.Filter.DistanceFilter.AsObject,
-      rightnowfilter: boolean,
-    }
-
-    export class DistanceFilter extends jspb.Message {
-      getEnabled(): boolean;
-      setEnabled(value: boolean): void;
-
-      getDistance(): number;
-      setDistance(value: number): void;
-
-      serializeBinary(): Uint8Array;
-      toObject(includeInstance?: boolean): DistanceFilter.AsObject;
-      static toObject(includeInstance: boolean, msg: DistanceFilter): DistanceFilter.AsObject;
-      static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-      static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-      static serializeBinaryToWriter(message: DistanceFilter, writer: jspb.BinaryWriter): void;
-      static deserializeBinary(bytes: Uint8Array): DistanceFilter;
-      static deserializeBinaryFromReader(message: DistanceFilter, reader: jspb.BinaryReader): DistanceFilter;
-    }
-
-    export namespace DistanceFilter {
-      export type AsObject = {
-        enabled: boolean,
-        distance: number,
-      }
-    }
+export namespace PostSummary {
+  export type AsObject = {
+    postid: number,
+    location?: LocationDto.AsObject,
   }
 }
 
@@ -280,9 +310,9 @@ export class GetPostsResponse extends jspb.Message {
   setStatus(value: PostProtocolStatusMap[keyof PostProtocolStatusMap]): void;
 
   clearPostsList(): void;
-  getPostsList(): Array<PostDto>;
-  setPostsList(value: Array<PostDto>): void;
-  addPosts(value?: PostDto, index?: number): PostDto;
+  getPostsList(): Array<PostSummary>;
+  setPostsList(value: Array<PostSummary>): void;
+  addPosts(value?: PostSummary, index?: number): PostSummary;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetPostsResponse.AsObject;
@@ -297,14 +327,11 @@ export class GetPostsResponse extends jspb.Message {
 export namespace GetPostsResponse {
   export type AsObject = {
     status: PostProtocolStatusMap[keyof PostProtocolStatusMap],
-    postsList: Array<PostDto.AsObject>,
+    postsList: Array<PostSummary.AsObject>,
   }
 }
 
 export class CreatePostRequest extends jspb.Message {
-  getAuthor(): string;
-  setAuthor(value: string): void;
-
   getContent(): string;
   setContent(value: string): void;
 
@@ -312,6 +339,9 @@ export class CreatePostRequest extends jspb.Message {
   clearLocation(): void;
   getLocation(): LocationDto | undefined;
   setLocation(value?: LocationDto): void;
+
+  getAddress(): string;
+  setAddress(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreatePostRequest.AsObject;
@@ -325,9 +355,9 @@ export class CreatePostRequest extends jspb.Message {
 
 export namespace CreatePostRequest {
   export type AsObject = {
-    author: string,
     content: string,
     location?: LocationDto.AsObject,
+    address: string,
   }
 }
 
@@ -460,9 +490,6 @@ export namespace DeletePostResponse {
 }
 
 export class CreateCommentRequest extends jspb.Message {
-  getAuthor(): string;
-  setAuthor(value: string): void;
-
   getPostid(): number;
   setPostid(value: number): void;
 
@@ -481,7 +508,6 @@ export class CreateCommentRequest extends jspb.Message {
 
 export namespace CreateCommentRequest {
   export type AsObject = {
-    author: string,
     postid: number,
     content: string,
   }

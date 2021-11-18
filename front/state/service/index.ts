@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Cookies } from 'react-cookie';
 
 import { SignInRequest, SignUpRequest } from '../../_generated/UserProtocol_pb';
-import { CreatePostRequest, GetPostRequest, LocationDto, UploadImageResultRequest } from '../../_generated/PostProtocol_pb';
+import { CreatePostRequest, DistanceFilter, Filter, GetPostRequest, GetPostsRequest, LocationDto, PostSummary, UploadImageResultRequest } from '../../_generated/PostProtocol_pb';
 import { LoginUser } from '../loginUser';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { PostProtocolClient } from '../../_generated/PostProtocol_pb_service';
@@ -22,6 +22,7 @@ export interface ServiceInterface {
   getPost: (postId: number) => Promise<any>;
   getPosts: () => Promise<any>;
   getAddressByLocation: (data: LatLng) => Promise<any>;
+  getPosts: (user: LatLng) => Promise<any>;
 }
 
 const Service = () => {
@@ -34,7 +35,7 @@ const Service = () => {
       req.setPassword(password);
       req.setNickname(nickName);
       req.setBirthday(birthday);
-      req.setAvatar('1.png');
+      req.setAvatarid('1.png');
       req.setGender(gender);
       const userClient = new UserProtocolClient(serverUrl);
       userClient.signUp(req, (err, res) => {
@@ -64,7 +65,7 @@ const Service = () => {
 
           const loginUser: LoginUser = {
             nickname: res ?.getNickname(),
-            profileUrl: res ?.getProfileurl(),
+            profileUrl: res ?.getAvatarid(),
             token: res ?.getToken(),
           };
           const cookie = new Cookies();
@@ -87,7 +88,7 @@ const Service = () => {
     });
   };
 
-  self.addPost = ({ content, latitude, longitude, imageSource }: Post) => {
+  self.addPost = ({ content, latitude, longitude, imageSource, address }: Post) => {
     return new Promise((resolve, reject) => {
       const req = new CreatePostRequest();
       req.setContent(content);
@@ -95,6 +96,7 @@ const Service = () => {
       loc.setLat(latitude);
       loc.setLong(longitude);
       req.setLocation(loc);
+      req.setAddress(address);
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
@@ -163,6 +165,38 @@ const Service = () => {
       });
     });
   };
+
+  self.getPosts = async ({ latitude, longitude }: LatLng) => {
+    return new Promise((resolve, reject) => {
+      const distanceFilter = new DistanceFilter();
+      distanceFilter.setEnabled(false); // temp
+      const filter = new Filter();
+      filter.setRightnowfilter(false); // temp
+      const location = new LocationDto();
+      location.setLat(latitude);
+      location.setLong(longitude);
+  
+      const req = new GetPostsRequest();
+      req.setFilter(filter);
+      req.setPagenumber(0);
+      req.setResultperpage(1);
+      req.setCurrentlocation(location);
+  
+      const postClient = new PostProtocolClient(serverUrl);
+      const headers = new grpc.Metadata();
+      const cookies = new Cookies();
+      headers.append('Authorization', 'Bearer ' + cookies.get('accessToken'));
+      postClient.getPosts(req, headers, (err, res) => {
+        if (err !== null) {
+          console.error(err);
+          reject(err);
+        }
+        const posts = res?.getPostsList().map(x => ({postId: x.getPostid(), latitude: x.getLocation()?.getLat(), longitude: x.getLocation()?.getLong()})) || [];
+        console.log(posts);
+        resolve(posts);
+      })
+    });
+  }
 
   self.getAddressByLocation = async ({ latitude, longitude }: LatLng) => {
     const axios = createAxios(`https://maps.googleapis.com/maps/api/geocode/json`);

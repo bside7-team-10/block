@@ -96,4 +96,16 @@ public interface PostDtoOrBuilder extends
    * <code>.LocationDto location = 7;</code>
    */
   com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
+
+  /**
+   * <code>string address = 8;</code>
+   * @return The address.
+   */
+  java.lang.String getAddress();
+  /**
+   * <code>string address = 8;</code>
+   * @return The bytes for address.
+   */
+  com.google.protobuf.ByteString
+      getAddressBytes();
 }

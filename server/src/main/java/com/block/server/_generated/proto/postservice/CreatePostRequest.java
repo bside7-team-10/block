@@ -16,8 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CreatePostRequest() {
-    author_ = "";
     content_ = "";
+    address_ = "";
   }
 
   @java.lang.Override
@@ -53,16 +53,10 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            author_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
             content_ = s;
             break;
           }
-          case 26: {
+          case 18: {
             com.block.server._generated.proto.postservice.LocationDto.Builder subBuilder = null;
             if (location_ != null) {
               subBuilder = location_.toBuilder();
@@ -73,6 +67,12 @@ private static final long serialVersionUID = 0L;
               location_ = subBuilder.buildPartial();
             }
 
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            address_ = s;
             break;
           }
           default: {
@@ -107,48 +107,10 @@ private static final long serialVersionUID = 0L;
             com.block.server._generated.proto.postservice.CreatePostRequest.class, com.block.server._generated.proto.postservice.CreatePostRequest.Builder.class);
   }
 
-  public static final int AUTHOR_FIELD_NUMBER = 1;
-  private volatile java.lang.Object author_;
-  /**
-   * <code>string author = 1;</code>
-   * @return The author.
-   */
-  @java.lang.Override
-  public java.lang.String getAuthor() {
-    java.lang.Object ref = author_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      author_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string author = 1;</code>
-   * @return The bytes for author.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getAuthorBytes() {
-    java.lang.Object ref = author_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      author_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CONTENT_FIELD_NUMBER = 2;
+  public static final int CONTENT_FIELD_NUMBER = 1;
   private volatile java.lang.Object content_;
   /**
-   * <code>string content = 2;</code>
+   * <code>string content = 1;</code>
    * @return The content.
    */
   @java.lang.Override
@@ -165,7 +127,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string content = 2;</code>
+   * <code>string content = 1;</code>
    * @return The bytes for content.
    */
   @java.lang.Override
@@ -183,10 +145,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int LOCATION_FIELD_NUMBER = 3;
+  public static final int LOCATION_FIELD_NUMBER = 2;
   private com.block.server._generated.proto.postservice.LocationDto location_;
   /**
-   * <code>.LocationDto location = 3;</code>
+   * <code>.LocationDto location = 2;</code>
    * @return Whether the location field is set.
    */
   @java.lang.Override
@@ -194,7 +156,7 @@ private static final long serialVersionUID = 0L;
     return location_ != null;
   }
   /**
-   * <code>.LocationDto location = 3;</code>
+   * <code>.LocationDto location = 2;</code>
    * @return The location.
    */
   @java.lang.Override
@@ -202,11 +164,49 @@ private static final long serialVersionUID = 0L;
     return location_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
   }
   /**
-   * <code>.LocationDto location = 3;</code>
+   * <code>.LocationDto location = 2;</code>
    */
   @java.lang.Override
   public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
     return getLocation();
+  }
+
+  public static final int ADDRESS_FIELD_NUMBER = 3;
+  private volatile java.lang.Object address_;
+  /**
+   * <code>string address = 3;</code>
+   * @return The address.
+   */
+  @java.lang.Override
+  public java.lang.String getAddress() {
+    java.lang.Object ref = address_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      address_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string address = 3;</code>
+   * @return The bytes for address.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getAddressBytes() {
+    java.lang.Object ref = address_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      address_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -223,14 +223,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getAuthorBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, author_);
-    }
     if (!getContentBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, content_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, content_);
     }
     if (location_ != null) {
-      output.writeMessage(3, getLocation());
+      output.writeMessage(2, getLocation());
+    }
+    if (!getAddressBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, address_);
     }
     unknownFields.writeTo(output);
   }
@@ -241,15 +241,15 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getAuthorBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, author_);
-    }
     if (!getContentBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, content_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, content_);
     }
     if (location_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getLocation());
+        .computeMessageSize(2, getLocation());
+    }
+    if (!getAddressBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, address_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -266,8 +266,6 @@ private static final long serialVersionUID = 0L;
     }
     com.block.server._generated.proto.postservice.CreatePostRequest other = (com.block.server._generated.proto.postservice.CreatePostRequest) obj;
 
-    if (!getAuthor()
-        .equals(other.getAuthor())) return false;
     if (!getContent()
         .equals(other.getContent())) return false;
     if (hasLocation() != other.hasLocation()) return false;
@@ -275,6 +273,8 @@ private static final long serialVersionUID = 0L;
       if (!getLocation()
           .equals(other.getLocation())) return false;
     }
+    if (!getAddress()
+        .equals(other.getAddress())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -286,14 +286,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
-    hash = (53 * hash) + getAuthor().hashCode();
     hash = (37 * hash) + CONTENT_FIELD_NUMBER;
     hash = (53 * hash) + getContent().hashCode();
     if (hasLocation()) {
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
     }
+    hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+    hash = (53 * hash) + getAddress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -427,8 +427,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      author_ = "";
-
       content_ = "";
 
       if (locationBuilder_ == null) {
@@ -437,6 +435,8 @@ private static final long serialVersionUID = 0L;
         location_ = null;
         locationBuilder_ = null;
       }
+      address_ = "";
+
       return this;
     }
 
@@ -463,13 +463,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.block.server._generated.proto.postservice.CreatePostRequest buildPartial() {
       com.block.server._generated.proto.postservice.CreatePostRequest result = new com.block.server._generated.proto.postservice.CreatePostRequest(this);
-      result.author_ = author_;
       result.content_ = content_;
       if (locationBuilder_ == null) {
         result.location_ = location_;
       } else {
         result.location_ = locationBuilder_.build();
       }
+      result.address_ = address_;
       onBuilt();
       return result;
     }
@@ -518,16 +518,16 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.block.server._generated.proto.postservice.CreatePostRequest other) {
       if (other == com.block.server._generated.proto.postservice.CreatePostRequest.getDefaultInstance()) return this;
-      if (!other.getAuthor().isEmpty()) {
-        author_ = other.author_;
-        onChanged();
-      }
       if (!other.getContent().isEmpty()) {
         content_ = other.content_;
         onChanged();
       }
       if (other.hasLocation()) {
         mergeLocation(other.getLocation());
+      }
+      if (!other.getAddress().isEmpty()) {
+        address_ = other.address_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -558,85 +558,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object author_ = "";
-    /**
-     * <code>string author = 1;</code>
-     * @return The author.
-     */
-    public java.lang.String getAuthor() {
-      java.lang.Object ref = author_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        author_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string author = 1;</code>
-     * @return The bytes for author.
-     */
-    public com.google.protobuf.ByteString
-        getAuthorBytes() {
-      java.lang.Object ref = author_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        author_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string author = 1;</code>
-     * @param value The author to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAuthor(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      author_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string author = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAuthor() {
-      
-      author_ = getDefaultInstance().getAuthor();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string author = 1;</code>
-     * @param value The bytes for author to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAuthorBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      author_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object content_ = "";
     /**
-     * <code>string content = 2;</code>
+     * <code>string content = 1;</code>
      * @return The content.
      */
     public java.lang.String getContent() {
@@ -652,7 +576,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string content = 2;</code>
+     * <code>string content = 1;</code>
      * @return The bytes for content.
      */
     public com.google.protobuf.ByteString
@@ -669,7 +593,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string content = 2;</code>
+     * <code>string content = 1;</code>
      * @param value The content to set.
      * @return This builder for chaining.
      */
@@ -684,7 +608,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string content = 2;</code>
+     * <code>string content = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearContent() {
@@ -694,7 +618,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string content = 2;</code>
+     * <code>string content = 1;</code>
      * @param value The bytes for content to set.
      * @return This builder for chaining.
      */
@@ -714,14 +638,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> locationBuilder_;
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      * @return Whether the location field is set.
      */
     public boolean hasLocation() {
       return locationBuilder_ != null || location_ != null;
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      * @return The location.
      */
     public com.block.server._generated.proto.postservice.LocationDto getLocation() {
@@ -732,7 +656,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      */
     public Builder setLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (locationBuilder_ == null) {
@@ -748,7 +672,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      */
     public Builder setLocation(
         com.block.server._generated.proto.postservice.LocationDto.Builder builderForValue) {
@@ -762,7 +686,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      */
     public Builder mergeLocation(com.block.server._generated.proto.postservice.LocationDto value) {
       if (locationBuilder_ == null) {
@@ -780,7 +704,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      */
     public Builder clearLocation() {
       if (locationBuilder_ == null) {
@@ -794,7 +718,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      */
     public com.block.server._generated.proto.postservice.LocationDto.Builder getLocationBuilder() {
       
@@ -802,7 +726,7 @@ private static final long serialVersionUID = 0L;
       return getLocationFieldBuilder().getBuilder();
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      */
     public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
       if (locationBuilder_ != null) {
@@ -813,7 +737,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.LocationDto location = 3;</code>
+     * <code>.LocationDto location = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> 
@@ -827,6 +751,82 @@ private static final long serialVersionUID = 0L;
         location_ = null;
       }
       return locationBuilder_;
+    }
+
+    private java.lang.Object address_ = "";
+    /**
+     * <code>string address = 3;</code>
+     * @return The address.
+     */
+    public java.lang.String getAddress() {
+      java.lang.Object ref = address_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        address_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string address = 3;</code>
+     * @return The bytes for address.
+     */
+    public com.google.protobuf.ByteString
+        getAddressBytes() {
+      java.lang.Object ref = address_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        address_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string address = 3;</code>
+     * @param value The address to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddress(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      address_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string address = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAddress() {
+      
+      address_ = getDefaultInstance().getAddress();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string address = 3;</code>
+     * @param value The bytes for address to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      address_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

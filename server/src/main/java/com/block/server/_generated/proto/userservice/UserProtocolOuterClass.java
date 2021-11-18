@@ -44,26 +44,26 @@ public final class UserProtocolOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\022UserProtocol.proto\"0\n\rSignInRequest\022\r\n" +
-      "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\310\001\n\016SignI" +
+      "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\306\001\n\016SignI" +
       "nResponse\022,\n\006status\030\001 \001(\0162\034.SignInRespon" +
-      "se.SignInStatus\022\020\n\010nickname\030\002 \001(\t\022\022\n\npro" +
-      "fileUrl\030\003 \001(\t\022\r\n\005token\030\004 \001(\t\"S\n\014SignInSt" +
-      "atus\022\013\n\007SUCCESS\020\000\022\016\n\nNO_ACCOUNT\020\001\022\022\n\016WRO" +
-      "NG_PASSWORD\020\002\022\022\n\016INTERNAL_ERROR\020\003\"\305\001\n\rSi" +
-      "gnUpRequest\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002" +
-      " \001(\t\022\020\n\010nickname\030\003 \001(\t\022%\n\006gender\030\004 \001(\0162\025" +
-      ".SignUpRequest.Gender\022\016\n\006avatar\030\005 \001(\t\022\020\n" +
+      "se.SignInStatus\022\020\n\010nickname\030\002 \001(\t\022\020\n\010ava" +
+      "tarId\030\003 \001(\t\022\r\n\005token\030\004 \001(\t\"S\n\014SignInStat" +
+      "us\022\013\n\007SUCCESS\020\000\022\016\n\nNO_ACCOUNT\020\001\022\022\n\016WRONG" +
+      "_PASSWORD\020\002\022\022\n\016INTERNAL_ERROR\020\003\"\307\001\n\rSign" +
+      "UpRequest\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002 \001" +
+      "(\t\022\020\n\010nickname\030\003 \001(\t\022%\n\006gender\030\004 \001(\0162\025.S" +
+      "ignUpRequest.Gender\022\020\n\010avatarId\030\005 \001(\t\022\020\n" +
       "\010birthday\030\006 \001(\t\022\030\n\020interestHashTags\030\007 \003(" +
-      "\t\"\036\n\006Gender\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001\"\274\001\n\016Si" +
+      "\t\"\036\n\006Gender\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001\"\272\001\n\016Si" +
       "gnUpResponse\022,\n\006status\030\001 \001(\0162\034.SignUpRes" +
-      "ponse.SignUpStatus\022\020\n\010nickname\030\002 \001(\t\022\022\n\n" +
-      "profileUrl\030\003 \001(\t\"V\n\014SignUpStatus\022\013\n\007SUCC" +
-      "ESS\020\000\022\022\n\016ACCOUNT_EXISTS\020\001\022\021\n\rINVALID_INP" +
-      "UT\020\002\022\022\n\016INTERNAL_ERROR\020\0032h\n\014UserProtocol" +
-      "\022+\n\006SignIn\022\016.SignInRequest\032\017.SignInRespo" +
-      "nse\"\000\022+\n\006SignUp\022\016.SignUpRequest\032\017.SignUp" +
-      "Response\"\000B1\n-com.block.server._generate" +
-      "d.proto.userserviceP\001b\006proto3"
+      "ponse.SignUpStatus\022\020\n\010nickname\030\002 \001(\t\022\020\n\010" +
+      "avatarId\030\003 \001(\t\"V\n\014SignUpStatus\022\013\n\007SUCCES" +
+      "S\020\000\022\022\n\016ACCOUNT_EXISTS\020\001\022\021\n\rINVALID_INPUT" +
+      "\020\002\022\022\n\016INTERNAL_ERROR\020\0032h\n\014UserProtocol\022+" +
+      "\n\006SignIn\022\016.SignInRequest\032\017.SignInRespons" +
+      "e\"\000\022+\n\006SignUp\022\016.SignUpRequest\032\017.SignUpRe" +
+      "sponse\"\000B1\n-com.block.server._generated." +
+      "proto.userserviceP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -80,19 +80,19 @@ public final class UserProtocolOuterClass {
     internal_static_SignInResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SignInResponse_descriptor,
-        new java.lang.String[] { "Status", "Nickname", "ProfileUrl", "Token", });
+        new java.lang.String[] { "Status", "Nickname", "AvatarId", "Token", });
     internal_static_SignUpRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_SignUpRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SignUpRequest_descriptor,
-        new java.lang.String[] { "Email", "Password", "Nickname", "Gender", "Avatar", "Birthday", "InterestHashTags", });
+        new java.lang.String[] { "Email", "Password", "Nickname", "Gender", "AvatarId", "Birthday", "InterestHashTags", });
     internal_static_SignUpResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_SignUpResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SignUpResponse_descriptor,
-        new java.lang.String[] { "Status", "Nickname", "ProfileUrl", });
+        new java.lang.String[] { "Status", "Nickname", "AvatarId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

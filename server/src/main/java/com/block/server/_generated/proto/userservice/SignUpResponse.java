@@ -18,7 +18,7 @@ private static final long serialVersionUID = 0L;
   private SignUpResponse() {
     status_ = 0;
     nickname_ = "";
-    profileUrl_ = "";
+    avatarId_ = "";
   }
 
   @java.lang.Override
@@ -66,7 +66,7 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            profileUrl_ = s;
+            avatarId_ = s;
             break;
           }
           default: {
@@ -284,38 +284,38 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PROFILEURL_FIELD_NUMBER = 3;
-  private volatile java.lang.Object profileUrl_;
+  public static final int AVATARID_FIELD_NUMBER = 3;
+  private volatile java.lang.Object avatarId_;
   /**
-   * <code>string profileUrl = 3;</code>
-   * @return The profileUrl.
+   * <code>string avatarId = 3;</code>
+   * @return The avatarId.
    */
   @java.lang.Override
-  public java.lang.String getProfileUrl() {
-    java.lang.Object ref = profileUrl_;
+  public java.lang.String getAvatarId() {
+    java.lang.Object ref = avatarId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      profileUrl_ = s;
+      avatarId_ = s;
       return s;
     }
   }
   /**
-   * <code>string profileUrl = 3;</code>
-   * @return The bytes for profileUrl.
+   * <code>string avatarId = 3;</code>
+   * @return The bytes for avatarId.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getProfileUrlBytes() {
-    java.lang.Object ref = profileUrl_;
+      getAvatarIdBytes() {
+    java.lang.Object ref = avatarId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      profileUrl_ = b;
+      avatarId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -342,8 +342,8 @@ private static final long serialVersionUID = 0L;
     if (!getNicknameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nickname_);
     }
-    if (!getProfileUrlBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, profileUrl_);
+    if (!getAvatarIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, avatarId_);
     }
     unknownFields.writeTo(output);
   }
@@ -361,8 +361,8 @@ private static final long serialVersionUID = 0L;
     if (!getNicknameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nickname_);
     }
-    if (!getProfileUrlBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, profileUrl_);
+    if (!getAvatarIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, avatarId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -382,8 +382,8 @@ private static final long serialVersionUID = 0L;
     if (status_ != other.status_) return false;
     if (!getNickname()
         .equals(other.getNickname())) return false;
-    if (!getProfileUrl()
-        .equals(other.getProfileUrl())) return false;
+    if (!getAvatarId()
+        .equals(other.getAvatarId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -399,8 +399,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + status_;
     hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
     hash = (53 * hash) + getNickname().hashCode();
-    hash = (37 * hash) + PROFILEURL_FIELD_NUMBER;
-    hash = (53 * hash) + getProfileUrl().hashCode();
+    hash = (37 * hash) + AVATARID_FIELD_NUMBER;
+    hash = (53 * hash) + getAvatarId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -538,7 +538,7 @@ private static final long serialVersionUID = 0L;
 
       nickname_ = "";
 
-      profileUrl_ = "";
+      avatarId_ = "";
 
       return this;
     }
@@ -568,7 +568,7 @@ private static final long serialVersionUID = 0L;
       com.block.server._generated.proto.userservice.SignUpResponse result = new com.block.server._generated.proto.userservice.SignUpResponse(this);
       result.status_ = status_;
       result.nickname_ = nickname_;
-      result.profileUrl_ = profileUrl_;
+      result.avatarId_ = avatarId_;
       onBuilt();
       return result;
     }
@@ -624,8 +624,8 @@ private static final long serialVersionUID = 0L;
         nickname_ = other.nickname_;
         onChanged();
       }
-      if (!other.getProfileUrl().isEmpty()) {
-        profileUrl_ = other.profileUrl_;
+      if (!other.getAvatarId().isEmpty()) {
+        avatarId_ = other.avatarId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -787,78 +787,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object profileUrl_ = "";
+    private java.lang.Object avatarId_ = "";
     /**
-     * <code>string profileUrl = 3;</code>
-     * @return The profileUrl.
+     * <code>string avatarId = 3;</code>
+     * @return The avatarId.
      */
-    public java.lang.String getProfileUrl() {
-      java.lang.Object ref = profileUrl_;
+    public java.lang.String getAvatarId() {
+      java.lang.Object ref = avatarId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        profileUrl_ = s;
+        avatarId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string profileUrl = 3;</code>
-     * @return The bytes for profileUrl.
+     * <code>string avatarId = 3;</code>
+     * @return The bytes for avatarId.
      */
     public com.google.protobuf.ByteString
-        getProfileUrlBytes() {
-      java.lang.Object ref = profileUrl_;
+        getAvatarIdBytes() {
+      java.lang.Object ref = avatarId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        profileUrl_ = b;
+        avatarId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string profileUrl = 3;</code>
-     * @param value The profileUrl to set.
+     * <code>string avatarId = 3;</code>
+     * @param value The avatarId to set.
      * @return This builder for chaining.
      */
-    public Builder setProfileUrl(
+    public Builder setAvatarId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      profileUrl_ = value;
+      avatarId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string profileUrl = 3;</code>
+     * <code>string avatarId = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearProfileUrl() {
+    public Builder clearAvatarId() {
       
-      profileUrl_ = getDefaultInstance().getProfileUrl();
+      avatarId_ = getDefaultInstance().getAvatarId();
       onChanged();
       return this;
     }
     /**
-     * <code>string profileUrl = 3;</code>
-     * @param value The bytes for profileUrl to set.
+     * <code>string avatarId = 3;</code>
+     * @param value The bytes for avatarId to set.
      * @return This builder for chaining.
      */
-    public Builder setProfileUrlBytes(
+    public Builder setAvatarIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      profileUrl_ = value;
+      avatarId_ = value;
       onChanged();
       return this;
     }

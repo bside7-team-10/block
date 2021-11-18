@@ -4,26 +4,25 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code CreateCommentRequest}
+ * Protobuf type {@code PostSummary}
  */
-public final class CreateCommentRequest extends
+public final class PostSummary extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:CreateCommentRequest)
-    CreateCommentRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:PostSummary)
+    PostSummaryOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use CreateCommentRequest.newBuilder() to construct.
-  private CreateCommentRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use PostSummary.newBuilder() to construct.
+  private PostSummary(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private CreateCommentRequest() {
-    content_ = "";
+  private PostSummary() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new CreateCommentRequest();
+    return new PostSummary();
   }
 
   @java.lang.Override
@@ -31,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private CreateCommentRequest(
+  private PostSummary(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -55,9 +54,16 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.block.server._generated.proto.postservice.LocationDto.Builder subBuilder = null;
+            if (location_ != null) {
+              subBuilder = location_.toBuilder();
+            }
+            location_ = input.readMessage(com.block.server._generated.proto.postservice.LocationDto.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(location_);
+              location_ = subBuilder.buildPartial();
+            }
 
-            content_ = s;
             break;
           }
           default: {
@@ -81,15 +87,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostSummary_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostSummary_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.CreateCommentRequest.class, com.block.server._generated.proto.postservice.CreateCommentRequest.Builder.class);
+            com.block.server._generated.proto.postservice.PostSummary.class, com.block.server._generated.proto.postservice.PostSummary.Builder.class);
   }
 
   public static final int POSTID_FIELD_NUMBER = 1;
@@ -103,42 +109,30 @@ private static final long serialVersionUID = 0L;
     return postId_;
   }
 
-  public static final int CONTENT_FIELD_NUMBER = 2;
-  private volatile java.lang.Object content_;
+  public static final int LOCATION_FIELD_NUMBER = 2;
+  private com.block.server._generated.proto.postservice.LocationDto location_;
   /**
-   * <code>string content = 2;</code>
-   * @return The content.
+   * <code>.LocationDto location = 2;</code>
+   * @return Whether the location field is set.
    */
   @java.lang.Override
-  public java.lang.String getContent() {
-    java.lang.Object ref = content_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      content_ = s;
-      return s;
-    }
+  public boolean hasLocation() {
+    return location_ != null;
   }
   /**
-   * <code>string content = 2;</code>
-   * @return The bytes for content.
+   * <code>.LocationDto location = 2;</code>
+   * @return The location.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getContentBytes() {
-    java.lang.Object ref = content_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      content_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.block.server._generated.proto.postservice.LocationDto getLocation() {
+    return location_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
+  }
+  /**
+   * <code>.LocationDto location = 2;</code>
+   */
+  @java.lang.Override
+  public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
+    return getLocation();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -158,8 +152,8 @@ private static final long serialVersionUID = 0L;
     if (postId_ != 0L) {
       output.writeInt64(1, postId_);
     }
-    if (!getContentBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, content_);
+    if (location_ != null) {
+      output.writeMessage(2, getLocation());
     }
     unknownFields.writeTo(output);
   }
@@ -174,8 +168,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(1, postId_);
     }
-    if (!getContentBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, content_);
+    if (location_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, getLocation());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -187,15 +182,18 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.CreateCommentRequest)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.PostSummary)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.CreateCommentRequest other = (com.block.server._generated.proto.postservice.CreateCommentRequest) obj;
+    com.block.server._generated.proto.postservice.PostSummary other = (com.block.server._generated.proto.postservice.PostSummary) obj;
 
     if (getPostId()
         != other.getPostId()) return false;
-    if (!getContent()
-        .equals(other.getContent())) return false;
+    if (hasLocation() != other.hasLocation()) return false;
+    if (hasLocation()) {
+      if (!getLocation()
+          .equals(other.getLocation())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -210,76 +208,78 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + POSTID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getPostId());
-    hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-    hash = (53 * hash) + getContent().hashCode();
+    if (hasLocation()) {
+      hash = (37 * hash) + LOCATION_FIELD_NUMBER;
+      hash = (53 * hash) + getLocation().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.PostSummary parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.PostSummary parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -292,7 +292,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.CreateCommentRequest prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.PostSummary prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -308,26 +308,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code CreateCommentRequest}
+   * Protobuf type {@code PostSummary}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:CreateCommentRequest)
-      com.block.server._generated.proto.postservice.CreateCommentRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:PostSummary)
+      com.block.server._generated.proto.postservice.PostSummaryOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostSummary_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostSummary_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.CreateCommentRequest.class, com.block.server._generated.proto.postservice.CreateCommentRequest.Builder.class);
+              com.block.server._generated.proto.postservice.PostSummary.class, com.block.server._generated.proto.postservice.PostSummary.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.CreateCommentRequest.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.PostSummary.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -347,25 +347,29 @@ private static final long serialVersionUID = 0L;
       super.clear();
       postId_ = 0L;
 
-      content_ = "";
-
+      if (locationBuilder_ == null) {
+        location_ = null;
+      } else {
+        location_ = null;
+        locationBuilder_ = null;
+      }
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_PostSummary_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.CreateCommentRequest.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.PostSummary getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.PostSummary.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest build() {
-      com.block.server._generated.proto.postservice.CreateCommentRequest result = buildPartial();
+    public com.block.server._generated.proto.postservice.PostSummary build() {
+      com.block.server._generated.proto.postservice.PostSummary result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -373,10 +377,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest buildPartial() {
-      com.block.server._generated.proto.postservice.CreateCommentRequest result = new com.block.server._generated.proto.postservice.CreateCommentRequest(this);
+    public com.block.server._generated.proto.postservice.PostSummary buildPartial() {
+      com.block.server._generated.proto.postservice.PostSummary result = new com.block.server._generated.proto.postservice.PostSummary(this);
       result.postId_ = postId_;
-      result.content_ = content_;
+      if (locationBuilder_ == null) {
+        result.location_ = location_;
+      } else {
+        result.location_ = locationBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -415,22 +423,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.CreateCommentRequest) {
-        return mergeFrom((com.block.server._generated.proto.postservice.CreateCommentRequest)other);
+      if (other instanceof com.block.server._generated.proto.postservice.PostSummary) {
+        return mergeFrom((com.block.server._generated.proto.postservice.PostSummary)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.CreateCommentRequest other) {
-      if (other == com.block.server._generated.proto.postservice.CreateCommentRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.PostSummary other) {
+      if (other == com.block.server._generated.proto.postservice.PostSummary.getDefaultInstance()) return this;
       if (other.getPostId() != 0L) {
         setPostId(other.getPostId());
       }
-      if (!other.getContent().isEmpty()) {
-        content_ = other.content_;
-        onChanged();
+      if (other.hasLocation()) {
+        mergeLocation(other.getLocation());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -447,11 +454,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.CreateCommentRequest parsedMessage = null;
+      com.block.server._generated.proto.postservice.PostSummary parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.CreateCommentRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.PostSummary) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -492,80 +499,123 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object content_ = "";
+    private com.block.server._generated.proto.postservice.LocationDto location_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> locationBuilder_;
     /**
-     * <code>string content = 2;</code>
-     * @return The content.
+     * <code>.LocationDto location = 2;</code>
+     * @return Whether the location field is set.
      */
-    public java.lang.String getContent() {
-      java.lang.Object ref = content_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        content_ = s;
-        return s;
+    public boolean hasLocation() {
+      return locationBuilder_ != null || location_ != null;
+    }
+    /**
+     * <code>.LocationDto location = 2;</code>
+     * @return The location.
+     */
+    public com.block.server._generated.proto.postservice.LocationDto getLocation() {
+      if (locationBuilder_ == null) {
+        return location_ == null ? com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
       } else {
-        return (java.lang.String) ref;
+        return locationBuilder_.getMessage();
       }
     }
     /**
-     * <code>string content = 2;</code>
-     * @return The bytes for content.
+     * <code>.LocationDto location = 2;</code>
      */
-    public com.google.protobuf.ByteString
-        getContentBytes() {
-      java.lang.Object ref = content_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        content_ = b;
-        return b;
+    public Builder setLocation(com.block.server._generated.proto.postservice.LocationDto value) {
+      if (locationBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        location_ = value;
+        onChanged();
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        locationBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.LocationDto location = 2;</code>
+     */
+    public Builder setLocation(
+        com.block.server._generated.proto.postservice.LocationDto.Builder builderForValue) {
+      if (locationBuilder_ == null) {
+        location_ = builderForValue.build();
+        onChanged();
+      } else {
+        locationBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.LocationDto location = 2;</code>
+     */
+    public Builder mergeLocation(com.block.server._generated.proto.postservice.LocationDto value) {
+      if (locationBuilder_ == null) {
+        if (location_ != null) {
+          location_ =
+            com.block.server._generated.proto.postservice.LocationDto.newBuilder(location_).mergeFrom(value).buildPartial();
+        } else {
+          location_ = value;
+        }
+        onChanged();
+      } else {
+        locationBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.LocationDto location = 2;</code>
+     */
+    public Builder clearLocation() {
+      if (locationBuilder_ == null) {
+        location_ = null;
+        onChanged();
+      } else {
+        location_ = null;
+        locationBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.LocationDto location = 2;</code>
+     */
+    public com.block.server._generated.proto.postservice.LocationDto.Builder getLocationBuilder() {
+      
+      onChanged();
+      return getLocationFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.LocationDto location = 2;</code>
+     */
+    public com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder() {
+      if (locationBuilder_ != null) {
+        return locationBuilder_.getMessageOrBuilder();
+      } else {
+        return location_ == null ?
+            com.block.server._generated.proto.postservice.LocationDto.getDefaultInstance() : location_;
       }
     }
     /**
-     * <code>string content = 2;</code>
-     * @param value The content to set.
-     * @return This builder for chaining.
+     * <code>.LocationDto location = 2;</code>
      */
-    public Builder setContent(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      content_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string content = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearContent() {
-      
-      content_ = getDefaultInstance().getContent();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string content = 2;</code>
-     * @param value The bytes for content to set.
-     * @return This builder for chaining.
-     */
-    public Builder setContentBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      content_ = value;
-      onChanged();
-      return this;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder> 
+        getLocationFieldBuilder() {
+      if (locationBuilder_ == null) {
+        locationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.block.server._generated.proto.postservice.LocationDto, com.block.server._generated.proto.postservice.LocationDto.Builder, com.block.server._generated.proto.postservice.LocationDtoOrBuilder>(
+                getLocation(),
+                getParentForChildren(),
+                isClean());
+        location_ = null;
+      }
+      return locationBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -580,41 +630,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:CreateCommentRequest)
+    // @@protoc_insertion_point(builder_scope:PostSummary)
   }
 
-  // @@protoc_insertion_point(class_scope:CreateCommentRequest)
-  private static final com.block.server._generated.proto.postservice.CreateCommentRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:PostSummary)
+  private static final com.block.server._generated.proto.postservice.PostSummary DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.CreateCommentRequest();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.PostSummary();
   }
 
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.PostSummary getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateCommentRequest>
-      PARSER = new com.google.protobuf.AbstractParser<CreateCommentRequest>() {
+  private static final com.google.protobuf.Parser<PostSummary>
+      PARSER = new com.google.protobuf.AbstractParser<PostSummary>() {
     @java.lang.Override
-    public CreateCommentRequest parsePartialFrom(
+    public PostSummary parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new CreateCommentRequest(input, extensionRegistry);
+      return new PostSummary(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<CreateCommentRequest> parser() {
+  public static com.google.protobuf.Parser<PostSummary> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<CreateCommentRequest> getParserForType() {
+  public com.google.protobuf.Parser<PostSummary> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.PostSummary getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

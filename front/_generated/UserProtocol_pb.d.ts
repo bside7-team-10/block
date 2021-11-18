@@ -34,8 +34,8 @@ export class SignInResponse extends jspb.Message {
   getNickname(): string;
   setNickname(value: string): void;
 
-  getProfileurl(): string;
-  setProfileurl(value: string): void;
+  getAvatarid(): string;
+  setAvatarid(value: string): void;
 
   getToken(): string;
   setToken(value: string): void;
@@ -54,7 +54,7 @@ export namespace SignInResponse {
   export type AsObject = {
     status: SignInResponse.SignInStatusMap[keyof SignInResponse.SignInStatusMap],
     nickname: string,
-    profileurl: string,
+    avatarid: string,
     token: string,
   }
 
@@ -81,8 +81,8 @@ export class SignUpRequest extends jspb.Message {
   getGender(): SignUpRequest.GenderMap[keyof SignUpRequest.GenderMap];
   setGender(value: SignUpRequest.GenderMap[keyof SignUpRequest.GenderMap]): void;
 
-  getAvatar(): string;
-  setAvatar(value: string): void;
+  getAvatarid(): string;
+  setAvatarid(value: string): void;
 
   getBirthday(): string;
   setBirthday(value: string): void;
@@ -108,7 +108,7 @@ export namespace SignUpRequest {
     password: string,
     nickname: string,
     gender: SignUpRequest.GenderMap[keyof SignUpRequest.GenderMap],
-    avatar: string,
+    avatarid: string,
     birthday: string,
     interesthashtagsList: Array<string>,
   }
@@ -128,8 +128,8 @@ export class SignUpResponse extends jspb.Message {
   getNickname(): string;
   setNickname(value: string): void;
 
-  getProfileurl(): string;
-  setProfileurl(value: string): void;
+  getAvatarid(): string;
+  setAvatarid(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SignUpResponse.AsObject;
@@ -145,7 +145,7 @@ export namespace SignUpResponse {
   export type AsObject = {
     status: SignUpResponse.SignUpStatusMap[keyof SignUpResponse.SignUpStatusMap],
     nickname: string,
-    profileurl: string,
+    avatarid: string,
   }
 
   export interface SignUpStatusMap {

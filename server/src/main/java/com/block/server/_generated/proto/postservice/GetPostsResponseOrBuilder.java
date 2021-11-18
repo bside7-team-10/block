@@ -19,26 +19,26 @@ public interface GetPostsResponseOrBuilder extends
   com.block.server._generated.proto.postservice.PostProtocolStatus getStatus();
 
   /**
-   * <code>repeated .PostDto posts = 2;</code>
+   * <code>repeated .PostSummary posts = 2;</code>
    */
-  java.util.List<com.block.server._generated.proto.postservice.PostDto> 
+  java.util.List<com.block.server._generated.proto.postservice.PostSummary> 
       getPostsList();
   /**
-   * <code>repeated .PostDto posts = 2;</code>
+   * <code>repeated .PostSummary posts = 2;</code>
    */
-  com.block.server._generated.proto.postservice.PostDto getPosts(int index);
+  com.block.server._generated.proto.postservice.PostSummary getPosts(int index);
   /**
-   * <code>repeated .PostDto posts = 2;</code>
+   * <code>repeated .PostSummary posts = 2;</code>
    */
   int getPostsCount();
   /**
-   * <code>repeated .PostDto posts = 2;</code>
+   * <code>repeated .PostSummary posts = 2;</code>
    */
-  java.util.List<? extends com.block.server._generated.proto.postservice.PostDtoOrBuilder> 
+  java.util.List<? extends com.block.server._generated.proto.postservice.PostSummaryOrBuilder> 
       getPostsOrBuilderList();
   /**
-   * <code>repeated .PostDto posts = 2;</code>
+   * <code>repeated .PostSummary posts = 2;</code>
    */
-  com.block.server._generated.proto.postservice.PostDtoOrBuilder getPostsOrBuilder(
+  com.block.server._generated.proto.postservice.PostSummaryOrBuilder getPostsOrBuilder(
       int index);
 }

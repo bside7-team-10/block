@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     password_ = "";
     nickname_ = "";
     gender_ = 0;
-    avatar_ = "";
+    avatarId_ = "";
     birthday_ = "";
     interestHashTags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
@@ -83,7 +83,7 @@ private static final long serialVersionUID = 0L;
           case 42: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            avatar_ = s;
+            avatarId_ = s;
             break;
           }
           case 50: {
@@ -377,38 +377,38 @@ private static final long serialVersionUID = 0L;
     return result == null ? com.block.server._generated.proto.userservice.SignUpRequest.Gender.UNRECOGNIZED : result;
   }
 
-  public static final int AVATAR_FIELD_NUMBER = 5;
-  private volatile java.lang.Object avatar_;
+  public static final int AVATARID_FIELD_NUMBER = 5;
+  private volatile java.lang.Object avatarId_;
   /**
-   * <code>string avatar = 5;</code>
-   * @return The avatar.
+   * <code>string avatarId = 5;</code>
+   * @return The avatarId.
    */
   @java.lang.Override
-  public java.lang.String getAvatar() {
-    java.lang.Object ref = avatar_;
+  public java.lang.String getAvatarId() {
+    java.lang.Object ref = avatarId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      avatar_ = s;
+      avatarId_ = s;
       return s;
     }
   }
   /**
-   * <code>string avatar = 5;</code>
-   * @return The bytes for avatar.
+   * <code>string avatarId = 5;</code>
+   * @return The bytes for avatarId.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getAvatarBytes() {
-    java.lang.Object ref = avatar_;
+      getAvatarIdBytes() {
+    java.lang.Object ref = avatarId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      avatar_ = b;
+      avatarId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -514,8 +514,8 @@ private static final long serialVersionUID = 0L;
     if (gender_ != com.block.server._generated.proto.userservice.SignUpRequest.Gender.MALE.getNumber()) {
       output.writeEnum(4, gender_);
     }
-    if (!getAvatarBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, avatar_);
+    if (!getAvatarIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, avatarId_);
     }
     if (!getBirthdayBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, birthday_);
@@ -545,8 +545,8 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(4, gender_);
     }
-    if (!getAvatarBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, avatar_);
+    if (!getAvatarIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, avatarId_);
     }
     if (!getBirthdayBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, birthday_);
@@ -581,8 +581,8 @@ private static final long serialVersionUID = 0L;
     if (!getNickname()
         .equals(other.getNickname())) return false;
     if (gender_ != other.gender_) return false;
-    if (!getAvatar()
-        .equals(other.getAvatar())) return false;
+    if (!getAvatarId()
+        .equals(other.getAvatarId())) return false;
     if (!getBirthday()
         .equals(other.getBirthday())) return false;
     if (!getInterestHashTagsList()
@@ -606,8 +606,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getNickname().hashCode();
     hash = (37 * hash) + GENDER_FIELD_NUMBER;
     hash = (53 * hash) + gender_;
-    hash = (37 * hash) + AVATAR_FIELD_NUMBER;
-    hash = (53 * hash) + getAvatar().hashCode();
+    hash = (37 * hash) + AVATARID_FIELD_NUMBER;
+    hash = (53 * hash) + getAvatarId().hashCode();
     hash = (37 * hash) + BIRTHDAY_FIELD_NUMBER;
     hash = (53 * hash) + getBirthday().hashCode();
     if (getInterestHashTagsCount() > 0) {
@@ -755,7 +755,7 @@ private static final long serialVersionUID = 0L;
 
       gender_ = 0;
 
-      avatar_ = "";
+      avatarId_ = "";
 
       birthday_ = "";
 
@@ -792,7 +792,7 @@ private static final long serialVersionUID = 0L;
       result.password_ = password_;
       result.nickname_ = nickname_;
       result.gender_ = gender_;
-      result.avatar_ = avatar_;
+      result.avatarId_ = avatarId_;
       result.birthday_ = birthday_;
       if (((bitField0_ & 0x00000001) != 0)) {
         interestHashTags_ = interestHashTags_.getUnmodifiableView();
@@ -862,8 +862,8 @@ private static final long serialVersionUID = 0L;
       if (other.gender_ != 0) {
         setGenderValue(other.getGenderValue());
       }
-      if (!other.getAvatar().isEmpty()) {
-        avatar_ = other.avatar_;
+      if (!other.getAvatarId().isEmpty()) {
+        avatarId_ = other.avatarId_;
         onChanged();
       }
       if (!other.getBirthday().isEmpty()) {
@@ -1192,78 +1192,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object avatar_ = "";
+    private java.lang.Object avatarId_ = "";
     /**
-     * <code>string avatar = 5;</code>
-     * @return The avatar.
+     * <code>string avatarId = 5;</code>
+     * @return The avatarId.
      */
-    public java.lang.String getAvatar() {
-      java.lang.Object ref = avatar_;
+    public java.lang.String getAvatarId() {
+      java.lang.Object ref = avatarId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        avatar_ = s;
+        avatarId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string avatar = 5;</code>
-     * @return The bytes for avatar.
+     * <code>string avatarId = 5;</code>
+     * @return The bytes for avatarId.
      */
     public com.google.protobuf.ByteString
-        getAvatarBytes() {
-      java.lang.Object ref = avatar_;
+        getAvatarIdBytes() {
+      java.lang.Object ref = avatarId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        avatar_ = b;
+        avatarId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string avatar = 5;</code>
-     * @param value The avatar to set.
+     * <code>string avatarId = 5;</code>
+     * @param value The avatarId to set.
      * @return This builder for chaining.
      */
-    public Builder setAvatar(
+    public Builder setAvatarId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      avatar_ = value;
+      avatarId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string avatar = 5;</code>
+     * <code>string avatarId = 5;</code>
      * @return This builder for chaining.
      */
-    public Builder clearAvatar() {
+    public Builder clearAvatarId() {
       
-      avatar_ = getDefaultInstance().getAvatar();
+      avatarId_ = getDefaultInstance().getAvatarId();
       onChanged();
       return this;
     }
     /**
-     * <code>string avatar = 5;</code>
-     * @param value The bytes for avatar to set.
+     * <code>string avatarId = 5;</code>
+     * @param value The bytes for avatarId to set.
      * @return This builder for chaining.
      */
-    public Builder setAvatarBytes(
+    public Builder setAvatarIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      avatar_ = value;
+      avatarId_ = value;
       onChanged();
       return this;
     }

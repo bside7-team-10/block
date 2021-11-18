@@ -8,30 +8,18 @@ public interface CreateCommentRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string author = 1;</code>
-   * @return The author.
-   */
-  java.lang.String getAuthor();
-  /**
-   * <code>string author = 1;</code>
-   * @return The bytes for author.
-   */
-  com.google.protobuf.ByteString
-      getAuthorBytes();
-
-  /**
-   * <code>int64 postId = 2;</code>
+   * <code>int64 postId = 1;</code>
    * @return The postId.
    */
   long getPostId();
 
   /**
-   * <code>string content = 3;</code>
+   * <code>string content = 2;</code>
    * @return The content.
    */
   java.lang.String getContent();
   /**
-   * <code>string content = 3;</code>
+   * <code>string content = 2;</code>
    * @return The bytes for content.
    */
   com.google.protobuf.ByteString

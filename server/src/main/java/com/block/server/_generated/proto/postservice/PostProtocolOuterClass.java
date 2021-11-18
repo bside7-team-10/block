@@ -45,20 +45,25 @@ public final class PostProtocolOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetPostResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DistanceFilter_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DistanceFilter_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Filter_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Filter_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GetPostsRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetPostsRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetPostsRequest_Filter_descriptor;
+    internal_static_PostSummary_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetPostsRequest_Filter_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetPostsRequest_Filter_DistanceFilter_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetPostsRequest_Filter_DistanceFilter_fieldAccessorTable;
+      internal_static_PostSummary_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GetPostsResponse_descriptor;
   static final 
@@ -158,74 +163,75 @@ public final class PostProtocolOuterClass {
       "commentId\030\001 \001(\t\022\016\n\006author\030\002 \001(\t\022\017\n\007conte" +
       "nt\030\003 \001(\t\022\021\n\tcreatedTS\030\004 \001(\005\022\022\n\nmodifiedT" +
       "S\030\005 \001(\005\"/\n\007UserDto\022\020\n\010nickname\030\001 \001(\t\022\022\n\n" +
-      "profileUrl\030\002 \001(\t\"\244\001\n\007PostDto\022\016\n\006postId\030\001" +
+      "profileUrl\030\002 \001(\t\"\265\001\n\007PostDto\022\016\n\006postId\030\001" +
       " \001(\003\022\030\n\006author\030\002 \001(\0132\010.UserDto\022\017\n\007conten" +
       "t\030\003 \001(\t\022\020\n\010imageUrl\030\004 \001(\t\022\r\n\005likes\030\005 \001(\005" +
       "\022\035\n\010comments\030\006 \003(\0132\013.CommentDto\022\036\n\010locat" +
-      "ion\030\007 \001(\0132\014.LocationDto\" \n\016GetPostReques" +
-      "t\022\016\n\006postId\030\001 \001(\003\"f\n\017GetPostResponse\022#\n\006" +
-      "status\030\001 \001(\0162\023.PostProtocolStatus\022\026\n\004pos" +
-      "t\030\002 \001(\0132\010.PostDto\022\026\n\016imageUploadUrl\030\003 \001(" +
-      "\t\"\273\002\n\017GetPostsRequest\022\022\n\npageNumber\030\001 \001(" +
-      "\005\022\032\n\rresultPerPage\030\002 \001(\005H\000\210\001\001\022%\n\017current" +
-      "Location\030\003 \001(\0132\014.LocationDto\022\'\n\006filter\030\004" +
-      " \001(\0132\027.GetPostsRequest.Filter\032\225\001\n\006Filter" +
-      "\022>\n\016distanceFilter\030\001 \001(\0132&.GetPostsReque" +
-      "st.Filter.DistanceFilter\022\026\n\016rightNowFilt" +
-      "er\030\002 \001(\010\0323\n\016DistanceFilter\022\017\n\007enabled\030\001 " +
-      "\001(\010\022\020\n\010distance\030\002 \001(\005B\020\n\016_resultPerPage\"" +
-      "P\n\020GetPostsResponse\022#\n\006status\030\001 \001(\0162\023.Po" +
-      "stProtocolStatus\022\027\n\005posts\030\002 \003(\0132\010.PostDt" +
-      "o\"T\n\021CreatePostRequest\022\016\n\006author\030\001 \001(\t\022\017" +
-      "\n\007content\030\002 \001(\t\022\036\n\010location\030\003 \001(\0132\014.Loca" +
-      "tionDto\"a\n\022CreatePostResponse\022#\n\006status\030" +
-      "\001 \001(\0162\023.PostProtocolStatus\022\016\n\006postId\030\002 \001" +
-      "(\003\022\026\n\016uploadImageUrl\030\003 \001(\t\"K\n\021ModifyPost" +
-      "Request\022\016\n\006postId\030\001 \001(\003\022\017\n\007content\030\002 \001(\t" +
-      "\022\025\n\rmodifiedImage\030\003 \001(\010\"a\n\022ModifyPostRes" +
-      "ponse\022#\n\006status\030\001 \001(\0162\023.PostProtocolStat" +
-      "us\022\016\n\006postId\030\002 \001(\003\022\026\n\016uploadImageUrl\030\003 \001" +
-      "(\t\"#\n\021DeletePostRequest\022\016\n\006postId\030\001 \001(\003\"" +
-      "I\n\022DeletePostResponse\022#\n\006status\030\001 \001(\0162\023." +
-      "PostProtocolStatus\022\016\n\006postId\030\002 \001(\003\"G\n\024Cr" +
-      "eateCommentRequest\022\016\n\006author\030\001 \001(\t\022\016\n\006po" +
-      "stId\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\"O\n\025CreateCom" +
-      "mentResponse\022#\n\006status\030\001 \001(\0162\023.PostProto" +
-      "colStatus\022\021\n\tcommentId\030\002 \001(\003\":\n\024ModifyCo" +
-      "mmentRequest\022\021\n\tcommentId\030\001 \001(\003\022\017\n\007conte" +
-      "nt\030\002 \001(\t\"O\n\025ModifyCommentResponse\022#\n\006sta" +
-      "tus\030\001 \001(\0162\023.PostProtocolStatus\022\021\n\tcommen" +
-      "tId\030\002 \001(\003\")\n\024DeleteCommentRequest\022\021\n\tcom" +
-      "mentId\030\001 \001(\003\"<\n\025DeleteCommentResponse\022#\n" +
-      "\006status\030\001 \001(\0162\023.PostProtocolStatus\"/\n\017Li" +
-      "kePostRequest\022\016\n\006postId\030\001 \001(\003\022\014\n\004like\030\002 " +
-      "\001(\010\"O\n\020LikePostResponse\022#\n\006status\030\001 \001(\0162" +
-      "\023.PostProtocolStatus\022\026\n\004post\030\002 \001(\0132\010.Pos" +
-      "tDto\";\n\030UploadImageResultRequest\022\016\n\006post" +
-      "Id\030\001 \001(\003\022\017\n\007success\030\002 \001(\010\"P\n\031UploadImage" +
-      "ResultResponse\022#\n\006status\030\001 \001(\0162\023.PostPro" +
-      "tocolStatus\022\016\n\006postId\030\002 \001(\003*f\n\022PostProto" +
-      "colStatus\022\013\n\007SUCCESS\020\000\022\013\n\007NO_POST\020\001\022\016\n\nN" +
-      "O_COMMENT\020\002\022\022\n\016NOT_AUTHORIZED\020\003\022\022\n\016INTER" +
-      "NAL_ERROR\020c2\234\005\n\014PostProtocol\022.\n\007GetPost\022" +
-      "\017.GetPostRequest\032\020.GetPostResponse\"\000\0221\n\010" +
-      "GetPosts\022\020.GetPostsRequest\032\021.GetPostsRes" +
-      "ponse\"\000\0227\n\nCreatePost\022\022.CreatePostReques" +
-      "t\032\023.CreatePostResponse\"\000\0227\n\nModifyPost\022\022" +
-      ".ModifyPostRequest\032\023.ModifyPostResponse\"" +
-      "\000\0227\n\nDeletePost\022\022.DeletePostRequest\032\023.De" +
-      "letePostResponse\"\000\022@\n\rCreateComment\022\025.Cr" +
-      "eateCommentRequest\032\026.CreateCommentRespon" +
-      "se\"\000\022@\n\rModifyComment\022\025.ModifyCommentReq" +
-      "uest\032\026.ModifyCommentResponse\"\000\022@\n\rDelete" +
-      "Comment\022\025.DeleteCommentRequest\032\026.DeleteC" +
-      "ommentResponse\"\000\0221\n\010LikePost\022\020.LikePostR" +
-      "equest\032\021.LikePostResponse\"\000\0227\n\016CancelLik" +
-      "ePost\022\020.LikePostRequest\032\021.LikePostRespon" +
-      "se\"\000\022L\n\021UploadImageResult\022\031.UploadImageR" +
-      "esultRequest\032\032.UploadImageResultResponse" +
-      "\"\000B1\n-com.block.server._generated.proto." +
-      "postserviceP\001b\006proto3"
+      "ion\030\007 \001(\0132\014.LocationDto\022\017\n\007address\030\010 \001(\t" +
+      "\" \n\016GetPostRequest\022\016\n\006postId\030\001 \001(\003\"f\n\017Ge" +
+      "tPostResponse\022#\n\006status\030\001 \001(\0162\023.PostProt" +
+      "ocolStatus\022\026\n\004post\030\002 \001(\0132\010.PostDto\022\026\n\016im" +
+      "ageUploadUrl\030\003 \001(\t\"3\n\016DistanceFilter\022\017\n\007" +
+      "enabled\030\001 \001(\010\022\020\n\010distance\030\002 \001(\005\"I\n\006Filte" +
+      "r\022\'\n\016distanceFilter\030\001 \001(\0132\017.DistanceFilt" +
+      "er\022\026\n\016rightNowFilter\030\002 \001(\010\"\223\001\n\017GetPostsR" +
+      "equest\022\022\n\npageNumber\030\001 \001(\005\022\032\n\rresultPerP" +
+      "age\030\002 \001(\005H\000\210\001\001\022%\n\017currentLocation\030\003 \001(\0132" +
+      "\014.LocationDto\022\027\n\006filter\030\004 \001(\0132\007.FilterB\020" +
+      "\n\016_resultPerPage\"=\n\013PostSummary\022\016\n\006postI" +
+      "d\030\001 \001(\003\022\036\n\010location\030\002 \001(\0132\014.LocationDto\"" +
+      "T\n\020GetPostsResponse\022#\n\006status\030\001 \001(\0162\023.Po" +
+      "stProtocolStatus\022\033\n\005posts\030\002 \003(\0132\014.PostSu" +
+      "mmary\"U\n\021CreatePostRequest\022\017\n\007content\030\001 " +
+      "\001(\t\022\036\n\010location\030\002 \001(\0132\014.LocationDto\022\017\n\007a" +
+      "ddress\030\003 \001(\t\"a\n\022CreatePostResponse\022#\n\006st" +
+      "atus\030\001 \001(\0162\023.PostProtocolStatus\022\016\n\006postI" +
+      "d\030\002 \001(\003\022\026\n\016uploadImageUrl\030\003 \001(\t\"K\n\021Modif" +
+      "yPostRequest\022\016\n\006postId\030\001 \001(\003\022\017\n\007content\030" +
+      "\002 \001(\t\022\025\n\rmodifiedImage\030\003 \001(\010\"a\n\022ModifyPo" +
+      "stResponse\022#\n\006status\030\001 \001(\0162\023.PostProtoco" +
+      "lStatus\022\016\n\006postId\030\002 \001(\003\022\026\n\016uploadImageUr" +
+      "l\030\003 \001(\t\"#\n\021DeletePostRequest\022\016\n\006postId\030\001" +
+      " \001(\003\"I\n\022DeletePostResponse\022#\n\006status\030\001 \001" +
+      "(\0162\023.PostProtocolStatus\022\016\n\006postId\030\002 \001(\003\"" +
+      "7\n\024CreateCommentRequest\022\016\n\006postId\030\001 \001(\003\022" +
+      "\017\n\007content\030\002 \001(\t\"O\n\025CreateCommentRespons" +
+      "e\022#\n\006status\030\001 \001(\0162\023.PostProtocolStatus\022\021" +
+      "\n\tcommentId\030\002 \001(\003\":\n\024ModifyCommentReques" +
+      "t\022\021\n\tcommentId\030\001 \001(\003\022\017\n\007content\030\002 \001(\t\"O\n" +
+      "\025ModifyCommentResponse\022#\n\006status\030\001 \001(\0162\023" +
+      ".PostProtocolStatus\022\021\n\tcommentId\030\002 \001(\003\")" +
+      "\n\024DeleteCommentRequest\022\021\n\tcommentId\030\001 \001(" +
+      "\003\"<\n\025DeleteCommentResponse\022#\n\006status\030\001 \001" +
+      "(\0162\023.PostProtocolStatus\"/\n\017LikePostReque" +
+      "st\022\016\n\006postId\030\001 \001(\003\022\014\n\004like\030\002 \001(\010\"O\n\020Like" +
+      "PostResponse\022#\n\006status\030\001 \001(\0162\023.PostProto" +
+      "colStatus\022\026\n\004post\030\002 \001(\0132\010.PostDto\";\n\030Upl" +
+      "oadImageResultRequest\022\016\n\006postId\030\001 \001(\003\022\017\n" +
+      "\007success\030\002 \001(\010\"P\n\031UploadImageResultRespo" +
+      "nse\022#\n\006status\030\001 \001(\0162\023.PostProtocolStatus" +
+      "\022\016\n\006postId\030\002 \001(\003*f\n\022PostProtocolStatus\022\013" +
+      "\n\007SUCCESS\020\000\022\013\n\007NO_POST\020\001\022\016\n\nNO_COMMENT\020\002" +
+      "\022\022\n\016NOT_AUTHORIZED\020\003\022\022\n\016INTERNAL_ERROR\020c" +
+      "2\234\005\n\014PostProtocol\022.\n\007GetPost\022\017.GetPostRe" +
+      "quest\032\020.GetPostResponse\"\000\0221\n\010GetPosts\022\020." +
+      "GetPostsRequest\032\021.GetPostsResponse\"\000\0227\n\n" +
+      "CreatePost\022\022.CreatePostRequest\032\023.CreateP" +
+      "ostResponse\"\000\0227\n\nModifyPost\022\022.ModifyPost" +
+      "Request\032\023.ModifyPostResponse\"\000\0227\n\nDelete" +
+      "Post\022\022.DeletePostRequest\032\023.DeletePostRes" +
+      "ponse\"\000\022@\n\rCreateComment\022\025.CreateComment" +
+      "Request\032\026.CreateCommentResponse\"\000\022@\n\rMod" +
+      "ifyComment\022\025.ModifyCommentRequest\032\026.Modi" +
+      "fyCommentResponse\"\000\022@\n\rDeleteComment\022\025.D" +
+      "eleteCommentRequest\032\026.DeleteCommentRespo" +
+      "nse\"\000\0221\n\010LikePost\022\020.LikePostRequest\032\021.Li" +
+      "kePostResponse\"\000\0227\n\016CancelLikePost\022\020.Lik" +
+      "ePostRequest\032\021.LikePostResponse\"\000\022L\n\021Upl" +
+      "oadImageResult\022\031.UploadImageResultReques" +
+      "t\032\032.UploadImageResultResponse\"\000B1\n-com.b" +
+      "lock.server._generated.proto.postservice" +
+      "P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -254,7 +260,7 @@ public final class PostProtocolOuterClass {
     internal_static_PostDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PostDto_descriptor,
-        new java.lang.String[] { "PostId", "Author", "Content", "ImageUrl", "Likes", "Comments", "Location", });
+        new java.lang.String[] { "PostId", "Author", "Content", "ImageUrl", "Likes", "Comments", "Location", "Address", });
     internal_static_GetPostRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_GetPostRequest_fieldAccessorTable = new
@@ -267,122 +273,128 @@ public final class PostProtocolOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetPostResponse_descriptor,
         new java.lang.String[] { "Status", "Post", "ImageUploadUrl", });
-    internal_static_GetPostsRequest_descriptor =
+    internal_static_DistanceFilter_descriptor =
       getDescriptor().getMessageTypes().get(6);
+    internal_static_DistanceFilter_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DistanceFilter_descriptor,
+        new java.lang.String[] { "Enabled", "Distance", });
+    internal_static_Filter_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_Filter_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Filter_descriptor,
+        new java.lang.String[] { "DistanceFilter", "RightNowFilter", });
+    internal_static_GetPostsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_GetPostsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetPostsRequest_descriptor,
         new java.lang.String[] { "PageNumber", "ResultPerPage", "CurrentLocation", "Filter", "ResultPerPage", });
-    internal_static_GetPostsRequest_Filter_descriptor =
-      internal_static_GetPostsRequest_descriptor.getNestedTypes().get(0);
-    internal_static_GetPostsRequest_Filter_fieldAccessorTable = new
+    internal_static_PostSummary_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_PostSummary_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetPostsRequest_Filter_descriptor,
-        new java.lang.String[] { "DistanceFilter", "RightNowFilter", });
-    internal_static_GetPostsRequest_Filter_DistanceFilter_descriptor =
-      internal_static_GetPostsRequest_Filter_descriptor.getNestedTypes().get(0);
-    internal_static_GetPostsRequest_Filter_DistanceFilter_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetPostsRequest_Filter_DistanceFilter_descriptor,
-        new java.lang.String[] { "Enabled", "Distance", });
+        internal_static_PostSummary_descriptor,
+        new java.lang.String[] { "PostId", "Location", });
     internal_static_GetPostsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_GetPostsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetPostsResponse_descriptor,
         new java.lang.String[] { "Status", "Posts", });
     internal_static_CreatePostRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_CreatePostRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreatePostRequest_descriptor,
-        new java.lang.String[] { "Author", "Content", "Location", });
+        new java.lang.String[] { "Content", "Location", "Address", });
     internal_static_CreatePostResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_CreatePostResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreatePostResponse_descriptor,
         new java.lang.String[] { "Status", "PostId", "UploadImageUrl", });
     internal_static_ModifyPostRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_ModifyPostRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyPostRequest_descriptor,
         new java.lang.String[] { "PostId", "Content", "ModifiedImage", });
     internal_static_ModifyPostResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_ModifyPostResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyPostResponse_descriptor,
         new java.lang.String[] { "Status", "PostId", "UploadImageUrl", });
     internal_static_DeletePostRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_DeletePostRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeletePostRequest_descriptor,
         new java.lang.String[] { "PostId", });
     internal_static_DeletePostResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_DeletePostResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeletePostResponse_descriptor,
         new java.lang.String[] { "Status", "PostId", });
     internal_static_CreateCommentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_CreateCommentRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreateCommentRequest_descriptor,
-        new java.lang.String[] { "Author", "PostId", "Content", });
+        new java.lang.String[] { "PostId", "Content", });
     internal_static_CreateCommentResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_CreateCommentResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreateCommentResponse_descriptor,
         new java.lang.String[] { "Status", "CommentId", });
     internal_static_ModifyCommentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_ModifyCommentRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyCommentRequest_descriptor,
         new java.lang.String[] { "CommentId", "Content", });
     internal_static_ModifyCommentResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_ModifyCommentResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyCommentResponse_descriptor,
         new java.lang.String[] { "Status", "CommentId", });
     internal_static_DeleteCommentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_DeleteCommentRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeleteCommentRequest_descriptor,
         new java.lang.String[] { "CommentId", });
     internal_static_DeleteCommentResponse_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_DeleteCommentResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeleteCommentResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_LikePostRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_LikePostRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LikePostRequest_descriptor,
         new java.lang.String[] { "PostId", "Like", });
     internal_static_LikePostResponse_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_LikePostResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LikePostResponse_descriptor,
         new java.lang.String[] { "Status", "Post", });
     internal_static_UploadImageResultRequest_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_UploadImageResultRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UploadImageResultRequest_descriptor,
         new java.lang.String[] { "PostId", "Success", });
     internal_static_UploadImageResultResponse_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_UploadImageResultResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UploadImageResultResponse_descriptor,

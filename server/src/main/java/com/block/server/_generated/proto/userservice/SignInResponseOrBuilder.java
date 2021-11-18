@@ -31,16 +31,16 @@ public interface SignInResponseOrBuilder extends
       getNicknameBytes();
 
   /**
-   * <code>string profileUrl = 3;</code>
-   * @return The profileUrl.
+   * <code>string avatarId = 3;</code>
+   * @return The avatarId.
    */
-  java.lang.String getProfileUrl();
+  java.lang.String getAvatarId();
   /**
-   * <code>string profileUrl = 3;</code>
-   * @return The bytes for profileUrl.
+   * <code>string avatarId = 3;</code>
+   * @return The bytes for avatarId.
    */
   com.google.protobuf.ByteString
-      getProfileUrlBytes();
+      getAvatarIdBytes();
 
   /**
    * <code>string token = 4;</code>

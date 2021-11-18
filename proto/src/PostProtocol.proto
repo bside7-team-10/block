@@ -63,6 +63,7 @@ message PostDto {
     int32 likes = 5;
     repeated CommentDto comments = 6;
     LocationDto location = 7;
+    string address = 8;
 }
 
 message GetPostRequest {
@@ -75,30 +76,37 @@ message GetPostResponse {
     string imageUploadUrl = 3;
 }
 
+message DistanceFilter {
+    bool enabled = 1;
+    int32 distance = 2;
+}
+
+message Filter {
+    DistanceFilter distanceFilter = 1;
+    bool rightNowFilter = 2;
+}
+
 message GetPostsRequest {
     int32 pageNumber = 1;
     optional int32 resultPerPage = 2; // default = 10
     LocationDto currentLocation = 3;
-    message Filter {
-        message DistanceFilter {
-            bool enabled = 1;
-            int32 distance = 2;
-        }
-        DistanceFilter distanceFilter = 1;
-        bool rightNowFilter = 2;
-    }
     Filter filter = 4;
+}
+
+message PostSummary {
+    int64 postId = 1;
+    LocationDto location = 2;
 }
 
 message GetPostsResponse {
     PostProtocolStatus status = 1;
-    repeated PostDto posts = 2;
+    repeated PostSummary posts = 2;
 }
 
 message CreatePostRequest {
-    string author = 1;
-    string content = 2;
-    LocationDto location = 3;
+    string content = 1;
+    LocationDto location = 2;
+    string address = 3;
 }
 
 message CreatePostResponse {
@@ -129,9 +137,8 @@ message DeletePostResponse {
 }
 
 message CreateCommentRequest {
-    string author = 1;
-    int64 postId = 2;
-    string content = 3;
+    int64 postId = 1;
+    string content = 2;
 }
 
 message CreateCommentResponse {

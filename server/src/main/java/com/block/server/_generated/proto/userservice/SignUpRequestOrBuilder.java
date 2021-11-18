@@ -55,16 +55,16 @@ public interface SignUpRequestOrBuilder extends
   com.block.server._generated.proto.userservice.SignUpRequest.Gender getGender();
 
   /**
-   * <code>string avatar = 5;</code>
-   * @return The avatar.
+   * <code>string avatarId = 5;</code>
+   * @return The avatarId.
    */
-  java.lang.String getAvatar();
+  java.lang.String getAvatarId();
   /**
-   * <code>string avatar = 5;</code>
-   * @return The bytes for avatar.
+   * <code>string avatarId = 5;</code>
+   * @return The bytes for avatarId.
    */
   com.google.protobuf.ByteString
-      getAvatarBytes();
+      getAvatarIdBytes();
 
   /**
    * <code>string birthday = 6;</code>

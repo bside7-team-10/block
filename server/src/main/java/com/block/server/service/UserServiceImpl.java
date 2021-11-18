@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
         SignInResponse response = SignInResponse.newBuilder()
                 .setStatus(SignInResponse.SignInStatus.SUCCESS)
                 .setNickname(user.get().getNickname())
-                .setProfileUrl(user.get().getProfile())
+                .setAvatarId(user.get().getProfile())
                 .setToken(token)
                 .build();
 
@@ -84,14 +84,13 @@ public class UserServiceImpl implements UserService {
                 .map(x -> hashTagService.getOrCreateTag(x)).collect(Collectors.toList());
 
         var encodedPassword = passwordEncoder.encode(request.getPassword());
-        var profileUrl = "http://example.com/image/" + request.getAvatar();
         var user = User.builder()
                 .email(request.getEmail())
                 .password(encodedPassword)
                 .nickname(request.getNickname())
                 .birthday(LocalDate.parse(request.getBirthday()))
                 .gender(request.getGender())
-                .profile(profileUrl)
+                .profile(request.getAvatarId())
                 .social("")                 // temp
                 .roles(Roles.USER)          // default role
                 .interestHashTags(hashTags)
@@ -102,7 +101,7 @@ public class UserServiceImpl implements UserService {
         return signUpResponseBuilder
                 .setStatus(SignUpResponse.SignUpStatus.SUCCESS)
                 .setNickname(savedUser.getNickname())
-                .setProfileUrl(savedUser.getProfile())
+                .setAvatarId(savedUser.getProfile())
                 .build();
     }
 
