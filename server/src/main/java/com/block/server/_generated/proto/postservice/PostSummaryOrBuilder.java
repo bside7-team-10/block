@@ -3,21 +3,15 @@
 
 package com.block.server._generated.proto.postservice;
 
-public interface CreatePostRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:CreatePostRequest)
+public interface PostSummaryOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:PostSummary)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string content = 1;</code>
-   * @return The content.
+   * <code>int64 postId = 1;</code>
+   * @return The postId.
    */
-  java.lang.String getContent();
-  /**
-   * <code>string content = 1;</code>
-   * @return The bytes for content.
-   */
-  com.google.protobuf.ByteString
-      getContentBytes();
+  long getPostId();
 
   /**
    * <code>.LocationDto location = 2;</code>
@@ -33,16 +27,4 @@ public interface CreatePostRequestOrBuilder extends
    * <code>.LocationDto location = 2;</code>
    */
   com.block.server._generated.proto.postservice.LocationDtoOrBuilder getLocationOrBuilder();
-
-  /**
-   * <code>string address = 3;</code>
-   * @return The address.
-   */
-  java.lang.String getAddress();
-  /**
-   * <code>string address = 3;</code>
-   * @return The bytes for address.
-   */
-  com.google.protobuf.ByteString
-      getAddressBytes();
 }

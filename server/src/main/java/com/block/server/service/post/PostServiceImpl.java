@@ -31,7 +31,9 @@ public class PostServiceImpl implements PostService {
         var post = Post.builder()
                 .user(user)
                 .contents(createPostRequest.getContent())
-                .location(new Point(createPostRequest.getLocation().getLat(), createPostRequest.getLocation().getLong()))
+                .longitude(createPostRequest.getLocation().getLong())
+                .latitude(createPostRequest.getLocation().getLat())
+                .address(createPostRequest.getAddress())
                 .build();
 
         var savedPost = postRepository.save(post);
@@ -53,7 +55,7 @@ public class PostServiceImpl implements PostService {
 
         var post = postRepository.findById(request.getPostId()).orElse(null);
 
-        var postDto = mapper(post);
+        var postDto = getPostMapper(post);
         var response = GetPostResponse.newBuilder()
                 .setPost(postDto)
                 .setStatus(PostProtocolStatus.SUCCESS)
@@ -63,17 +65,39 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    private Point KilometersToGeogrpahicDistance(int range) {
+        var latDiff = range / 110.574;
+        var longDiff = range / (111.320 * Math.cos(latDiff * Math.PI / 180));
+
+        return new Point(longDiff, latDiff);
+    }
+
     @Transactional
     @Override
     public GetPostsResponse getPosts(GetPostsRequest getPostsRequest) {
+        var userLoc = getPostsRequest.getCurrentLocation();
+        var range = 1; // default 1km
+        if (getPostsRequest.getFilter().getDistanceFilter().getEnabled()) {
+            range = getPostsRequest.getFilter().getDistanceFilter().getDistance();
+        }
 
-        var posts = postRepository.findWithPagination(PageRequest.of(getPostsRequest.getPageNumber(), getPostsRequest.getResultPerPage()));
-        var postMapper = com.block.server._generated.proto.postservice.PostDto.getDefaultInstance();
+        var posts = postRepository.findWithLocationRange(
+                PageRequest.of(getPostsRequest.getPageNumber(), getPostsRequest.getResultPerPage()),
+                userLoc.getLong(),
+                userLoc.getLat(),
+                range);
         var response = GetPostsResponse.newBuilder();
 
         for (var post : posts) {
-            postMapper = mapper(post);
-            response.addPosts(postMapper);
+            var summary = PostSummary.newBuilder()
+                    .setPostId(post.getId())
+                    .setLocation(
+                            LocationDto.newBuilder()
+                                    .setLat(post.getLatitude())
+                                    .setLong(post.getLongitude()))
+                    .build();
+
+            response.addPosts(summary);
         }
         response.setStatus(PostProtocolStatus.SUCCESS);
 
@@ -81,7 +105,7 @@ public class PostServiceImpl implements PostService {
 
     }
 
-    private PostDto mapper(Post post) {
+    private PostDto getPostMapper(Post post) {
 
         var imageUrl = postImageStorageService.getDownloadUrl(post.getImageKey());
         if (imageUrl.isEmpty()) {
@@ -101,8 +125,9 @@ public class PostServiceImpl implements PostService {
                 //.setComments() -- comment repeat
                 .setLocation(
                         LocationDto.newBuilder()
-                                .setLat(post.getLocation().getX())
-                                .setLong(post.getLocation().getY()))
+                                .setLat(post.getLatitude())
+                                .setLong(post.getLongitude()))
+                .setAddress(post.getAddress())
                 .build();
 
         return ResponseMapper;

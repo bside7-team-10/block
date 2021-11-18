@@ -1,6 +1,5 @@
 package com.block.server.security;
 
-import com.amazonaws.services.s3.AmazonS3Client;
 import com.block.server._generated.proto.postservice.CreatePostRequest;
 import com.block.server._generated.proto.postservice.LocationDto;
 import com.block.server._generated.proto.postservice.PostProtocolGrpc;
@@ -18,7 +17,6 @@ import io.grpc.stub.MetadataUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,7 +52,7 @@ public class gRpcJwtTest {
     void grpcSignIntest() {
         var testUser = TestUser.U1();
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var profileUrl = "http://example.com/image/" + testUser.getAvatarId();
         var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
         doReturn(Optional.ofNullable(expectedUser))
                 .when(userRepository)
@@ -83,7 +81,7 @@ public class gRpcJwtTest {
     void grpcCreatePostTest_Success() {
         var testUser = TestUser.U1();
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var profileUrl = "http://example.com/image/" + testUser.getAvatarId();
         var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
         ReflectionTestUtils.setField(expectedUser, "id", 1L);
 
@@ -136,7 +134,7 @@ public class gRpcJwtTest {
     void grpcCreatePostTest_fail() {
         var testUser = TestUser.U1();
         var encryptedPassword = passwordEncoder.encode(testUser.getRawPassword());
-        var profileUrl = "http://example.com/image/" + testUser.getAvatar();
+        var profileUrl = "http://example.com/image/" + testUser.getAvatarId();
         var expectedUser = testUser.toUser(encryptedPassword, profileUrl);
         ReflectionTestUtils.setField(expectedUser, "id", 1L);
 

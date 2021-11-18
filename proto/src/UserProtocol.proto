@@ -25,7 +25,7 @@ message SignInResponse {
     }
     SignInStatus status = 1;
     string nickname = 2;
-    string profileUrl = 3;
+    string avatarId = 3;
     string token=4;
 }
 
@@ -38,7 +38,7 @@ message SignUpRequest {
         FEMALE = 1;
     }
     Gender gender = 4;
-    string avatar = 5;
+    string avatarId = 5;
     string birthday = 6;
     repeated string interestHashTags = 7;
 }
@@ -52,5 +52,5 @@ message SignUpResponse {
     }
     SignUpStatus status = 1;
     string nickname = 2;
-    string profileUrl = 3;
+    string avatarId = 3;
 }

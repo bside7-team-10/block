@@ -300,7 +300,7 @@ proto.SignInResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     nickname: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    profileurl: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    avatarid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     token: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
@@ -348,7 +348,7 @@ proto.SignInResponse.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setProfileurl(value);
+      msg.setAvatarid(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -397,7 +397,7 @@ proto.SignInResponse.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getProfileurl();
+  f = message.getAvatarid();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -461,10 +461,10 @@ proto.SignInResponse.prototype.setNickname = function(value) {
 
 
 /**
- * optional string profileUrl = 3;
+ * optional string avatarId = 3;
  * @return {string}
  */
-proto.SignInResponse.prototype.getProfileurl = function() {
+proto.SignInResponse.prototype.getAvatarid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -473,7 +473,7 @@ proto.SignInResponse.prototype.getProfileurl = function() {
  * @param {string} value
  * @return {!proto.SignInResponse} returns this
  */
-proto.SignInResponse.prototype.setProfileurl = function(value) {
+proto.SignInResponse.prototype.setAvatarid = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
@@ -539,7 +539,7 @@ proto.SignUpRequest.toObject = function(includeInstance, msg) {
     password: jspb.Message.getFieldWithDefault(msg, 2, ""),
     nickname: jspb.Message.getFieldWithDefault(msg, 3, ""),
     gender: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    avatar: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    avatarid: jspb.Message.getFieldWithDefault(msg, 5, ""),
     birthday: jspb.Message.getFieldWithDefault(msg, 6, ""),
     interesthashtagsList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
   };
@@ -596,7 +596,7 @@ proto.SignUpRequest.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAvatar(value);
+      msg.setAvatarid(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
@@ -663,7 +663,7 @@ proto.SignUpRequest.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getAvatar();
+  f = message.getAvatarid();
   if (f.length > 0) {
     writer.writeString(
       5,
@@ -768,10 +768,10 @@ proto.SignUpRequest.prototype.setGender = function(value) {
 
 
 /**
- * optional string avatar = 5;
+ * optional string avatarId = 5;
  * @return {string}
  */
-proto.SignUpRequest.prototype.getAvatar = function() {
+proto.SignUpRequest.prototype.getAvatarid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
@@ -780,7 +780,7 @@ proto.SignUpRequest.prototype.getAvatar = function() {
  * @param {string} value
  * @return {!proto.SignUpRequest} returns this
  */
-proto.SignUpRequest.prototype.setAvatar = function(value) {
+proto.SignUpRequest.prototype.setAvatarid = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
 };
 
@@ -874,7 +874,7 @@ proto.SignUpResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     nickname: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    profileurl: jspb.Message.getFieldWithDefault(msg, 3, "")
+    avatarid: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -921,7 +921,7 @@ proto.SignUpResponse.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setProfileurl(value);
+      msg.setAvatarid(value);
       break;
     default:
       reader.skipField();
@@ -966,7 +966,7 @@ proto.SignUpResponse.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getProfileurl();
+  f = message.getAvatarid();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -1023,10 +1023,10 @@ proto.SignUpResponse.prototype.setNickname = function(value) {
 
 
 /**
- * optional string profileUrl = 3;
+ * optional string avatarId = 3;
  * @return {string}
  */
-proto.SignUpResponse.prototype.getProfileurl = function() {
+proto.SignUpResponse.prototype.getAvatarid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -1035,7 +1035,7 @@ proto.SignUpResponse.prototype.getProfileurl = function() {
  * @param {string} value
  * @return {!proto.SignUpResponse} returns this
  */
-proto.SignUpResponse.prototype.setProfileurl = function(value) {
+proto.SignUpResponse.prototype.setAvatarid = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 

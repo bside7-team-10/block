@@ -48,17 +48,17 @@ public interface GetPostsRequestOrBuilder extends
   com.block.server._generated.proto.postservice.LocationDtoOrBuilder getCurrentLocationOrBuilder();
 
   /**
-   * <code>.GetPostsRequest.Filter filter = 4;</code>
+   * <code>.Filter filter = 4;</code>
    * @return Whether the filter field is set.
    */
   boolean hasFilter();
   /**
-   * <code>.GetPostsRequest.Filter filter = 4;</code>
+   * <code>.Filter filter = 4;</code>
    * @return The filter.
    */
-  com.block.server._generated.proto.postservice.GetPostsRequest.Filter getFilter();
+  com.block.server._generated.proto.postservice.Filter getFilter();
   /**
-   * <code>.GetPostsRequest.Filter filter = 4;</code>
+   * <code>.Filter filter = 4;</code>
    */
-  com.block.server._generated.proto.postservice.GetPostsRequest.FilterOrBuilder getFilterOrBuilder();
+  com.block.server._generated.proto.postservice.FilterOrBuilder getFilterOrBuilder();
 }

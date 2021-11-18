@@ -4,26 +4,25 @@
 package com.block.server._generated.proto.postservice;
 
 /**
- * Protobuf type {@code CreateCommentRequest}
+ * Protobuf type {@code DistanceFilter}
  */
-public final class CreateCommentRequest extends
+public final class DistanceFilter extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:CreateCommentRequest)
-    CreateCommentRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:DistanceFilter)
+    DistanceFilterOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use CreateCommentRequest.newBuilder() to construct.
-  private CreateCommentRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use DistanceFilter.newBuilder() to construct.
+  private DistanceFilter(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private CreateCommentRequest() {
-    content_ = "";
+  private DistanceFilter() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new CreateCommentRequest();
+    return new DistanceFilter();
   }
 
   @java.lang.Override
@@ -31,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private CreateCommentRequest(
+  private DistanceFilter(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -51,13 +50,12 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            postId_ = input.readInt64();
+            enabled_ = input.readBool();
             break;
           }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 16: {
 
-            content_ = s;
+            distance_ = input.readInt32();
             break;
           }
           default: {
@@ -81,64 +79,37 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_DistanceFilter_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_fieldAccessorTable
+    return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_DistanceFilter_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.block.server._generated.proto.postservice.CreateCommentRequest.class, com.block.server._generated.proto.postservice.CreateCommentRequest.Builder.class);
+            com.block.server._generated.proto.postservice.DistanceFilter.class, com.block.server._generated.proto.postservice.DistanceFilter.Builder.class);
   }
 
-  public static final int POSTID_FIELD_NUMBER = 1;
-  private long postId_;
+  public static final int ENABLED_FIELD_NUMBER = 1;
+  private boolean enabled_;
   /**
-   * <code>int64 postId = 1;</code>
-   * @return The postId.
+   * <code>bool enabled = 1;</code>
+   * @return The enabled.
    */
   @java.lang.Override
-  public long getPostId() {
-    return postId_;
+  public boolean getEnabled() {
+    return enabled_;
   }
 
-  public static final int CONTENT_FIELD_NUMBER = 2;
-  private volatile java.lang.Object content_;
+  public static final int DISTANCE_FIELD_NUMBER = 2;
+  private int distance_;
   /**
-   * <code>string content = 2;</code>
-   * @return The content.
+   * <code>int32 distance = 2;</code>
+   * @return The distance.
    */
   @java.lang.Override
-  public java.lang.String getContent() {
-    java.lang.Object ref = content_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      content_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string content = 2;</code>
-   * @return The bytes for content.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getContentBytes() {
-    java.lang.Object ref = content_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      content_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getDistance() {
+    return distance_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -155,11 +126,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (postId_ != 0L) {
-      output.writeInt64(1, postId_);
+    if (enabled_ != false) {
+      output.writeBool(1, enabled_);
     }
-    if (!getContentBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, content_);
+    if (distance_ != 0) {
+      output.writeInt32(2, distance_);
     }
     unknownFields.writeTo(output);
   }
@@ -170,12 +141,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (postId_ != 0L) {
+    if (enabled_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, postId_);
+        .computeBoolSize(1, enabled_);
     }
-    if (!getContentBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, content_);
+    if (distance_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, distance_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -187,15 +159,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.block.server._generated.proto.postservice.CreateCommentRequest)) {
+    if (!(obj instanceof com.block.server._generated.proto.postservice.DistanceFilter)) {
       return super.equals(obj);
     }
-    com.block.server._generated.proto.postservice.CreateCommentRequest other = (com.block.server._generated.proto.postservice.CreateCommentRequest) obj;
+    com.block.server._generated.proto.postservice.DistanceFilter other = (com.block.server._generated.proto.postservice.DistanceFilter) obj;
 
-    if (getPostId()
-        != other.getPostId()) return false;
-    if (!getContent()
-        .equals(other.getContent())) return false;
+    if (getEnabled()
+        != other.getEnabled()) return false;
+    if (getDistance()
+        != other.getDistance()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -207,79 +179,79 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + POSTID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getPostId());
-    hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-    hash = (53 * hash) + getContent().hashCode();
+    hash = (37 * hash) + ENABLED_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getEnabled());
+    hash = (37 * hash) + DISTANCE_FIELD_NUMBER;
+    hash = (53 * hash) + getDistance();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(byte[] data)
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseDelimitedFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest parseFrom(
+  public static com.block.server._generated.proto.postservice.DistanceFilter parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -292,7 +264,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.block.server._generated.proto.postservice.CreateCommentRequest prototype) {
+  public static Builder newBuilder(com.block.server._generated.proto.postservice.DistanceFilter prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -308,26 +280,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code CreateCommentRequest}
+   * Protobuf type {@code DistanceFilter}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:CreateCommentRequest)
-      com.block.server._generated.proto.postservice.CreateCommentRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:DistanceFilter)
+      com.block.server._generated.proto.postservice.DistanceFilterOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_DistanceFilter_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_fieldAccessorTable
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_DistanceFilter_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.CreateCommentRequest.class, com.block.server._generated.proto.postservice.CreateCommentRequest.Builder.class);
+              com.block.server._generated.proto.postservice.DistanceFilter.class, com.block.server._generated.proto.postservice.DistanceFilter.Builder.class);
     }
 
-    // Construct using com.block.server._generated.proto.postservice.CreateCommentRequest.newBuilder()
+    // Construct using com.block.server._generated.proto.postservice.DistanceFilter.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -345,9 +317,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      postId_ = 0L;
+      enabled_ = false;
 
-      content_ = "";
+      distance_ = 0;
 
       return this;
     }
@@ -355,17 +327,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_CreateCommentRequest_descriptor;
+      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_DistanceFilter_descriptor;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstanceForType() {
-      return com.block.server._generated.proto.postservice.CreateCommentRequest.getDefaultInstance();
+    public com.block.server._generated.proto.postservice.DistanceFilter getDefaultInstanceForType() {
+      return com.block.server._generated.proto.postservice.DistanceFilter.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest build() {
-      com.block.server._generated.proto.postservice.CreateCommentRequest result = buildPartial();
+    public com.block.server._generated.proto.postservice.DistanceFilter build() {
+      com.block.server._generated.proto.postservice.DistanceFilter result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -373,10 +345,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.block.server._generated.proto.postservice.CreateCommentRequest buildPartial() {
-      com.block.server._generated.proto.postservice.CreateCommentRequest result = new com.block.server._generated.proto.postservice.CreateCommentRequest(this);
-      result.postId_ = postId_;
-      result.content_ = content_;
+    public com.block.server._generated.proto.postservice.DistanceFilter buildPartial() {
+      com.block.server._generated.proto.postservice.DistanceFilter result = new com.block.server._generated.proto.postservice.DistanceFilter(this);
+      result.enabled_ = enabled_;
+      result.distance_ = distance_;
       onBuilt();
       return result;
     }
@@ -415,22 +387,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.block.server._generated.proto.postservice.CreateCommentRequest) {
-        return mergeFrom((com.block.server._generated.proto.postservice.CreateCommentRequest)other);
+      if (other instanceof com.block.server._generated.proto.postservice.DistanceFilter) {
+        return mergeFrom((com.block.server._generated.proto.postservice.DistanceFilter)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.block.server._generated.proto.postservice.CreateCommentRequest other) {
-      if (other == com.block.server._generated.proto.postservice.CreateCommentRequest.getDefaultInstance()) return this;
-      if (other.getPostId() != 0L) {
-        setPostId(other.getPostId());
+    public Builder mergeFrom(com.block.server._generated.proto.postservice.DistanceFilter other) {
+      if (other == com.block.server._generated.proto.postservice.DistanceFilter.getDefaultInstance()) return this;
+      if (other.getEnabled() != false) {
+        setEnabled(other.getEnabled());
       }
-      if (!other.getContent().isEmpty()) {
-        content_ = other.content_;
-        onChanged();
+      if (other.getDistance() != 0) {
+        setDistance(other.getDistance());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -447,11 +418,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.block.server._generated.proto.postservice.CreateCommentRequest parsedMessage = null;
+      com.block.server._generated.proto.postservice.DistanceFilter parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.block.server._generated.proto.postservice.CreateCommentRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.block.server._generated.proto.postservice.DistanceFilter) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -461,109 +432,64 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long postId_ ;
+    private boolean enabled_ ;
     /**
-     * <code>int64 postId = 1;</code>
-     * @return The postId.
+     * <code>bool enabled = 1;</code>
+     * @return The enabled.
      */
     @java.lang.Override
-    public long getPostId() {
-      return postId_;
+    public boolean getEnabled() {
+      return enabled_;
     }
     /**
-     * <code>int64 postId = 1;</code>
-     * @param value The postId to set.
+     * <code>bool enabled = 1;</code>
+     * @param value The enabled to set.
      * @return This builder for chaining.
      */
-    public Builder setPostId(long value) {
+    public Builder setEnabled(boolean value) {
       
-      postId_ = value;
+      enabled_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 postId = 1;</code>
+     * <code>bool enabled = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearPostId() {
+    public Builder clearEnabled() {
       
-      postId_ = 0L;
+      enabled_ = false;
       onChanged();
       return this;
     }
 
-    private java.lang.Object content_ = "";
+    private int distance_ ;
     /**
-     * <code>string content = 2;</code>
-     * @return The content.
+     * <code>int32 distance = 2;</code>
+     * @return The distance.
      */
-    public java.lang.String getContent() {
-      java.lang.Object ref = content_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        content_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public int getDistance() {
+      return distance_;
     }
     /**
-     * <code>string content = 2;</code>
-     * @return The bytes for content.
-     */
-    public com.google.protobuf.ByteString
-        getContentBytes() {
-      java.lang.Object ref = content_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        content_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string content = 2;</code>
-     * @param value The content to set.
+     * <code>int32 distance = 2;</code>
+     * @param value The distance to set.
      * @return This builder for chaining.
      */
-    public Builder setContent(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      content_ = value;
+    public Builder setDistance(int value) {
+      
+      distance_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string content = 2;</code>
+     * <code>int32 distance = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearContent() {
+    public Builder clearDistance() {
       
-      content_ = getDefaultInstance().getContent();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string content = 2;</code>
-     * @param value The bytes for content to set.
-     * @return This builder for chaining.
-     */
-    public Builder setContentBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      content_ = value;
+      distance_ = 0;
       onChanged();
       return this;
     }
@@ -580,41 +506,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:CreateCommentRequest)
+    // @@protoc_insertion_point(builder_scope:DistanceFilter)
   }
 
-  // @@protoc_insertion_point(class_scope:CreateCommentRequest)
-  private static final com.block.server._generated.proto.postservice.CreateCommentRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:DistanceFilter)
+  private static final com.block.server._generated.proto.postservice.DistanceFilter DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.CreateCommentRequest();
+    DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.DistanceFilter();
   }
 
-  public static com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstance() {
+  public static com.block.server._generated.proto.postservice.DistanceFilter getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateCommentRequest>
-      PARSER = new com.google.protobuf.AbstractParser<CreateCommentRequest>() {
+  private static final com.google.protobuf.Parser<DistanceFilter>
+      PARSER = new com.google.protobuf.AbstractParser<DistanceFilter>() {
     @java.lang.Override
-    public CreateCommentRequest parsePartialFrom(
+    public DistanceFilter parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new CreateCommentRequest(input, extensionRegistry);
+      return new DistanceFilter(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<CreateCommentRequest> parser() {
+  public static com.google.protobuf.Parser<DistanceFilter> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<CreateCommentRequest> getParserForType() {
+  public com.google.protobuf.Parser<DistanceFilter> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.CreateCommentRequest getDefaultInstanceForType() {
+  public com.block.server._generated.proto.postservice.DistanceFilter getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

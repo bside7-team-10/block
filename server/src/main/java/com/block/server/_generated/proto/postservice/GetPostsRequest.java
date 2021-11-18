@@ -73,11 +73,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
-            com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder subBuilder = null;
+            com.block.server._generated.proto.postservice.Filter.Builder subBuilder = null;
             if (filter_ != null) {
               subBuilder = filter_.toBuilder();
             }
-            filter_ = input.readMessage(com.block.server._generated.proto.postservice.GetPostsRequest.Filter.parser(), extensionRegistry);
+            filter_ = input.readMessage(com.block.server._generated.proto.postservice.Filter.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(filter_);
               filter_ = subBuilder.buildPartial();
@@ -115,1257 +115,6 @@ private static final long serialVersionUID = 0L;
     return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.block.server._generated.proto.postservice.GetPostsRequest.class, com.block.server._generated.proto.postservice.GetPostsRequest.Builder.class);
-  }
-
-  public interface FilterOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetPostsRequest.Filter)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-     * @return Whether the distanceFilter field is set.
-     */
-    boolean hasDistanceFilter();
-    /**
-     * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-     * @return The distanceFilter.
-     */
-    com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter getDistanceFilter();
-    /**
-     * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-     */
-    com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilterOrBuilder getDistanceFilterOrBuilder();
-
-    /**
-     * <code>bool rightNowFilter = 2;</code>
-     * @return The rightNowFilter.
-     */
-    boolean getRightNowFilter();
-  }
-  /**
-   * Protobuf type {@code GetPostsRequest.Filter}
-   */
-  public static final class Filter extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetPostsRequest.Filter)
-      FilterOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Filter.newBuilder() to construct.
-    private Filter(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Filter() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Filter();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Filter(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder subBuilder = null;
-              if (distanceFilter_ != null) {
-                subBuilder = distanceFilter_.toBuilder();
-              }
-              distanceFilter_ = input.readMessage(com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(distanceFilter_);
-                distanceFilter_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-
-              rightNowFilter_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.block.server._generated.proto.postservice.GetPostsRequest.Filter.class, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder.class);
-    }
-
-    public interface DistanceFilterOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:GetPostsRequest.Filter.DistanceFilter)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>bool enabled = 1;</code>
-       * @return The enabled.
-       */
-      boolean getEnabled();
-
-      /**
-       * <code>int32 distance = 2;</code>
-       * @return The distance.
-       */
-      int getDistance();
-    }
-    /**
-     * Protobuf type {@code GetPostsRequest.Filter.DistanceFilter}
-     */
-    public static final class DistanceFilter extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:GetPostsRequest.Filter.DistanceFilter)
-        DistanceFilterOrBuilder {
-    private static final long serialVersionUID = 0L;
-      // Use DistanceFilter.newBuilder() to construct.
-      private DistanceFilter(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
-      }
-      private DistanceFilter() {
-      }
-
-      @java.lang.Override
-      @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-          UnusedPrivateParameter unused) {
-        return new DistanceFilter();
-      }
-
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
-      private DistanceFilter(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-
-                enabled_ = input.readBool();
-                break;
-              }
-              case 16: {
-
-                distance_ = input.readInt32();
-                break;
-              }
-              default: {
-                if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_DistanceFilter_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_DistanceFilter_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.class, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder.class);
-      }
-
-      public static final int ENABLED_FIELD_NUMBER = 1;
-      private boolean enabled_;
-      /**
-       * <code>bool enabled = 1;</code>
-       * @return The enabled.
-       */
-      @java.lang.Override
-      public boolean getEnabled() {
-        return enabled_;
-      }
-
-      public static final int DISTANCE_FIELD_NUMBER = 2;
-      private int distance_;
-      /**
-       * <code>int32 distance = 2;</code>
-       * @return The distance.
-       */
-      @java.lang.Override
-      public int getDistance() {
-        return distance_;
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (enabled_ != false) {
-          output.writeBool(1, enabled_);
-        }
-        if (distance_ != 0) {
-          output.writeInt32(2, distance_);
-        }
-        unknownFields.writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (enabled_ != false) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(1, enabled_);
-        }
-        if (distance_ != 0) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(2, distance_);
-        }
-        size += unknownFields.getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter)) {
-          return super.equals(obj);
-        }
-        com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter other = (com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter) obj;
-
-        if (getEnabled()
-            != other.getEnabled()) return false;
-        if (getDistance()
-            != other.getDistance()) return false;
-        if (!unknownFields.equals(other.unknownFields)) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + ENABLED_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-            getEnabled());
-        hash = (37 * hash) + DISTANCE_FIELD_NUMBER;
-        hash = (53 * hash) + getDistance();
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code GetPostsRequest.Filter.DistanceFilter}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:GetPostsRequest.Filter.DistanceFilter)
-          com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilterOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_DistanceFilter_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_DistanceFilter_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.class, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder.class);
-        }
-
-        // Construct using com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          enabled_ = false;
-
-          distance_ = 0;
-
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_DistanceFilter_descriptor;
-        }
-
-        @java.lang.Override
-        public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter getDefaultInstanceForType() {
-          return com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter build() {
-          com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter buildPartial() {
-          com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter result = new com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter(this);
-          result.enabled_ = enabled_;
-          result.distance_ = distance_;
-          onBuilt();
-          return result;
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter) {
-            return mergeFrom((com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter other) {
-          if (other == com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.getDefaultInstance()) return this;
-          if (other.getEnabled() != false) {
-            setEnabled(other.getEnabled());
-          }
-          if (other.getDistance() != 0) {
-            setDistance(other.getDistance());
-          }
-          this.mergeUnknownFields(other.unknownFields);
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-
-        private boolean enabled_ ;
-        /**
-         * <code>bool enabled = 1;</code>
-         * @return The enabled.
-         */
-        @java.lang.Override
-        public boolean getEnabled() {
-          return enabled_;
-        }
-        /**
-         * <code>bool enabled = 1;</code>
-         * @param value The enabled to set.
-         * @return This builder for chaining.
-         */
-        public Builder setEnabled(boolean value) {
-          
-          enabled_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>bool enabled = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearEnabled() {
-          
-          enabled_ = false;
-          onChanged();
-          return this;
-        }
-
-        private int distance_ ;
-        /**
-         * <code>int32 distance = 2;</code>
-         * @return The distance.
-         */
-        @java.lang.Override
-        public int getDistance() {
-          return distance_;
-        }
-        /**
-         * <code>int32 distance = 2;</code>
-         * @param value The distance to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDistance(int value) {
-          
-          distance_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>int32 distance = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearDistance() {
-          
-          distance_ = 0;
-          onChanged();
-          return this;
-        }
-        @java.lang.Override
-        public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:GetPostsRequest.Filter.DistanceFilter)
-      }
-
-      // @@protoc_insertion_point(class_scope:GetPostsRequest.Filter.DistanceFilter)
-      private static final com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter();
-      }
-
-      public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<DistanceFilter>
-          PARSER = new com.google.protobuf.AbstractParser<DistanceFilter>() {
-        @java.lang.Override
-        public DistanceFilter parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new DistanceFilter(input, extensionRegistry);
-        }
-      };
-
-      public static com.google.protobuf.Parser<DistanceFilter> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<DistanceFilter> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    public static final int DISTANCEFILTER_FIELD_NUMBER = 1;
-    private com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter distanceFilter_;
-    /**
-     * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-     * @return Whether the distanceFilter field is set.
-     */
-    @java.lang.Override
-    public boolean hasDistanceFilter() {
-      return distanceFilter_ != null;
-    }
-    /**
-     * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-     * @return The distanceFilter.
-     */
-    @java.lang.Override
-    public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter getDistanceFilter() {
-      return distanceFilter_ == null ? com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.getDefaultInstance() : distanceFilter_;
-    }
-    /**
-     * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-     */
-    @java.lang.Override
-    public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilterOrBuilder getDistanceFilterOrBuilder() {
-      return getDistanceFilter();
-    }
-
-    public static final int RIGHTNOWFILTER_FIELD_NUMBER = 2;
-    private boolean rightNowFilter_;
-    /**
-     * <code>bool rightNowFilter = 2;</code>
-     * @return The rightNowFilter.
-     */
-    @java.lang.Override
-    public boolean getRightNowFilter() {
-      return rightNowFilter_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (distanceFilter_ != null) {
-        output.writeMessage(1, getDistanceFilter());
-      }
-      if (rightNowFilter_ != false) {
-        output.writeBool(2, rightNowFilter_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (distanceFilter_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDistanceFilter());
-      }
-      if (rightNowFilter_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, rightNowFilter_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.block.server._generated.proto.postservice.GetPostsRequest.Filter)) {
-        return super.equals(obj);
-      }
-      com.block.server._generated.proto.postservice.GetPostsRequest.Filter other = (com.block.server._generated.proto.postservice.GetPostsRequest.Filter) obj;
-
-      if (hasDistanceFilter() != other.hasDistanceFilter()) return false;
-      if (hasDistanceFilter()) {
-        if (!getDistanceFilter()
-            .equals(other.getDistanceFilter())) return false;
-      }
-      if (getRightNowFilter()
-          != other.getRightNowFilter()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDistanceFilter()) {
-        hash = (37 * hash) + DISTANCEFILTER_FIELD_NUMBER;
-        hash = (53 * hash) + getDistanceFilter().hashCode();
-      }
-      hash = (37 * hash) + RIGHTNOWFILTER_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getRightNowFilter());
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.block.server._generated.proto.postservice.GetPostsRequest.Filter prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code GetPostsRequest.Filter}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetPostsRequest.Filter)
-        com.block.server._generated.proto.postservice.GetPostsRequest.FilterOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.block.server._generated.proto.postservice.GetPostsRequest.Filter.class, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder.class);
-      }
-
-      // Construct using com.block.server._generated.proto.postservice.GetPostsRequest.Filter.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (distanceFilterBuilder_ == null) {
-          distanceFilter_ = null;
-        } else {
-          distanceFilter_ = null;
-          distanceFilterBuilder_ = null;
-        }
-        rightNowFilter_ = false;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.block.server._generated.proto.postservice.PostProtocolOuterClass.internal_static_GetPostsRequest_Filter_descriptor;
-      }
-
-      @java.lang.Override
-      public com.block.server._generated.proto.postservice.GetPostsRequest.Filter getDefaultInstanceForType() {
-        return com.block.server._generated.proto.postservice.GetPostsRequest.Filter.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.block.server._generated.proto.postservice.GetPostsRequest.Filter build() {
-        com.block.server._generated.proto.postservice.GetPostsRequest.Filter result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.block.server._generated.proto.postservice.GetPostsRequest.Filter buildPartial() {
-        com.block.server._generated.proto.postservice.GetPostsRequest.Filter result = new com.block.server._generated.proto.postservice.GetPostsRequest.Filter(this);
-        if (distanceFilterBuilder_ == null) {
-          result.distanceFilter_ = distanceFilter_;
-        } else {
-          result.distanceFilter_ = distanceFilterBuilder_.build();
-        }
-        result.rightNowFilter_ = rightNowFilter_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.block.server._generated.proto.postservice.GetPostsRequest.Filter) {
-          return mergeFrom((com.block.server._generated.proto.postservice.GetPostsRequest.Filter)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.block.server._generated.proto.postservice.GetPostsRequest.Filter other) {
-        if (other == com.block.server._generated.proto.postservice.GetPostsRequest.Filter.getDefaultInstance()) return this;
-        if (other.hasDistanceFilter()) {
-          mergeDistanceFilter(other.getDistanceFilter());
-        }
-        if (other.getRightNowFilter() != false) {
-          setRightNowFilter(other.getRightNowFilter());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.block.server._generated.proto.postservice.GetPostsRequest.Filter parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.block.server._generated.proto.postservice.GetPostsRequest.Filter) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter distanceFilter_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilterOrBuilder> distanceFilterBuilder_;
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       * @return Whether the distanceFilter field is set.
-       */
-      public boolean hasDistanceFilter() {
-        return distanceFilterBuilder_ != null || distanceFilter_ != null;
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       * @return The distanceFilter.
-       */
-      public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter getDistanceFilter() {
-        if (distanceFilterBuilder_ == null) {
-          return distanceFilter_ == null ? com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.getDefaultInstance() : distanceFilter_;
-        } else {
-          return distanceFilterBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       */
-      public Builder setDistanceFilter(com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter value) {
-        if (distanceFilterBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          distanceFilter_ = value;
-          onChanged();
-        } else {
-          distanceFilterBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       */
-      public Builder setDistanceFilter(
-          com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder builderForValue) {
-        if (distanceFilterBuilder_ == null) {
-          distanceFilter_ = builderForValue.build();
-          onChanged();
-        } else {
-          distanceFilterBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       */
-      public Builder mergeDistanceFilter(com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter value) {
-        if (distanceFilterBuilder_ == null) {
-          if (distanceFilter_ != null) {
-            distanceFilter_ =
-              com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.newBuilder(distanceFilter_).mergeFrom(value).buildPartial();
-          } else {
-            distanceFilter_ = value;
-          }
-          onChanged();
-        } else {
-          distanceFilterBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       */
-      public Builder clearDistanceFilter() {
-        if (distanceFilterBuilder_ == null) {
-          distanceFilter_ = null;
-          onChanged();
-        } else {
-          distanceFilter_ = null;
-          distanceFilterBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       */
-      public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder getDistanceFilterBuilder() {
-        
-        onChanged();
-        return getDistanceFilterFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       */
-      public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilterOrBuilder getDistanceFilterOrBuilder() {
-        if (distanceFilterBuilder_ != null) {
-          return distanceFilterBuilder_.getMessageOrBuilder();
-        } else {
-          return distanceFilter_ == null ?
-              com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.getDefaultInstance() : distanceFilter_;
-        }
-      }
-      /**
-       * <code>.GetPostsRequest.Filter.DistanceFilter distanceFilter = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilterOrBuilder> 
-          getDistanceFilterFieldBuilder() {
-        if (distanceFilterBuilder_ == null) {
-          distanceFilterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilter.Builder, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.DistanceFilterOrBuilder>(
-                  getDistanceFilter(),
-                  getParentForChildren(),
-                  isClean());
-          distanceFilter_ = null;
-        }
-        return distanceFilterBuilder_;
-      }
-
-      private boolean rightNowFilter_ ;
-      /**
-       * <code>bool rightNowFilter = 2;</code>
-       * @return The rightNowFilter.
-       */
-      @java.lang.Override
-      public boolean getRightNowFilter() {
-        return rightNowFilter_;
-      }
-      /**
-       * <code>bool rightNowFilter = 2;</code>
-       * @param value The rightNowFilter to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRightNowFilter(boolean value) {
-        
-        rightNowFilter_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool rightNowFilter = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRightNowFilter() {
-        
-        rightNowFilter_ = false;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:GetPostsRequest.Filter)
-    }
-
-    // @@protoc_insertion_point(class_scope:GetPostsRequest.Filter)
-    private static final com.block.server._generated.proto.postservice.GetPostsRequest.Filter DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.block.server._generated.proto.postservice.GetPostsRequest.Filter();
-    }
-
-    public static com.block.server._generated.proto.postservice.GetPostsRequest.Filter getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Filter>
-        PARSER = new com.google.protobuf.AbstractParser<Filter>() {
-      @java.lang.Override
-      public Filter parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Filter(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Filter> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Filter> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.block.server._generated.proto.postservice.GetPostsRequest.Filter getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
   }
 
   private int bitField0_;
@@ -1434,9 +183,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int FILTER_FIELD_NUMBER = 4;
-  private com.block.server._generated.proto.postservice.GetPostsRequest.Filter filter_;
+  private com.block.server._generated.proto.postservice.Filter filter_;
   /**
-   * <code>.GetPostsRequest.Filter filter = 4;</code>
+   * <code>.Filter filter = 4;</code>
    * @return Whether the filter field is set.
    */
   @java.lang.Override
@@ -1444,18 +193,18 @@ private static final long serialVersionUID = 0L;
     return filter_ != null;
   }
   /**
-   * <code>.GetPostsRequest.Filter filter = 4;</code>
+   * <code>.Filter filter = 4;</code>
    * @return The filter.
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.GetPostsRequest.Filter getFilter() {
-    return filter_ == null ? com.block.server._generated.proto.postservice.GetPostsRequest.Filter.getDefaultInstance() : filter_;
+  public com.block.server._generated.proto.postservice.Filter getFilter() {
+    return filter_ == null ? com.block.server._generated.proto.postservice.Filter.getDefaultInstance() : filter_;
   }
   /**
-   * <code>.GetPostsRequest.Filter filter = 4;</code>
+   * <code>.Filter filter = 4;</code>
    */
   @java.lang.Override
-  public com.block.server._generated.proto.postservice.GetPostsRequest.FilterOrBuilder getFilterOrBuilder() {
+  public com.block.server._generated.proto.postservice.FilterOrBuilder getFilterOrBuilder() {
     return getFilter();
   }
 
@@ -2055,31 +804,31 @@ private static final long serialVersionUID = 0L;
       return currentLocationBuilder_;
     }
 
-    private com.block.server._generated.proto.postservice.GetPostsRequest.Filter filter_;
+    private com.block.server._generated.proto.postservice.Filter filter_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.GetPostsRequest.Filter, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder, com.block.server._generated.proto.postservice.GetPostsRequest.FilterOrBuilder> filterBuilder_;
+        com.block.server._generated.proto.postservice.Filter, com.block.server._generated.proto.postservice.Filter.Builder, com.block.server._generated.proto.postservice.FilterOrBuilder> filterBuilder_;
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      * @return Whether the filter field is set.
      */
     public boolean hasFilter() {
       return filterBuilder_ != null || filter_ != null;
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      * @return The filter.
      */
-    public com.block.server._generated.proto.postservice.GetPostsRequest.Filter getFilter() {
+    public com.block.server._generated.proto.postservice.Filter getFilter() {
       if (filterBuilder_ == null) {
-        return filter_ == null ? com.block.server._generated.proto.postservice.GetPostsRequest.Filter.getDefaultInstance() : filter_;
+        return filter_ == null ? com.block.server._generated.proto.postservice.Filter.getDefaultInstance() : filter_;
       } else {
         return filterBuilder_.getMessage();
       }
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      */
-    public Builder setFilter(com.block.server._generated.proto.postservice.GetPostsRequest.Filter value) {
+    public Builder setFilter(com.block.server._generated.proto.postservice.Filter value) {
       if (filterBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2093,10 +842,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      */
     public Builder setFilter(
-        com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder builderForValue) {
+        com.block.server._generated.proto.postservice.Filter.Builder builderForValue) {
       if (filterBuilder_ == null) {
         filter_ = builderForValue.build();
         onChanged();
@@ -2107,13 +856,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      */
-    public Builder mergeFilter(com.block.server._generated.proto.postservice.GetPostsRequest.Filter value) {
+    public Builder mergeFilter(com.block.server._generated.proto.postservice.Filter value) {
       if (filterBuilder_ == null) {
         if (filter_ != null) {
           filter_ =
-            com.block.server._generated.proto.postservice.GetPostsRequest.Filter.newBuilder(filter_).mergeFrom(value).buildPartial();
+            com.block.server._generated.proto.postservice.Filter.newBuilder(filter_).mergeFrom(value).buildPartial();
         } else {
           filter_ = value;
         }
@@ -2125,7 +874,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      */
     public Builder clearFilter() {
       if (filterBuilder_ == null) {
@@ -2139,33 +888,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      */
-    public com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder getFilterBuilder() {
+    public com.block.server._generated.proto.postservice.Filter.Builder getFilterBuilder() {
       
       onChanged();
       return getFilterFieldBuilder().getBuilder();
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      */
-    public com.block.server._generated.proto.postservice.GetPostsRequest.FilterOrBuilder getFilterOrBuilder() {
+    public com.block.server._generated.proto.postservice.FilterOrBuilder getFilterOrBuilder() {
       if (filterBuilder_ != null) {
         return filterBuilder_.getMessageOrBuilder();
       } else {
         return filter_ == null ?
-            com.block.server._generated.proto.postservice.GetPostsRequest.Filter.getDefaultInstance() : filter_;
+            com.block.server._generated.proto.postservice.Filter.getDefaultInstance() : filter_;
       }
     }
     /**
-     * <code>.GetPostsRequest.Filter filter = 4;</code>
+     * <code>.Filter filter = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.block.server._generated.proto.postservice.GetPostsRequest.Filter, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder, com.block.server._generated.proto.postservice.GetPostsRequest.FilterOrBuilder> 
+        com.block.server._generated.proto.postservice.Filter, com.block.server._generated.proto.postservice.Filter.Builder, com.block.server._generated.proto.postservice.FilterOrBuilder> 
         getFilterFieldBuilder() {
       if (filterBuilder_ == null) {
         filterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.block.server._generated.proto.postservice.GetPostsRequest.Filter, com.block.server._generated.proto.postservice.GetPostsRequest.Filter.Builder, com.block.server._generated.proto.postservice.GetPostsRequest.FilterOrBuilder>(
+            com.block.server._generated.proto.postservice.Filter, com.block.server._generated.proto.postservice.Filter.Builder, com.block.server._generated.proto.postservice.FilterOrBuilder>(
                 getFilter(),
                 getParentForChildren(),
                 isClean());

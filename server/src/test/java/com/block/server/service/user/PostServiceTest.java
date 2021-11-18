@@ -1,6 +1,7 @@
 package com.block.server.service.user;
 
 import com.block.server._generated.proto.postservice.*;
+import com.block.server.domain.post.Post;
 import com.block.server.domain.post.PostRepository;
 import com.block.server.helper.TestPost;
 import com.block.server.helper.TestUser;
@@ -8,29 +9,29 @@ import com.block.server.service.UserService;
 import com.block.server.service.post.PostServiceImpl;
 import com.block.server.service.postimagestorage.PostImageStorageService;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doReturn;
-
 
 @ExtendWith(MockitoExtension.class)
 public class PostServiceTest {
-
 
     @Mock
     private PostRepository postRepository;
@@ -57,12 +58,11 @@ public class PostServiceTest {
         ReflectionTestUtils.setField(testPost, "id", 1L);
 
         CreatePostRequest createPostRequest = CreatePostRequest.newBuilder()
-                .setAuthor(testUser.getNickname())
                 .setContent(testPost.getContent())
                 .setLocation(
                         LocationDto.newBuilder()
-                                .setLat(testPost.getLocation().getX())
-                                .setLong(testPost.getLocation().getY())
+                                .setLat(testPost.getLatitude())
+                                .setLong(testPost.getLongitude())
                                 .build())
                 .build();
 
@@ -105,7 +105,7 @@ public class PostServiceTest {
 
         doReturn("")
                 .when(postImageStorageService)
-                .getDownloadUrl(any());
+                .getDownloadUrl(anyString());
 
         var getPost = postService.getPost(getPostRequest);
 
@@ -114,13 +114,14 @@ public class PostServiceTest {
         assertEquals(testPost.getUser().getProfile(), getPost.getPost().getAuthor().getProfileUrl());
         assertEquals(testPost.getLikesCount(), 0);
         assertEquals(testPost.getCommentsCount(), 0);
+        assertEquals(testPost.getAddress(), getPost.getPost().getAddress());
+
         log.debug("포스트 목록 {}: {}", getPost.getPost(), getPost.getPost().getPostId());
     }
 
     @DisplayName("post를 가져온다.")
     @Test
     void GetPosts() {
-
         var testUser = TestUser.U1().toUser();
         ReflectionTestUtils.setField(testUser, "id", 1L);
 
@@ -133,30 +134,22 @@ public class PostServiceTest {
         var testPostThree = TestPost.P1(testUser).toPost();
         ReflectionTestUtils.setField(testPostThree, "id", 3L);
 
+        var postList = Arrays.asList(testPostOne, testPostTwo, testPostThree);
 
-        var list = new ArrayList<>();
-
-        list.add(testPostOne);
-        list.add(testPostTwo);
-        list.add(testPostThree);
+        doReturn(postList)
+                .when(postRepository)
+                .findWithLocationRange(any(), anyDouble(), anyDouble(), anyInt());
 
         GetPostsRequest getPostsRequest = GetPostsRequest.newBuilder()
                 .setPageNumber(1)
                 .setResultPerPage(2)
                 .build();
 
-        doReturn(list)
-                .when(postRepository)
-                .findWithPagination(any());
-
-        doReturn("")
-                .when(postImageStorageService)
-                .getDownloadUrl(any());
-
-
         var posts = postService.getPosts(getPostsRequest);
 
         log.debug("포스트 목록 {}", posts);
+
+        assertEquals(3, posts.getPostsList().size());
 
     }
 }

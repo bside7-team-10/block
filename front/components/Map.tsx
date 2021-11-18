@@ -13,6 +13,7 @@ import BigFeed from './BigFeed';
 import { HorizontalSpace } from './common/Spaces';
 import { COMMON_SIZE_12PX, DARK_COLOR1, WHITE_COLOR } from '../utils/theme/theme';
 import PlusIcon from '../assets/Plus'
+import Service from '../state/service';
 
 declare const google: any;
 
@@ -66,6 +67,15 @@ const Map = () => {
     });
 
     setUserMarker(marker)
+
+    // To 새글님
+    // - get posts 부르는 내용입니다.
+    
+    // const svc = Service();
+    // svc.getPosts({latitude, longitude}).then(posts => {
+    //   console.log(`posts : ${posts}`);
+    // });
+
   }, [latitude, longitude]);
 
   useEffect(() => {

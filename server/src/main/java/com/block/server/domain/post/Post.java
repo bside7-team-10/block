@@ -42,7 +42,13 @@ public class Post {
     private int commentsCount;
 
     @Column
-    private Point location;
+    private double longitude;
+
+    @Column
+    private double latitude;
+
+    @Column
+    private String address;
 
     @Column
     @CreatedDate
@@ -53,13 +59,15 @@ public class Post {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Post(User user, String contents, String imageKey, int likesCount, int commentsCount, Point location) {
+    public Post(User user, String contents, String imageKey, int likesCount, int commentsCount, double longitude, double latitude, String address) {
         this.user = user;
         this.content = contents;
         this.imageKey = imageKey;
         this.likesCount = likesCount;
         this.commentsCount = commentsCount;
-        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
     }
 
     public void setImageKey(String key) {
