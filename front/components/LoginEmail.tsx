@@ -15,7 +15,7 @@ import {
   WholeMarginWrap,
   Wrapper,
 } from './styled/LoginCommonStyle';
-import { COMMON_PADDING_M, WHITE_COLOR } from '../utils/theme/theme';
+import { COMMON_PADDING_M, WHITE_COLOR, COMMON_MARGIN_M } from '../utils/theme/theme';
 import { User } from '../state';
 
 const defaultValues = {
@@ -109,6 +109,7 @@ const SvgWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-bottom: ${COMMON_MARGIN_M};
 `;
 
 const FieldsWrap = styled.div`

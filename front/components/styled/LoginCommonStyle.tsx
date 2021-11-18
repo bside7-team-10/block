@@ -35,7 +35,7 @@ export const Title = styled.div`
   text-align: center;
   font-size: 25px;
   font-weight: bolder;
-  margin-top: ${COMMON_MARGIN_M};
+  margin-bottom: ${COMMON_MARGIN_M};
 `;
 
 export const TitleImage = styled.img`
