@@ -4,12 +4,12 @@ import { MPost } from '../'
 
 interface InitialState {
   loading: boolean;
-  posts: MPost[] | null,
+  posts: MPost[],
 }
 
 const initialState: InitialState = {
   loading: false,
-  posts: null,
+  posts: [],
 };
 
 const getPostsReducer = (state = initialState, action: Action) => {

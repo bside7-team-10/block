@@ -55,29 +55,31 @@ const getFakePosition = (data: LatLng) => {
   if (i == 20) i = 1;
 
   if (i < 20) {
-    return { latitude: latitude + unit * calcI, longitude: longitude + unit * calcI }
+    return { latitude: latitude + unit * calcI, longitude: longitude + unit * calcI };
   }
+  return { latitude, longitude };
 }
 
 export const getFakeUserLocation = (data: LatLng) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.GET_USER_LOCATION_REQUEST });
     try {
-      let position;
+      let position: { latitude: number, longitude: number };
+      let newPosition: any;
       if (init) {
         position = await service.getLocation();
       } else {
         position = getFakePosition(data)
-        position = {
+        newPosition = {
           coords: {
-            latitude: position ?.latitude,
-            longitude: position ?.longitude
+            latitude: position.latitude,
+            longitude: position.longitude
           }
         }
       }
 
       init = false;
-      dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: position });
+      dispatch({ type: ActionType.GET_USER_LOCATION_SUCCESS, payload: newPosition });
     } catch (error: any) {
       dispatch({ type: ActionType.GET_USER_LOCATION_ERROR, payload: error });
     }
