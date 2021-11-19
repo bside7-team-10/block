@@ -18,9 +18,9 @@ import Service from '../state/service';
 declare const google: any;
 
 const Map = () => {
-  const { getUserLocation, getFakeUserLocation, getPosts, getPost } = useActions();
+  const { getUserLocation, getFakeUserLocation, getPosts, getPost, startWritePost } = useActions();
   const { latitude, longitude } = useSelector((state: RootStateOrAny) => state.location);
-  const { imageSource } = useSelector((state: RootState) => state.post);
+  const { imageSource, writing } = useSelector((state: RootState) => state.post);
   const { posts }: { posts: MPost[] } = useSelector((state: RootState) => state.posts);
   const { post }: { post: Post } = useSelector((state: RootState) => state.getPost);
   const [isDrawerVisable, setIsDrawerVisable] = useState(false);
@@ -29,6 +29,7 @@ const Map = () => {
   const [userMarker, setUserMarker] = useState<google.maps.Marker>();
   const [smallFeedVisible, setSmallFeedVisible] = useState(false);
   const [bigFeedVisible, setBigFeedVisible] = useState(false);
+  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
 
   useEffect(() => {
     if (latitude && longitude) {
@@ -83,16 +84,22 @@ const Map = () => {
 
   useEffect(() => {
     if (map && posts) {
+      for (const m of markers) {
+        m.setMap(null);
+      }
+      markers.length = 0;
       posts.map(({ postId, latitude, longitude }: MPost) => {
         const marker = new google.maps.Marker({
           position: new google.maps.LatLng(latitude, longitude),
           icon: '/static/images/pin/pin.png',
           map,
         });
-        marker.addListener('click', () => {
-          getPost(postId);
+        marker.addListener('click', async () => {
+          await getPost(postId);
           !smallFeedVisible && setSmallFeedVisible(true);
         });
+        markers.push(marker)
+        setMarkers(markers);
       })
     }
 
@@ -100,6 +107,7 @@ const Map = () => {
 
   const onClickWriteButton = () => {
     setIsDrawerVisable(true);
+    startWritePost();
   };
 
   const onCloseDrawer = () => {
@@ -139,7 +147,7 @@ const Map = () => {
         closable={false}
         maskClosable={false}
         onClose={onCloseDrawer}
-        visible={isDrawerVisable}
+        visible={writing}
         height={windowHeight - 24}
         footer={
           <WritingButton form="boardWriteForm" htmlType="submit">

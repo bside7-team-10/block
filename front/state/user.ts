@@ -8,4 +8,5 @@ export interface User {
   gender: 0 | 1;
   latitude?: number;
   longitude?: number;
+  avatar: string;
 }

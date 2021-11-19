@@ -22,7 +22,7 @@ const getPostReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         loading: false,
-        post: action.payload,
+        post: action.payload.post,
       };
     case ActionType.GET_POST_ERROR:
       return {

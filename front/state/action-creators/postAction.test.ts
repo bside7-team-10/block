@@ -17,7 +17,7 @@ const post: Post = {
   date: '2021-10-25',
   toComeBackPath: '/board/write',
   hashtag: ['오늘의이야기'],
-  imageSource: 'picture.jpg',
+  image: 'picture.jpg',
 };
 
 const postWithoutContent: Post = {
@@ -28,7 +28,7 @@ const postWithoutContent: Post = {
   date: '2021-10-25',
   toComeBackPath: '/board/write',
   hashtag: ['오늘의이야기'],
-  imageSource: 'picture.jpg',
+  image: 'picture.jpg',
 };
 
 const tempImage = 'picture.jpg';

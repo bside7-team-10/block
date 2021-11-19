@@ -23,20 +23,20 @@ const BigFeed = (props: BigFeedInterface) => {
         </FeedBarWrapper>
         <HeaderWrapper>
           <HeaderLeftWrapper>
-            <Profile src="/static/images/signup/avatar5.png" />
+            <Profile src={"/static/images/signup/" + post.author?.avatarId ?? "avatar1.png"} />
             <AddressAndLocationWrapper>
-              <Address>서울시 종로구 소공동 54</Address>
-              <Location>123.45.678.91</Location>
+              <Address>{post.address}</Address>
+              <Location>{post.longitude} {post.latitude}</Location>
             </AddressAndLocationWrapper>
           </HeaderLeftWrapper>
           <FeedMenu />
         </HeaderWrapper>
-        <MainImage src="/static/images/temp/image.jpg" />
+        <MainImage src={post.image ?? "/static/images/temp/image.jpg"} />
         <UserNickNameAndTimeStampWrapper>
-          <UserNickName>광화문빌런</UserNickName>
-          <TimeStamp>10시간 전</TimeStamp>
+          <UserNickName>{post.author?.nickname ?? ""}</UserNickName>
+          <TimeStamp>{post.date}</TimeStamp>
         </UserNickNameAndTimeStampWrapper>
-        <Content>{tempTextContent}</Content>
+        <Content>{post.content ?? ""}</Content>
       </Contents>
     </Wrapper>
   );

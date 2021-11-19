@@ -49,12 +49,16 @@ export interface GetAddressByLocationRequestAction {
 
 export interface GetAddressByLocationSuccessAction {
   type: ActionType.GET_ADDRESS_BY_LOCATION_SUCCESS;
-  payload: any;
+  payload: string;
 }
 
 export interface GetAddressLocationErrorAction {
   type: ActionType.GET_ADDRESS_BY_LOCATION_ERROR;
   payload: string;
+}
+
+export interface StartWritePostAction {
+  type: ActionType.START_WRITE_POST;
 }
 
 export interface AddPostRequestAction {
@@ -91,7 +95,7 @@ export interface GetPostRequestAction {
 
 export interface GetPostSuccessAction {
   type: ActionType.GET_POST_SUCCESS;
-  payload: string;
+  payload: {post: Post};
 }
 
 export interface GetPostErrorAction {
@@ -132,6 +136,7 @@ export type Action =
   | GetUserLocationRequestAction
   | GetUserLocationSuccessAction
   | GetUserLocationErrorAction
+  | StartWritePostAction
   | AddPostRequestAction
   | AddPostSuccessAction
   | AddPostErrorAction

@@ -16,7 +16,7 @@ const SmallFeed = (props: SmallFeedInterface) => {
     <Wrapper>
       <Contents>
         <TextWrapper>
-          <Address>서울시 종로구 소공동 54</Address>
+          <Address>{post.address}</Address>
           {/* <EngageWrapper>
             <HeartWrapper>
               <Heart />
@@ -28,12 +28,11 @@ const SmallFeed = (props: SmallFeedInterface) => {
             </CommentWrapper>
           </EngageWrapper> */}
           <Content>
-            유저는 지도상의 남이 쓴 게시글을 확인할 수 있다. 6.유저는 지도상의 남이 쓴 게시글을 클릭
-            시 스몰 썸네일 확인 7. 스몰썸네일 클릭해서 빅 썸네일로 볼 수 있음
+            { post.content }
           </Content>
           <TimeStamp>10시간 전</TimeStamp>
         </TextWrapper>
-        <Thumbnail src="/static/images/temp/image.jpg" />
+        <Thumbnail src={post.image ?? "/static/images/temp/image.jpg"} />
       </Contents>
     </Wrapper>
   );

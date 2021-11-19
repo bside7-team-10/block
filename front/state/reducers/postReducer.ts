@@ -10,6 +10,7 @@ interface InitialState {
   imageSource?: string | null;
   hashtag?: string[] | null;
   hashtagIndex?: number[] | null;
+  writing: boolean;
 }
 
 const initialState: InitialState = {
@@ -21,6 +22,7 @@ const initialState: InitialState = {
   imageSource: null,
   hashtag: null,
   hashtagIndex: null,
+  writing: false,
 };
 
 const postReducer = (state = initialState, action: Action) => {
@@ -30,11 +32,17 @@ const postReducer = (state = initialState, action: Action) => {
         ...state,
         loading: true,
       };
+    case ActionType.START_WRITE_POST:
+      return {
+        ...state,
+        writing: true,
+      };
     case ActionType.ADD_POST_SUCCESS:
       return {
         ...state,
         loading: false,
         message: action.payload,
+        writing: false,
       };
     case ActionType.ADD_POST_ERROR:
       return {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Cookies } from 'react-cookie';
 
 import { SignInRequest, SignUpRequest } from '../../_generated/UserProtocol_pb';
-import { CreatePostRequest, DistanceFilter, Filter, GetPostRequest, GetPostsRequest, LocationDto, PostSummary, UploadImageResultRequest } from '../../_generated/PostProtocol_pb';
+import { CreatePostRequest, DistanceFilter, Filter, GetPostRequest, GetPostsRequest, LocationDto, PostDto, PostSummary, UploadImageResultRequest } from '../../_generated/PostProtocol_pb';
 import { LoginUser } from '../loginUser';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { PostProtocolClient } from '../../_generated/PostProtocol_pb_service';
@@ -11,15 +11,15 @@ import { User, Post, LatLng } from '../';
 import { createAxios } from '../../lib/axios';
 import config from '../../config/test-config';
 
-const serverUrl = "https://dev-be.block-app.io";
-// const serverUrl = "http://localhost:8081"; 
+// const serverUrl = "https://dev-be.block-app.io";
+const serverUrl = "http://localhost:8081"; 
 
 export interface ServiceInterface {
   signup: (user: User) => Promise<any>;
   login: (user: User) => Promise<any>;
   getLocation: () => Promise<any>;
   addPost: (data: Post) => Promise<any>;
-  getPost: (postId: number) => Promise<any>;
+  getPost: (postId: number) => Promise<{post: Post}>;
   // getPosts: () => Promise<any>;
   getAddressByLocation: (data: LatLng) => Promise<any>;
   getPosts: ({ latitude, longitude }: LatLng) => Promise<any>;
@@ -28,15 +28,16 @@ export interface ServiceInterface {
 const Service = () => {
   const self = {} as ServiceInterface;
 
-  self.signup = ({ email, password, nickName, birthday, gender }: User) => {
+  self.signup = ({ email, password, nickName, birthday, gender, avatar }: User) => {
     return new Promise((resolve, reject) => {
       const req = new SignUpRequest();
       req.setEmail(email);
       req.setPassword(password);
       req.setNickname(nickName);
       req.setBirthday(birthday);
-      req.setAvatarid('1.png');
+      req.setAvatarid(avatar);
       req.setGender(gender);
+      console.log("avatar: ", avatar);
       const userClient = new UserProtocolClient(serverUrl);
       userClient.signUp(req, (err, res) => {
         if (err !== null) {
@@ -88,7 +89,7 @@ const Service = () => {
     });
   };
 
-  self.addPost = ({ content, latitude, longitude, imageSource, address }: Post) => {
+  self.addPost = ({ content, latitude, longitude, image: imageSource, address }: Post) => {
     return new Promise((resolve, reject) => {
       const req = new CreatePostRequest();
       req.setContent(content);
@@ -96,7 +97,7 @@ const Service = () => {
       loc.setLat(latitude);
       loc.setLong(longitude);
       req.setLocation(loc);
-      // req.setAddress(address);
+      req.setAddress(address ?? "");
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
@@ -150,12 +151,21 @@ const Service = () => {
           const imageUrl = post.getImageurl();
           const imageResult = await axios.get(imageUrl);
 
-          const responsePost = {
-            post: res.getPost(),
-            image: imageResult.data
-          };
-          resolve(responsePost);
-        }
+          const postDto = res.getPost()
+          resolve({post: {
+              content: postDto?.getContent() ?? "",
+              latitude: postDto?.getLocation()?.getLat() ?? 0,
+              longitude: postDto?.getLocation()?.getLong() ?? 0,
+              rightNow: false,
+              address: postDto?.getAddress() ?? "",
+              author: {
+                nickname: postDto?.getAuthor()?.getNickname() ?? "",
+                avatarId: postDto?.getAuthor()?.getProfileurl() ?? "",
+              },
+              date: "2021-10-11", // TODO: postDto 에서 가져와야 함,
+              image: imageResult.data,
+            }});
+          }
       });
     });
   };
@@ -186,7 +196,6 @@ const Service = () => {
           reject(err);
         }
         const posts = res ?.getPostsList().map(x => ({ postId: x.getPostid(), latitude: x.getLocation() ?.getLat(), longitude: x.getLocation() ?.getLong()})) || [];
-        console.log(posts);
         resolve(posts);
       })
     });
@@ -203,7 +212,7 @@ const Service = () => {
     };
 
     const response = await axios.get('', params);
-    return response.data;
+    return response.data.results[0].formatted_address;
   }
 
   return self;

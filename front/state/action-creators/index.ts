@@ -98,6 +98,12 @@ export const getAddressByLocation = (data: LatLng) => {
   };
 };
 
+export const startWritePost = () => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.START_WRITE_POST });
+  }
+}
+
 export const addPost = (data: Post, callback: () => void) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.ADD_POST_REQUEST });
@@ -116,9 +122,9 @@ export const getPost = (postId: number) => {
     dispatch({ type: ActionType.ADD_POST_REQUEST });
     try {
       const response = await service.getPost(postId);
-      dispatch({ type: ActionType.ADD_POST_SUCCESS, payload: response });
+      dispatch({ type: ActionType.GET_POST_SUCCESS, payload: response });
     } catch (error: any) {
-      dispatch({ type: ActionType.ADD_POST_ERROR, payload: error });
+      dispatch({ type: ActionType.GET_POST_ERROR, payload: error });
     }
   };
 };

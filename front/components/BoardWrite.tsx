@@ -65,9 +65,9 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
 
   const router = useRouter();
 
-  const { addPost, saveTempPost, removeTempImage, removeTempPost } = useActions();
+  const { addPost, saveTempPost, removeTempImage, removeTempPost, getAddressByLocation } = useActions();
 
-  const { latitude, longitude } = useSelector((state: RootState) => state.location);
+  const { latitude, longitude, address } = useSelector((state: RootState) => state.location);
   const [imageUrl, setImageUrl] = useState("");
 
   const { content, rightNow, imageSource, hashtagIndex } = useSelector(
@@ -87,6 +87,10 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
     setValue('rightNow', rightNow === null ? true : rightNow);
   }, []);
 
+  useEffect(() => {
+    getAddressByLocation({latitude, longitude});
+  }, [latitude, longitude]);
+
   const onSubmit: SubmitHandler<BoardWriteForm> = (data: BoardWriteForm) => {
     const { content, rightNow, hashtag } = data;
     const date = dayjs().format('YYYY-MM-DD HH:mm:ss');
@@ -97,10 +101,9 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
       longitude,
       date,
       hashtag,
-      imageSource,
+      image: imageSource,
     };
-    console.log(post);
-
+    
     addPost(post, removeTempPost);
   };
 
@@ -147,14 +150,6 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
     setIsDialogModalVisible(true);
   };
 
-  // GetPost에서 이미지를 사용하는 법 예제입니다.
-  const testGetPostHandler = async () => {
-    const svc = Service();
-    const postId = 40;
-    const result = await svc.getPost(postId);
-    setImageUrl(result.image);
-  }
-
   return (
     <>
       <Wrapper>
@@ -166,8 +161,8 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
                   <CloseIcon />
                 </CloseButton>
               </span>
-              <Address>서울시 종로구 소공동 81</Address>
-              <IP>123.45.678.91</IP>
+              <Address>{address}</Address>
+              <Location>{longitude} {latitude}</Location>
             </div>
 
             <HorizontalSpace height={COMMON_SIZE_12PX} />
@@ -226,9 +221,6 @@ const BoardWrite = ({ onCloseDrawer }: IBoardWriteProp) => {
                 </NowDescription>
               </div> */}
               <HorizontalSpace height={COMMON_SIZE_12PX} />
-              {/* GetPost로 이미지 나오는거 테스트용 */}
-              <img src={imageUrl} />
-              <Button onClick={testGetPostHandler}>getImage</Button>
             </form>
           </Container>
         </InnerWrapper>
@@ -266,7 +258,7 @@ const Container = styled.div`
   margin: 16px 23px;
 `;
 
-const IP = styled.div`
+const Location = styled.div`
   color: ${() => GREY_4};
   font-size: 10px;
 `;

@@ -5,6 +5,7 @@ interface InitialState {
   loading: boolean;
   latitude: number;
   longitude: number;
+  address: string;
   error: string | null;
 }
 
@@ -12,6 +13,7 @@ const initialState: InitialState = {
   loading: false,
   latitude: 37.498095,
   longitude: 127.02761,
+  address: "",
   error: null,
 };
 
@@ -35,6 +37,23 @@ const locationReducer = (state = initialState, action: Action) => {
         loading: false,
         error: action.payload,
       };
+    case ActionType.GET_ADDRESS_BY_LOCATION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        address: action.payload,
+      };
+    case ActionType.GET_ADDRESS_BY_LOCATION_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ActionType.GET_ADDRESS_BY_LOCATION_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
     default:
       return state;
   }

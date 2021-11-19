@@ -64,6 +64,7 @@ message PostDto {
     repeated CommentDto comments = 6;
     LocationDto location = 7;
     string address = 8;
+    // int32 createdDate = 9;
 }
 
 message GetPostRequest {

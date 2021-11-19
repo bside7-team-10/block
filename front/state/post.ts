@@ -8,5 +8,9 @@ export interface Post {
   toComeBackPath?: string; //촬영 후 다시 돌아 올 주소
   hashtagIndex?: number[];
   hashtag?: string[];
-  imageSource?: string | null;
+  image?: string | null;
+  author?: {
+    nickname: string,
+    avatarId: string,
+  };
 }
