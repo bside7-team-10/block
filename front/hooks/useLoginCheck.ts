@@ -1,16 +1,20 @@
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
-import { useCookies } from 'react-cookie';
+import { useEffect } from 'react';
+import { Cookies } from 'react-cookie';
 
 const useLoginCheck = () => {
-  const [cookies] = useCookies();
   const router = useRouter();
   return useEffect(() => {
     const { pathname } = router;
-    const { accessToken } = cookies;
+    const cookies = new Cookies();
+    const accessToken = cookies.get('accessToken');
 
     if (accessToken) {
-      router.push('/map');
+      if (pathname === '/camera') {
+        // do nothing
+      } else {
+        router.push('/map');
+      }
     } else {
       if (pathname === '/login' || pathname === '/login/email' || pathname === '/signup' || pathname === '/map') {
         // do nothing
@@ -18,7 +22,7 @@ const useLoginCheck = () => {
         router.push('/login');
       }
     }
-  }, [cookies, router.pathname]);
+  }, [router.pathname]);
 };
 
 export default useLoginCheck;
