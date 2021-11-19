@@ -35,21 +35,22 @@ const Signup = () => {
     trigger,
     formState: { errors },
   } = useForm({ mode: 'onBlur', defaultValues });
-  const { userSignup } = useActions();
+  const { userSignup, userLogin } = useActions();
   const [step, setStep] = useState(SIGNUP_STEP.STEP1);
   const [title, setTitle] = useState(STEP_TITLE.STEP1);
   const [description, setDescription] = useState('');
   const [nextBtnActive, setNextBtnActive] = useState(BUTTON_INACTIVE);
 
-  const onSubmit = (data: User) => {
+  const onSubmit = async (data: User) => {
     const { birthday } = data;
     data.birthday = dayjs(birthday).format('YYYY-MM-DD');
-    userSignup(data);
+    await userSignup(data);
+    await userLogin(data, () => { router.push('/map'); })
     setStep(step + 1);
   };
 
   const onStartBtnClicked = () => {
-    router.push('/');
+    // router.push('/map');
   };
 
   const onNextButtonClicked = () => {

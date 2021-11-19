@@ -10,12 +10,13 @@ const useLoginCheck = () => {
     const { accessToken } = cookies;
 
     if (accessToken) {
-      if (pathname === '/login' || pathname === '/login/email' || pathname === 'signup') {
-        router.back();
-      }
       router.push('/map');
     } else {
-      router.push('/login');
+      if (pathname === '/login' || pathname === '/login/email' || pathname === '/signup' || pathname === '/map') {
+        // do nothing
+      } else {
+        router.push('/login');
+      }
     }
   }, [cookies, router.pathname]);
 };

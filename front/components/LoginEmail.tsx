@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 
 import { useActions } from '../hooks/use-actions';
 import Fields from './common/fields/Fields';
@@ -31,6 +31,7 @@ const LoginEmail = () => {
   } = useForm({ defaultValues });
 
   const { userLogin } = useActions();
+  const router = useRouter();
 
   const onLoginSubmit = (data: User) => {
     userLogin(data, onLoginSuccessCallback);

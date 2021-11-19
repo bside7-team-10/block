@@ -11,8 +11,8 @@ import { User, Post, LatLng } from '../';
 import { createAxios } from '../../lib/axios';
 import config from '../../config/test-config';
 
-// const serverUrl = "https://dev-be.block-app.io";
-const serverUrl = "http://localhost:8081"; 
+const serverUrl = "https://dev-be.block-app.io";
+// const serverUrl = "http://localhost:8081"; 
 
 export interface ServiceInterface {
   signup: (user: User) => Promise<any>;
