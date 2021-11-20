@@ -30,10 +30,27 @@ const Map = () => {
   const [smallFeedVisible, setSmallFeedVisible] = useState(false);
   const [bigFeedVisible, setBigFeedVisible] = useState(false);
   const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
+  const [ lastUpdateLat, setLastUpdateLat ] = useState(null);
+  const [ lastUpdateLong, setLastUpdateLong ] = useState(null);
+  const [ shouldUpdatePosts, setShouldUpdatePosts ] = useState(true);
+
+  const POSTS_UPDATE_RANGE_DIFF_LAT = 0.00451;  // 500m
+  const POSTS_UPDATE_RANGE_DIFF_LONG = 0.00578; // 500m
 
   useEffect(() => {
     if (latitude && longitude) {
-      getPosts({ latitude, longitude });
+      if (shouldUpdatePosts) {
+        getPosts({ latitude, longitude });
+        setLastUpdateLat(latitude);
+        setLastUpdateLong(longitude);
+        setShouldUpdatePosts(false);
+      } else if (!lastUpdateLat || !lastUpdateLong) {
+        setShouldUpdatePosts(true);
+      } else {
+        const shouldUpdate = Math.abs(latitude - lastUpdateLat) > POSTS_UPDATE_RANGE_DIFF_LAT
+          || Math.abs(longitude - lastUpdateLong) > POSTS_UPDATE_RANGE_DIFF_LONG;
+        setShouldUpdatePosts(shouldUpdate);
+      }
     }
   }, [latitude, longitude])
 
