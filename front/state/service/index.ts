@@ -42,7 +42,7 @@ const Service = () => {
       userClient.signUp(req, (err, res) => {
         if (err !== null) {
           console.error(err);
-          reject(err);
+          return reject(err);
         } else {
           console.log(res);
           resolve(res);
@@ -60,7 +60,7 @@ const Service = () => {
       userClient.signIn(req, (err, res) => {
         if (err !== null) {
           console.log('failure');
-          reject('아이디 또는 비밀번호가 다릅니다.');
+          return reject('아이디 또는 비밀번호가 다릅니다.');
         } else {
           console.log('success');
 
@@ -142,7 +142,7 @@ const Service = () => {
       postClient.getPost(req, headers, async (err, res) => {
         if (err !== null) {
           console.error(err);
-          reject(err);
+          return reject(err);
         } else if (res !== null) {
           const post = res.getPost();
           if (!post) {
@@ -189,11 +189,15 @@ const Service = () => {
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
-      headers.append('Authorization', 'Bearer ' + cookies.get('accessToken'));
+      const accessToken = cookies.get('accessToken');
+      if (!accessToken) {
+        return reject("no auth token, stop fetching posts");
+      }
+      headers.append('Authorization', 'Bearer ' + accessToken);
       postClient.getPosts(req, headers, (err, res) => {
         if (err !== null) {
           console.error(err);
-          reject(err);
+          return reject(err);
         }
         const posts = res ?.getPostsList().map(x => ({ postId: x.getPostid(), latitude: x.getLocation() ?.getLat(), longitude: x.getLocation() ?.getLong()})) || [];
         resolve(posts);

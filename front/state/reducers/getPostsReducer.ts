@@ -26,10 +26,11 @@ const getPostsReducer = (state = initialState, action: Action) => {
         posts: action.payload,
       };
     case ActionType.GET_POSTS_ERROR:
+      console.error(action.payload);
       return {
         ...state,
         loading: false,
-        posts: action.payload,
+        // posts: action.payload, // should not set state when failed
       };
     default:
       return state;

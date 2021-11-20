@@ -83,7 +83,7 @@ const Map = () => {
   }, []);
 
   useEffect(() => {
-    if (map && posts) {
+    if (!!map && !!posts && posts.length > 0) {
       for (const m of markers) {
         m.setMap(null);
       }
