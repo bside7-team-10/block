@@ -37,6 +37,11 @@ const postReducer = (state = initialState, action: Action) => {
         ...state,
         writing: true,
       };
+    case ActionType.END_WRITE_POST:
+      return {
+        ...state,
+        writing: false,
+      };
     case ActionType.ADD_POST_SUCCESS:
       return {
         ...state,

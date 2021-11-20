@@ -18,7 +18,7 @@ import Service from '../state/service';
 declare const google: any;
 
 const Map = () => {
-  const { getUserLocation, getFakeUserLocation, getPosts, getPost, startWritePost } = useActions();
+  const { getUserLocation, getFakeUserLocation, getPosts, getPost, startWritePost, endWritePost } = useActions();
   const { latitude, longitude } = useSelector((state: RootStateOrAny) => state.location);
   const { imageSource, writing } = useSelector((state: RootState) => state.post);
   const { posts }: { posts: MPost[] } = useSelector((state: RootState) => state.posts);
@@ -129,6 +129,7 @@ const Map = () => {
 
   const onCloseDrawer = () => {
     setIsDrawerVisable(false);
+    endWritePost();
   };
 
   const { handleSubmit } = useForm();

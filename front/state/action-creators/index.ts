@@ -104,6 +104,12 @@ export const startWritePost = () => {
   }
 }
 
+export const endWritePost = () => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.END_WRITE_POST });
+  }
+}
+
 export const addPost = (data: Post, callback: () => void) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.ADD_POST_REQUEST });

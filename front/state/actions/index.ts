@@ -61,6 +61,10 @@ export interface StartWritePostAction {
   type: ActionType.START_WRITE_POST;
 }
 
+export interface EndWritePostAction {
+  type: ActionType.END_WRITE_POST;
+}
+
 export interface AddPostRequestAction {
   type: ActionType.ADD_POST_REQUEST;
 }
@@ -137,6 +141,7 @@ export type Action =
   | GetUserLocationSuccessAction
   | GetUserLocationErrorAction
   | StartWritePostAction
+  | EndWritePostAction
   | AddPostRequestAction
   | AddPostSuccessAction
   | AddPostErrorAction
