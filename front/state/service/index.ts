@@ -20,7 +20,6 @@ export interface ServiceInterface {
   getLocation: () => Promise<any>;
   addPost: (data: Post) => Promise<any>;
   getPost: (postId: number) => Promise<{post: Post}>;
-  // getPosts: () => Promise<any>;
   getAddressByLocation: (data: LatLng) => Promise<any>;
   getPosts: ({ latitude, longitude }: LatLng) => Promise<any>;
 }
@@ -37,7 +36,7 @@ const Service = () => {
       req.setBirthday(birthday);
       req.setAvatarid(avatar);
       req.setGender(gender);
-      console.log("avatar: ", avatar);
+      (new Cookies()).remove('accessToken')
       const userClient = new UserProtocolClient(serverUrl);
       userClient.signUp(req, (err, res) => {
         if (err !== null) {
@@ -57,6 +56,7 @@ const Service = () => {
       req.setEmail(email);
       req.setPassword(password);
       const userClient = new UserProtocolClient(serverUrl);
+      (new Cookies()).remove('accessToken')
       userClient.signIn(req, (err, res) => {
         if (err !== null) {
           console.log('failure');
@@ -105,7 +105,8 @@ const Service = () => {
       postClient.createPost(req, headers, async (err, res) => {
         if (err !== null) {
           console.error(err);
-          reject(err);
+          cookies.remove('accessToken')
+          return reject(err);
         } else if (res !== null) {
           console.log(res);
           const imageUrl = res.getUploadimageurl();
@@ -142,6 +143,7 @@ const Service = () => {
       postClient.getPost(req, headers, async (err, res) => {
         if (err !== null) {
           console.error(err);
+          cookies.remove('accessToken')
           return reject(err);
         } else if (res !== null) {
           const post = res.getPost();
@@ -197,6 +199,7 @@ const Service = () => {
       postClient.getPosts(req, headers, (err, res) => {
         if (err !== null) {
           console.error(err);
+          cookies.remove('accessToken')
           return reject(err);
         }
         const posts = res ?.getPostsList().map(x => ({ postId: x.getPostid(), latitude: x.getLocation() ?.getLat(), longitude: x.getLocation() ?.getLong()})) || [];
