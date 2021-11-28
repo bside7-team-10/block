@@ -3,7 +3,17 @@ import axios from 'axios';
 import { Cookies } from 'react-cookie';
 
 import { SignInRequest, SignUpRequest } from '../../_generated/UserProtocol_pb';
-import { CreatePostRequest, DistanceFilter, Filter, GetPostRequest, GetPostsRequest, LocationDto, PostDto, PostSummary, UploadImageResultRequest } from '../../_generated/PostProtocol_pb';
+import {
+  CreatePostRequest,
+  DistanceFilter,
+  Filter,
+  GetPostRequest,
+  GetPostsRequest,
+  LocationDto,
+  PostDto,
+  PostSummary,
+  UploadImageResultRequest,
+} from '../../_generated/PostProtocol_pb';
 import { LoginUser } from '../loginUser';
 import { UserProtocolClient } from '../../_generated/UserProtocol_pb_service';
 import { PostProtocolClient } from '../../_generated/PostProtocol_pb_service';
@@ -11,15 +21,15 @@ import { User, Post, LatLng } from '../';
 import { createAxios } from '../../lib/axios';
 import config from '../../config/test-config';
 
-const serverUrl = "https://dev-be.block-app.io";
-// const serverUrl = "http://localhost:8081"; 
+const serverUrl = 'https://dev-be.block-app.io';
+// const serverUrl = "http://localhost:8081";
 
 export interface ServiceInterface {
   signup: (user: User) => Promise<any>;
   login: (user: User) => Promise<any>;
   getLocation: () => Promise<any>;
   addPost: (data: Post) => Promise<any>;
-  getPost: (postId: number) => Promise<{post: Post}>;
+  getPost: (postId: number) => Promise<{ post: Post }>;
   getAddressByLocation: (data: LatLng) => Promise<any>;
   getPosts: ({ latitude, longitude }: LatLng) => Promise<any>;
 }
@@ -36,7 +46,7 @@ const Service = () => {
       req.setBirthday(birthday);
       req.setAvatarid(avatar);
       req.setGender(gender);
-      (new Cookies()).remove('accessToken')
+      new Cookies().remove('accessToken');
       const userClient = new UserProtocolClient(serverUrl);
       userClient.signUp(req, (err, res) => {
         if (err !== null) {
@@ -56,7 +66,7 @@ const Service = () => {
       req.setEmail(email);
       req.setPassword(password);
       const userClient = new UserProtocolClient(serverUrl);
-      (new Cookies()).remove('accessToken')
+      new Cookies().remove('accessToken');
       userClient.signIn(req, (err, res) => {
         if (err !== null) {
           console.log('failure');
@@ -65,9 +75,9 @@ const Service = () => {
           console.log('success');
 
           const loginUser: LoginUser = {
-            nickname: res ?.getNickname(),
-            profileUrl: res ?.getAvatarid(),
-            token: res ?.getToken(),
+            nickname: res?.getNickname(),
+            profileUrl: res?.getAvatarid(),
+            token: res?.getToken(),
           };
           const cookie = new Cookies();
           cookie.set('accessToken', loginUser.token, {
@@ -97,7 +107,7 @@ const Service = () => {
       loc.setLat(latitude);
       loc.setLong(longitude);
       req.setLocation(loc);
-      req.setAddress(address ?? "");
+      req.setAddress(address ?? '');
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
@@ -105,13 +115,13 @@ const Service = () => {
       postClient.createPost(req, headers, async (err, res) => {
         if (err !== null) {
           console.error(err);
-          cookies.remove('accessToken')
+          cookies.remove('accessToken');
           return reject(err);
         } else if (res !== null) {
           console.log(res);
           const imageUrl = res.getUploadimageurl();
           const result = await axios.put(imageUrl, imageSource);
-          console.log("upload image: ", result);
+          console.log('upload image: ', result);
           const uploadSuccessResult = new UploadImageResultRequest();
           uploadSuccessResult.setPostid(res.getPostid());
           uploadSuccessResult.setSuccess(true);
@@ -139,35 +149,37 @@ const Service = () => {
       const postClient = new PostProtocolClient(serverUrl);
       const headers = new grpc.Metadata();
       const cookies = new Cookies();
-      headers.append("Authorization", "Bearer " + cookies.get("accessToken"));
+      headers.append('Authorization', 'Bearer ' + cookies.get('accessToken'));
       postClient.getPost(req, headers, async (err, res) => {
         if (err !== null) {
           console.error(err);
-          cookies.remove('accessToken')
+          cookies.remove('accessToken');
           return reject(err);
         } else if (res !== null) {
           const post = res.getPost();
           if (!post) {
-            return reject("post is null");
+            return reject('post is null');
           }
           const imageUrl = post.getImageurl();
           const imageResult = await axios.get(imageUrl);
 
-          const postDto = res.getPost()
-          resolve({post: {
-              content: postDto?.getContent() ?? "",
+          const postDto = res.getPost();
+          resolve({
+            post: {
+              content: postDto?.getContent() ?? '',
               latitude: postDto?.getLocation()?.getLat() ?? 0,
               longitude: postDto?.getLocation()?.getLong() ?? 0,
               rightNow: false,
-              address: postDto?.getAddress() ?? "",
+              address: postDto?.getAddress() ?? '',
               author: {
-                nickname: postDto?.getAuthor()?.getNickname() ?? "",
-                avatarId: postDto?.getAuthor()?.getProfileurl() ?? "",
+                nickname: postDto?.getAuthor()?.getNickname() ?? '',
+                avatarId: postDto?.getAuthor()?.getProfileurl() ?? '',
               },
-              date: "2021-10-11", // TODO: postDto 에서 가져와야 함,
+              date: '2021-10-11', // TODO: postDto 에서 가져와야 함,
               image: imageResult.data,
-            }});
-          }
+            },
+          });
+        }
       });
     });
   };
@@ -185,7 +197,7 @@ const Service = () => {
       const req = new GetPostsRequest();
       req.setFilter(filter);
       req.setPagenumber(0);
-      req.setResultperpage(10);
+      req.setResultperpage(30);
       req.setCurrentlocation(location);
 
       const postClient = new PostProtocolClient(serverUrl);
@@ -193,20 +205,25 @@ const Service = () => {
       const cookies = new Cookies();
       const accessToken = cookies.get('accessToken');
       if (!accessToken) {
-        return reject("no auth token, stop fetching posts");
+        return reject('no auth token, stop fetching posts');
       }
       headers.append('Authorization', 'Bearer ' + accessToken);
       postClient.getPosts(req, headers, (err, res) => {
         if (err !== null) {
           console.error(err);
-          cookies.remove('accessToken')
+          cookies.remove('accessToken');
           return reject(err);
         }
-        const posts = res ?.getPostsList().map(x => ({ postId: x.getPostid(), latitude: x.getLocation() ?.getLat(), longitude: x.getLocation() ?.getLong()})) || [];
+        const posts =
+          res?.getPostsList().map((x) => ({
+            postId: x.getPostid(),
+            latitude: x.getLocation()?.getLat(),
+            longitude: x.getLocation()?.getLong(),
+          })) || [];
         resolve(posts);
-      })
+      });
     });
-  }
+  };
 
   self.getAddressByLocation = async ({ latitude, longitude }: LatLng) => {
     const axios = createAxios(`https://maps.googleapis.com/maps/api/geocode/json`);
@@ -214,13 +231,13 @@ const Service = () => {
     const params = {
       params: {
         latlng: `${latitude},${longitude}`,
-        key: `${config.GOOGLE_MAP_KEY}`
-      }
+        key: `${config.GOOGLE_MAP_KEY}`,
+      },
     };
 
     const response = await axios.get('', params);
     return response.data.results[0].formatted_address;
-  }
+  };
 
   return self;
 };

@@ -3,22 +3,23 @@ import { RootStateOrAny, useSelector } from 'react-redux';
 import { Button, Drawer } from 'antd';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
 import { useActions } from '../hooks/use-actions';
 import { RootState } from '../state';
-import { MPost, Post } from '../state'
+import { MPost, Post } from '../state';
 import BoardWrite from './BoardWrite';
 import SmallFeed from './SmallFeed';
 import BigFeed from './BigFeed';
 import { HorizontalSpace } from './common/Spaces';
 import { COMMON_SIZE_12PX, DARK_COLOR1, WHITE_COLOR } from '../utils/theme/theme';
-import PlusIcon from '../assets/Plus'
-import Service from '../state/service';
+import PlusIcon from '../assets/Plus';
 
 declare const google: any;
 
 const Map = () => {
-  const { getUserLocation, getFakeUserLocation, getPosts, getPost, startWritePost, endWritePost } = useActions();
+  const { getUserLocation, getFakeUserLocation, getPosts, getPost, startWritePost, endWritePost } =
+    useActions();
   const { latitude, longitude } = useSelector((state: RootStateOrAny) => state.location);
   const { imageSource, writing } = useSelector((state: RootState) => state.post);
   const { posts }: { posts: MPost[] } = useSelector((state: RootState) => state.posts);
@@ -30,11 +31,11 @@ const Map = () => {
   const [smallFeedVisible, setSmallFeedVisible] = useState(false);
   const [bigFeedVisible, setBigFeedVisible] = useState(false);
   const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
-  const [ lastUpdateLat, setLastUpdateLat ] = useState(null);
-  const [ lastUpdateLong, setLastUpdateLong ] = useState(null);
-  const [ shouldUpdatePosts, setShouldUpdatePosts ] = useState(true);
+  const [lastUpdateLat, setLastUpdateLat] = useState(null);
+  const [lastUpdateLong, setLastUpdateLong] = useState(null);
+  const [shouldUpdatePosts, setShouldUpdatePosts] = useState(true);
 
-  const POSTS_UPDATE_RANGE_DIFF_LAT = 0.00451;  // 500m
+  const POSTS_UPDATE_RANGE_DIFF_LAT = 0.00451; // 500m
   const POSTS_UPDATE_RANGE_DIFF_LONG = 0.00578; // 500m
 
   useEffect(() => {
@@ -47,17 +48,21 @@ const Map = () => {
       } else if (!lastUpdateLat || !lastUpdateLong) {
         setShouldUpdatePosts(true);
       } else {
-        const shouldUpdate = Math.abs(latitude - lastUpdateLat) > POSTS_UPDATE_RANGE_DIFF_LAT
-          || Math.abs(longitude - lastUpdateLong) > POSTS_UPDATE_RANGE_DIFF_LONG;
+        const shouldUpdate =
+          Math.abs(latitude - lastUpdateLat) > POSTS_UPDATE_RANGE_DIFF_LAT ||
+          Math.abs(longitude - lastUpdateLong) > POSTS_UPDATE_RANGE_DIFF_LONG;
         setShouldUpdatePosts(shouldUpdate);
       }
     }
-  }, [latitude, longitude])
+  }, [latitude, longitude]);
 
   useEffect(() => {
-    const getUserLocationInterval = setInterval(() => getFakeUserLocation({ latitude, longitude }), 2000);
+    const getUserLocationInterval = setInterval(
+      () => getFakeUserLocation({ latitude, longitude }),
+      2000
+    );
     return () => clearInterval(getUserLocationInterval);
-  }, [])
+  }, []);
 
   useEffect(() => {
     const container = document.getElementById('map');
@@ -65,12 +70,11 @@ const Map = () => {
       zoom: 15,
       center: { lat: latitude, lng: longitude },
       disableDefaultUI: true,
-      draggable: false,
-      disableDoubleClickZoom: true,
+      // draggable: false,
+      // disableDoubleClickZoom: true,
     });
-    setMap(map)
+    setMap(map);
   }, []);
-
 
   useEffect(() => {
     const options = {
@@ -83,10 +87,12 @@ const Map = () => {
     const marker = new google.maps.Marker({
       position: options.center,
       icon: '/static/images/pin/mylocation.png',
+      optimized: false,
+      zIndex: -1,
       map,
     });
 
-    setUserMarker(marker)
+    setUserMarker(marker);
   }, [latitude, longitude]);
 
   useEffect(() => {
@@ -104,23 +110,25 @@ const Map = () => {
       for (const m of markers) {
         m.setMap(null);
       }
-      markers.length = 0;
+      const localMarkers: google.maps.Marker[] = [];
       posts.map(({ postId, latitude, longitude }: MPost) => {
         const marker = new google.maps.Marker({
           position: new google.maps.LatLng(latitude, longitude),
           icon: '/static/images/pin/pin.png',
+          optimized: false,
+          zIndex: 1,
           map,
         });
         marker.addListener('click', async () => {
           await getPost(postId);
           !smallFeedVisible && setSmallFeedVisible(true);
         });
-        markers.push(marker)
-        setMarkers(markers);
-      })
+        localMarkers.push(marker);
+      });
+      setMarkers(localMarkers);
+      new MarkerClusterer({ markers: localMarkers, map });
     }
-
-  }, [map, posts])
+  }, [map, posts]);
 
   const onClickWriteButton = () => {
     setIsDrawerVisable(true);
@@ -132,33 +140,52 @@ const Map = () => {
     endWritePost();
   };
 
+  const onCloseFeedDrawer = () => {
+    setBigFeedVisible(false);
+  };
+
   const { handleSubmit } = useForm();
 
   const onMapClick = () => {
     setSmallFeedVisible(false);
     setBigFeedVisible(false);
-  }
+  };
 
   return (
     <Wrapper>
       <StyledMap id="map" onClick={onMapClick} />
       {smallFeedVisible ? (
-        <SmallFeedWrapper onClick={() => { setBigFeedVisible(true) }}>
+        <SmallFeedWrapper
+          onClick={() => {
+            setBigFeedVisible(true);
+            setSmallFeedVisible(false);
+          }}
+        >
           <FeedBar />
           <HorizontalSpace height={COMMON_SIZE_12PX} />
           <SmallFeed post={post} />
         </SmallFeedWrapper>
-      ) : <></>}
-      {bigFeedVisible ? (
-        <BigFeedWrapper>
-          <BigFeed setVisible={setBigFeedVisible} post={post} />
-        </BigFeedWrapper>) : <></>}
+      ) : (
+        <></>
+      )}
       {!smallFeedVisible && !bigFeedVisible && (
         <WritePostButtonWrapper>
           <WritePostButton onClick={onClickWriteButton}>
             <PlusIcon />
           </WritePostButton>
-        </WritePostButtonWrapper>)}
+        </WritePostButtonWrapper>
+      )}
+
+      <StyledDrawer
+        placement="bottom"
+        closable={false}
+        maskClosable={false}
+        onClose={onCloseFeedDrawer}
+        visible={bigFeedVisible}
+        height={windowHeight - 24}
+      >
+        <BigFeed setVisible={setBigFeedVisible} post={post} />
+      </StyledDrawer>
 
       <StyledDrawer
         placement="bottom"
@@ -184,7 +211,7 @@ export default Map;
 const WritePostButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 
 const WritePostButton = styled.div`
   width: 48px;
@@ -197,19 +224,19 @@ const WritePostButton = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-`
+`;
 
 const FeedBar = styled.div`
   width: 56px;
   height: 5px;
-  background: #191D46;
+  background: #191d46;
   border-radius: 100px;
-`
+`;
 
 const StyledMap = styled.div`
   width: 100%;
   height: 100vh;
-`
+`;
 
 const Wrapper = styled.div`
   display: flex;
