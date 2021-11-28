@@ -14,6 +14,7 @@ const user: User = {
   nickName: '',
   birthday: '',
   gender: 0,
+  avatar: 'image.jpg',
 };
 
 const testCallback = () => {

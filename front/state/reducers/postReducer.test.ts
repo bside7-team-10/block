@@ -49,6 +49,7 @@ test('REMOVE_TEMP_IMAGE가 호출되면 state에 저장되어있는 사진은 nu
     imageSource: 'image.jpg',
     loading: false,
     message: null,
+    writing: false,
   };
 
   const state = postReducer(initialState, {
@@ -64,7 +65,6 @@ test('내용이 있으면 글쓰기는 완료된다.', async () => {
     rightNow: true,
     toComeBackPath: '/board/write',
     hashtag: ['오늘의이야기'],
-    imageSource: 'image.jpg',
     latitude: 0,
     longitude: 0,
   };
@@ -84,7 +84,6 @@ test('내용이 없으면 글쓰기는 실패한다.', async () => {
     rightNow: true,
     toComeBackPath: '/board/write',
     hashtag: ['오늘의이야기'],
-    imageSource: 'image.jpg',
     latitude: 0,
     longitude: 0,
   };
