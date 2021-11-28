@@ -17,6 +17,7 @@ test("아이디와 비밀번호가 '123'일 때 로그인은 성공한다", asyn
     nickName: '',
     birthday: '',
     gender: 0,
+    avatar: 'image.jpg',
   };
 
   const result = await service.login(user);
@@ -35,6 +36,7 @@ test("아이디와 비밀번호가 '123'이 아닐 때 로그인은 실패한다
     nickName: '',
     birthday: '',
     gender: 0,
+    avatar: 'image.jpg',
   };
 
   try {
