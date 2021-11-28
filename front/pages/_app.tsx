@@ -9,7 +9,7 @@ import '../styles/globals.css';
 import useLoginCheck from '../hooks/useLoginCheck';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useLoginCheck();
+  // useLoginCheck();
 
   return (
     <Provider store={store}>
