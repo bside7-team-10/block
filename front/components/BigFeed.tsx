@@ -4,13 +4,13 @@ import { PRIMARY_COLOR2, WHITE_COLOR, SUB_COLOR3 } from '../utils/theme/theme';
 import FeedMenu from '../assets/FeedMenu';
 import { Post } from '../state';
 
-interface BigFeedInterface {
-  setVisible: (arg: boolean) => void
-  post: Post
+interface BigFeedProps {
+  setVisible: (arg: boolean) => void;
+  post: Post;
 }
 
-const BigFeed = (props: BigFeedInterface) => {
-  const { post, setVisible } = props
+const BigFeed = (props: BigFeedProps) => {
+  const { post, setVisible } = props;
 
   const tempTextContent =
     'big 유저는 지도상의 남이 쓴 게시글을 확인할 수 있다. 6.유저는 지도상의 남이 쓴 게시글을 클릭 시 스몰 썸네일 확인 7. 스몰썸네일 클릭해서 빅 썸네일로 볼 수 있음 big 유저는 지도상의';
@@ -23,44 +23,46 @@ const BigFeed = (props: BigFeedInterface) => {
         </FeedBarWrapper>
         <HeaderWrapper>
           <HeaderLeftWrapper>
-            <Profile src={"/static/images/signup/" + post.author?.avatarId ?? "avatar1.png"} />
+            <Profile src={'/static/images/signup/' + post.author?.avatarId ?? 'avatar1.png'} />
             <AddressAndLocationWrapper>
               <Address>{post.address}</Address>
-              <Location>{post.longitude} {post.latitude}</Location>
+              <Location>
+                {post.longitude} {post.latitude}
+              </Location>
             </AddressAndLocationWrapper>
           </HeaderLeftWrapper>
           <FeedMenu />
         </HeaderWrapper>
-        <MainImage src={post.image ?? "/static/images/temp/image.jpg"} />
+        {post.image && <MainImage src={post.image} />}
         <UserNickNameAndTimeStampWrapper>
-          <UserNickName>{post.author?.nickname ?? ""}</UserNickName>
+          <UserNickName>{post.author?.nickname ?? ''}</UserNickName>
           <TimeStamp>{post.date}</TimeStamp>
         </UserNickNameAndTimeStampWrapper>
-        <Content>{post.content ?? ""}</Content>
+        <Content>{post.content ?? ''}</Content>
       </Contents>
     </Wrapper>
   );
 };
 
-export default BigFeed;
+export default React.memo(BigFeed);
 
 const FeedBarWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   height: 24px;
-`
+`;
 
 const FeedBar = styled.div`
   width: 56px;
   height: 5px;
-  background: #7377A7;
+  background: #7377a7;
   border-radius: 100px;
-`
+`;
 
 const Wrapper = styled.div`
   background: #191d46;
-  border-radius: 13px 13px 0px 0px;
+  height: 100%;
 `;
 
 const HeaderLeftWrapper = styled.div`
@@ -131,6 +133,6 @@ const MainImage = styled.img`
   height: 400px;
   width: 100%;
   border-radius: 5px;
-  object-fit: cover;
+  object-fit: contain;
   margin-top: 5px;
 `;

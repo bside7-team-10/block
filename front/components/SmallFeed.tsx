@@ -6,11 +6,11 @@ import { PRIMARY_COLOR2, WHITE_COLOR, SUB_COLOR3 } from '../utils/theme/theme';
 // import Comment from '../assets/Comment';
 import { Post } from '../state';
 
-interface SmallFeedInterface {
-  post: Post
+interface SmallFeedProps {
+  post: Post;
 }
 
-const SmallFeed = (props: SmallFeedInterface) => {
+const SmallFeed = (props: SmallFeedProps) => {
   const { post } = props;
   return (
     <Wrapper>
@@ -27,18 +27,21 @@ const SmallFeed = (props: SmallFeedInterface) => {
               <CommentCount>30</CommentCount>
             </CommentWrapper>
           </EngageWrapper> */}
-          <Content>
-            { post.content }
-          </Content>
+          <Content>{post.content}</Content>
+          {/* <Content>
+            10시간 전10시간 전10시간 전10시간 전10시간 전10시간 전10시간 전10시간 전10시간 전10시간
+            전10시간 전
+          </Content> */}
+
           <TimeStamp>10시간 전</TimeStamp>
         </TextWrapper>
-        <Thumbnail src={post.image ?? "/static/images/temp/image.jpg"} />
+        <Thumbnail src={post.image ?? '/static/images/temp/image.jpg'} />
       </Contents>
     </Wrapper>
   );
 };
 
-export default SmallFeed;
+export default React.memo(SmallFeed);
 
 const Wrapper = styled.div`
   height: 136px;
@@ -50,6 +53,36 @@ const Wrapper = styled.div`
 
 const Address = styled.div`
   color: ${PRIMARY_COLOR2};
+`;
+
+const Content = styled.div`
+  color: ${WHITE_COLOR};
+  font-size: 10px;
+  font-weight: 400;
+  margin-top: 3px;
+`;
+
+const Contents = styled.div`
+  padding: 15px;
+  display: flex;
+`;
+
+const TimeStamp = styled.div`
+  font-size: 9px;
+  font-weight: 400;
+  color: ${SUB_COLOR3};
+  margin-top: 10px;
+`;
+
+const TextWrapper = styled.div`
+  width: 80%;
+`;
+
+const Thumbnail = styled.img`
+  height: 100px;
+  border-radius: 5px;
+  object-fit: contain;
+  margin-left: 3px;
 `;
 
 // const HeartCount = styled.div`
@@ -80,32 +113,3 @@ const Address = styled.div`
 // const EngageWrapper = styled.div`
 //   display: flex;
 // `;
-
-const Content = styled.div`
-  color: ${WHITE_COLOR};
-  font-size: 10px;
-  font-weight: 400;
-  margin-top: 3px;
-`;
-
-const Contents = styled.div`
-  padding: 15px;
-  display: flex;
-`;
-
-const TimeStamp = styled.div`
-  font-size: 9px;
-  font-weight: 400;
-  color: ${SUB_COLOR3};
-  margin-top: 10px;
-`;
-
-const TextWrapper = styled.div``;
-
-const Thumbnail = styled.img`
-  height: 100px;
-  border-radius: 5px;
-  background-color: red;
-  object-fit: contain;
-  margin-left: 3px;
-`;
